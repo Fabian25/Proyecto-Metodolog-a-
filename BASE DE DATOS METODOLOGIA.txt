@@ -1,0 +1,166 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema METODOLOGIA
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `METODOLOGIA` ;
+
+-- -----------------------------------------------------
+-- Schema METODOLOGIA
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `METODOLOGIA` DEFAULT CHARACTER SET utf8 ;
+SHOW WARNINGS;
+USE `METODOLOGIA` ;
+
+-- -----------------------------------------------------
+-- Table `Persona`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Persona` ;
+
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `Persona` (
+  `idPersona` INT NOT NULL,
+  `NombreCompleto` VARCHAR(45) NOT NULL,
+  `Telefono` VARCHAR(45) NOT NULL,
+  `Correo` VARCHAR(45) NOT NULL,
+  `Empleados_CodigoEmpleado` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idPersona`, `Empleados_CodigoEmpleado`))
+ENGINE = InnoDB;
+
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `Tiquete`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Tiquete` ;
+
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `Tiquete` (
+  `idTiquete` INT NOT NULL,
+  `Prioridad` VARCHAR(45) NOT NULL,
+  `Estado` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idTiquete`))
+ENGINE = InnoDB;
+
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `Empleados`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Empleados` ;
+
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `Empleados` (
+  `CodigoEmpleado` VARCHAR(45) NOT NULL,
+  `TipoPersona` INT NOT NULL,
+  `Tiquete_idTiquete` INT NOT NULL,
+  PRIMARY KEY (`CodigoEmpleado`, `TipoPersona`, `Tiquete_idTiquete`))
+ENGINE = InnoDB;
+
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `Empresa`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Empresa` ;
+
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `Empresa` (
+  `ID_EMPRESA` VARCHAR(45) NOT NULL,
+  `Nombre` VARCHAR(45) NOT NULL,
+  `Siglas` VARCHAR(45) NOT NULL,
+  `Telefono` INT NOT NULL,
+  `Tiquete_idTiquete` INT NOT NULL,
+  PRIMARY KEY (`ID_EMPRESA`, `Tiquete_idTiquete`))
+ENGINE = InnoDB;
+
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `Clientes`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Clientes` ;
+
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `Clientes` (
+  `CodigoCliente` VARCHAR(8) NOT NULL,
+  `TipoPersona` INT NOT NULL,
+  `Empresa_ID_EMPRESA` VARCHAR(45) NOT NULL,
+  `Empresa_Tiquete_idTiquete` INT NOT NULL,
+  `Tiquete_idTiquete` INT NOT NULL,
+  PRIMARY KEY (`CodigoCliente`, `Empresa_ID_EMPRESA`, `Empresa_Tiquete_idTiquete`, `Tiquete_idTiquete`))
+ENGINE = InnoDB;
+
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `Reportes`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Reportes` ;
+
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `Reportes` (
+  `idReportes` INT NOT NULL,
+  `TipoReporte` VARCHAR(45) NOT NULL,
+  `Empleados_CodigoEmpleado` VARCHAR(45) NOT NULL,
+  `Empresa_ID_EMPRESA` VARCHAR(45) NOT NULL,
+  `Tiquete_idTiquete` INT NOT NULL,
+  `Clientes_idCliente` INT NOT NULL,
+  PRIMARY KEY (`idReportes`))
+ENGINE = InnoDB;
+
+SHOW WARNINGS;
+CREATE UNIQUE INDEX `idReportes_UNIQUE` ON `Reportes` (`idReportes` ASC);
+
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `Administrador`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Administrador` ;
+
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `Administrador` (
+  `idAdministrador` INT NOT NULL,
+  `TipoPersona` INT NOT NULL,
+  PRIMARY KEY (`idAdministrador`))
+ENGINE = InnoDB;
+
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `Permisos`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Permisos` ;
+
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `Permisos` (
+  `CrearCliente` INT NOT NULL,
+  `ModificarCliente` INT NOT NULL,
+  `EliminarCliente` INT NOT NULL,
+  `VerCliente` INT NOT NULL,
+  `CrearEmpresa` INT NOT NULL,
+  `ModificarEmpresa` INT NOT NULL,
+  `EliminarEmpresa` INT NOT NULL,
+  `VerEmpresa` INT NOT NULL,
+  `CrearTiquete` INT NULL,
+  `ModificarTiquete` INT NULL,
+  `EliminaTiquete` INT NOT NULL,
+  `VerTiquete` INT NOT NULL,
+  `AsignarTiquete` INT NOT NULL,
+  `CrearEmpleados` INT NOT NULL,
+  `ModificarEmpleado` INT NOT NULL,
+  `EliminarEmpleado` INT NOT NULL,
+  `VerEmpleado` INT NOT NULL,
+  `TipoPersona` INT NOT NULL,
+  `ID_Permiso` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`ID_Permiso`))
+ENGINE = InnoDB;
+
+SHOW WARNINGS;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
