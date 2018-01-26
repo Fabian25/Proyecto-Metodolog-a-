@@ -5,10 +5,7 @@
  */
 package proyect;
 
-/**
- *
- * @author Fabian
- */
+
 public class Proyect {
 
     /**
