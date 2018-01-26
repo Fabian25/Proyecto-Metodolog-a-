@@ -5,6 +5,8 @@
  */
 package proyect;
 
+import javax.swing.JOptionPane;
+
 
 public class Proyect {
 
@@ -14,6 +16,8 @@ public class Proyect {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("HOLA");
+        
+        System.out.println("Prueba");
     }
     
 }
