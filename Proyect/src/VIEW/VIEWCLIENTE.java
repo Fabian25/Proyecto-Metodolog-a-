@@ -4,11 +4,20 @@
  * and open the template in the editor.
  */
 package VIEW;
-
+import java.util.List;
+import MODEL.*;
 /**
  *
  * @author jose
  */
 public class VIEWCLIENTE {
-    
+    public void verCliente(CLIENTE cliente) {
+		System.out.println("Datos del Cliente: "+cliente);
+	}
+	
+	public void verClientes(List<CLIENTE> clientes) {
+		for (CLIENTE cliente : clientes) {
+			System.out.println("Datos del Cliente: "+cliente);
+		}		
+	}
 }

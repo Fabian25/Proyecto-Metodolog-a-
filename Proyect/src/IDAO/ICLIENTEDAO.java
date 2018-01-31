@@ -4,11 +4,15 @@
  * and open the template in the editor.
  */
 package IDAO;
-
+import java.util.List;
+import MODEL.CLIENTE;
 /**
  *
  * @author jose
  */
-public class ICLIENTEDAO {
-    
+public interface ICLIENTEDAO {
+   	public boolean registrar(CLIENTE cliente);
+	public List<CLIENTE> obtener();
+	public boolean actualizar(CLIENTE cliente);
+	public boolean eliminar(CLIENTE cliente); 
 }
