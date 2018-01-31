@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Model.Cliente;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,14 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
  
 
-import Connection.Connexion;
+import Connection.Conexion;
 import IDAO.*;
-import MODEL.*;
  
-public class CLIENTDAOLPML implements ICLIENTEDAO {	
+public class ClienteDAOImplements implements IClienteDAO {	
 	
 	@Override
-	public boolean registrar(CLIENTE cliente) {
+	public boolean registrar(Cliente cliente) {
 		boolean registrar = false;
 		
 		Statement stm= null;
@@ -29,7 +29,7 @@ public class CLIENTDAOLPML implements ICLIENTEDAO {
 		String sql="INSERT INTO Clientes values (NULL,'"+"CL0001"+cliente.getCedula()+"','"+cliente.getNombre()+"','"+cliente.getApellido()+"')";
 		
 		try {			
-			con=Connexion.conexion();
+			con=Conexion.conexion();
 			stm= con.createStatement();
 			stm.execute(sql);
 			registrar=true;
@@ -43,21 +43,21 @@ public class CLIENTDAOLPML implements ICLIENTEDAO {
 	}
  
 	@Override
-	public List<CLIENTE> obtener() {
+	public List<Cliente> obtener() {
 		Connection co =null;
 		Statement stm= null;
 		ResultSet rs=null;
 		
 		String sql="SELECT * FROM CLIENTE ORDER BY ID";
 		
-		List<CLIENTE> listaCliente= new ArrayList<CLIENTE>();
+		List<Cliente> listaCliente= new ArrayList<Cliente>();
 		
 		try {			
-			co= Connexion.conexion();
+			co= Conexion.conexion();
 			stm=co.createStatement();
 			rs=stm.executeQuery(sql);
 			while (rs.next()) {
-				CLIENTE c=new CLIENTE();
+				Cliente c=new Cliente();
 				c.setId(rs.getInt(1));
 				c.setCedula(rs.getString(2));
 				c.setNombre(rs.getString(3));
@@ -76,7 +76,7 @@ public class CLIENTDAOLPML implements ICLIENTEDAO {
 	}
  
 	@Override
-	public boolean actualizar(CLIENTE cliente) {
+	public boolean actualizar(Cliente cliente) {
 		Connection connect= null;
 		Statement stm= null;
 		
@@ -84,7 +84,7 @@ public class CLIENTDAOLPML implements ICLIENTEDAO {
 				
 		String sql="UPDATE CLIENTE SET cedula='"+cliente.getCedula()+"', nombres='"+cliente.getNombre()+"', apellidos='"+cliente.getApellido()+"'" +" WHERE ID="+cliente.getId();
 		try {
-			connect=Connexion.conexion();
+			connect=Conexion.conexion();
 			stm=connect.createStatement();
 			stm.execute(sql);
 			actualizar=true;
@@ -96,7 +96,7 @@ public class CLIENTDAOLPML implements ICLIENTEDAO {
 	}
  
 	@Override
-	public boolean eliminar(CLIENTE cliente) {
+	public boolean eliminar(Cliente cliente) {
 		Connection connect= null;
 		Statement stm= null;
 		
@@ -104,7 +104,7 @@ public class CLIENTDAOLPML implements ICLIENTEDAO {
 				
 		String sql="DELETE FROM CLIENTE WHERE ID="+cliente.getId();
 		try {
-			connect=Connexion.conexion();
+			connect=Conexion.conexion();
 			stm=connect.createStatement();
 			stm.execute(sql);
 			eliminar=true;

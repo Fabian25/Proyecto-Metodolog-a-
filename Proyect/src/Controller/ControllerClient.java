@@ -4,41 +4,41 @@
  * and open the template in the editor.
  */
 package Controller;
+import View.ViewCliente;
+import Model.Cliente;
 import java.util.ArrayList;
 import java.util.List;
  
 import DAO.*;
 import IDAO.*;
-import MODEL.*;
-import VIEW.*;
 public class ControllerClient {
-    private VIEWCLIENTE vista= new VIEWCLIENTE();
+    private ViewCliente vista= new ViewCliente();
 	
 	public ControllerClient() {
 	}
 	
 	//llama al DAO para guardar un cliente
-	public void registrar(CLIENTE cliente ) {
-		ICLIENTEDAO dao= new  CLIENTDAOLPML();
+	public void registrar(Cliente cliente ) {
+		IClienteDAO dao= new  ClienteDAOImplements();
 		dao.registrar(cliente);
 	}
 	
 	//llama al DAO para actualizar un cliente
-	public void actualizar(CLIENTE cliente) {
-		ICLIENTEDAO dao= new CLIENTDAOLPML();
+	public void actualizar(Cliente cliente) {
+		IClienteDAO dao= new ClienteDAOImplements();
 		dao.actualizar(cliente);
 	}
 	
 	//llama al DAO para eliminar un cliente
-	public void eliminar(CLIENTE cliente) {
-		ICLIENTEDAO dao= new  CLIENTDAOLPML();
+	public void eliminar(Cliente cliente) {
+		IClienteDAO dao= new  ClienteDAOImplements();
 		dao.eliminar(cliente);
 	}
 	
 	//llama al DAO para obtener todos los clientes y luego los muestra en la vista
 	public void verClientes(){
-		List<CLIENTE> clientes = new ArrayList<CLIENTE>();
-		ICLIENTEDAO dao= new  CLIENTDAOLPML();
+		List<Cliente> clientes = new ArrayList<Cliente>();
+		IClienteDAO dao= new  ClienteDAOImplements();
 		clientes=dao.obtener();
 		vista.verClientes(clientes);
 	}

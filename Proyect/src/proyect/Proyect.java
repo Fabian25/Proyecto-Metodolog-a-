@@ -5,9 +5,9 @@
  */
 package proyect;
 
+import Model.Cliente;
 import Controller.*;
  
-import MODEL.*;
 
 
 public class Proyect {
@@ -16,7 +16,7 @@ public class Proyect {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-                            CLIENTE cliente = new CLIENTE("1717213183", "Elivar", "Largo");			
+                            Cliente cliente = new Cliente("1717213183", "Elivar", "Largo");			
 		
 		// controlador
 		ControllerClient controller = new ControllerClient();
