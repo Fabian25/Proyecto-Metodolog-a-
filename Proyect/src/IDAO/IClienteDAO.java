@@ -5,14 +5,14 @@
  */
 package IDAO;
 import java.util.List;
-import Model.Cliente;
+import Model.Persona;
 /**
  *
  * @author jose
  */
 public interface IClienteDAO {
-   	public boolean registrar(Cliente cliente);
-	public List<Cliente> obtener();
-	public boolean actualizar(Cliente cliente);
-	public boolean eliminar(Cliente cliente); 
+   	public boolean registrar(Persona cliente);
+	public List<Persona> obtener();
+	public boolean actualizar(Persona cliente);
+	public boolean eliminar(Persona cliente); 
 }

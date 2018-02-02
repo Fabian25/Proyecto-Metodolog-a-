@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package DAO;
-
-import Model.Cliente;
+import Model.Persona;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,11 +15,12 @@ import java.util.List;
 
 import Connection.Conexion;
 import IDAO.*;
+import Model.Clientes;
  
 public class ClienteDAOImplements implements IClienteDAO {	
 	
 	@Override
-	public boolean registrar(Cliente cliente) {
+	public boolean registrar(Persona cliente) {
 		boolean registrar = false;
 		
 		Statement stm= null;
@@ -43,23 +43,23 @@ public class ClienteDAOImplements implements IClienteDAO {
 	}
  
 	@Override
-	public List<Cliente> obtener() {
+	public List<Persona> obtener() {
 		Connection co =null;
 		Statement stm= null;
 		ResultSet rs=null;
 		
 		String sql="SELECT * FROM CLIENTE ORDER BY ID";
 		
-		List<Cliente> listaCliente= new ArrayList<Cliente>();
+		List<Persona> listaCliente= new ArrayList<Persona>();
 		
 		try {			
 			co= Conexion.conexion();
 			stm=co.createStatement();
 			rs=stm.executeQuery(sql);
 			while (rs.next()) {
-				Cliente c=new Cliente();
-				c.setId(rs.getInt(1));
-				c.setCedula(rs.getString(2));
+				Persona c=new Clientes();
+				c.setCedula(rs.getInt(1));
+				c.setCedula(rs.getInt(2));
 				c.setNombre(rs.getString(3));
 				c.setApellido(rs.getString(4));
 				listaCliente.add(c);
@@ -76,13 +76,13 @@ public class ClienteDAOImplements implements IClienteDAO {
 	}
  
 	@Override
-	public boolean actualizar(Cliente cliente) {
+	public boolean actualizar(Persona cliente) {
 		Connection connect= null;
 		Statement stm= null;
 		
 		boolean actualizar=false;
 				
-		String sql="UPDATE CLIENTE SET cedula='"+cliente.getCedula()+"', nombres='"+cliente.getNombre()+"', apellidos='"+cliente.getApellido()+"'" +" WHERE ID="+cliente.getId();
+		String sql="UPDATE CLIENTE SET cedula='"+cliente.getCedula()+"', nombres='"+cliente.getNombre()+"', apellidos='"+cliente.getApellido()+"'" +" WHERE ID="+cliente.getCedula();
 		try {
 			connect=Conexion.conexion();
 			stm=connect.createStatement();
@@ -96,13 +96,13 @@ public class ClienteDAOImplements implements IClienteDAO {
 	}
  
 	@Override
-	public boolean eliminar(Cliente cliente) {
+	public boolean eliminar(Persona cliente) {
 		Connection connect= null;
 		Statement stm= null;
 		
 		boolean eliminar=false;
 				
-		String sql="DELETE FROM CLIENTE WHERE ID="+cliente.getId();
+		String sql="DELETE FROM CLIENTE WHERE ID="+cliente.getCedula();
 		try {
 			connect=Conexion.conexion();
 			stm=connect.createStatement();

@@ -1,0 +1,100 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Model;
+
+/**
+ *
+ * @author jose
+ */
+public abstract class Persona implements Cloneable {
+
+    public Persona clone() throws CloneNotSupportedException {
+        return (Persona) super.clone();
+    }
+
+    public abstract String verPersona();
+
+    private int cedula;
+    private String nombre;
+    private String apellido;
+    private int Telefono;
+    private String Correo;
+    private String Contrasena;
+    private String Codigo;
+
+    public Persona() {
+    }
+
+    public Persona(int cedula, String nombre, String apellido, int Telefono, String Correo, String Contrasena, String Codigo) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.Telefono = Telefono;
+        this.Correo = Correo;
+        this.Contrasena = Contrasena;
+        this.Codigo = Codigo;
+    }
+
+    public int getTelefono() {
+        return Telefono;
+    }
+
+    public void setTelefono(int Telefono) {
+        this.Telefono = Telefono;
+    }
+
+    public String getCorreo() {
+        return Correo;
+    }
+
+    public void setCorreo(String Correo) {
+        this.Correo = Correo;
+    }
+
+    public String getContrasena() {
+        return Contrasena;
+    }
+
+    public void setContrasena(String Contrasena) {
+        this.Contrasena = Contrasena;
+    }
+
+    public int getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getCodigo() {
+        return Codigo;
+    }
+
+    public void setCodigo(String Codigo) {
+        this.Codigo = Codigo;
+    }
+    @Override
+    public String toString() {
+        return this.cedula + ", " + this.nombre + ", " + this.apellido + ", " + this.Correo + ", " + this.Telefono+ ", "+this.Codigo;
+    }
+}

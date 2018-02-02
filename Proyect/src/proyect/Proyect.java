@@ -5,7 +5,7 @@
  */
 package proyect;
 
-import Model.Cliente;
+import Model.Persona;
 import Controller.*;
  
 
@@ -16,25 +16,7 @@ public class Proyect {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-                            Cliente cliente = new Cliente("1717213183", "Elivar", "Largo");			
-		
-		// controlador
-		ControllerClient controller = new ControllerClient();
- 
-		// guarda un cliente a través del controlador
-		controller.registrar(cliente);
- 
-		// ver clientes
-		controller.verClientes();
- 
-		// editar un cliente por medio del id
-		cliente.setId(1);
-		cliente.setNombre("Santiago");
-		controller.actualizar(cliente);
- 
-		// eliminar un cliente por medio del id
-		cliente.setId(1);
-		controller.eliminar(cliente);
+                            
     }
     
 }
