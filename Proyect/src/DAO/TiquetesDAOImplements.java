@@ -62,7 +62,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO{
 				
 				c.setEstado(rs.getString(3));
 				c.setID_Tiquete(rs.getString(1));
-                                c.setPrioridad(rs.getString(2));
+                                                          c.setPrioridad(rs.getString(2));
 				Tiquetes.add(c);
 			}
 			stm.close();

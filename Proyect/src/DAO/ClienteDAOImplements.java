@@ -58,10 +58,10 @@ public class ClienteDAOImplements implements IClienteDAO {
 			rs=stm.executeQuery(sql);
 			while (rs.next()) {
 				Persona c=new Clientes();
-				c.setCodigo(rs.getString(1));
-				c.setCedula(rs.getInt(2));
-				c.setNombre(rs.getString(3));
-				c.setApellido(rs.getString(4));
+				c.setCodigo(rs.getString(7));
+				c.setCedula(rs.getInt(1));
+				c.setNombre(rs.getString(2));
+				c.setApellido(rs.getString(8));
 				listaCliente.add(c);
 			}
 			stm.close();
