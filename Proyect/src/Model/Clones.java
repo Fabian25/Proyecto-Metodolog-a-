@@ -21,7 +21,7 @@ public class Clones {
         Base.setTelefono(88888888);
         Base.setCodigo("SSSSSSSSS000");
         
-        Clientes clon = (Clientes) Base.clone();
+        Persona clon = Base.clone();
         
         clon.setNombre(Nombre);
         clon.setApellido(Apellido);
