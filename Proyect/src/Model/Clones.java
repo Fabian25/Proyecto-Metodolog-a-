@@ -30,5 +30,7 @@ public class Clones {
          clon.setContrasena(Contrasena);
          clon.setTelefono(Telefono);
         clon.setCodigo(Codigo);
+        
+        
     }
 }

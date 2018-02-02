@@ -58,7 +58,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 			rs=stm.executeQuery(sql);
 			while (rs.next()) {
 				Persona c=new Clientes();
-				c.setCedula(rs.getInt(1));
+				c.setCodigo(rs.getString(1));
 				c.setCedula(rs.getInt(2));
 				c.setNombre(rs.getString(3));
 				c.setApellido(rs.getString(4));
@@ -82,7 +82,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 		
 		boolean actualizar=false;
 				
-		String sql="UPDATE CLIENTE SET cedula='"+cliente.getCedula()+"', nombres='"+cliente.getNombre()+"', apellidos='"+cliente.getApellido()+"'" +" WHERE ID="+cliente.getCedula();
+		String sql="UPDATE CLIENTE SET cedula='"+cliente.getCedula()+"', nombres='"+cliente.getNombre()+"', apellidos='"+cliente.getApellido()+"'" +" WHERE ID="+cliente.getCodigo();
 		try {
 			connect=Conexion.conexion();
 			stm=connect.createStatement();
@@ -102,7 +102,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 		
 		boolean eliminar=false;
 				
-		String sql="DELETE FROM CLIENTE WHERE ID="+cliente.getCedula();
+		String sql="DELETE FROM CLIENTE WHERE ID="+cliente.getCodigo();
 		try {
 			connect=Conexion.conexion();
 			stm=connect.createStatement();
