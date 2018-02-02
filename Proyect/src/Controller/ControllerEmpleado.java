@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Controller;
-import View.ViewCliente;
+import View.ViewEmpleado;
 import Model.Persona;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import IDAO.*;
  * @author Fabian
  */
 public class ControllerEmpleado {
-      private ViewCliente vista= new ViewCliente();
+      private ViewEmpleado vista= new ViewEmpleado();
 	
 	public ControllerEmpleado() {
 	}
@@ -44,6 +44,6 @@ public class ControllerEmpleado {
 		List<Persona> empleados = new ArrayList<Persona>();
 		IEmpleadoDAO dao= new  EmpleadoDAOImplements();
 		empleados=dao.obtener();
-		vista.verClientes(empleados);
+		vista.verEmpleados(empleados);
 	}
 }
