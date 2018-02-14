@@ -42,7 +42,7 @@ public class ControllerTiquetes {
     }
 
     //llama al DAO para obtener todos los tiquete y luego los muestra en la vista
-    public void verClientes() {
+    public void verTiquetes() {
         List<Tiquetes> tiquetes = new ArrayList<Tiquetes>();
         ITiqueteDAO dao = new TiquetesDAOImplements();
         tiquetes = dao.obtener();

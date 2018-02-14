@@ -40,7 +40,7 @@ public class ControllerEmpleado {
 	}
 	
 	//llama al DAO para obtener todos los clientes y luego los muestra en la vista
-	public void verClientes(){
+	public void verEmpleados(){
 		List<Persona> empleados = new ArrayList<Persona>();
 		IEmpleadoDAO dao= new  EmpleadoDAOImplements();
 		empleados=dao.obtener();
