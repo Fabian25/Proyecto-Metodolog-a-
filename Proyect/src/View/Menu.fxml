@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagen/fondoPro.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_Cliente" layoutX="62.0" layoutY="204.0" mnemonicParsing="false" onAction="#Login" prefHeight="66.0" prefWidth="140.0" text="Cliente" />
+      <Button fx:id="btn_Tiquete" layoutX="244.0" layoutY="316.0" mnemonicParsing="false" onAction="#Login" prefHeight="66.0" prefWidth="140.0" text="Tiquete" />
+      <Button fx:id="btn_Empresa" layoutX="244.0" layoutY="204.0" mnemonicParsing="false" onAction="#Login" prefHeight="66.0" prefWidth="140.0" text="Empresas" />
+      <Button fx:id="btn_Empleado" layoutX="62.0" layoutY="316.0" mnemonicParsing="false" onAction="#Login" prefHeight="66.0" prefWidth="140.0" text="Empleado" />
+      <Label layoutX="110.0" layoutY="104.0" text="Elegir un Modulo" textFill="#111111">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -3,32 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyect;
+package Controller;
 
-import javafx.application.Application;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 /**
+ * FXML Controller class
  *
  * @author ALONSITO
  */
-public class MainFX extends Application {
+public class MenuController implements Initializable {
+
+    @FXML
+    private Button btn_Login;
+
+    /**
+     * Initializes the controller class.
+     */
     
-    @Override
-    public void start(Stage primaryStage) {
-      try {
+    private void IngresarLogin(){
+             try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Login.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-            stage.setTitle("Login");
+            stage.setTitle("Menu");
             stage.setScene(new Scene(root1));
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
@@ -36,12 +44,19 @@ public class MainFX extends Application {
             System.out.println("Error");
         }
     }
+    
+    
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
+    @FXML
+    private void Login(ActionEvent event) {
+        IngresarLogin();
+        Stage stage = (Stage) btn_Login.getScene().getWindow();
+        stage.close();
     }
     
 }

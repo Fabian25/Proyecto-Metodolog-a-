@@ -9,12 +9,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -23,6 +28,7 @@ import javafx.scene.input.MouseEvent;
  */
 public class LoginController implements Initializable {
 
+    
     @FXML
     private TextField txt_Usuario;
     @FXML
@@ -32,6 +38,21 @@ public class LoginController implements Initializable {
     @FXML
     private Button btn_Ingresar;
 
+    private void IngresarMenu(String name){
+             try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + name + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle(name);
+            stage.setScene(new Scene(root1));
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+    }
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -46,6 +67,26 @@ public class LoginController implements Initializable {
 
     @FXML
     private void Ingresar(ActionEvent event) {
+       if(Validar == true){
+         switch(RevisarRol()){
+             case 1:
+               //menu administrador
+               IngresarMenu("Menu");
+               break;
+             case 2:
+               //menu cliente
+               IngresarMenu("MenuCliente");
+               break;
+             case 3:
+               //menu empleado
+               IngresarMenu("MenuEmpleado");
+               break;
+             default:   
+                 
+               break;
+            }   
+       }   
+      
     }
     
 }
