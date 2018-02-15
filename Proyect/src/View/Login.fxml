@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,13 +8,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="1000.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
+      <TextField fx:id="txt_Usuario" layoutX="154.0" layoutY="209.0" prefHeight="36.0" prefWidth="194.0" promptText="Usuario" />
+      <PasswordField fx:id="txt_Contra" layoutX="154.0" layoutY="270.0" prefHeight="36.0" prefWidth="194.0" promptText="Contraseña" />
+      <Label fx:id="lbl_Recuperar" layoutX="154.0" layoutY="324.0" onMouseClicked="#RecuperarContra" text="Recuperar Contraseña" textFill="#6268e8">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_Ingresar" layoutX="154.0" layoutY="368.0" mnemonicParsing="false" onAction="#Ingresar" prefHeight="36.0" prefWidth="123.0" text="Ingresar" />
+      <Label layoutX="154.0" layoutY="121.0" text="Bienvenido">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
