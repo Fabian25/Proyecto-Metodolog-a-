@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="562.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.RegistroClienteController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="233.0" prefWidth="975.0">
+         <children>
+            <AnchorPane id="AnchorPane" layoutX="-96.0" layoutY="4.0" prefHeight="537.0" prefWidth="1085.0">
+               <children>
+                  <ImageView fitHeight="598.0" fitWidth="1000.0" layoutX="85.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagen/fondoPro.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="147.0" layoutY="110.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Name" />
+                  <Button layoutX="147.0" layoutY="296.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
+                  <Button layoutX="147.0" layoutY="171.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Last Name" />
+                  <Button layoutX="147.0" layoutY="234.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="ID Number" />
+                  <Label layoutX="520.0" layoutY="15.0" text="Register" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="147.0" layoutY="354.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Email" />
+                  <TextField fx:id="txtCName" layoutX="319.0" layoutY="115.0" prefHeight="35.0" prefWidth="184.0" />
+                  <TextField fx:id="txtCLastNmae" layoutX="319.0" layoutY="176.0" prefHeight="35.0" prefWidth="184.0" />
+                  <TextField fx:id="txtCIDnum" layoutX="319.0" layoutY="239.0" prefHeight="35.0" prefWidth="184.0" />
+                  <TextField fx:id="txtCPhoneNum" layoutX="320.0" layoutY="301.0" prefHeight="35.0" prefWidth="184.0" />
+                  <TextField fx:id="txtCEmail" layoutX="319.0" layoutY="359.0" prefHeight="35.0" prefWidth="184.0" />
+                  <TableView layoutX="556.0" layoutY="108.0" prefHeight="298.0" prefWidth="515.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Name" />
+                        <TableColumn prefWidth="75.0" text="Last Name" />
+                        <TableColumn prefWidth="75.0" text="ID Number" />
+                        <TableColumn prefWidth="96.0" text="Phone Number" />
+                        <TableColumn prefWidth="77.0" text="Email" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="btnADD" layoutX="362.0" layoutY="447.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="99.0" text="ADD">
+                     <effect>
+                        <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
+                           <light>
+                              <Light.Distant color="#d72929" />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Button>
+                  <Button fx:id="btnBack" layoutX="147.0" layoutY="447.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
