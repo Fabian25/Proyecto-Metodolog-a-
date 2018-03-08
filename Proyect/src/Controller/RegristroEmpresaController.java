@@ -7,7 +7,12 @@ package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -16,6 +21,21 @@ import javafx.fxml.Initializable;
  */
 public class RegristroEmpresaController implements Initializable {
 
+    @FXML
+    private TextField txt_EntrepriceName;
+    @FXML
+    private TextField txt_Phone;
+    @FXML
+    private TextField txt_Acronym;
+    @FXML
+    private Button btnADDEnterprice;
+    @FXML
+    private Button btn_Import;
+    @FXML
+    private Button btnBack;
+    @FXML
+    private TableView<?> table_Enterprice;
+
     /**
      * Initializes the controller class.
      */
@@ -23,5 +43,13 @@ public class RegristroEmpresaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void c_add(MouseEvent event) {
+    }
+
+    @FXML
+    private void c_back(MouseEvent event) {
+    }
     
 }

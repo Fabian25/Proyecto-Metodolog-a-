@@ -79,10 +79,10 @@ public class MenuController implements Initializable {
     private void Empresas(ActionEvent event) {
           try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + "RegristroEmpresa" + ".fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
+            Parent root2 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Enterprises");
-            stage.setScene(new Scene(root1));
+            stage.setScene(new Scene(root2));
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
             Stage act = (Stage) btn_Empresa.getScene().getWindow();
