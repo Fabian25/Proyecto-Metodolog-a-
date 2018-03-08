@@ -16,13 +16,15 @@ public class Proyect {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        System.out.println("HOLA MUNDO xD");        
+              System.out.println("HOLA MUNDO xD");        
                     System.out.println("HOLA MUNDO xD");        
-                                        System.out.println("HOLA MUNDO xD");        
-                                                            System.out.println("HOLA MUNDO xD");        
-                                                                                System.out.println("HOLA MUNDO xD");        
-                                                                                                    System.out.println("HOLA MUNDO xD");                            System.out.println("HOLA MUNDO xD");        
-                                                                                                                        System.out.println("HOLA MUNDO xD");        
-                                                                                                                               System.out.println("HOLA MUNDO xD");                            System.out.println("HOLA MUNDO xD");        
+                          System.out.println("HOLA MUNDO xD");        
+                                System.out.println("HOLA MUNDO xD");                            
+                                      System.out.println("HOLA MUNDO xD");        
+                                      System.out.println("HOLA MUNDO xD");        
+                                            System.out.println("HOLA MUNDO xD");  
+                                            System.out.println("HOLA MUNDO xD");        
                                                                                                                                 
                                                                                                                                 
                                                                                                     

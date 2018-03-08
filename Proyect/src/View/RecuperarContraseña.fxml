@@ -9,12 +9,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.RecuperarContraseñaController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RecuperarContraseñaController">
    <children>
       <ImageView fitHeight="598.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../fondoProMeto.jpg" />
+            <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
       <ChoiceBox fx:id="cbxPregunta" layoutX="329.0" layoutY="104.0" onMouseClicked="#Cpregunta" prefHeight="34.0" prefWidth="342.0" />
