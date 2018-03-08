@@ -86,11 +86,7 @@ public class LoginController implements Initializable {
 //               break;
 //            }   
 //       }   
-<<<<<<< HEAD
-      
-=======
-//      
->>>>>>> 813d061abb8db933c01e1a84cc4f525bd74d5b36
+
     }
     
 }

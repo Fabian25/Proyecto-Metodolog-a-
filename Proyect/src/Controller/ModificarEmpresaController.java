@@ -18,20 +18,18 @@ import javafx.scene.input.MouseEvent;
  *
  * @author Fabian
  */
-public class ModificarEmpleadoController implements Initializable {
+public class ModificarEmpresaController implements Initializable {
 
-    @FXML
-    private Button btnADD1;
-    @FXML
-    private Button btnADD;
-    @FXML
-    private TextField txtCName1;
-    @FXML
-    private TextField txtCName;
     @FXML
     private TextField txtCName11;
     @FXML
-    private TextField txtCName12;
+    private TextField txtCName;
+    @FXML
+    private TextField txtCName1;
+    @FXML
+    private Button btnADD;
+    @FXML
+    private Button btnADD1;
 
     /**
      * Initializes the controller class.
