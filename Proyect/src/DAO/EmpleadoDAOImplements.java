@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import Connection.Conexion;
+import BaseDatos.Conexion;
 import Model.Empleados;
 import IDAO.IEmpleadoDAO;
 /**

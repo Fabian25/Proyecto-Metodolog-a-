@@ -9,8 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="562.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.RegistroClienteController">
+<AnchorPane id="AnchorPane" prefHeight="562.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegistroClienteController">
    <children>
       <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="233.0" prefWidth="975.0">
          <children>
@@ -36,7 +35,7 @@
                   <TextField fx:id="txtCIDnum" layoutX="319.0" layoutY="239.0" prefHeight="35.0" prefWidth="184.0" />
                   <TextField fx:id="txtCPhoneNum" layoutX="320.0" layoutY="301.0" prefHeight="35.0" prefWidth="184.0" />
                   <TextField fx:id="txtCEmail" layoutX="319.0" layoutY="359.0" prefHeight="35.0" prefWidth="184.0" />
-                  <TableView layoutX="556.0" layoutY="108.0" prefHeight="298.0" prefWidth="515.0">
+                  <TableView layoutX="556.0" layoutY="130.0" prefHeight="298.0" prefWidth="398.0">
                      <columns>
                         <TableColumn prefWidth="75.0" text="Name" />
                         <TableColumn prefWidth="75.0" text="Last Name" />
@@ -59,6 +58,9 @@
                         <Blend />
                      </effect>
                   </Button>
+                  <ComboBox layoutX="556.0" layoutY="90.0" prefWidth="150.0" />
+                  <ComboBox layoutX="734.0" layoutY="90.0" prefHeight="25.0" prefWidth="81.0" />
+                  <ScrollBar layoutX="954.0" layoutY="130.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="16.0" />
                </children>
             </AnchorPane>
          </children>
