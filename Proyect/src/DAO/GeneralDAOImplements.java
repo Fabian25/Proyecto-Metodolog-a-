@@ -5,14 +5,13 @@
  */
 package DAO;
 
+
+import IDAO.IGeneral;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
@@ -21,10 +20,10 @@ import javax.swing.JOptionPane;
  *
  * @author jose
  */
-public class GeneralDAOImplements {
+public class GeneralDAOImplements implements IGeneral{
 
     BaseDatos.Conexion cc = new BaseDatos.Conexion();
-
+    @Override
     public void LogIn(TextField txtuser, PasswordField txtpass) {
         int Type = 0;
         if (txtuser.getText().length() == 0 || txtpass.getText().length() == 0) {
@@ -77,7 +76,7 @@ public class GeneralDAOImplements {
             }
         }
     }
-
+    @Override
     public void RecuperarContrasena(TextField txtuser) {
         if (txtuser.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
@@ -105,7 +104,7 @@ public class GeneralDAOImplements {
         }
 
     }
-
+    @Override
     public void ActualizarContrasena(String correo) {
         Connection cn = cc.conexion();
         String Update = "UPDATE Personas\n"
