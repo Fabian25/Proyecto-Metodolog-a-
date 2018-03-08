@@ -9,17 +9,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.EliminarTiqueteController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EliminarTiqueteController">
    <children>
       <ImageView fitHeight="598.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../fondoProMeto.jpg" />
          </image>
       </ImageView>
-      <ChoiceBox layoutX="71.0" layoutY="110.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="chbxRemoveTiquete" layoutX="71.0" layoutY="110.0" prefWidth="150.0" />
       <ComboBox layoutX="246.0" layoutY="110.0" prefHeight="25.0" prefWidth="83.0" />
-      <TableView layoutX="69.0" layoutY="141.0" prefHeight="334.0" prefWidth="862.0">
+      <TableView fx:id="tblRemoveTiq" layoutX="69.0" layoutY="141.0" prefHeight="334.0" prefWidth="862.0">
          <columns>
             <TableColumn prefWidth="75.0" text="Serie" />
             <TableColumn prefWidth="75.0" text="Priority" />
