@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Connection;
+package BaseDatos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,10 +11,9 @@ import java.sql.SQLException;
 
 public class Conexion {
 
-  
-
+          static  Connection conexion = null;
     public static Connection conexion() {
-          Connection conexion = null;
+
         try {
             conexion = null;
             Class.forName("com.mysql.jdbc.Driver");

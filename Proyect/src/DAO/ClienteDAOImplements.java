@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
  
 
-import Connection.Conexion;
+import BaseDatos.Conexion;
 import IDAO.*;
 import Model.Clientes;
  
