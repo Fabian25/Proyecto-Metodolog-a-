@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CrearTiquetesController">
+   <children>
+      <ImageView fitHeight="598.0" fitWidth="1000.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagen/fondoPro.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="434.0" layoutY="56.0" text="Register" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="247.0" layoutY="157.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Series" />
+      <Button layoutX="247.0" layoutY="233.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Status" />
+      <Button layoutX="247.0" layoutY="296.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Description" />
+      <Button fx:id="btnBack" layoutX="96.0" layoutY="448.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
+         <effect>
+            <Blend />
+         </effect>
+      </Button>
+      <TextField fx:id="txt_Series" layoutX="421.0" layoutY="162.0" prefHeight="35.0" prefWidth="260.0" />
+      <ComboBox fx:id="txt_Status" layoutX="421.0" layoutY="243.0" prefHeight="25.0" prefWidth="260.0" />
+      <TextArea fx:id="txt_description" layoutX="421.0" layoutY="296.0" prefHeight="127.0" prefWidth="260.0" />
+      <Button fx:id="btnADD" layoutX="489.0" layoutY="455.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="99.0" text="ADD">
+         <effect>
+            <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
+               <light>
+                  <Light.Distant color="#d72929" />
+               </light>
+            </Lighting>
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>
