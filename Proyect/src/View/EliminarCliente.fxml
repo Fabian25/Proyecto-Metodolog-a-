@@ -30,30 +30,6 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <MenuBar layoutY="2.0" prefHeight="19.0" prefWidth="1001.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Unspecified Menu">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
-        </menus>
-      </MenuBar>
       <ChoiceBox layoutX="86.0" layoutY="102.0" prefWidth="150.0" />
       <ComboBox layoutX="252.0" layoutY="102.0" prefHeight="25.0" prefWidth="83.0" />
       <Button fx:id="btnBack" layoutX="86.0" layoutY="493.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
@@ -61,5 +37,34 @@
             <Blend />
          </effect>
       </Button>
+      <MenuBar layoutY="2.0" prefHeight="19.0" prefWidth="1001.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Register Clients">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit Clients">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Remove Clients">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="View Clients">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Home">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
    </children>
 </AnchorPane>
