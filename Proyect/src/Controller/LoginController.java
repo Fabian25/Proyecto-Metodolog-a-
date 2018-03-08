@@ -69,31 +69,6 @@ public class LoginController implements Initializable {
 
     @FXML
     private void Ingresar(ActionEvent event) {
-<<<<<<< HEAD
-//       if(Validar == true){
-//         switch(RevisarRol()){
-//             case 1:
-//               //menu administrador
-//               IngresarMenu("Menu");
-//               break;
-//             case 2:
-//               //menu cliente
-//               IngresarMenu("MenuCliente");
-//               break;
-//             case 3:
-//               //menu empleado
-//               IngresarMenu("MenuEmpleado");
-//               break;
-//             default:   
-//                 
-//               break;
-//            }   
-//       }   
-
-=======
-GeneralDAOImplements h= new GeneralDAOImplements();
-h.LogIn(txt_Usuario, txt_Contra);
->>>>>>> b37cd219dc574dd95854049b7e2b871fa62d9838
     }
     
 }
