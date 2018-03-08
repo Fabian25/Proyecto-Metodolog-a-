@@ -5,11 +5,16 @@
  */
 package IDAO;
 
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+
 /**
  *
  * @author jose
  */
 public interface IGeneral {
-   public boolean Ingresar(String user,String pass);
+    public void LogIn(TextField txtuser, PasswordField txtpass);
+public void RecuperarContrasena(TextField txtuser) ;
+    public void ActualizarContrasena(String correo) ;
 
 }

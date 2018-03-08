@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Controller;
-
+import DAO.GeneralDAOImplements;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -63,10 +63,13 @@ public class LoginController implements Initializable {
 
     @FXML
     private void RecuperarContra(MouseEvent event) {
+        GeneralDAOImplements h= new GeneralDAOImplements();
+        h.RecuperarContrasena(txt_Usuario);
     }
 
     @FXML
     private void Ingresar(ActionEvent event) {
+<<<<<<< HEAD
 //       if(Validar == true){
 //         switch(RevisarRol()){
 //             case 1:
@@ -87,6 +90,10 @@ public class LoginController implements Initializable {
 //            }   
 //       }   
 
+=======
+GeneralDAOImplements h= new GeneralDAOImplements();
+h.LogIn(txt_Usuario, txt_Contra);
+>>>>>>> b37cd219dc574dd95854049b7e2b871fa62d9838
     }
     
 }

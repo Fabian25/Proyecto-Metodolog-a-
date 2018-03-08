@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.VerTiquetesController">
+   <children>
+      <ImageView fitHeight="598.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagen/fondoPro.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="115.0" layoutY="62.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Send" />
+      <Button layoutX="739.0" layoutY="62.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Approved" />
+      <Button layoutX="328.0" layoutY="62.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Analyzing" />
+      <Button layoutX="540.0" layoutY="62.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Checked" />
+      <Button layoutX="190.0" layoutY="208.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Ticket Series" />
+      <Button layoutX="334.0" layoutY="208.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="...." />
+      <Button layoutX="190.0" layoutY="281.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Status" />
+      <ComboBox layoutX="334.0" layoutY="291.0" prefWidth="150.0" />
+      <TextArea layoutX="334.0" layoutY="340.0" prefHeight="146.0" prefWidth="209.0" />
+      <Button layoutX="685.0" layoutY="472.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Back" />
+      <ProgressBar layoutX="115.0" layoutY="125.0" prefHeight="18.0" prefWidth="752.0" progress="0.0" />
+   </children>
+</AnchorPane>
