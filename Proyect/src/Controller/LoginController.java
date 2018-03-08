@@ -67,25 +67,25 @@ public class LoginController implements Initializable {
 
     @FXML
     private void Ingresar(ActionEvent event) {
-       if(Validar == true){
-         switch(RevisarRol()){
-             case 1:
-               //menu administrador
-               IngresarMenu("Menu");
-               break;
-             case 2:
-               //menu cliente
-               IngresarMenu("MenuCliente");
-               break;
-             case 3:
-               //menu empleado
-               IngresarMenu("MenuEmpleado");
-               break;
-             default:   
-                 
-               break;
-            }   
-       }   
+//       if(Validar == true){
+//         switch(RevisarRol()){
+//             case 1:
+//               //menu administrador
+//               IngresarMenu("Menu");
+//               break;
+//             case 2:
+//               //menu cliente
+//               IngresarMenu("MenuCliente");
+//               break;
+//             case 3:
+//               //menu empleado
+//               IngresarMenu("MenuEmpleado");
+//               break;
+//             default:   
+//                 
+//               break;
+//            }   
+//       }   
       
     }
     
