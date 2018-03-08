@@ -26,7 +26,8 @@ public class ClienteDAOImplements implements IClienteDAO {
 		Statement stm= null;
 		Connection con=null;
 		
-		String sql="INSERT INTO Clientes values (NULL,'"+"CL0001"+cliente.getCedula()+"','"+cliente.getNombre()+"','"+cliente.getApellido()+"')";
+		String sql="INSERT INTO Clientes values (NULL,'"+"CL0001"+
+                        cliente.getCedula()+"','"+cliente.getNombre()+"','"+cliente.getApellido()+"');";
 		
 		try {			
 			con=Conexion.conexion();
@@ -82,7 +83,9 @@ public class ClienteDAOImplements implements IClienteDAO {
 		
 		boolean actualizar=false;
 				
-		String sql="UPDATE CLIENTE SET cedula='"+cliente.getCedula()+"', nombres='"+cliente.getNombre()+"', apellidos='"+cliente.getApellido()+"'" +" WHERE ID="+cliente.getCodigo();
+		String sql="UPDATE CLIENTE SET cedula='"+cliente.getCedula()+"', nombres='"
+                        +cliente.getNombre()+"', apellidos='"+cliente.getApellido()+"'" +" WHERE ID="
+                        +cliente.getCodigo()+";";
 		try {
 			connect=Conexion.conexion();
 			stm=connect.createStatement();
@@ -102,7 +105,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 		
 		boolean eliminar=false;
 				
-		String sql="DELETE FROM CLIENTE WHERE ID="+cliente.getCodigo();
+		String sql="DELETE FROM CLIENTE WHERE ID="+cliente.getCodigo()+";";
 		try {
 			connect=Conexion.conexion();
 			stm=connect.createStatement();

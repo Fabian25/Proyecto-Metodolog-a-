@@ -5,16 +5,33 @@
  */
 package IDAO;
 
+import Model.Empleados;
 import Model.Tiquetes;
 import java.util.List;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
  *
  * @author jose
  */
 public interface ITiqueteDAO {
-    	public boolean registrar(Tiquetes tiquete);
-	public List<Tiquetes> obtener();
-	public boolean actualizar(Tiquetes  tiquete);
-	public boolean eliminar(Tiquetes tiquete); 
+
+    public boolean registrarTiquetes(TextField txt_Series,ComboBox<?> txt_Status,TextArea txt_description);
+
+    public List<Tiquetes> VerTiquetes();
+
+    public boolean EditarTiquetes(ComboBox<?> txt_Status,TextArea txt_description);
+
+    public void procesarTiquete(Tiquetes tiquete);
+
+    public void asignarTiquete(Tiquetes tiquete, Empleados empleado);
+
+    public boolean eliminarTiquetes(Tiquetes tiquete);
+
+    public List<Tiquetes> obtenerTodos();
+
+    public List<Tiquetes> obtenerporEmpleado();
+    
 }

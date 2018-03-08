@@ -7,7 +7,10 @@ package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -16,6 +19,9 @@ import javafx.fxml.Initializable;
  */
 public class EliminarEmpresaController implements Initializable {
 
+    @FXML
+    private Button btnBack;
+
     /**
      * Initializes the controller class.
      */
@@ -23,5 +29,9 @@ public class EliminarEmpresaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void c_back(MouseEvent event) {
+    }
     
 }

@@ -10,28 +10,26 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
  *
- * @author Fabian
+ * @author erick
  */
-public class ModificarEmpleadoController implements Initializable {
+public class EliminarEmpleadoController implements Initializable {
 
     @FXML
-    private Button btnADD1;
+    private ChoiceBox<?> chbxRemoveEmploy;
     @FXML
-    private Button btnADD;
+    private ComboBox<?> cbxRemEmploy;
     @FXML
-    private TextField txtCName1;
+    private Button btnBack;
     @FXML
-    private TextField txtCName;
-    @FXML
-    private TextField txtCName11;
-    @FXML
-    private TextField txtCName12;
+    private TableView<?> tblRemoveEmplo;
 
     /**
      * Initializes the controller class.
@@ -42,7 +40,7 @@ public class ModificarEmpleadoController implements Initializable {
     }    
 
     @FXML
-    private void c_add(MouseEvent event) {
+    private void c_back(MouseEvent event) {
     }
     
 }

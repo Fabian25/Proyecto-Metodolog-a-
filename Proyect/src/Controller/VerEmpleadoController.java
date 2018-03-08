@@ -7,14 +7,26 @@ package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
  *
- * @author jose
+ * @author erick
  */
-public class VerTiquetesController implements Initializable {
+public class VerEmpleadoController implements Initializable {
+
+    @FXML
+    private TableView<?> tblViewEmploy;
+    @FXML
+    private ChoiceBox<?> chbxViewEmplo;
+    @FXML
+    private Button btnBack;
 
     /**
      * Initializes the controller class.
@@ -23,5 +35,9 @@ public class VerTiquetesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void c_back(MouseEvent event) {
+    }
     
 }

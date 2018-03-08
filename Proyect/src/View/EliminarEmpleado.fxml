@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EliminarEmpleadoController">
+   <children>
+      <ImageView fitHeight="598.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../fondoProMeto.jpg" />
+         </image>
+      </ImageView>
+      <ChoiceBox fx:id="chbxRemoveEmploy" layoutX="86.0" layoutY="85.0" prefHeight="25.0" prefWidth="212.0" />
+      <ComboBox fx:id="cbxRemEmploy" layoutX="324.0" layoutY="85.0" prefHeight="25.0" prefWidth="83.0" />
+      <Button fx:id="btnBack" layoutX="86.0" layoutY="499.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
+         <effect>
+            <Blend />
+         </effect>
+      </Button>
+      <Label layoutX="436.0" layoutY="21.0" text="Remove" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <MenuBar layoutY="2.0" prefHeight="19.0" prefWidth="1001.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Register Employees">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit Employees">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Remove Employees">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="View Employees">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Home">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <TableView fx:id="tblRemoveEmplo" layoutX="86.0" layoutY="114.0" prefHeight="334.0" prefWidth="862.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="Code" />
+            <TableColumn prefWidth="75.0" text="Name" />
+            <TableColumn prefWidth="75.0" text="Acronym" />
+            <TableColumn prefWidth="105.0" text="Phone Number" />
+            <TableColumn prefWidth="142.0" text="Remove" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

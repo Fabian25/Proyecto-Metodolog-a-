@@ -7,7 +7,13 @@ package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -16,6 +22,17 @@ import javafx.fxml.Initializable;
  */
 public class CrearTiquetesController implements Initializable {
 
+    @FXML
+    private Button btnBack;
+    @FXML
+    private TextField txt_Series;
+    @FXML
+    private ComboBox<?> txt_Status;
+    @FXML
+    private TextArea txt_description;
+    @FXML
+    private Button btnADD;
+
     /**
      * Initializes the controller class.
      */
@@ -23,5 +40,13 @@ public class CrearTiquetesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void c_back(MouseEvent event) {
+    }
+
+    @FXML
+    private void c_add(MouseEvent event) {
+    }
     
 }

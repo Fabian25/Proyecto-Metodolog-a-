@@ -7,14 +7,27 @@ package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
  *
- * @author jose
+ * @author Fabian
  */
-public class VerTiquetesController implements Initializable {
+public class ModificarTiqueteController implements Initializable {
+
+    @FXML
+    private Button btnADD1;
+    @FXML
+    private Button btnADD;
+    @FXML
+    private TextField txtCName11;
+    @FXML
+    private TextField txtCName111;
 
     /**
      * Initializes the controller class.
@@ -23,5 +36,9 @@ public class VerTiquetesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void c_add(MouseEvent event) {
+    }
     
 }

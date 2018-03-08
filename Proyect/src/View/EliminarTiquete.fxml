@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EliminarTiqueteController">
+   <children>
+      <ImageView fitHeight="598.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../fondoProMeto.jpg" />
+         </image>
+      </ImageView>
+      <ChoiceBox fx:id="chbxRemoveTiquete" layoutX="71.0" layoutY="110.0" prefWidth="150.0" />
+      <ComboBox layoutX="246.0" layoutY="110.0" prefHeight="25.0" prefWidth="83.0" />
+      <TableView fx:id="tblRemoveTiq" layoutX="69.0" layoutY="141.0" prefHeight="334.0" prefWidth="862.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="Serie" />
+            <TableColumn prefWidth="75.0" text="Priority" />
+            <TableColumn prefWidth="155.0" text="Description" />
+            <TableColumn prefWidth="111.0" text="State" />
+            <TableColumn minWidth="0.0" prefWidth="122.0" text="Remove" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnBack" layoutX="47.0" layoutY="491.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
+         <effect>
+            <Blend />
+         </effect>
+      </Button>
+      <Label layoutX="446.0" layoutY="39.0" text="Remove" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
