@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -32,6 +33,8 @@ public class MenuController implements Initializable {
     private Button btn_Empresa;
     @FXML
     private Button btn_Empleado;
+    @FXML
+    private Button btnExit;
 
     /**
      * Initializes the controller class.
@@ -107,6 +110,12 @@ public class MenuController implements Initializable {
         } catch (Exception e) {
             System.out.println("Error");
         }
+    }
+
+    @FXML
+    private void B_Salir(MouseEvent event) {
+        
+        
     }
     
 }

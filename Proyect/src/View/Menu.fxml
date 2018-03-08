@@ -24,5 +24,6 @@
             <Font size="36.0" />
          </font>
       </Label>
+      <Button fx:id="btnExit" layoutX="811.0" layoutY="483.0" mnemonicParsing="false" onMouseClicked="#B_Salir" prefHeight="66.0" prefWidth="140.0" text="Exit" />
    </children>
 </AnchorPane>
