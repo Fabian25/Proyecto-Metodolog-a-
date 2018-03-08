@@ -16,6 +16,7 @@ public class Proyect {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+<<<<<<< HEAD
         System.out.println("HOLA MUNDO xD");        
               System.out.println("HOLA MUNDO xD");        
                     System.out.println("HOLA MUNDO xD");        
@@ -25,6 +26,9 @@ public class Proyect {
                                       System.out.println("HOLA MUNDO xD");        
                                             System.out.println("HOLA MUNDO xD");  
                                             System.out.println("HOLA MUNDO xD");        
+=======
+
+>>>>>>> 0575f34257df2a472ca39c665d33018d421c75b0
                                                                                                                                 
                                                                                                                                 
                                                                                                     
