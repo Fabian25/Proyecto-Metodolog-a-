@@ -12,7 +12,7 @@ import javafx.fxml.Initializable;
 /**
  * FXML Controller class
  *
- * @author ALONSITO
+ * @author jose
  */
 public class VerTiquetesController implements Initializable {
 

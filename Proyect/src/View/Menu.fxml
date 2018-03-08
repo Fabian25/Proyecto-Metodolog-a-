@@ -15,10 +15,10 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="btn_Cliente" layoutX="62.0" layoutY="204.0" mnemonicParsing="false" onAction="#Login" prefHeight="66.0" prefWidth="140.0" text="Cliente" />
-      <Button fx:id="btn_Tiquete" layoutX="244.0" layoutY="316.0" mnemonicParsing="false" onAction="#Login" prefHeight="66.0" prefWidth="140.0" text="Tiquete" />
-      <Button fx:id="btn_Empresa" layoutX="244.0" layoutY="204.0" mnemonicParsing="false" onAction="#Login" prefHeight="66.0" prefWidth="140.0" text="Empresas" />
-      <Button fx:id="btn_Empleado" layoutX="62.0" layoutY="316.0" mnemonicParsing="false" onAction="#Login" prefHeight="66.0" prefWidth="140.0" text="Empleado" />
+      <Button fx:id="btn_Cliente" layoutX="62.0" layoutY="204.0" mnemonicParsing="false" onAction="#Clientes" prefHeight="66.0" prefWidth="140.0" text="Cliente" />
+      <Button fx:id="btn_Tiquete" layoutX="244.0" layoutY="316.0" mnemonicParsing="false" onAction="#Tiquetes" prefHeight="66.0" prefWidth="140.0" text="Tiquete" />
+      <Button fx:id="btn_Empresa" layoutX="244.0" layoutY="204.0" mnemonicParsing="false" onAction="#Empresas" prefHeight="66.0" prefWidth="140.0" text="Empresas" />
+      <Button fx:id="btn_Empleado" layoutX="62.0" layoutY="316.0" mnemonicParsing="false" onAction="#Empleados" prefHeight="66.0" prefWidth="140.0" text="Empleado" />
       <Label layoutX="110.0" layoutY="104.0" text="Elegir un Modulo" textFill="#111111">
          <font>
             <Font size="36.0" />

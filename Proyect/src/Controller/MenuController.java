@@ -20,43 +20,93 @@ import javafx.stage.StageStyle;
 /**
  * FXML Controller class
  *
- * @author ALONSITO
+ * @author jose
  */
 public class MenuController implements Initializable {
 
     @FXML
-    private Button btn_Login;
+    private Button btn_Cliente;
+    @FXML
+    private Button btn_Tiquete;
+    @FXML
+    private Button btn_Empresa;
+    @FXML
+    private Button btn_Empleado;
 
     /**
      * Initializes the controller class.
      */
-    
-    private void IngresarLogin(){
-             try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Login.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Menu");
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
-        } catch (Exception e) {
-            System.out.println("Error");
-        }
-    }
-    
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
 
     @FXML
-    private void Login(ActionEvent event) {
-        IngresarLogin();
-        Stage stage = (Stage) btn_Login.getScene().getWindow();
-        stage.close();
+    private void Clientes(ActionEvent event) {
+         try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + "RegistroCliente" + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Clients");
+            stage.setScene(new Scene(root1));
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+            Stage act = (Stage) btn_Cliente.getScene().getWindow();
+            act.close();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+    }
+
+    @FXML
+    private void Tiquetes(ActionEvent event) {
+          try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + "CrearTiquetes" + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Tickets");
+            stage.setScene(new Scene(root1));
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+            Stage act = (Stage) btn_Tiquete.getScene().getWindow();
+            act.close();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+    }
+
+    @FXML
+    private void Empresas(ActionEvent event) {
+          try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + "RegristroEmpresa" + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Enterprises");
+            stage.setScene(new Scene(root1));
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+            Stage act = (Stage) btn_Empresa.getScene().getWindow();
+            act.close();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+    }
+
+    @FXML
+    private void Empleados(ActionEvent event) {
+         try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + "RegistroEmpleado" + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Employees");
+            stage.setScene(new Scene(root1));
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+            Stage act = (Stage) btn_Empleado.getScene().getWindow();
+            act.close();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
     }
     
 }

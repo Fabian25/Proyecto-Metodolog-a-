@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Controller;
+
 import DAO.GeneralDAOImplements;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,7 +29,6 @@ import javafx.stage.StageStyle;
  */
 public class LoginController implements Initializable {
 
-    
     @FXML
     private TextField txt_Usuario;
     @FXML
@@ -38,8 +38,8 @@ public class LoginController implements Initializable {
     @FXML
     private Button btn_Ingresar;
 
-    private void IngresarMenu(String name){
-             try {
+    private void IngresarMenu(String name) {
+        try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + name + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
@@ -47,28 +47,41 @@ public class LoginController implements Initializable {
             stage.setScene(new Scene(root1));
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
+
         } catch (Exception e) {
             System.out.println("Error");
         }
     }
-    
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void RecuperarContra(MouseEvent event) {
-        GeneralDAOImplements h= new GeneralDAOImplements();
+        GeneralDAOImplements h = new GeneralDAOImplements();
         h.RecuperarContrasena(txt_Usuario);
     }
 
     @FXML
     private void Ingresar(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + "Menu" + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Menu");
+            stage.setScene(new Scene(root1));
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+            Stage act = (Stage) btn_Ingresar.getScene().getWindow();
+            act.close();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
     }
-    
+
 }
