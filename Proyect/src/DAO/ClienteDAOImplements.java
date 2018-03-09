@@ -25,37 +25,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     BaseDatos.Conexion cc = new BaseDatos.Conexion();
 
-    public List<Persona> obtener() {
-        Connection co = null;
-        Statement stm = null;
-        ResultSet rs = null;
 
-        String sql = "SELECT * FROM CLIENTE ORDER BY ID";
-
-        List<Persona> listaCliente = new ArrayList<Persona>();
-
-        try {
-            co = Conexion.conexion();
-            stm = co.createStatement();
-            rs = stm.executeQuery(sql);
-            while (rs.next()) {
-                Persona c = new Clientes();
-                c.setCodigo(rs.getString(7));
-                c.setCedula(rs.getInt(1));
-                c.setNombre(rs.getString(2));
-                c.setApellido(rs.getString(8));
-                listaCliente.add(c);
-            }
-            stm.close();
-            rs.close();
-            co.close();
-        } catch (SQLException e) {
-            System.out.println("Error: Clase ClienteDaoImple, método obtener");
-            e.printStackTrace();
-        }
-
-        return listaCliente;
-    }
 
     public boolean ExisteCedula(String ced, String cod) {
         Connection cn = cc.conexion();
