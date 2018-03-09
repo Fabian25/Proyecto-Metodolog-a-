@@ -24,7 +24,8 @@ import javax.swing.JOptionPane;
 public class ClienteDAOImplements implements IClienteDAO {
 
     BaseDatos.Conexion cc = new BaseDatos.Conexion();
-
+PreparedStatement preparedStatement = null;
+Connection connection=null;
 
 
 //    public boolean ExisteCedula(String ced, String cod) {
@@ -51,7 +52,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     @Override
     public void registrar(TextField txtCName, TextField txtCLastNmae, TextField txtCIDnum, TextField txtCPhoneNum, TextField txtCEmail) {
-           Connection cn = cc.conexion();
+          connection=BaseDatos.Conexion.conexion();
         String Cod = "";
         Random rand = new Random();
         int randomNum = rand.nextInt((999 - 100) + 1) + 100;
@@ -64,13 +65,16 @@ public class ClienteDAOImplements implements IClienteDAO {
                 try {
                         String sql = "Insert into Persona values(" + txtCIDnum.getText() + "," + txtCName.getText() + ","+txtCLastNmae.getText() +","
                         + txtCPhoneNum.getText() + "," + txtCEmail.getText() + "," + "Nuevo123*" + "," + Cod + "," +2+","+1  +");";
-                   java.sql.PreparedStatement pst = cn.prepareStatement(sql);
-            int upd = pst.executeUpdate();
-             if (upd > 0){
-                    JOptionPane.showMessageDialog(null, "Updated Registry");
+                  
+                    preparedStatement=connection.prepareStatement(sql);
+                    
+            int upd = preparedStatement.executeUpdate();
+             if (upd>0){
+                   JOptionPane.showMessageDialog(null, "Error");
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "Error");
+                    
+                     JOptionPane.showMessageDialog(null, "Updated Registry");
                 }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
