@@ -82,8 +82,11 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO{
     @Override
     public void eliminar(TextField txt_ID) {
        Connection cn = cc.conexion();
-  
-        String Update =  "DELETE FROM Persona WHERE IdPersona=" + txt_ID.getText() + ";";
+
+        String Update = "UPDATE Personas\n"
+                + "SET Activo = " + "0"
+             
+                + "WHERE IdPersona = " +txt_ID.getText() + ";";
         try {
             Statement stmt = cn.createStatement();
             PreparedStatement pst = cn.prepareStatement(Update);
