@@ -28,7 +28,7 @@ public class RecuperarContraseñaController implements Initializable {
     @FXML
     private Button btnConfirmP;
     @FXML
-    private Button btnBack1;
+    private Button btnADD1;
 
     /**
      * Initializes the controller class.
@@ -44,6 +44,10 @@ public class RecuperarContraseñaController implements Initializable {
 
     @FXML
     private void c_back(MouseEvent event) {
+    }
+
+    @FXML
+    private void c_add(MouseEvent event) {
     }
     
 }

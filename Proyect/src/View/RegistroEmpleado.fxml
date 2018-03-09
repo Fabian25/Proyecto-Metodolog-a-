@@ -11,27 +11,27 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegistroEmpleadoController">
    <children>
-      <ImageView fitHeight="598.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="711.0" fitWidth="1512.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="427.0" layoutY="54.0" text="Register" textFill="WHITE">
+      <Label layoutX="567.0" layoutY="57.0" text="Register" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Button layoutX="86.0" layoutY="147.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Name" />
-      <Button layoutX="86.0" layoutY="210.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Last Name" />
-      <Button layoutX="86.0" layoutY="267.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="ID Number" />
-      <Button layoutX="86.0" layoutY="326.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
-      <Button layoutX="86.0" layoutY="385.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Email" />
-      <Button fx:id="btnBack" layoutX="99.0" layoutY="481.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
+      <Button layoutX="226.0" layoutY="194.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Name" />
+      <Button layoutX="226.0" layoutY="257.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Last Name" />
+      <Button layoutX="226.0" layoutY="314.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="ID Number" />
+      <Button layoutX="226.0" layoutY="373.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
+      <Button layoutX="226.0" layoutY="432.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Email" />
+      <Button fx:id="btnBack" layoutX="37.0" layoutY="633.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
          <effect>
             <Blend />
          </effect>
       </Button>
-      <Button fx:id="btnADD" layoutX="306.0" layoutY="451.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="99.0" text="ADD">
+      <Button fx:id="btnADD" layoutX="446.0" layoutY="498.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="99.0" text="ADD">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
                <light>
@@ -40,12 +40,12 @@
             </Lighting>
          </effect>
       </Button>
-      <TextField fx:id="txt_Name" layoutX="251.0" layoutY="152.0" prefHeight="35.0" prefWidth="184.0" />
-      <TextField fx:id="txt_Phone" layoutX="251.0" layoutY="331.0" prefHeight="35.0" prefWidth="184.0" />
-      <TextField fx:id="txt_ID" layoutX="251.0" layoutY="272.0" prefHeight="35.0" prefWidth="184.0" />
-      <TextField fx:id="txt_LastName" layoutX="251.0" layoutY="215.0" prefHeight="35.0" prefWidth="184.0" />
-      <TextField fx:id="txt_Email" layoutX="251.0" layoutY="390.0" prefHeight="35.0" prefWidth="184.0" />
-      <TableView fx:id="table_Empleado" layoutX="500.0" layoutY="158.0" prefHeight="298.0" prefWidth="398.0">
+      <TextField fx:id="txt_Name" layoutX="391.0" layoutY="199.0" prefHeight="35.0" prefWidth="184.0" />
+      <TextField fx:id="txt_Phone" layoutX="391.0" layoutY="378.0" prefHeight="35.0" prefWidth="184.0" />
+      <TextField fx:id="txt_ID" layoutX="391.0" layoutY="319.0" prefHeight="35.0" prefWidth="184.0" />
+      <TextField fx:id="txt_LastName" layoutX="391.0" layoutY="262.0" prefHeight="35.0" prefWidth="184.0" />
+      <TextField fx:id="txt_Email" layoutX="391.0" layoutY="437.0" prefHeight="35.0" prefWidth="184.0" />
+      <TableView fx:id="table_Empleado" layoutX="640.0" layoutY="205.0" prefHeight="298.0" prefWidth="398.0">
          <columns>
             <TableColumn prefWidth="75.0" text="Name" />
             <TableColumn prefWidth="75.0" text="Last Name" />
@@ -54,8 +54,16 @@
             <TableColumn prefWidth="77.0" text="Email" />
          </columns>
       </TableView>
-      <ScrollBar layoutX="891.0" layoutY="158.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="12.0" />
-      <ComboBox layoutX="667.0" layoutY="122.0" prefHeight="25.0" prefWidth="81.0" />
-      <ComboBox layoutX="500.0" layoutY="122.0" prefWidth="150.0" />
+      <ScrollBar layoutX="1038.0" layoutY="205.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="12.0" />
+      <ComboBox layoutX="807.0" layoutY="169.0" prefHeight="25.0" prefWidth="81.0" />
+      <ComboBox layoutX="640.0" layoutY="169.0" prefWidth="150.0" />
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1264.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Register Employees" />
+            <Menu mnemonicParsing="false" text="Edit Employees" />
+            <Menu mnemonicParsing="false" text="Remove Employees" />
+            <Menu mnemonicParsing="false" text="View Employees" />
+         </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

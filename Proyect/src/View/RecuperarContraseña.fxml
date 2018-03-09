@@ -18,12 +18,7 @@
       </ImageView>
       <ChoiceBox fx:id="cbxPregunta" layoutX="329.0" layoutY="104.0" onMouseClicked="#Cpregunta" prefHeight="34.0" prefWidth="342.0" />
       <TextField fx:id="txtRespuesta" layoutX="330.0" layoutY="226.0" prefHeight="34.0" prefWidth="342.0" />
-      <Button fx:id="btnConfirmP" layoutX="428.0" layoutY="408.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="74.0" prefWidth="144.0" text="Confirm">
-         <effect>
-            <Blend />
-         </effect>
-      </Button>
-      <Button fx:id="btnBack1" layoutX="31.0" layoutY="482.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
+      <Button fx:id="btnConfirmP" layoutX="428.0" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="144.0" text="Confirm">
          <effect>
             <Blend />
          </effect>
@@ -33,5 +28,17 @@
             <Font size="36.0" />
          </font>
       </Label>
+      <Button fx:id="btnADD1" layoutX="27.0" layoutY="482.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="184.0" text="BACK">
+         <effect>
+            <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
+               <light>
+                  <Light.Distant color="#757972" />
+               </light>
+            </Lighting>
+         </effect>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -9,21 +9,21 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.VerTiquetesController">
    <children>
-      <ImageView fitHeight="598.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="711.0" fitWidth="1512.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <Button disable="true" layoutX="115.0" layoutY="62.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Send" />
-      <Button disable="true" layoutX="739.0" layoutY="62.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Approved" />
-      <Button disable="true" layoutX="328.0" layoutY="62.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Analyzing" />
-      <Button disable="true" layoutX="543.0" layoutY="62.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Checked" />
-      <Button disable="true" layoutX="190.0" layoutY="208.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Ticket Series" />
-      <Button disable="true" layoutX="334.0" layoutY="208.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="...." />
-      <Button disable="true" layoutX="190.0" layoutY="281.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Status" />
-      <ComboBox layoutX="334.0" layoutY="291.0" prefWidth="150.0" />
-      <TextArea layoutX="192.0" layoutY="340.0" prefHeight="146.0" prefWidth="297.0" promptText="Description" />
-      <Button layoutX="685.0" layoutY="472.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Back" />
-      <ProgressBar layoutX="115.0" layoutY="125.0" prefHeight="18.0" prefWidth="752.0" progress="0.0" />
+      <Button disable="true" layoutX="250.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Send" />
+      <Button disable="true" layoutX="874.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Approved" />
+      <Button disable="true" layoutX="463.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Analyzing" />
+      <Button disable="true" layoutX="678.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Checked" />
+      <Button disable="true" layoutX="325.0" layoutY="274.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Ticket Series" />
+      <Button disable="true" layoutX="469.0" layoutY="274.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="...." />
+      <Button disable="true" layoutX="325.0" layoutY="347.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Status" />
+      <ComboBox layoutX="469.0" layoutY="357.0" prefWidth="150.0" />
+      <TextArea layoutX="327.0" layoutY="406.0" prefHeight="146.0" prefWidth="297.0" promptText="Description" />
+      <Button layoutX="820.0" layoutY="538.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Back" />
+      <ProgressBar layoutX="250.0" layoutY="191.0" prefHeight="18.0" prefWidth="752.0" progress="0.0" />
    </children>
 </AnchorPane>
