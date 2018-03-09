@@ -22,8 +22,7 @@ import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 
 public class ClienteDAOImplements implements IClienteDAO {
-
-    BaseDatos.Conexion cc = new BaseDatos.Conexion();
+    
 PreparedStatement preparedStatement = null;
 Connection connection=null;
 
@@ -63,19 +62,23 @@ Connection connection=null;
             JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
         } else {
                 try {
-                        String sql = "Insert into Persona values(" + txtCIDnum.getText() + "," + txtCName.getText() + ","+txtCLastNmae.getText() +","
-                        + txtCPhoneNum.getText() + "," + txtCEmail.getText() + "," + "Nuevo123*" + "," + Cod + "," +2+","+1  +");";
+                        String sql = "Insert into Persona values(?,?,?,?,?,?,?,?,?);";
                   
                     preparedStatement=connection.prepareStatement(sql);
-                    
-            int upd = preparedStatement.executeUpdate();
-             if (upd>0){
-                   JOptionPane.showMessageDialog(null, "Error");
-                }
-                else {
-                    
-                     JOptionPane.showMessageDialog(null, "Updated Registry");
-                }
+        preparedStatement.setString(1,txtCIDnum.getText());
+        preparedStatement.setString(2, txtCName.getText());
+        preparedStatement.setString(3, txtCLastNmae.getText());
+        preparedStatement.setString(4, txtCPhoneNum.getText());
+        preparedStatement.setString(5, txtCEmail.getText());
+        preparedStatement.setString(6, "nuevo123");
+        preparedStatement.setString(7, Cod);
+        preparedStatement.setString(8, "3");
+        preparedStatement.setString(9, "1");
+        
+        
+        
+         preparedStatement.executeQuery();
+            
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -87,68 +90,69 @@ Connection connection=null;
 
     @Override
     public void eliminar(TextField txtCIDnum) {
-        Connection cn = cc.conexion();
-
-        String Update = "UPDATE Persona \n"
-                + "SET Activo = " + "0"
-             
-                + "WHERE IdPersona = " +txtCIDnum.getText() + ";";
-        try {
-            Statement stmt = cn.createStatement();
-            PreparedStatement pst = cn.prepareStatement(Update);
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+//        Connection cn = cc.conexion();
+//
+//        String Update = "UPDATE Persona \n"
+//                + "SET Activo = " + "0"
+//             
+//                + "WHERE IdPersona = " +txtCIDnum.getText() + ";";
+//        try {
+//            Statement stmt = cn.createStatement();
+//            PreparedStatement pst = cn.prepareStatement(Update);
+//            pst.executeUpdate();
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
     }
 
     @Override
     public void actualizar(TextField txtCName, TextField txtCLastNmae, TextField txtCPhoneNum, TextField txtCEmail, Persona p) {
-        Connection cn = cc.conexion();
-        String Update = "UPDATE Persona \n"
-                + "SET Nombre = " + txtCName.getText()
-                + "SET Apellido = " + txtCLastNmae.getText()
-                + "SET Telefono = " + txtCPhoneNum.getText()
-                + "SET Correo = " + txtCEmail.getText()
-                + "WHERE IdPersona = " + Integer.toString(p.getCedula()) + ";";
-        try {
-            Statement stmt = cn.createStatement();
-            PreparedStatement pst = cn.prepareStatement(Update);
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+//        Connection cn = cc.conexion();
+//        String Update = "UPDATE Persona \n"
+//                + "SET Nombre = " + txtCName.getText()
+//                + "SET Apellido = " + txtCLastNmae.getText()
+//                + "SET Telefono = " + txtCPhoneNum.getText()
+//                + "SET Correo = " + txtCEmail.getText()
+//                + "WHERE IdPersona = " + Integer.toString(p.getCedula()) + ";";
+//        try {
+//            Statement stmt = cn.createStatement();
+//            PreparedStatement pst = cn.prepareStatement(Update);
+//            pst.executeUpdate();
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
 
     }
 
     @Override
     public List<Persona> ver() {
-        Statement stm = null;
-        ResultSet rs = null;
-        Connection cn = cc.conexion();
-        String sql = "SELECT * FROM Persona where TipoPersona_ID_TipoPersona= "+"2"  +";";
-        List<Persona> listaCliente = new ArrayList<Persona>();
-        try {
-            cn = cc.conexion();
-            stm = cn.createStatement();
-            rs = stm.executeQuery(sql);
-            while (rs.next()) {
-                Persona c = new Clientes();
-                c.setCodigo(rs.getString(7));
-                c.setCedula(rs.getInt(1));
-                c.setNombre(rs.getString(2));
-                c.setApellido(rs.getString(8));
-                listaCliente.add(c);
-            }
-            stm.close();
-            rs.close();
-            cn.close();
-        } catch (SQLException e) {
-            System.out.println("Error: Clase ClienteDaoImple, método obtener");
-            e.printStackTrace();
-        }
-
-        return listaCliente;
+//        Statement stm = null;
+//        ResultSet rs = null;
+//        Connection cn = cc.conexion();
+//        String sql = "SELECT * FROM Persona where TipoPersona_ID_TipoPersona= "+"2"  +";";
+//        List<Persona> listaCliente = new ArrayList<Persona>();
+//        try {
+//            cn = cc.conexion();
+//            stm = cn.createStatement();
+//            rs = stm.executeQuery(sql);
+//            while (rs.next()) {
+//                Persona c = new Clientes();
+//                c.setCodigo(rs.getString(7));
+//                c.setCedula(rs.getInt(1));
+//                c.setNombre(rs.getString(2));
+//                c.setApellido(rs.getString(8));
+//                listaCliente.add(c);
+//            }
+//            stm.close();
+//            rs.close();
+//            cn.close();
+//        } catch (SQLException e) {
+//            System.out.println("Error: Clase ClienteDaoImple, método obtener");
+//            e.printStackTrace();
+//        }
+//
+//        return listaCliente;
+return null;
     }
 
 }
