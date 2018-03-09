@@ -11,19 +11,20 @@ import java.sql.SQLException;
 
 public class Conexion {
 
-          static  Connection conexion = null;
+            Connection con = null;
     public static Connection conexion() {
-
-        try {
-            conexion = null;
-            Class.forName("com.mysql.jdbc.Driver");
-             conexion = DriverManager.getConnection("jdbc:mysql://sql10.freemysqlhosting.net/", "sql10218899", "dqlkLPTbHd");
-            System.out.println("conexion establecida");
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("error de conexion");
-            System.out.println("error de conexion " + e);
-        }
-        return conexion;
+//
+//        try {
+//            conexion = null;
+//            Class.forName("com.mysql.jdbc.Driver");
+//             conexion = DriverManager.getConnection("jdbc:mysql://sql10.freemysqlhosting.net/", "sql10218899", "dqlkLPTbHd");
+//            System.out.println("conexion establecida");
+//        } catch (ClassNotFoundException | SQLException e) {
+//            System.out.println("error de conexion");
+//            System.out.println("error de conexion " + e);
+//        }
+//        return conexion;
+//    }
     }
-
 }
+
