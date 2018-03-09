@@ -16,22 +16,14 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1264.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Register Employees" />
-            <Menu mnemonicParsing="false" text="Edit Employees" />
-            <Menu mnemonicParsing="false" text="Remove Employees" />
-            <Menu mnemonicParsing="false" text="View Employees" />
-         </menus>
-      </MenuBar>
-      <Label layoutX="612.0" layoutY="88.0" text="Edit" textFill="WHITE">
+      <Label layoutX="596.0" layoutY="44.0" text="Edit" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
       <ChoiceBox layoutX="34.0" layoutY="151.0" prefWidth="150.0" />
       <ComboBox layoutX="202.0" layoutY="151.0" prefHeight="25.0" prefWidth="83.0" />
-      <Button fx:id="btnADD1" layoutX="24.0" layoutY="646.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="184.0" text="BACK">
+      <Button fx:id="btnBack" layoutX="24.0" layoutY="646.0" mnemonicParsing="false" onAction="#E_Back" prefHeight="45.0" prefWidth="184.0" text="BACK">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
                <light>
@@ -73,5 +65,38 @@
       <TextField fx:id="txtCName11" layoutX="970.0" layoutY="333.0" prefHeight="35.0" prefWidth="194.0" />
       <Button layoutX="807.0" layoutY="400.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Email" />
       <TextField fx:id="txtCName12" layoutX="970.0" layoutY="405.0" prefHeight="35.0" prefWidth="194.0" />
+      <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="1253.0">
+         <menus>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarRegisEmp" mnemonicParsing="false" onAction="#E_BarRegist" text="Register Employee" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarEditEmp" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#E_BarEdit" scaleShape="false" text="Edit Employee">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarRemoveEmp" mnemonicParsing="false" onAction="#E_BarRemove" text="Remove Employee" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarViewEmp" mnemonicParsing="false" onAction="#E_BarView" text="View Employee" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarHomeE" mnemonicParsing="false" onAction="#E_Home" text="Home" />
+               </graphic>
+            </Menu>
+         </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

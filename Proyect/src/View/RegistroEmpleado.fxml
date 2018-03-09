@@ -57,12 +57,37 @@
       <ScrollBar layoutX="1038.0" layoutY="205.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="12.0" />
       <ComboBox layoutX="807.0" layoutY="169.0" prefHeight="25.0" prefWidth="81.0" />
       <ComboBox layoutX="640.0" layoutY="169.0" prefWidth="150.0" />
-      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1264.0">
+      <MenuBar prefHeight="33.0" prefWidth="1264.0">
          <menus>
-            <Menu mnemonicParsing="false" text="Register Employees" />
-            <Menu mnemonicParsing="false" text="Edit Employees" />
-            <Menu mnemonicParsing="false" text="Remove Employees" />
-            <Menu mnemonicParsing="false" text="View Employees" />
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarRegisEmp" mnemonicParsing="false" onAction="#E_BarRegist" text="Register Employee" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarEditEmp" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#E_BarEdit" scaleShape="false" text="Edit Employee">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarRemoveEmp" mnemonicParsing="false" onAction="#E_BarRemove" text="Remove Employee" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarViewEmp" mnemonicParsing="false" onAction="#E_BarView" text="View Employee" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarHomeE" mnemonicParsing="false" onAction="#E_Home" text="Home" />
+               </graphic>
+            </Menu>
          </menus>
       </MenuBar>
    </children>

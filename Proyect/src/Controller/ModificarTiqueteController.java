@@ -7,6 +7,7 @@ package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -28,6 +29,16 @@ public class ModificarTiqueteController implements Initializable {
     private TextField txtCName11;
     @FXML
     private TextField txtCName111;
+    @FXML
+    private Button BarRegisTickets;
+    @FXML
+    private Button BarEditTickets;
+    @FXML
+    private Button BarRemoveTickets;
+    @FXML
+    private Button BarViewTickets;
+    @FXML
+    private Button BarHomeTik;
 
     /**
      * Initializes the controller class.
@@ -39,6 +50,26 @@ public class ModificarTiqueteController implements Initializable {
 
     @FXML
     private void c_add(MouseEvent event) {
+    }
+
+    @FXML
+    private void Tik_BarRegist(ActionEvent event) {
+    }
+
+    @FXML
+    private void Tik_BarEdit(ActionEvent event) {
+    }
+
+    @FXML
+    private void Tik_BarRemove(ActionEvent event) {
+    }
+
+    @FXML
+    private void Tik_BarView(ActionEvent event) {
+    }
+
+    @FXML
+    private void Tik_Home(ActionEvent event) {
     }
     
 }

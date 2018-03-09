@@ -7,11 +7,17 @@ package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -30,6 +36,16 @@ public class ModificarEmpresaController implements Initializable {
     private Button btnADD;
     @FXML
     private Button btnADD1;
+    @FXML
+    private Button BarRegisEntp;
+    @FXML
+    private Button BarEditEntp;
+    @FXML
+    private Button BarRemoveEntp;
+    @FXML
+    private Button BarViewEntp;
+    @FXML
+    private Button BarHomeEnt;
 
     /**
      * Initializes the controller class.
@@ -37,10 +53,52 @@ public class ModificarEmpresaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    } 
+    
+    private void EmpresasMenu(String Vista, String Titulo) {
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle(Titulo);
+            stage.setScene(new Scene(root1));
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+            Stage act = (Stage) BarRegisEntp.getScene().getWindow();
+            act.close();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+    }
 
     @FXML
     private void c_add(MouseEvent event) {
+    }
+
+    @FXML
+    private void Ent_BarRegist(ActionEvent event) {
+        EmpresasMenu("RegistroEmpleado", "Enterprise");
+    }
+
+    @FXML
+    private void Ent_BarEdit(ActionEvent event) {
+        EmpresasMenu("ModificarEmpresa", "Enterprise");
+    }
+
+    @FXML
+    private void Ent_BarRemove(ActionEvent event) {
+        EmpresasMenu("EliminarEmpresa", "Enterprise");
+    }
+
+    @FXML
+    private void Ent_BarView(ActionEvent event) {
+        EmpresasMenu("VerEmpresa", "Enterprise");
+    }
+
+    @FXML
+    private void Ent_Home(ActionEvent event) {
+        EmpresasMenu("Menu", "Menu");
     }
     
 }

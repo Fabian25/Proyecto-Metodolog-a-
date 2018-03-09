@@ -16,14 +16,6 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <MenuBar prefHeight="25.0" prefWidth="1264.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Register Enterprises" />
-            <Menu mnemonicParsing="false" text="Edit Enterprises" />
-            <Menu mnemonicParsing="false" text="Remove Enterprises" />
-            <Menu mnemonicParsing="false" text="View Enterprises" />
-         </menus>
-      </MenuBar>
       <TextField fx:id="txtCName11" layoutX="980.0" layoutY="343.0" prefHeight="35.0" prefWidth="194.0" />
       <Button layoutX="817.0" layoutY="338.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
       <TableView layoutX="40.0" layoutY="204.0" prefHeight="313.0" prefWidth="761.0">
@@ -70,5 +62,38 @@
             <Font size="36.0" />
          </font>
       </Label>
+      <MenuBar layoutX="-1.0" prefHeight="33.0" prefWidth="1264.0">
+         <menus>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarRegisEntp" mnemonicParsing="false" onAction="#Ent_BarRegist" text="Register Enterpises" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarEditEntp" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#Ent_BarEdit" scaleShape="false" text="Edit Enterpises">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarRemoveEntp" mnemonicParsing="false" onAction="#Ent_BarRemove" text="Remove Enterpises" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarViewEntp" mnemonicParsing="false" onAction="#Ent_BarView" text="View Enterpises" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarHomeEnt" mnemonicParsing="false" onAction="#Ent_Home" text="Home" />
+               </graphic>
+            </Menu>
+         </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

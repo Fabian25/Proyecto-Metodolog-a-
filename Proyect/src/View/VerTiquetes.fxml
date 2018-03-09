@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,16 +9,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EliminarTiqueteController">
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.VerTiquetesController">
    <children>
       <ImageView fitHeight="711.0" fitWidth="1512.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Imagen/fondoPro.jpg" />
+            <Image url="@../../../../fondoProMeto.jpg" />
          </image>
       </ImageView>
-      <ChoiceBox fx:id="chbxRemoveTiquete" layoutX="201.0" layoutY="123.0" prefWidth="150.0" />
-      <ComboBox layoutX="361.0" layoutY="123.0" prefHeight="25.0" prefWidth="83.0" />
-      <TableView fx:id="tblRemoveTiq" layoutX="201.0" layoutY="166.0" prefHeight="334.0" prefWidth="862.0">
+      <TableView fx:id="tblRemoveTiq" layoutX="201.0" layoutY="205.0" prefHeight="334.0" prefWidth="862.0">
          <columns>
             <TableColumn prefWidth="75.0" text="Serie" />
             <TableColumn prefWidth="75.0" text="Priority" />
@@ -27,17 +26,14 @@
             <TableColumn minWidth="0.0" prefWidth="122.0" text="Remove" />
          </columns>
       </TableView>
-      <Button fx:id="btnBack" layoutX="32.0" layoutY="626.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
-         <effect>
-            <Blend />
-         </effect>
-      </Button>
-      <Label layoutX="568.0" layoutY="43.0" text="Remove" textFill="WHITE">
+      <ComboBox layoutX="361.0" layoutY="172.0" prefHeight="25.0" prefWidth="83.0" />
+      <ChoiceBox fx:id="chbxRemoveTiquete" layoutX="201.0" layoutY="172.0" prefWidth="150.0" />
+      <Label layoutX="594.0" layoutY="50.0" text="View" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <MenuBar layoutX="1.0" prefHeight="33.0" prefWidth="1264.0">
+      <MenuBar prefHeight="33.0" prefWidth="1264.0">
          <menus>
             <Menu mnemonicParsing="false">
                <graphic>
@@ -70,5 +66,10 @@
             </Menu>
          </menus>
       </MenuBar>
+      <Button fx:id="btnBack" layoutX="42.0" layoutY="636.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
+         <effect>
+            <Blend />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

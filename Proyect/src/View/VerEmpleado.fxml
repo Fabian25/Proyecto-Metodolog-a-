@@ -16,35 +16,6 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1264.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Register Employees">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit Employees">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Remove Employees">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="View Employees">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Home">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
       <TableView fx:id="tblViewEmploy" layoutX="201.0" layoutY="160.0" prefHeight="334.0" prefWidth="862.0">
          <columns>
             <TableColumn prefWidth="75.0" text="Code" />
@@ -65,5 +36,38 @@
             <Font size="36.0" />
          </font>
       </Label>
+      <MenuBar prefHeight="33.0" prefWidth="1264.0">
+         <menus>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarRegisEmp" mnemonicParsing="false" onAction="#E_BarRegist" text="Register Employee" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarEditEmp" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#E_BarEdit" scaleShape="false" text="Edit Employee">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarRemoveEmp" mnemonicParsing="false" onAction="#E_BarRemove" text="Remove Employee" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarViewEmp" mnemonicParsing="false" onAction="#E_BarView" text="View Employee" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarHomeE" mnemonicParsing="false" onAction="#E_Home" text="Home" />
+               </graphic>
+            </Menu>
+         </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

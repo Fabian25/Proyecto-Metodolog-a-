@@ -61,12 +61,37 @@
       <ScrollBar layoutX="994.0" layoutY="232.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="15.0" />
       <ChoiceBox layoutX="666.0" layoutY="200.0" prefHeight="25.0" prefWidth="130.0" />
       <ComboBox layoutX="804.0" layoutY="200.0" prefHeight="25.0" prefWidth="83.0" />
-      <MenuBar prefHeight="25.0" prefWidth="1264.0">
+      <MenuBar prefHeight="33.0" prefWidth="1264.0">
          <menus>
-            <Menu mnemonicParsing="false" text="Register Enterprises" />
-            <Menu mnemonicParsing="false" text="Edit Enterprises" />
-            <Menu mnemonicParsing="false" text="Remove Enterprises" />
-            <Menu mnemonicParsing="false" text="View Enterprises" />
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarRegisEntp" mnemonicParsing="false" onAction="#Ent_BarRegist" text="Register Enterpises" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarEditEntp" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#Ent_BarEdit" scaleShape="false" text="Edit Enterpises">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarRemoveEntp" mnemonicParsing="false" onAction="#Ent_BarRemove" text="Remove Enterpises" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarViewEntp" mnemonicParsing="false" onAction="#Ent_BarView" text="View Enterpises" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarHomeEnt" mnemonicParsing="false" onAction="#Ent_Home" text="Home" />
+               </graphic>
+            </Menu>
          </menus>
       </MenuBar>
    </children>
