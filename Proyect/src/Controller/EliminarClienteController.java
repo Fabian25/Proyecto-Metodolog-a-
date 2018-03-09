@@ -32,8 +32,6 @@ public class EliminarClienteController implements Initializable {
     @FXML
     private TableView<?> tblRemoveClient;
     @FXML
-    private ChoiceBox<?> cbxRemoveClient;
-    @FXML
     private Button btnBack;
     @FXML
     private Button BarRegisClient;

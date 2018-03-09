@@ -30,8 +30,6 @@ public class VerClienteController implements Initializable {
     @FXML
     private TableView<?> tblViewClient;
     @FXML
-    private ChoiceBox<?> chbxViewClt;
-    @FXML
     private Button btnBack;
     @FXML
     private Button BarRegisClient;

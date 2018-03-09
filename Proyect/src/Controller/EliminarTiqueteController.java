@@ -28,8 +28,6 @@ import javafx.stage.StageStyle;
 public class EliminarTiqueteController implements Initializable {
 
     @FXML
-    private ChoiceBox<?> chbxRemoveTiquete;
-    @FXML
     private TableView<?> tblRemoveTiq;
     @FXML
     private Button btnBack;

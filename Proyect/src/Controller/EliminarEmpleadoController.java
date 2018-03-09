@@ -29,8 +29,6 @@ import javafx.stage.StageStyle;
 public class EliminarEmpleadoController implements Initializable {
 
     @FXML
-    private ChoiceBox<?> chbxRemoveEmploy;
-    @FXML
     private ComboBox<?> cbxRemEmploy;
     @FXML
     private Button btnBack;
