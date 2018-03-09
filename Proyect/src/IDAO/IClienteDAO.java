@@ -17,4 +17,5 @@ public interface IClienteDAO {
 	public List<Persona> ver();
 	public void actualizar(TextField txtCName,TextField txtCLastNmae,TextField txtCPhoneNum,TextField txtCEmail,Persona p);
 	public void eliminar(TextField txtCIDnum); 
+        
 }
