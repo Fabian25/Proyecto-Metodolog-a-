@@ -11,8 +11,8 @@ import java.sql.SQLException;
 
 public class Conexion {
 
-          static  Connection conexion = null;
-    public static Connection conexion() {
+            Connection conexion = null;
+    public  Connection conexion() {
 
         try {
             conexion = null;

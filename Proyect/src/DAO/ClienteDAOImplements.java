@@ -27,30 +27,31 @@ public class ClienteDAOImplements implements IClienteDAO {
 
 
 
-    public boolean ExisteCedula(String ced, String cod) {
-        Connection cn = cc.conexion();
-        String sql = "SELECT * FROM Persona p where p.IdPersona = " + ced + "and p.Codigo = " + cod + ";";
-        String[] datos = new String[10];
-        try {
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(9);
-            }
-            if (datos[0] != null) {
-                if (datos[0].equals(ced) || datos[1].equals(cod)) {
-                    return true;
-                }
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return false;
-    }
+//    public boolean ExisteCedula(String ced, String cod) {
+//        Connection cn = cc.conexion();
+//        String sql = "SELECT * FROM Persona p where p.IdPersona = " + ced + "and p.Codigo = " + cod + ";";
+//        String[] datos = new String[10];
+//        try {
+//            Statement st = cn.createStatement();
+//            ResultSet rs = st.executeQuery(sql);
+//            while (rs.next()) {
+//                datos[0] = rs.getString(1);
+//                datos[1] = rs.getString(9);
+//            }
+//            if (datos[0] != null) {
+//                if (datos[0].equals(ced) || datos[1].equals(cod)) {
+//                    return true;
+//                }
+//            }
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//        return false;
+//    }
 
     @Override
     public void registrar(TextField txtCName, TextField txtCLastNmae, TextField txtCIDnum, TextField txtCPhoneNum, TextField txtCEmail) {
+           Connection cn = cc.conexion();
         String Cod = "";
         Random rand = new Random();
         int randomNum = rand.nextInt((999 - 100) + 1) + 100;
@@ -60,29 +61,34 @@ public class ClienteDAOImplements implements IClienteDAO {
                 || txtCEmail.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
         } else {
-            if (ExisteCedula(txtCIDnum.getText(), Cod) == false) {
-                Connection cn = cc.conexion();
-                String sql = "Insert into Persona values(" + txtCIDnum.getText() + "," + txtCName.getText() + ","
-                        + txtCPhoneNum.getText() + "," + txtCEmail.getText() + "," + "Nuevo123*" + "," + Cod + "," + txtCLastNmae.getText() + ");";
-                String[] datos = new String[10];
                 try {
-                    Statement stmt = cn.createStatement();
-                    PreparedStatement pst = cn.prepareStatement(sql);
-                    pst.executeUpdate();
+                        String sql = "Insert into Persona values(" + txtCIDnum.getText() + "," + txtCName.getText() + ","+txtCLastNmae.getText() +","
+                        + txtCPhoneNum.getText() + "," + txtCEmail.getText() + "," + "Nuevo123*" + "," + Cod + "," +2+","+1  +");";
+                   java.sql.PreparedStatement pst = cn.prepareStatement(sql);
+            int upd = pst.executeUpdate();
+             if (upd > 0){
+                    JOptionPane.showMessageDialog(null, "Updated Registry");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "The user alredy exists");
-            }
         }
+        txtCName.setText("");
+      txtCLastNmae.setText("");txtCIDnum.setText("");txtCPhoneNum.setText("");  txtCEmail.setText("");
+ 
     }
 
     @Override
     public void eliminar(TextField txtCIDnum) {
         Connection cn = cc.conexion();
 
-        String Update = "DELETE FROM Persona WHERE IdPersona=" + txtCIDnum.getText() + ";";
+        String Update = "UPDATE Persona \n"
+                + "SET Activo = " + "0"
+             
+                + "WHERE IdPersona = " +txtCIDnum.getText() + ";";
         try {
             Statement stmt = cn.createStatement();
             PreparedStatement pst = cn.prepareStatement(Update);
@@ -95,7 +101,7 @@ public class ClienteDAOImplements implements IClienteDAO {
     @Override
     public void actualizar(TextField txtCName, TextField txtCLastNmae, TextField txtCPhoneNum, TextField txtCEmail, Persona p) {
         Connection cn = cc.conexion();
-        String Update = "UPDATE Personas\n"
+        String Update = "UPDATE Persona \n"
                 + "SET Nombre = " + txtCName.getText()
                 + "SET Apellido = " + txtCLastNmae.getText()
                 + "SET Telefono = " + txtCPhoneNum.getText()
