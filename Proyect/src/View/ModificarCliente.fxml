@@ -16,15 +16,7 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <MenuBar prefHeight="25.0" prefWidth="1264.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Register Client" />
-          <Menu mnemonicParsing="false" text="Edit Client" />
-          <Menu mnemonicParsing="false" text="Remove Client" />
-            <Menu mnemonicParsing="false" text="View Clients" />
-        </menus>
-      </MenuBar>
-      <Label layoutX="602.0" layoutY="78.0" text="Edit" textFill="WHITE">
+      <Label layoutX="602.0" layoutY="59.0" text="Edit" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
@@ -70,5 +62,38 @@
       </Button>
       <ComboBox layoutX="182.0" layoutY="131.0" prefHeight="25.0" prefWidth="83.0" />
       <ChoiceBox layoutX="14.0" layoutY="131.0" prefWidth="150.0" />
+      <MenuBar layoutX="1.0" layoutY="-2.0" prefHeight="33.0" prefWidth="1264.0">
+         <menus>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarRegisClient" mnemonicParsing="false" onAction="#C_BarRegist" text="Register Client" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarEditClient" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#C_BarEdit" scaleShape="false" text="Edit Cliente">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarRemoveClient" mnemonicParsing="false" onAction="#C_BarRemove" text="Remove Client" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarViewClient" mnemonicParsing="false" onAction="#C_BarView" text="View Client" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarHomeC" mnemonicParsing="false" onAction="#C_Home" text="Home" />
+               </graphic>
+            </Menu>
+         </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

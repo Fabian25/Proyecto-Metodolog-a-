@@ -26,7 +26,8 @@ import javafx.stage.StageStyle;
  * @author erick
  */
 public class RegistroClienteController implements Initializable {
- ClienteDAOImplements h = new  ClienteDAOImplements();
+
+    ClienteDAOImplements h = new ClienteDAOImplements();
     @FXML
     private TextField txtCName;
     @FXML
@@ -41,6 +42,16 @@ public class RegistroClienteController implements Initializable {
     private Button btnADD;
     @FXML
     private Button btnBack;
+    @FXML
+    private Button BarRegisClient;
+    @FXML
+    private Button BarEditClient;
+    @FXML
+    private Button BarRemoveClient;
+    @FXML
+    private Button BarViewClient;
+    @FXML
+    private Button BarHomeC;
 
     /**
      * Initializes the controller class.
@@ -50,29 +61,57 @@ public class RegistroClienteController implements Initializable {
         // TODO
     }
 
+    private void ClientesMenu(String Vista, String Titulo) {
+      try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle(Titulo);
+            stage.setScene(new Scene(root1));
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+            Stage act = (Stage) BarRegisClient.getScene().getWindow();
+            act.close();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+    }
 
     @FXML
     private void c_add(MouseEvent event) {
         h.registrar(txtCName, txtCLastNmae, txtCIDnum, txtCPhoneNum, txtCEmail);
         //agrega a nivel de base de datos pero no a tabla
+        ClientesMenu("Menu", "Menu");
     }
 
     @FXML
     private void c_back(MouseEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + "Menu" + ".fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Menu");
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
-            Stage act = (Stage) btnBack.getScene().getWindow();
-            act.close();
-        } catch (Exception e) {
-            System.out.println("Error");
-        }
+        ClientesMenu("Menu", "Menu");
+    }
+
+    @FXML
+    private void C_BarRegist(ActionEvent event) {
+        ClientesMenu("RegistroCliente", "Clients");
 
     }
 
+    @FXML
+    private void C_BarEdit(ActionEvent event) {
+        ClientesMenu("ModificarCliente", "Clients");
+    }
+
+    @FXML
+    private void C_BarRemove(ActionEvent event) {
+        ClientesMenu("EliminarCliente", "Clients");
+    }
+
+    @FXML
+    private void C_BarView(ActionEvent event) {
+        ClientesMenu("VerCliente", "Clients");
+    }
+
+    @FXML
+    private void C_Home(ActionEvent event) {
+        ClientesMenu("Menu", "Menu");
+    }
 }
