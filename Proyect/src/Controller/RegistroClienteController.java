@@ -28,8 +28,6 @@ import javafx.stage.StageStyle;
 public class RegistroClienteController implements Initializable {
  ClienteDAOImplements h = new  ClienteDAOImplements();
     @FXML
-    private Button btn_Tiquete1;
-    @FXML
     private TextField txtCName;
     @FXML
     private TextField txtCLastNmae;
@@ -52,9 +50,6 @@ public class RegistroClienteController implements Initializable {
         // TODO
     }
 
-    @FXML
-    private void Login(ActionEvent event) {
-    }
 
     @FXML
     private void c_add(MouseEvent event) {
