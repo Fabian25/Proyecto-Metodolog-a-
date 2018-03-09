@@ -82,7 +82,7 @@ public class MenuController implements Initializable {
     
     @FXML
     private void B_Salir(MouseEvent event) {
-        System.exit(0);
+     CargarVistas("Login", "Log In");
     }
 
 }

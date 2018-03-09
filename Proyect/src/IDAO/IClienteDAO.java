@@ -6,13 +6,15 @@
 package IDAO;
 import java.util.List;
 import Model.Persona;
+import javafx.scene.control.TextField;
 /**
  *
  * @author jose
  */
 public interface IClienteDAO {
-   	public boolean registrar(Persona cliente);
-	public List<Persona> obtener();
-	public boolean actualizar(Persona cliente);
-	public boolean eliminar(Persona cliente); 
+    
+   	public void registrar(TextField txtCName,TextField txtCLastNmae,TextField txtCIDnum,TextField txtCPhoneNum,TextField txtCEmail);
+	public List<Persona> ver();
+	public void actualizar(TextField txtCName,TextField txtCLastNmae,TextField txtCPhoneNum,TextField txtCEmail,Persona p);
+	public void eliminar(TextField txtCIDnum); 
 }

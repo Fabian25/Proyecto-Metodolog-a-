@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import DAO.EmpleadoDAOImplements;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -42,7 +43,7 @@ public class RegistroEmpleadoController implements Initializable {
     private TextField txt_Email;
     @FXML
     private TableView<?> table_Empleado;
-
+EmpleadoDAOImplements h = new EmpleadoDAOImplements();
     /**
      * Initializes the controller class.
      */
@@ -71,6 +72,8 @@ public class RegistroEmpleadoController implements Initializable {
 
     @FXML
     private void c_add(MouseEvent event) {
+       h.registrar(txt_Name, txt_Phone, txt_ID, txt_LastName, txt_Email);
+       //agrega a nivel de base de datos no en el tabla
     }
     
 }

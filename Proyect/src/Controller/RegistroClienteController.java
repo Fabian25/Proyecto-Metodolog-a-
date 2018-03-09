@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import DAO.ClienteDAOImplements;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -25,7 +26,7 @@ import javafx.stage.StageStyle;
  * @author erick
  */
 public class RegistroClienteController implements Initializable {
-
+ ClienteDAOImplements h = new  ClienteDAOImplements();
     @FXML
     private Button btn_Tiquete1;
     @FXML
@@ -57,6 +58,8 @@ public class RegistroClienteController implements Initializable {
 
     @FXML
     private void c_add(MouseEvent event) {
+        h.registrar(txtCName, txtCLastNmae, txtCIDnum, txtCPhoneNum, txtCEmail);
+        //agrega a nivel de base de datos pero no a tabla
     }
 
     @FXML

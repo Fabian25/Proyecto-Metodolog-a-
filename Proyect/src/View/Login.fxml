@@ -15,15 +15,15 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="txt_Usuario" layoutX="154.0" layoutY="311.0" prefHeight="44.0" prefWidth="228.0" promptText="Username">
+      <TextField fx:id="txt_Usuario" layoutX="154.0" layoutY="311.0" prefHeight="44.0" prefWidth="312.0" promptText="Username">
          <font>
             <Font size="20.0" />
          </font></TextField>
-      <PasswordField fx:id="txt_Contra" layoutX="154.0" layoutY="395.0" prefHeight="44.0" prefWidth="228.0" promptText="Password">
+      <PasswordField fx:id="txt_Contra" layoutX="154.0" layoutY="395.0" prefHeight="44.0" prefWidth="312.0" promptText="Password">
          <font>
             <Font size="20.0" />
          </font></PasswordField>
-      <Label fx:id="lbl_Recuperar" layoutX="154.0" layoutY="452.0" onMouseClicked="#RecuperarContra" text="Forgot password?" textFill="#6268e8">
+      <Label fx:id="lbl_Recuperar" layoutX="154.0" layoutY="452.0" onMouseClicked="#RecuperarContra" prefHeight="26.0" prefWidth="166.0" text="Forgot password?" textFill="#6268e8">
          <font>
             <Font size="17.0" />
          </font>
