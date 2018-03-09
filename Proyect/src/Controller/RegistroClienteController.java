@@ -114,4 +114,8 @@ public class RegistroClienteController implements Initializable {
     private void C_Home(ActionEvent event) {
         ClientesMenu("Menu", "Menu");
     }
+
+    @FXML
+    private void c_add(ActionEvent event) {
+    }
 }

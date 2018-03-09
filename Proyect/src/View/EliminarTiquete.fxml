@@ -16,7 +16,6 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <ChoiceBox fx:id="chbxRemoveTiquete" layoutX="201.0" layoutY="123.0" prefWidth="150.0" />
       <ComboBox layoutX="361.0" layoutY="123.0" prefHeight="25.0" prefWidth="83.0" />
       <TableView fx:id="tblRemoveTiq" layoutX="201.0" layoutY="166.0" prefHeight="334.0" prefWidth="862.0">
          <columns>
@@ -70,5 +69,6 @@
             </Menu>
          </menus>
       </MenuBar>
+      <TextField layoutX="201.0" layoutY="123.0" />
    </children>
 </AnchorPane>

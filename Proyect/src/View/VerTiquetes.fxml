@@ -26,7 +26,6 @@
          </columns>
       </TableView>
       <ComboBox layoutX="361.0" layoutY="172.0" prefHeight="25.0" prefWidth="83.0" />
-      <ChoiceBox fx:id="chbxRemoveTiquete" layoutX="201.0" layoutY="172.0" prefWidth="150.0" />
       <Label layoutX="594.0" layoutY="50.0" text="View" textFill="WHITE">
          <font>
             <Font size="36.0" />
@@ -70,5 +69,6 @@
             <Blend />
          </effect>
       </Button>
+      <TextField fx:id="txt_search" layoutX="201.0" layoutY="172.0" />
    </children>
 </AnchorPane>

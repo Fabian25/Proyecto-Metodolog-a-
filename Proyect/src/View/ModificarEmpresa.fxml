@@ -43,18 +43,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnADD1" layoutX="34.0" layoutY="656.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="184.0" text="BACK">
-         <effect>
-            <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
-               <light>
-                  <Light.Distant color="#757972" />
-               </light>
-            </Lighting>
-         </effect>
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
       <ComboBox layoutX="212.0" layoutY="161.0" prefHeight="25.0" prefWidth="83.0" />
       <ChoiceBox layoutX="44.0" layoutY="161.0" prefWidth="150.0" />
       <Label layoutX="622.0" layoutY="98.0" text="Edit" textFill="WHITE">

@@ -25,7 +25,6 @@
             <TableColumn prefWidth="77.0" text="Email" />
          </columns>
       </TableView>
-      <ChoiceBox fx:id="chbxViewClt" layoutX="201.0" layoutY="137.0" prefHeight="25.0" prefWidth="209.0" />
       <Label layoutX="594.0" layoutY="58.0" text="View" textFill="WHITE">
          <font>
             <Font size="36.0" />
@@ -69,5 +68,7 @@
             </Menu>
          </menus>
       </MenuBar>
+      <TextField layoutX="201.0" layoutY="131.0" />
+      <ComboBox layoutX="377.0" layoutY="131.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.*;
 import javax.swing.*;
 
+<<<<<<< HEAD
 public  class Conexion {
 
             Connection con = null;
@@ -27,6 +28,24 @@ catch(Exception e)
 {
 
 return null;
+=======
+public class Conexion {
+    
+            Connection conexion = null;
+    public  Connection conexion() {
+
+        try {
+            conexion = null;
+            Class.forName("com.mysql.jdbc.Driver");
+             conexion = DriverManager.getConnection("jdbc:mysql://sql10.freemysqlhosting.net/", "sql10218899", "dqlkLPTbHd");
+            System.out.println("conexion establecida");
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("error de conexion");
+            System.out.println("error de conexion " + e);
+        }
+        return conexion;
+    }
+>>>>>>> 6cb49a26eedec2b367badc7a9ed4900bebf141b7
 }
 }
 }

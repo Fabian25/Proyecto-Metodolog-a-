@@ -35,8 +35,6 @@ public class ModificarEmpresaController implements Initializable {
     @FXML
     private Button btnADD;
     @FXML
-    private Button btnADD1;
-    @FXML
     private Button BarRegisEntp;
     @FXML
     private Button BarEditEntp;

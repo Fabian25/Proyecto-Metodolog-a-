@@ -30,8 +30,6 @@ public class VerEmpleadoController implements Initializable {
     @FXML
     private TableView<?> tblViewEmploy;
     @FXML
-    private ChoiceBox<?> chbxViewEmplo;
-    @FXML
     private Button btnBack;
     @FXML
     private Button BarRegisEmp;

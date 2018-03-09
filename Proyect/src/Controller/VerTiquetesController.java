@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -30,8 +31,6 @@ public class VerTiquetesController implements Initializable {
     @FXML
     private TableView<?> tblRemoveTiq;
     @FXML
-    private ChoiceBox<?> chbxRemoveTiquete;
-    @FXML
     private Button BarRegisTickets;
     @FXML
     private Button BarEditTickets;
@@ -43,6 +42,8 @@ public class VerTiquetesController implements Initializable {
     private Button BarHomeTik;
     @FXML
     private Button btnBack;
+    @FXML
+    private TextField txt_search;
 
     /**
      * Initializes the controller class.
