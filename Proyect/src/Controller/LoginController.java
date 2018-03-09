@@ -38,16 +38,18 @@ public class LoginController implements Initializable {
     @FXML
     private Button btn_Ingresar;
 
-    private void IngresarMenu(String name) {
+    private void IngresarMenu(String Vista, String Titulo) {
+
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + name + ".fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-            stage.setTitle(name);
+            stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
-
+            Stage act = (Stage) btn_Ingresar.getScene().getWindow();
+            act.close();
         } catch (Exception e) {
             System.out.println("Error");
         }
@@ -60,28 +62,18 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
+    
 
     @FXML
     private void RecuperarContra(MouseEvent event) {
         GeneralDAOImplements h = new GeneralDAOImplements();
         h.RecuperarContrasena(txt_Usuario);
+        IngresarMenu("RecuperarContraseña", "LogIn");
     }
 
     @FXML
     private void Ingresar(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + "Menu" + ".fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Menu");
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
-            Stage act = (Stage) btn_Ingresar.getScene().getWindow();
-            act.close();
-        } catch (Exception e) {
-            System.out.println("Error");
-        }
+        IngresarMenu("Menu", "Menu");
     }
 
 }
