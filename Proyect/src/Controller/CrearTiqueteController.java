@@ -14,6 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -22,18 +24,26 @@ import javafx.stage.StageStyle;
 /**
  * FXML Controller class
  *
- * @author Fabian
+ * @author ALONSITO
  */
-public class ModificarTiqueteController implements Initializable {
+public class CrearTiqueteController implements Initializable {
 
     @FXML
-    private Button btnADD1;
+    private Button btn_ADDTiquet;
     @FXML
-    private Button btnADD;
+    private Button btn_BackTiquet;
     @FXML
-    private TextField txtCName11;
+    private TextArea txt_description;
     @FXML
-    private TextField txtCName111;
+    private ComboBox<?> cbx_Status;
+    @FXML
+    private TextField txt_series;
+    @FXML
+    private Button btn_description;
+    @FXML
+    private Button btn_status;
+    @FXML
+    private Button btn_Series;
     @FXML
     private Button BarRegisTickets;
     @FXML
@@ -52,9 +62,10 @@ public class ModificarTiqueteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
- private void TiquetesMenu(String Vista, String Titulo) {
 
-        try {
+     private void TiquetesMenu(String Vista, String Titulo) {
+
+       try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
@@ -62,14 +73,16 @@ public class ModificarTiqueteController implements Initializable {
             stage.setScene(new Scene(root1));
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
-            Stage act = (Stage) BarRegisTickets.getScene().getWindow();
+            Stage act = (Stage)  BarRegisTickets.getScene().getWindow();
             act.close();
         } catch (Exception e) {
             System.out.println("Error");
         }
     }
 
-     @FXML
+    
+    
+    @FXML
     private void c_back(MouseEvent event) {
         TiquetesMenu("Menu", "Menu");
     }
@@ -99,8 +112,9 @@ public class ModificarTiqueteController implements Initializable {
         TiquetesMenu("Menu", "Menu");
     }
 
-   @FXML
+    @FXML
     private void c_add(MouseEvent event) {
     }
+    
     
 }

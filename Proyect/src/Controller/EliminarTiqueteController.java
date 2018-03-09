@@ -72,32 +72,32 @@ public class EliminarTiqueteController implements Initializable {
 
     @FXML
     private void c_back(MouseEvent event) {
-        TiquetesMenu("ModificarEmpleado", "Employee");
+        TiquetesMenu("Menu", "Menu");
     }
 
     @FXML
     private void Tik_BarRegist(ActionEvent event) {
-        TiquetesMenu("CrearTiquetes", "Employee");
+        TiquetesMenu("CrearTiquete", "Ticket");
     }
 
     @FXML
     private void Tik_BarEdit(ActionEvent event) {
-        TiquetesMenu("ModificarTiquete", "Employee");
+        TiquetesMenu("ModificarTiquete", "Ticket");
     }
 
     @FXML
     private void Tik_BarRemove(ActionEvent event) {
-        TiquetesMenu("EliminarTiquete", "Employee");
+        TiquetesMenu("EliminarTiquete", "Ticket");
     }
 
     @FXML
     private void Tik_BarView(ActionEvent event) {
-        TiquetesMenu("VerTiquete", "Employee");
+        TiquetesMenu("VerTiquetes", "Ticket");
     }
 
     @FXML
     private void Tik_Home(ActionEvent event) {
         TiquetesMenu("Menu", "Menu");
     }
-    
+
 }
