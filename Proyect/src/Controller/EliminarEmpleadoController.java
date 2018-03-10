@@ -31,8 +31,6 @@ public class EliminarEmpleadoController implements Initializable {
     @FXML
     private ComboBox<?> cbxRemEmploy;
     @FXML
-    private Button btnBack;
-    @FXML
     private TableView<?> tblRemoveEmplo;
     @FXML
     private Button BarRegisEmp;
@@ -70,7 +68,6 @@ public class EliminarEmpleadoController implements Initializable {
         }
     }
 
-    @FXML
     private void c_back(MouseEvent event) {
         EmpleadosMenu("ModificarEmpleado", "Employee");
     }

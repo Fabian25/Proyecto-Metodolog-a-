@@ -41,8 +41,6 @@ public class VerTiquetesController implements Initializable {
     @FXML
     private Button BarHomeTik;
     @FXML
-    private Button btnBack;
-    @FXML
     private TextField txt_search;
 
     /**
@@ -71,7 +69,6 @@ public class VerTiquetesController implements Initializable {
         }
     }
 
-     @FXML
     private void c_back(MouseEvent event) {
         TiquetesMenu("Menu", "Menu");
     }

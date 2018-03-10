@@ -22,18 +22,6 @@
          </font>
       </Label>
       <ComboBox layoutX="202.0" layoutY="151.0" prefHeight="25.0" prefWidth="83.0" />
-      <Button fx:id="btnBack" layoutX="24.0" layoutY="646.0" mnemonicParsing="false" onAction="#E_Back" prefHeight="45.0" prefWidth="184.0" text="BACK">
-         <effect>
-            <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
-               <light>
-                  <Light.Distant color="#757972" />
-               </light>
-            </Lighting>
-         </effect>
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
       <Button fx:id="btnADD" layoutX="883.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="184.0" text="SAVE">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">

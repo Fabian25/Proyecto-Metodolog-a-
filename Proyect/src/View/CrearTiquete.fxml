@@ -11,12 +11,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="707.0" prefWidth="1254.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CrearTiqueteController">
    <children>
-      <ImageView fitHeight="711.0" fitWidth="1512.0" layoutX="-10.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="711.0" fitWidth="1512.0" layoutX="-13.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="btn_ADDTiquet" layoutX="455.0" layoutY="574.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="99.0" text="ADD">
+      <Button fx:id="btn_ADDTiquet" layoutX="578.0" layoutY="562.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="99.0" text="ADD">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
                <light>
@@ -25,17 +25,12 @@
             </Lighting>
          </effect>
       </Button>
-      <Button fx:id="btn_BackTiquet" layoutX="78.0" layoutY="619.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
-         <effect>
-            <Blend />
-         </effect>
-      </Button>
-      <TextArea fx:id="txt_description" layoutX="342.0" layoutY="350.0" prefHeight="166.0" prefWidth="319.0" />
-      <ComboBox fx:id="cbx_Status" layoutX="342.0" layoutY="286.0" prefHeight="25.0" prefWidth="319.0" />
-      <TextField fx:id="txt_series" layoutX="342.0" layoutY="216.0" prefHeight="35.0" prefWidth="319.0" />
-      <Button fx:id="btn_description" layoutX="168.0" layoutY="343.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Description" />
-      <Button fx:id="btn_status" layoutX="168.0" layoutY="276.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Status" />
-      <Button fx:id="btn_Series" layoutX="168.0" layoutY="211.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Series" />
+      <TextArea fx:id="txt_description" layoutX="468.0" layoutY="343.0" prefHeight="166.0" prefWidth="319.0" />
+      <ComboBox fx:id="cbx_Status" layoutX="468.0" layoutY="276.0" prefHeight="25.0" prefWidth="319.0" />
+      <TextField fx:id="txt_series" layoutX="468.0" layoutY="216.0" prefHeight="35.0" prefWidth="319.0" />
+      <Button fx:id="btn_description" layoutX="260.0" layoutY="332.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Description" />
+      <Button fx:id="btn_status" layoutX="260.0" layoutY="266.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Status" />
+      <Button fx:id="btn_Series" layoutX="260.0" layoutY="211.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Series" />
       <Label layoutX="504.0" layoutY="75.0" text="Register" textFill="WHITE">
          <font>
             <Font size="36.0" />

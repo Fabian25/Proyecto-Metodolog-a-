@@ -30,8 +30,6 @@ public class VerEmpresaController implements Initializable {
     @FXML
     private TableView<?> tblViewClient;
     @FXML
-    private Button btnBack;
-    @FXML
     private Button BarRegisEntp;
     @FXML
     private Button BarEditEntp;
@@ -67,7 +65,6 @@ public class VerEmpresaController implements Initializable {
         }
     }
 
-    @FXML
     private void c_back(MouseEvent event) {
         EmpresasMenu("EliminarEmpresa", "Enterprise");
     }

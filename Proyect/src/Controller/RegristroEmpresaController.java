@@ -38,8 +38,6 @@ public class RegristroEmpresaController implements Initializable {
     @FXML
     private Button btn_Import;
     @FXML
-    private Button btnBack;
-    @FXML
     private TableView<?> table_Enterprice;
     @FXML
     private Button BarRegisEntp;
@@ -81,7 +79,6 @@ public class RegristroEmpresaController implements Initializable {
     private void c_add(MouseEvent event) {
     }
 
-    @FXML
     private void c_back(MouseEvent event) {
         EmpresasMenu("Menu", "Menu");
     }

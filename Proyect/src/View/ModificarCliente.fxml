@@ -48,18 +48,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnADD1" layoutX="14.0" layoutY="652.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="184.0" text="BACK">
-         <effect>
-            <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
-               <light>
-                  <Light.Distant color="#757972" />
-               </light>
-            </Lighting>
-         </effect>
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
       <ComboBox layoutX="182.0" layoutY="131.0" prefHeight="25.0" prefWidth="83.0" />
       <MenuBar layoutX="1.0" layoutY="-2.0" prefHeight="33.0" prefWidth="1264.0">
          <menus>

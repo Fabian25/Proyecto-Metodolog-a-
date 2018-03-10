@@ -27,8 +27,6 @@ import javafx.stage.StageStyle;
 public class ModificarTiqueteController implements Initializable {
 
     @FXML
-    private Button btnADD1;
-    @FXML
     private Button btnADD;
     @FXML
     private TextField txtCName11;
@@ -69,7 +67,6 @@ public class ModificarTiqueteController implements Initializable {
         }
     }
 
-     @FXML
     private void c_back(MouseEvent event) {
         TiquetesMenu("Menu", "Menu");
     }

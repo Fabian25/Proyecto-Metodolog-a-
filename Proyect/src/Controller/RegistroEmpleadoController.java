@@ -29,8 +29,6 @@ import javafx.stage.StageStyle;
 public class RegistroEmpleadoController implements Initializable {
 
     @FXML
-    private Button btnBack;
-    @FXML
     private Button btnADD;
     @FXML
     private TextField txt_Name;
@@ -80,7 +78,6 @@ EmpleadoDAOImplements h = new EmpleadoDAOImplements();
         }
     }
 
-    @FXML
     private void c_back(MouseEvent event) {
         EmpleadosMenu("Menu", "Menu");        
     }

@@ -26,8 +26,6 @@ import javafx.stage.StageStyle;
 public class EliminarEmpresaController implements Initializable {
 
     @FXML
-    private Button btnBack;
-    @FXML
     private Button BarRegisEntp;
     @FXML
     private Button BarEditEntp;
@@ -62,7 +60,6 @@ public class EliminarEmpresaController implements Initializable {
         }
     }
 
-    @FXML
     private void c_back(MouseEvent event) {
         EmpresasMenu("EliminarEmpresa", "Enterprise");
     }

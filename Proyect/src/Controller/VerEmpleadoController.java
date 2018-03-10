@@ -30,8 +30,6 @@ public class VerEmpleadoController implements Initializable {
     @FXML
     private TableView<?> tblViewEmploy;
     @FXML
-    private Button btnBack;
-    @FXML
     private Button BarRegisEmp;
     @FXML
     private Button BarEditEmp;
@@ -67,7 +65,6 @@ public class VerEmpleadoController implements Initializable {
         }
     }
 
-    @FXML
     private void c_back(MouseEvent event) {
         EmpleadosMenu("EliminarEmpleado", "Employee");
     }

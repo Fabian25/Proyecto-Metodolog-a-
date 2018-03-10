@@ -31,8 +31,6 @@ public class CrearTiqueteController implements Initializable {
     @FXML
     private Button btn_ADDTiquet;
     @FXML
-    private Button btn_BackTiquet;
-    @FXML
     private TextArea txt_description;
     @FXML
     private ComboBox<?> cbx_Status;
@@ -82,7 +80,6 @@ public class CrearTiqueteController implements Initializable {
 
     
     
-    @FXML
     private void c_back(MouseEvent event) {
         TiquetesMenu("Menu", "Menu");
     }

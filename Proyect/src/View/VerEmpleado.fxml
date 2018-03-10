@@ -25,11 +25,6 @@
             <TableColumn prefWidth="142.0" text="Remove" />
          </columns>
       </TableView>
-      <Button fx:id="btnBack" layoutX="201.0" layoutY="537.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
-         <effect>
-            <Blend />
-         </effect>
-      </Button>
       <Label layoutX="594.0" layoutY="48.0" text="View" textFill="WHITE">
          <font>
             <Font size="36.0" />

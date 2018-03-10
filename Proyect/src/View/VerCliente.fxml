@@ -30,11 +30,6 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="btnBack" layoutX="201.0" layoutY="529.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
-         <effect>
-            <Blend />
-         </effect>
-      </Button>
       <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="1264.0">
          <menus>
             <Menu mnemonicParsing="false">

@@ -22,18 +22,6 @@
          </font>
       </Label>
       <ChoiceBox layoutX="569.0" layoutY="239.0" prefHeight="25.0" prefWidth="373.0" />
-      <Button fx:id="btnADD1" layoutX="45.0" layoutY="603.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="184.0" text="BACK">
-         <effect>
-            <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
-               <light>
-                  <Light.Distant color="#757972" />
-               </light>
-            </Lighting>
-         </effect>
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
       <Button fx:id="btnADD" layoutX="574.0" layoutY="510.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="184.0" text="SAVE">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
@@ -51,7 +39,7 @@
       <Button layoutX="383.0" layoutY="300.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Description" />
       <TextField fx:id="txtCName11" layoutX="569.0" layoutY="162.0" prefHeight="35.0" prefWidth="373.0" />
       <TextField fx:id="txtCName111" layoutX="569.0" layoutY="300.0" prefHeight="193.0" prefWidth="373.0" />
-      <MenuBar layoutX="6.0" prefHeight="33.0" prefWidth="1257.0">
+      <MenuBar prefHeight="33.0" prefWidth="1263.0">
          <menus>
             <Menu mnemonicParsing="false">
                <graphic>

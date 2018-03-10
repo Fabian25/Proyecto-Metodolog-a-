@@ -32,8 +32,6 @@ public class EliminarClienteController implements Initializable {
     @FXML
     private TableView<?> tblRemoveClient;
     @FXML
-    private Button btnBack;
-    @FXML
     private Button BarRegisClient;
     private MenuItem BarRegisClientItem;
     @FXML
@@ -70,7 +68,6 @@ public class EliminarClienteController implements Initializable {
         }
     }
 
-    @FXML
     private void c_back(MouseEvent event) {
         ClientesMenu("ModificarCliente", "Clients");
     }

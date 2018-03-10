@@ -64,11 +64,6 @@
             </Menu>
          </menus>
       </MenuBar>
-      <Button fx:id="btnBack" layoutX="42.0" layoutY="636.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
-         <effect>
-            <Blend />
-         </effect>
-      </Button>
       <TextField fx:id="txt_search" layoutX="201.0" layoutY="172.0" />
    </children>
 </AnchorPane>

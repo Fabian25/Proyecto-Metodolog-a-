@@ -45,11 +45,6 @@
             </Lighting>
          </effect>
       </Button>
-      <Button fx:id="btnBack" layoutX="59.0" layoutY="616.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
-         <effect>
-            <Blend />
-         </effect>
-      </Button>
       <TableView fx:id="table_Enterprice" layoutX="666.0" layoutY="232.0" prefHeight="200.0" prefWidth="328.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Code" />

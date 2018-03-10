@@ -6,13 +6,22 @@
 package Controller;
 
 import java.net.URL;
+import java.security.SecureRandom;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -28,26 +37,68 @@ public class RecuperarContraseñaController implements Initializable {
     @FXML
     private Button btnConfirmP;
     @FXML
-    private Button btnADD1;
+    private Label txtCaptcha;
+    @FXML
+    private TextField lblCaptcha;
+    @FXML
+    private Button btn_Back;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        txtCaptcha.setText(randomString(6));
+    }
+
+    private String randomString(int len) {
+        String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        SecureRandom rnd = new SecureRandom();
+        StringBuilder sb = new StringBuilder(len);
+        for (int i = 0; i < len; i++) {
+            sb.append(AB.charAt(rnd.nextInt(AB.length())));
+        }
+        return sb.toString();
+    }
 
     @FXML
     private void Cpregunta(MouseEvent event) {
     }
 
+
+
     @FXML
-    private void c_back(MouseEvent event) {
+    private void P_Captcha(ActionEvent event) {
+        
+
     }
 
     @FXML
-    private void c_add(MouseEvent event) {
+    private void P_Confirm(ActionEvent event) {
+        if (txtCaptcha.getText().equals(lblCaptcha.getText())) {
+            JOptionPane.showMessageDialog(null, "Correcto");
+        } else {
+            lblCaptcha.setText(randomString(6));
+            txtCaptcha.setText("");
+        }
     }
-    
+
+    @FXML
+    private void c_back(MouseEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + "Login" + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Login");
+            stage.setScene(new Scene(root1));
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+            Stage act = (Stage) btn_Back.getScene().getWindow();
+            act.close();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+        
+    }
+
 }

@@ -33,8 +33,6 @@ public class ModificarClienteController implements Initializable {
     @FXML
     private Button btnADD;
     @FXML
-    private Button btnADD1;
-    @FXML
     private Button BarRegisClient;
     @FXML
     private Button BarEditClient;
@@ -102,6 +100,7 @@ public class ModificarClienteController implements Initializable {
     private void C_Home(ActionEvent event) {
         ClientesMenu("Menu", "Menu");
     }
+
 
     
 }

@@ -30,8 +30,6 @@ public class EliminarTiqueteController implements Initializable {
     @FXML
     private TableView<?> tblRemoveTiq;
     @FXML
-    private Button btnBack;
-    @FXML
     private Button BarRegisTickets;
     @FXML
     private Button BarEditTickets;
@@ -68,7 +66,6 @@ public class EliminarTiqueteController implements Initializable {
     }
 
 
-    @FXML
     private void c_back(MouseEvent event) {
         TiquetesMenu("Menu", "Menu");
     }

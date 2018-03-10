@@ -16,9 +16,9 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <ChoiceBox fx:id="cbxPregunta" layoutX="329.0" layoutY="104.0" onMouseClicked="#Cpregunta" prefHeight="34.0" prefWidth="342.0" />
-      <TextField fx:id="txtRespuesta" layoutX="330.0" layoutY="226.0" prefHeight="34.0" prefWidth="342.0" />
-      <Button fx:id="btnConfirmP" layoutX="428.0" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="144.0" text="Confirm">
+      <ChoiceBox fx:id="cbxPregunta" layoutX="46.0" layoutY="129.0" onMouseClicked="#Cpregunta" prefHeight="34.0" prefWidth="342.0" />
+      <TextField fx:id="txtRespuesta" layoutX="46.0" layoutY="212.0" prefHeight="34.0" prefWidth="342.0" />
+      <Button fx:id="btnConfirmP" layoutX="139.0" layoutY="349.0" mnemonicParsing="false" onAction="#P_Confirm" prefHeight="45.0" prefWidth="144.0" text="Confirm">
          <effect>
             <Blend />
          </effect>
@@ -28,17 +28,26 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="btnADD1" layoutX="27.0" layoutY="482.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="184.0" text="BACK">
+      <Label fx:id="txtCaptcha" layoutX="745.0" layoutY="120.0" prefHeight="53.0" prefWidth="184.0" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
          <effect>
-            <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
                <light>
-                  <Light.Distant color="#757972" />
+                  <Light.Distant />
                </light>
             </Lighting>
          </effect>
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
+      </Label>
+      <TextField fx:id="lblCaptcha" layoutX="715.0" layoutY="212.0" onAction="#P_Captcha" prefHeight="34.0" prefWidth="258.0" />
+      <Button fx:id="btn_Back" layoutX="40.0" layoutY="473.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
+         <effect>
+            <Blend />
+         </effect>
       </Button>
    </children>
 </AnchorPane>

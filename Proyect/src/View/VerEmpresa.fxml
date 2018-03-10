@@ -25,11 +25,6 @@
             <TableColumn prefWidth="77.0" text="Email" />
          </columns>
       </TableView>
-      <Button fx:id="btnBack" layoutX="152.0" layoutY="594.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
-         <effect>
-            <Blend />
-         </effect>
-      </Button>
       <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="1264.0">
          <menus>
             <Menu mnemonicParsing="false">

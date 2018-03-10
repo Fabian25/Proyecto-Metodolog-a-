@@ -30,8 +30,6 @@ public class VerClienteController implements Initializable {
     @FXML
     private TableView<?> tblViewClient;
     @FXML
-    private Button btnBack;
-    @FXML
     private Button BarRegisClient;
     @FXML
     private Button BarEditClient;
@@ -68,7 +66,6 @@ public class VerClienteController implements Initializable {
         // TODO
     }
 
-    @FXML
     private void c_back(MouseEvent event) {
         ClientesMenu("EliminarCliente", "Clients");
     }

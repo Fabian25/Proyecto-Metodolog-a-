@@ -46,8 +46,6 @@ public class ModificarEmpleadoController implements Initializable {
     private Button BarViewEmp;
     @FXML
     private Button BarHomeE;
-    @FXML
-    private Button btnBack;
 
     /**
      * Initializes the controller class.
@@ -103,9 +101,9 @@ public class ModificarEmpleadoController implements Initializable {
         EmpleadosMenu("Menu", "Menu");
     }
 
-    @FXML
     private void E_Back(ActionEvent event) {
         EmpleadosMenu("RegistroEmpleado", "Employee");
     }
+
     
 }
