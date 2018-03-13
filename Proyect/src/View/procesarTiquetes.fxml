@@ -7,23 +7,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.VerTiquetesController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProcesarTiquetesController">
    <children>
       <ImageView fitHeight="711.0" fitWidth="1512.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <Button disable="true" layoutX="250.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Send" />
-      <Button disable="true" layoutX="874.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Approved" />
-      <Button disable="true" layoutX="463.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Analyzing" />
-      <Button disable="true" layoutX="678.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Checked" />
+      <Button fx:id="btnSend" disable="true" layoutX="250.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Send" />
+      <Button fx:id="btnApproved" disable="true" layoutX="874.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Approved" />
+      <Button fx:id="btnAnalyzing" disable="true" layoutX="463.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Analyzing" />
+      <Button fx:id="btnChecked" disable="true" layoutX="678.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Checked" />
       <Button disable="true" layoutX="325.0" layoutY="274.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Ticket Series" />
       <Button disable="true" layoutX="469.0" layoutY="274.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="...." />
       <Button disable="true" layoutX="325.0" layoutY="347.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Status" />
       <ComboBox layoutX="469.0" layoutY="357.0" prefWidth="150.0" />
       <TextArea layoutX="327.0" layoutY="406.0" prefHeight="146.0" prefWidth="297.0" promptText="Description" />
       <Button layoutX="820.0" layoutY="538.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Back" />
-      <ProgressBar layoutX="250.0" layoutY="191.0" prefHeight="18.0" prefWidth="752.0" progress="0.0" />
+      <ProgressBar fx:id="ProgressBar" layoutX="250.0" layoutY="191.0" prefHeight="18.0" prefWidth="752.0" progress="0.0" />
    </children>
 </AnchorPane>

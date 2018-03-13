@@ -80,8 +80,7 @@ Connection connection=null;
          preparedStatement.executeQuery();
             
                 } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
+                    JOptionPane.showMessageDialog(null, ex);                }
         }
         txtCName.setText("");
       txtCLastNmae.setText("");txtCIDnum.setText("");txtCPhoneNum.setText("");  txtCEmail.setText("");

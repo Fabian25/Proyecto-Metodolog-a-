@@ -22,7 +22,6 @@ public class Conexion {
             Connection conn = DriverManager.getConnection("jdbc:mysql://sql10.freemysqlhosting.net/", "sql10218899", "dqlkLPTbHd");
             return conn;
         } catch (Exception e) {
-
             return null;
 
         }

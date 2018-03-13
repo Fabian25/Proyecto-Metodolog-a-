@@ -29,9 +29,9 @@ import javafx.stage.StageStyle;
 public class VerTiquetesController implements Initializable {
 
     @FXML
-    private TableView<?> tblRemoveTiq;
-    @FXML
     private Button BarRegisTickets;
+    @FXML
+    private TableView<?> tblRemoveTiq;
     @FXML
     private Button BarEditTickets;
     @FXML
