@@ -8,12 +8,15 @@ package Controller;
 import DAO.ClienteDAOImplements;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -58,11 +61,11 @@ public class RegistroClienteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
- 
+
     }
 
     private void ClientesMenu(String Vista, String Titulo) {
-      try {
+        try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
@@ -75,7 +78,6 @@ public class RegistroClienteController implements Initializable {
             System.out.println("Error");
         }
     }
-
 
     @FXML
     private void c_back(MouseEvent event) {
@@ -110,13 +112,96 @@ public class RegistroClienteController implements Initializable {
 
     @FXML
     private void c_add(ActionEvent event) {
-        h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
-        //agrega a nivel de base de datos pero no a tabla
-        txtCName.setText("");
-        txtCLastNmae.setText("");
-        txtCIDnum.setText("");
-        txtCPhoneNum.setText("");
-        txtCEmail.setText("");
-        ClientesMenu("Menu", "Menu");
+        if (validaNombre() | validaApellido() | validaID() | validaTelefono() | validateEmaill()) {
+            h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
+            //agrega a nivel de base de datos pero no a tabla
+            txtCName.setText("");
+            txtCLastNmae.setText("");
+            txtCIDnum.setText("");
+            txtCPhoneNum.setText("");
+            txtCEmail.setText("");
+            ClientesMenu("Menu", "Menu");
+        }
+
+    }
+
+    private boolean validaNombre() {
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(txtCName.getText());
+        if (m.find() && m.group().equals(txtCName.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar Nombre");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digite un nombre valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
+    private boolean validaApellido() {
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(txtCLastNmae.getText());
+        if (m.find() && m.group().equals(txtCLastNmae.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar Apellido");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digite un apelledio valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
+    private boolean validaID() {
+        Pattern p = Pattern.compile("[0-8]+");
+        Matcher m = p.matcher(txtCIDnum.getText());
+        if (m.find() && m.group().equals(txtCIDnum.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar ID");
+            alert.setHeaderText(null);
+            alert.setContentText("Porfavor Digite un ID valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
+    private boolean validateEmaill() {
+        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+        Matcher m = p.matcher(txtCEmail.getText());
+        if (m.find() && m.group().equals(txtCEmail.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Email");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digire un email valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
+    private boolean validaTelefono() {
+        Pattern p = Pattern.compile("(0|91)?[7-9][0-9]{7}");
+        Matcher m = p.matcher(txtCPhoneNum.getText());
+        if (m.find() && m.group().equals(txtCPhoneNum.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Mobile Number");
+            alert.setHeaderText(null);
+            alert.setContentText("Please Enter Valid Mobile Number");
+            alert.showAndWait();
+
+            return false;
+        }
     }
 }
