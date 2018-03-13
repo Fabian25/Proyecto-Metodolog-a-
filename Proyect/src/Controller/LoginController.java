@@ -94,25 +94,25 @@ public class LoginController implements Initializable {
     @FXML
     private void Ingresar(ActionEvent event) {
 
-        if (validaEmail()) {
+//        if (validaEmail()) {
             IngresarMenu("Menu", "Menu");
-        }
+//        }
     }
 
-    private boolean validaEmail() {
-        Pattern p = Pattern.compile("[a-zA-z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
-        Matcher m = p.matcher(txt_Usuario.getText());
-        if (m.find() && m.group().equals(txt_Usuario.getText())) {
-            return true;
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Validate Number");
-            alert.setHeaderText(null);
-            alert.setContentText("Digite los valores basico");
-            alert.showAndWait();
-            return false;
-        }
-    }
+//    private boolean validaEmail() {
+//        Pattern p = Pattern.compile("[a-zA-z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+//        Matcher m = p.matcher(txt_Usuario.getText());
+//        if (m.find() && m.group().equals(txt_Usuario.getText())) {
+//            return true;
+//        } else {
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("Validate Number");
+//            alert.setHeaderText(null);
+//            alert.setContentText("Digite los valores basico");
+//            alert.showAndWait();
+//            return false;
+//        }
+//    }
     
 
     @FXML

@@ -19,7 +19,7 @@ public class Conexion {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://sql10.freemysqlhosting.net/", "sql10218899", "dqlkLPTbHd");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://sql10.freemysqlhosting.net/sql10218899", "sql10218899", "dqlkLPTbHd");
             return conn;
         } catch (Exception e) {
             return null;

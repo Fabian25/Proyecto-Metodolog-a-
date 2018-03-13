@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
  */
 public interface IClienteDAO {
     
-   	public void registrar(TextField txtCName,TextField txtCLastNmae,TextField txtCIDnum,TextField txtCPhoneNum,TextField txtCEmail);
+   	public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail);
 	public List<Persona> ver();
 	public void actualizar(TextField txtCName,TextField txtCLastNmae,TextField txtCPhoneNum,TextField txtCEmail,Persona p);
 	public void eliminar(TextField txtCIDnum); 

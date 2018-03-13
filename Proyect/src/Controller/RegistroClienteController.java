@@ -58,7 +58,7 @@ public class RegistroClienteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+ 
     }
 
     private void ClientesMenu(String Vista, String Titulo) {
@@ -77,12 +77,6 @@ public class RegistroClienteController implements Initializable {
         }
     }
 
-    @FXML
-    private void c_add(MouseEvent event) {
-        h.registrar(txtCName, txtCLastNmae, txtCIDnum, txtCPhoneNum, txtCEmail);
-        //agrega a nivel de base de datos pero no a tabla
-        ClientesMenu("Menu", "Menu");
-    }
 
     @FXML
     private void c_back(MouseEvent event) {
@@ -117,5 +111,13 @@ public class RegistroClienteController implements Initializable {
 
     @FXML
     private void c_add(ActionEvent event) {
+        h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
+        //agrega a nivel de base de datos pero no a tabla
+        txtCName.setText("");
+        txtCLastNmae.setText("");
+        txtCIDnum.setText("");
+        txtCPhoneNum.setText("");
+        txtCEmail.setText("");
+        ClientesMenu("Menu", "Menu");
     }
 }

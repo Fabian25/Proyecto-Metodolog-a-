@@ -22,10 +22,9 @@ import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 
 public class ClienteDAOImplements implements IClienteDAO {
-    
-PreparedStatement preparedStatement = null;
-Connection connection=null;
 
+    PreparedStatement preparedStatement = null;
+    Connection connection = null;
 
 //    public boolean ExisteCedula(String ced, String cod) {
 //        Connection cn = cc.conexion();
@@ -48,43 +47,38 @@ Connection connection=null;
 //        }
 //        return false;
 //    }
-
     @Override
-    public void registrar(TextField txtCName, TextField txtCLastNmae, TextField txtCIDnum, TextField txtCPhoneNum, TextField txtCEmail) {
-          connection=BaseDatos.Conexion.conexion();
+    public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
+        connection = BaseDatos.Conexion.conexion();
         String Cod = "";
         Random rand = new Random();
         int randomNum = rand.nextInt((999 - 100) + 1) + 100;
         Cod = "CL-" + randomNum;
-        if (txtCName.getText().length() == 0 || txtCLastNmae.getText().length() == 0
-                || txtCIDnum.getText().length() == 0 || txtCPhoneNum.getText().length() == 0
-                || txtCEmail.getText().length() == 0) {
+        if (txtCName.length() == 0 || txtCLastNmae.length() == 0
+                || txtCIDnum.length() == 0 || txtCPhoneNum.length() == 0
+                || txtCEmail.length() == 0) {
             JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
         } else {
-                try {
-                        String sql = "Insert into Persona values(?,?,?,?,?,?,?,?,?);";
-                  
-                    preparedStatement=connection.prepareStatement(sql);
-        preparedStatement.setString(1,txtCIDnum.getText());
-        preparedStatement.setString(2, txtCName.getText());
-        preparedStatement.setString(3, txtCLastNmae.getText());
-        preparedStatement.setString(4, txtCPhoneNum.getText());
-        preparedStatement.setString(5, txtCEmail.getText());
-        preparedStatement.setString(6, "nuevo123");
-        preparedStatement.setString(7, Cod);
-        preparedStatement.setString(8, "3");
-        preparedStatement.setString(9, "1");
-        
-        
-        
-         preparedStatement.executeQuery();
-            
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, ex);                }
+            try {
+                String sql = "Insert into Persona values(?,?,?,?,?,?,?,?,?);";
+
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, txtCIDnum);
+                preparedStatement.setString(2, txtCName);
+                preparedStatement.setString(3, txtCLastNmae);
+                preparedStatement.setString(4, txtCPhoneNum);
+                preparedStatement.setString(5, txtCEmail);
+                preparedStatement.setString(6, "nuevo123");
+                preparedStatement.setString(7, Cod);
+                preparedStatement.setString(8, "3");
+                preparedStatement.setString(9, "1");
+
+                preparedStatement.executeUpdate();
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
         }
-        txtCName.setText("");
-      txtCLastNmae.setText("");txtCIDnum.setText("");txtCPhoneNum.setText("");  txtCEmail.setText("");
- 
     }
 
     @Override
@@ -151,7 +145,7 @@ Connection connection=null;
 //        }
 //
 //        return listaCliente;
-return null;
+        return null;
     }
 
 }
