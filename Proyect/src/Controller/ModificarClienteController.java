@@ -54,7 +54,6 @@ public class ModificarClienteController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UTILITY);
             stage.show();
             Stage act = (Stage) BarRegisClient.getScene().getWindow();
             act.close();

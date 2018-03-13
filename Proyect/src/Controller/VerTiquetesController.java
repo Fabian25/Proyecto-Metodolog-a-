@@ -60,7 +60,6 @@ public class VerTiquetesController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UTILITY);
             stage.show();
             Stage act = (Stage) BarRegisTickets.getScene().getWindow();
             act.close();

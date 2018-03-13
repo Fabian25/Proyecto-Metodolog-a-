@@ -56,7 +56,6 @@ public class VerEmpresaController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UTILITY);
             stage.show();
             Stage act = (Stage) BarRegisEntp.getScene().getWindow();
             act.close();

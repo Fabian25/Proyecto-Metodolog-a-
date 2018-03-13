@@ -26,7 +26,6 @@ public class MainFX extends Application {
             Stage stage = new Stage();
             stage.setTitle("Login");
             stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UTILITY);
             stage.show();
         } catch (Exception e) {
             System.out.println("Error");

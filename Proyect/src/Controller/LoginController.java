@@ -55,7 +55,6 @@ public class LoginController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UTILITY);
             stage.show();
             Stage act = (Stage) btn_Ingresar.getScene().getWindow();
             act.close();

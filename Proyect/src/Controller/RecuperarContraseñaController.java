@@ -91,7 +91,6 @@ public class RecuperarContraseñaController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Login");
             stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UTILITY);
             stage.show();
             Stage act = (Stage) btn_Back.getScene().getWindow();
             act.close();
