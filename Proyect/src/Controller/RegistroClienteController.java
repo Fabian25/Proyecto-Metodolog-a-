@@ -6,19 +6,12 @@
 package Controller;
 
 import DAO.ClienteDAOImplements;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
 import Model.Clientes;
 import Model.Clones;
 import Model.Persona;
->>>>>>> 47816f00d9c4a3862e3827b4d18de88e801c02d2
-=======
 import Model.Clientes;
 import Model.Clones;
 import Model.Persona;
->>>>>>> e3fbbbe01116b7d67c641b68de2509f89a10de48
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -38,18 +31,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
 import javafx.scene.control.cell.PropertyValueFactory;
->>>>>>> 47816f00d9c4a3862e3827b4d18de88e801c02d2
-=======
 import javafx.scene.control.cell.PropertyValueFactory;
->>>>>>> e3fbbbe01116b7d67c641b68de2509f89a10de48
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 
 /**
  * FXML Controller class
@@ -84,8 +69,6 @@ public class RegistroClienteController implements Initializable {
     @FXML
     private Button BarHomeC;
     @FXML
-<<<<<<< HEAD
-<<<<<<< HEAD
     private TableView<?> tableRegistCLient;
     @FXML
     private TableColumn<?, ?> ColNameCLient;
@@ -97,34 +80,26 @@ public class RegistroClienteController implements Initializable {
     private TableColumn<?, ?> ColPhoneCLient;
     @FXML
     private TableColumn<?, ?> ColEmailCLient;
-=======
-=======
->>>>>>> e3fbbbe01116b7d67c641b68de2509f89a10de48
     private TableView<Persona> tbClientes;
     @FXML
     private TableColumn<Persona, String> columName;
     @FXML
-    private TableColumn<Persona,String> columLastname;
+    private TableColumn<Persona, String> columLastname;
     @FXML
-    private TableColumn<Persona,Integer> columID;
+    private TableColumn<Persona, Integer> columID;
     @FXML
     private TableColumn<Persona, String> columPhone;
     @FXML
     private TableColumn<Persona, String> columEmail;
-<<<<<<< HEAD
->>>>>>> 47816f00d9c4a3862e3827b4d18de88e801c02d2
-=======
->>>>>>> e3fbbbe01116b7d67c641b68de2509f89a10de48
 
     /**
      * Initializes the controller class.
      */
-            Connection connection =  BaseDatos.Conexion.getConnection();
+    Connection connection = BaseDatos.Conexion.getConnection();
     ObservableList<Persona> data;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-<<<<<<< HEAD
-<<<<<<< HEAD
 //        tableRegistCLient = new TableView<>();
 //        
 //        TableColumn ColNameCLient = new TableColumn("Name");
@@ -151,38 +126,31 @@ public class RegistroClienteController implements Initializable {
 //        table.getColumns().addAll(ColNameCLient, ColLaNameCLient, ColIDCLient, ColPhoneCLient, ColEmailCLient);
 //        table.setTableMenuButtonVisible(true);
 
-=======
-=======
->>>>>>> e3fbbbe01116b7d67c641b68de2509f89a10de48
+       
         try {
-    
-    data=FXCollections.observableArrayList();
-    ResultSet exe=connection.createStatement().executeQuery("SELECT Persona.Nombre, Persona.Apellido, Persona.IdPersona, Persona.Telefono, Persona.Correo FROM Persona");
-            while (exe.next()) {                
+
+            data = FXCollections.observableArrayList();
+            ResultSet exe = connection.createStatement().executeQuery("SELECT Persona.Nombre, Persona.Apellido, Persona.IdPersona, Persona.Telefono, Persona.Correo FROM Persona");
+            while (exe.next()) {
                 data.add(new Persona(exe.getInt(1), exe.getString(2), exe.getString(2), exe.getInt(1), exe.getString(2), exe.getString(2), exe.getString(2)) {
                     @Override
                     public String verPersona() {
-                       return "CLIENTE: " + this.getCodigo() + " NUMERO DE CEDULA:" + this.getCedula()+" NOMBRE:" +this.getNombre();
+                        return "CLIENTE: " + this.getCodigo() + " NUMERO DE CEDULA:" + this.getCedula() + " NOMBRE:" + this.getNombre();
                     }
                 });
-              
+
             }
-    
-    
+
         } catch (Exception e) {
             System.err.println(e);
         }
         columName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-         columLastname.setCellValueFactory(new PropertyValueFactory<>("apellido"));
-          columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
-           columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
-            columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
-            tbClientes.setItems(null);
-            tbClientes.setItems(data);
-<<<<<<< HEAD
->>>>>>> 47816f00d9c4a3862e3827b4d18de88e801c02d2
-=======
->>>>>>> e3fbbbe01116b7d67c641b68de2509f89a10de48
+        columLastname.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+        columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+        columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+        tbClientes.setItems(null);
+        tbClientes.setItems(data);
     }
 
     private void ClientesMenu(String Vista, String Titulo) {
@@ -234,8 +202,8 @@ public class RegistroClienteController implements Initializable {
     @FXML
     private void c_add(ActionEvent event) {
 //        if (validaNombre() | validaApellido() | validaID() | validaTelefono() | validateEmaill()) {
-        if(validaID()){
-    
+        if (validaID()) {
+
             h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
             //agrega a nivel de base de datos pero no a tabla
             txtCName.setText("");
@@ -247,12 +215,6 @@ public class RegistroClienteController implements Initializable {
         }
 
     }
-    
-    
-    
-    
-    
-    
 
     private boolean validaNombre() {
         Pattern p = Pattern.compile("[a-zA-Z]+");
@@ -338,4 +300,3 @@ public class RegistroClienteController implements Initializable {
     private void c_add(MouseEvent event) {
     }
 }
-   
