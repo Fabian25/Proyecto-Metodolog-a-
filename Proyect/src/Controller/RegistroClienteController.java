@@ -206,7 +206,7 @@ public class RegistroClienteController implements Initializable {
     }
 
     private boolean validaID() {
-        Pattern p = Pattern.compile("[0-8]+");
+        Pattern p = Pattern.compile("[0-9]+");
         Matcher m = p.matcher(txtCIDnum.getText());
         if (m.find() && m.group().equals(txtCIDnum.getText())) {
             return true;
