@@ -6,23 +6,15 @@
 package Controller;
 
 import DAO.ClienteDAOImplements;
-import Model.Clientes;
-import Model.Clones;
-import Model.Persona;
-import Model.Clientes;
-import Model.Clones;
+
 import Model.Persona;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +26,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -75,8 +66,6 @@ public class RegistroClienteController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    Connection connection = BaseDatos.Conexion.getConnection();
-    ObservableList<Persona> data;
     @FXML
     private TableView<Persona> tbClientes;
     @FXML
@@ -97,7 +86,7 @@ public class RegistroClienteController implements Initializable {
         columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
-          CargarDatos();
+        CargarDatos();
 //        try {
 //
 //            data = FXCollections.observableArrayList();
@@ -185,7 +174,8 @@ public class RegistroClienteController implements Initializable {
         txtCIDnum.setText("");
         txtCPhoneNum.setText("");
         txtCEmail.setText("");
-        ClientesMenu("Menu", "Menu");
+        CargarDatos();
+//        ClientesMenu("Menu", "Menu");
         //}
     }
 

@@ -24,7 +24,6 @@ public class Conexion {
             
         } catch (ClassNotFoundException | SQLException e) {
              System.out.println("MysqlDataSource err: " + e.getMessage());
-            e.printStackTrace();
 
         }
        
@@ -36,5 +35,12 @@ public class Conexion {
         }
         
         return connect;
+    }
+      public static void closeConnection() throws SQLException {
+        if (connect != null) {
+        
+           connect.close(); 
+        }
+        
     }
 }

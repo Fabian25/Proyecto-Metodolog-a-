@@ -14,6 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
@@ -22,7 +24,7 @@ import javax.swing.JOptionPane;
 public class ClienteDAOImplements implements IClienteDAO {
 
     PreparedStatement preparedStatement = null;
-    Connection connection =  BaseDatos.Conexion.getConnection();
+    Connection connection = BaseDatos.Conexion.getConnection();
 
 //    public boolean ExisteCedula(String ced, String cod) {
 //        Connection cn = cc.conexion();
@@ -47,7 +49,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 //    }
     @Override
     public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
-        
+       
         String Cod;
         Random rand = new Random();
         int randomNum = rand.nextInt((999 - 100) + 1) + 100;
@@ -77,6 +79,9 @@ public class ClienteDAOImplements implements IClienteDAO {
                 JOptionPane.showMessageDialog(null, ex);
             }
         }
+        
+
+      
     }
 
     @Override
@@ -148,10 +153,10 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     @Override
     public ObservableList<Persona> Personas() {
-        ObservableList <Persona> personas = FXCollections.observableArrayList();
-        Connection conexion = BaseDatos.Conexion.getConnection();
+        ObservableList<Persona> personas = FXCollections.observableArrayList();
+
         try {
-            Statement st = conexion.createStatement();
+            Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("Select IdPersona, Nombre, Apellido, Telefono, Correo from Persona where TipoPersona = 3");
             while (rs.next()) {
                 personas.add(new Persona(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), "", "") {
@@ -162,7 +167,7 @@ public class ClienteDAOImplements implements IClienteDAO {
                 });
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error Cargar Facturas \n" + ex);
+            JOptionPane.showMessageDialog(null, "Error Cargar Cliente \n" + ex);
         }
         return personas;
     }
