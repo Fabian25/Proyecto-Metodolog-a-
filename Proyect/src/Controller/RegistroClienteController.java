@@ -15,7 +15,10 @@ import Model.Persona;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
@@ -100,35 +103,8 @@ public class RegistroClienteController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        tableRegistCLient = new TableView<>();
-//        
-//        TableColumn ColNameCLient = new TableColumn("Name");
-//        ColNameCLient.setMinWidth(80);
-//        ColNameCLient.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-//        
-//        TableColumn ColLaNameCLient = new TableColumn("Last Name");
-//        ColLaNameCLient.setMinWidth(80);
-//        ColLaNameCLient.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-//        
-//        TableColumn ColIDCLient = new TableColumn("ID");
-//        ColIDCLient.setMaxWidth(50);
-//        ColIDCLient.setCellValueFactory(new PropertyValueFactory<>("ID"));
-//        
-//        TableColumn ColPhoneCLient = new TableColumn("Mobile No.");
-//        ColPhoneCLient.setMinWidth(70);
-//        ColPhoneCLient.setCellValueFactory(new PropertyValueFactory<>("MobileNo"));
-//        
-//        TableColumn ColEmailCLient = new TableColumn("Email");
-//        ColEmailCLient.setMinWidth(150);
-//        ColEmailCLient.setCellValueFactory(new PropertyValueFactory<>("email"));
-//        
-//                
-//        table.getColumns().addAll(ColNameCLient, ColLaNameCLient, ColIDCLient, ColPhoneCLient, ColEmailCLient);
-//        table.setTableMenuButtonVisible(true);
 
-       
         try {
-<<<<<<< HEAD
 
             data = FXCollections.observableArrayList();
             ResultSet exe = connection.createStatement().executeQuery("SELECT Persona.Nombre, Persona.Apellido, Persona.IdPersona, Persona.Telefono, Persona.Correo FROM Persona");
@@ -140,24 +116,8 @@ public class RegistroClienteController implements Initializable {
                     }
                 });
 
-=======
-    
-    data=FXCollections.observableArrayList();
-    ResultSet exe=connection.createStatement().executeQuery("SELECT Persona.Nombre, Persona.Apellido, Persona.IdPersona, Persona.Telefono, Persona.Correo FROM Persona");
-            while (exe.next()) {                
-                data.add(new Persona(exe.getInt(1), exe.getString(2), exe.getString(2), exe.getInt(1), exe.getString(2), exe.getString(2), exe.getString(2)) {
-                    @Override
-                    public String verPersona() {
-                       return "CLIENTE: " + this.getCodigo() + " NUMERO DE CEDULA:" + this.getCedula()+" NOMBRE:" +this.getNombre();
-                    }
-                });
-              
->>>>>>> 4d1f71cde5103240bba9d11d754f7c96f6e8ea9e
-            }
 
-        } catch (Exception e) {
-            System.err.println(e);
-        }
+        } 
         columName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         columLastname.setCellValueFactory(new PropertyValueFactory<>("apellido"));
         columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
@@ -165,6 +125,9 @@ public class RegistroClienteController implements Initializable {
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
         tbClientes.setItems(null);
         tbClientes.setItems(data);
+    }   catch (SQLException ex) {
+            Logger.getLogger(RegistroClienteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void ClientesMenu(String Vista, String Titulo) {
@@ -263,23 +226,22 @@ public class RegistroClienteController implements Initializable {
     }
 
     private boolean validaID() {
-<<<<<<< HEAD
+
         Pattern p = Pattern.compile("[0-9]+");
-=======
-        Pattern p = Pattern.compile("[0-9]{7}");
->>>>>>> 7471574c41ebd97360fdf5bfee0278459d157862
-        Matcher m = p.matcher(txtCIDnum.getText());
-        if (m.find() && m.group().equals(txtCIDnum.getText())) {
-            return true;
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Validar ID");
-            alert.setHeaderText(null);
-            alert.setContentText("Porfavor Digite un ID valido");
-            alert.showAndWait();
+
+        Pattern p1 = Pattern.compile("[0-9]{7}");
+
+//        if (m.find() && m.group().equals(txtCIDnum.getText())) {
+//            return true;
+//        } else {
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("Validar ID");
+//            alert.setHeaderText(null);
+//            alert.setContentText("Porfavor Digite un ID valido");
+//            alert.showAndWait();
 
             return false;
-        }
+//        }
     }
 
     private boolean validateEmaill() {
