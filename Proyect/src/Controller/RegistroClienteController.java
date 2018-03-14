@@ -8,11 +8,11 @@ package Controller;
 
 
 import DAO.ClienteDAOImplements;
-<<<<<<< HEAD
 
 
-=======
->>>>>>> f26d79f03c33e5c138dec31ce44e210de4ce294b
+
+
+
 import Model.Clientes;
 import Model.Clones;
 import Model.Persona;
@@ -79,10 +79,7 @@ public class RegistroClienteController implements Initializable {
     @FXML
     private Button BarHomeC;
     @FXML
-<<<<<<< HEAD
 
-=======
->>>>>>> f26d79f03c33e5c138dec31ce44e210de4ce294b
     private TableView<?> tableRegistCLient;
     @FXML
     private TableColumn<?, ?> ColNameCLient;
@@ -94,10 +91,7 @@ public class RegistroClienteController implements Initializable {
     private TableColumn<?, ?> ColPhoneCLient;
     @FXML
     private TableColumn<?, ?> ColEmailCLient;
-<<<<<<< HEAD
 
-=======
->>>>>>> f26d79f03c33e5c138dec31ce44e210de4ce294b
     private TableView<Persona> tbClientes;
     @FXML
     private TableColumn<Persona, String> columName;
@@ -119,7 +113,7 @@ public class RegistroClienteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-<<<<<<< HEAD
+
 //        tableRegistCLient = new TableView<>();
 //        
 //        TableColumn ColNameCLient = new TableColumn("Name");
@@ -147,8 +141,7 @@ public class RegistroClienteController implements Initializable {
 //        table.setTableMenuButtonVisible(true);
 
 
-=======
->>>>>>> f26d79f03c33e5c138dec31ce44e210de4ce294b
+
         try {
 
             data = FXCollections.observableArrayList();
@@ -164,14 +157,14 @@ public class RegistroClienteController implements Initializable {
 
         } 
         columName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-<<<<<<< HEAD
+
          columLastname.setCellValueFactory(new PropertyValueFactory<>("apellido"));
           columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
            columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
             columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
             tbClientes.setItems(null);
             tbClientes.setItems(data);
-=======
+
         columLastname.setCellValueFactory(new PropertyValueFactory<>("apellido"));
         columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
@@ -181,7 +174,7 @@ public class RegistroClienteController implements Initializable {
     }   catch (SQLException ex) {
             Logger.getLogger(RegistroClienteController.class.getName()).log(Level.SEVERE, null, ex);
         }
->>>>>>> f26d79f03c33e5c138dec31ce44e210de4ce294b
+
     }
 
     private void ClientesMenu(String Vista, String Titulo) {
@@ -280,7 +273,7 @@ public class RegistroClienteController implements Initializable {
     }
 
     private boolean validaID() {
-<<<<<<< HEAD
+
         Pattern p = Pattern.compile("[0-9]{9}");
         Matcher m = p.matcher(txtCIDnum.getText());
         if (m.find() && m.group().equals(txtCIDnum.getText())) {
@@ -291,24 +284,8 @@ public class RegistroClienteController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Porfavor Digite un ID valido");
             alert.showAndWait();
-=======
-
-        Pattern p = Pattern.compile("[0-9]+");
-
-        Pattern p1 = Pattern.compile("[0-9]{7}");
-
-//        if (m.find() && m.group().equals(txtCIDnum.getText())) {
-//            return true;
-//        } else {
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Validar ID");
-//            alert.setHeaderText(null);
-//            alert.setContentText("Porfavor Digite un ID valido");
-//            alert.showAndWait();
->>>>>>> f26d79f03c33e5c138dec31ce44e210de4ce294b
-
-            return false;
-//        }
+    }
+        return false;
     }
 
     private boolean validateEmaill() {
