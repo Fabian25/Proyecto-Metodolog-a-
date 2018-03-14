@@ -6,6 +6,7 @@
 package IDAO;
 import java.util.List;
 import Model.Persona;
+import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
 /**
  *
@@ -17,5 +18,5 @@ public interface IClienteDAO {
 	public List<Persona> ver();
 	public void actualizar(TextField txtCName,TextField txtCLastNmae,TextField txtCPhoneNum,TextField txtCEmail,Persona p);
 	public void eliminar(TextField txtCIDnum); 
-        
+        public ObservableList<Persona> Personas();
 }

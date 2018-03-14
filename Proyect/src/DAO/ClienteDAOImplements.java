@@ -11,7 +11,11 @@ import java.sql.SQLException;
 import java.util.List;
 import IDAO.*;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Random;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 
@@ -140,6 +144,27 @@ public class ClienteDAOImplements implements IClienteDAO {
 //
 //        return listaCliente;
         return null;
+    }
+
+    @Override
+    public ObservableList<Persona> Personas() {
+        ObservableList <Persona> personas = FXCollections.observableArrayList();
+        Connection conexion = BaseDatos.Conexion.getConnection();
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery("Select IdPersona, Nombre, Apellido, Telefono, Correo from Persona where TipoPersona = 3");
+            while (rs.next()) {
+                personas.add(new Persona(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), "", "") {
+                    @Override
+                    public String verPersona() {
+                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    }
+                });
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Cargar Facturas \n" + ex);
+        }
+        return personas;
     }
 
 }

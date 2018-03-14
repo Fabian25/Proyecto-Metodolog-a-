@@ -71,18 +71,13 @@ public class RegistroClienteController implements Initializable {
     private Button BarViewClient;
     @FXML
     private Button BarHomeC;
+
+    /**
+     * Initializes the controller class.
+     */
+    Connection connection = BaseDatos.Conexion.getConnection();
+    ObservableList<Persona> data;
     @FXML
-    private TableView<?> tableRegistCLient;
-    @FXML
-    private TableColumn<?, ?> ColNameCLient;
-    @FXML
-    private TableColumn<?, ?> ColLaNameCLient;
-    @FXML
-    private TableColumn<?, ?> ColIDCLient;
-    @FXML
-    private TableColumn<?, ?> ColPhoneCLient;
-    @FXML
-    private TableColumn<?, ?> ColEmailCLient;
     private TableView<Persona> tbClientes;
     @FXML
     private TableColumn<Persona, String> columName;
@@ -95,39 +90,42 @@ public class RegistroClienteController implements Initializable {
     @FXML
     private TableColumn<Persona, String> columEmail;
 
-    /**
-     * Initializes the controller class.
-     */
-    Connection connection = BaseDatos.Conexion.getConnection();
-    ObservableList<Persona> data;
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        try {
-
-            data = FXCollections.observableArrayList();
-            ResultSet exe = connection.createStatement().executeQuery("SELECT Persona.Nombre, Persona.Apellido, Persona.IdPersona, Persona.Telefono, Persona.Correo FROM Persona");
-            while (exe.next()) {
-                data.add(new Persona(exe.getInt(1), exe.getString(2), exe.getString(2), exe.getInt(1), exe.getString(2), exe.getString(2), exe.getString(2)) {
-                    @Override
-                    public String verPersona() {
-                        return "CLIENTE: " + this.getCodigo() + " NUMERO DE CEDULA:" + this.getCedula() + " NOMBRE:" + this.getNombre();
-                    }
-                });
-
-
-        } 
         columName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         columLastname.setCellValueFactory(new PropertyValueFactory<>("apellido"));
         columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
-        tbClientes.setItems(null);
-        tbClientes.setItems(data);
-    }   catch (SQLException ex) {
-            Logger.getLogger(RegistroClienteController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+          CargarDatos();
+//        try {
+//
+//            data = FXCollections.observableArrayList();
+//            ResultSet exe = connection.createStatement().executeQuery("SELECT Persona.Nombre, Persona.Apellido, Persona.IdPersona, Persona.Telefono, Persona.Correo FROM Persona");
+//            while (exe.next()) {
+//                data.add(new Persona(exe.getInt(1), exe.getString(2), exe.getString(2), exe.getInt(1), exe.getString(2), exe.getString(2), exe.getString(2)) {
+//                    @Override
+//                    public String verPersona() {
+//                        return "CLIENTE: " + this.getCodigo() + " NUMERO DE CEDULA:" + this.getCedula() + " NOMBRE:" + this.getNombre();
+//                    }
+//                });
+//
+//            }
+//            columName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+//            columLastname.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+//            columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+//            columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+//            columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+//            tbClientes.setItems(null);
+//            tbClientes.setItems(data);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(RegistroClienteController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }
+
+    private void CargarDatos() {
+        tbClientes.getItems().clear();
+        tbClientes.getItems().addAll(h.Personas());
     }
 
     private void ClientesMenu(String Vista, String Titulo) {
@@ -179,18 +177,16 @@ public class RegistroClienteController implements Initializable {
     @FXML
     private void c_add(ActionEvent event) {
 //        if (validaNombre() | validaApellido() | validaID() | validaTelefono() | validateEmaill()) {
-        if (validaID()) {
 
-            h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
-            //agrega a nivel de base de datos pero no a tabla
-            txtCName.setText("");
-            txtCLastNmae.setText("");
-            txtCIDnum.setText("");
-            txtCPhoneNum.setText("");
-            txtCEmail.setText("");
-            ClientesMenu("Menu", "Menu");
-        }
-
+        h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
+        //agrega a nivel de base de datos pero no a tabla
+        txtCName.setText("");
+        txtCLastNmae.setText("");
+        txtCIDnum.setText("");
+        txtCPhoneNum.setText("");
+        txtCEmail.setText("");
+        ClientesMenu("Menu", "Menu");
+        //}
     }
 
     private boolean validaNombre() {
@@ -227,21 +223,19 @@ public class RegistroClienteController implements Initializable {
 
     private boolean validaID() {
 
-        Pattern p = Pattern.compile("[0-9]+");
-
-        Pattern p1 = Pattern.compile("[0-9]{7}");
-
-//        if (m.find() && m.group().equals(txtCIDnum.getText())) {
-//            return true;
-//        } else {
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Validar ID");
-//            alert.setHeaderText(null);
-//            alert.setContentText("Porfavor Digite un ID valido");
-//            alert.showAndWait();
+        Pattern p = Pattern.compile("[0-9]{7}");
+        Matcher m = p.matcher(txtCIDnum.getText());
+        if (m.find() && m.group().equals(txtCIDnum.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar ID");
+            alert.setHeaderText(null);
+            alert.setContentText("Porfavor Digite un ID valido");
+            alert.showAndWait();
 
             return false;
-//        }
+        }
     }
 
     private boolean validateEmaill() {
@@ -279,4 +273,5 @@ public class RegistroClienteController implements Initializable {
     @FXML
     private void c_add(MouseEvent event) {
     }
+
 }
