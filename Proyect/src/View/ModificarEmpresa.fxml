@@ -16,7 +16,7 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="txtCName11" layoutX="980.0" layoutY="343.0" prefHeight="35.0" prefWidth="194.0" />
+      <TextField fx:id="txt_Phone" layoutX="980.0" layoutY="343.0" prefHeight="35.0" prefWidth="194.0" />
       <Button layoutX="817.0" layoutY="338.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
       <TableView layoutX="40.0" layoutY="204.0" prefHeight="313.0" prefWidth="761.0">
          <columns>
@@ -29,8 +29,8 @@
       </TableView>
       <Button layoutX="817.0" layoutY="205.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Enterprise Name" />
       <Button layoutX="817.0" layoutY="271.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Acronym" />
-      <TextField fx:id="txtCName" layoutX="980.0" layoutY="210.0" prefHeight="35.0" prefWidth="194.0" />
-      <TextField fx:id="txtCName1" layoutX="980.0" layoutY="276.0" prefHeight="35.0" prefWidth="194.0" />
+      <TextField fx:id="txt_Name" layoutX="980.0" layoutY="210.0" prefHeight="35.0" prefWidth="194.0" />
+      <TextField fx:id="txt_Acronym" layoutX="980.0" layoutY="276.0" prefHeight="35.0" prefWidth="194.0" />
       <Button fx:id="btnADD" layoutX="893.0" layoutY="517.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="184.0" text="SAVE">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">

@@ -7,12 +7,15 @@ package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -74,6 +77,20 @@ public class RegristroEmpresaController implements Initializable {
         }
     }
 
+     @FXML
+    private void c_add(ActionEvent event) {
+        if (validaNombreEmpresa()| validarSiglas()| validaTelefono()) {
+            
+            //agrega a nivel de base de datos pero no a tabla
+            txt_EntrepriceName.setText("");
+            txt_Phone.setText("");
+            txt_Acronym.setText("");
+          //  ClientesMenu("Menu", "Menu");
+        }
+
+    }
+    
+    
     @FXML
     private void c_add(MouseEvent event) {
     }
@@ -106,4 +123,53 @@ public class RegristroEmpresaController implements Initializable {
     private void Ent_Home(ActionEvent event) {
         EmpresasMenu("Menu", "Menu");
     }
+    private boolean validaNombreEmpresa() {
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(txt_EntrepriceName.getText());
+        if (m.find() && m.group().equals(txt_EntrepriceName.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar Nombre");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digite un nombre valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+    
+     private boolean validarSiglas() {
+        Pattern p = Pattern.compile("[A-Z]+");
+        Matcher m = p.matcher(txt_Acronym.getText());
+        if (m.find() && m.group().equals(txt_Acronym.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar Nombre");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digite un nombre valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+    
+    private boolean validaTelefono() {
+        Pattern p = Pattern.compile("(0|91)?[7-9][0-9]{7}");
+        Matcher m = p.matcher(txt_Phone.getText());
+        if (m.find() && m.group().equals(txt_Phone.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Mobile Number");
+            alert.setHeaderText(null);
+            alert.setContentText("Please Enter Valid Mobile Number");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+    
+    
 }

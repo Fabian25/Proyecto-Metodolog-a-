@@ -87,7 +87,7 @@ EmpleadoDAOImplements h = new EmpleadoDAOImplements();
       @FXML
     private void c_add(ActionEvent event) {
         if (validaNombre() | validaApellido() | validaID() | validaTelefono() | validateEmaill()) {
-         //   h.registrar(txt_Name.getText(), txt_LastName.getText(), txt_ID.getText(), txt_Phone.getText(), txt_Email.getText());
+      //      h.registrar(txt_Name.getText(), txt_LastName.getText(), txt_ID.getText(), txt_Phone.getText(), txt_Email.getText());
             h.registrar(txt_Name, txt_Phone, txt_ID, txt_LastName, txt_Email);
             //agrega a nivel de base de datos pero no a tabla
             txt_Name.setText("");
@@ -165,7 +165,7 @@ EmpleadoDAOImplements h = new EmpleadoDAOImplements();
      
      
     private boolean validaID() {
-        Pattern p = Pattern.compile("[0-9]+");
+        Pattern p = Pattern.compile("[0-9]{9}");
         Matcher m = p.matcher(txt_ID.getText());
         if (m.find() && m.group().equals(txt_ID.getText())) {
             return true;
