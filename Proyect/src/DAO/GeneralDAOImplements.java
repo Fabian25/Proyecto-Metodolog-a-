@@ -22,19 +22,20 @@ import javax.swing.JOptionPane;
  */
 public class GeneralDAOImplements implements IGeneral{
 
-    BaseDatos.Conexion cc = new BaseDatos.Conexion();
+     Connection connection =  BaseDatos.Conexion.getConnection();
+
     @Override
     public void LogIn(TextField txtuser, PasswordField txtpass) {
         int Type = 0;
         if (txtuser.getText().length() == 0 || txtpass.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
         } else {
-            Connection cn = cc.conexion();
+         
             String pass = new String(txtpass.getText());
             String sql = "SELECT * FROM Persona p where p.Correo = " + txtuser.getText() + " and p.Contraseña = '" + pass + "';";
             String[] datos = new String[10];
             try {
-                Statement st = cn.createStatement();
+                Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(sql);
                 while (rs.next()) {
                     datos[0] = rs.getString(4);//correo
@@ -81,11 +82,11 @@ public class GeneralDAOImplements implements IGeneral{
         if (txtuser.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
         } else {
-            Connection cn = cc.conexion();
+            
             String sql = "SELECT * FROM Persona p where p.Correo = " + txtuser.getText() + "';";
             String[] datos = new String[10];
             try {
-                Statement st = cn.createStatement();
+                Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(sql);
                 while (rs.next()) {
                     datos[0] = rs.getString(4);//correo
@@ -106,13 +107,12 @@ public class GeneralDAOImplements implements IGeneral{
     }
     @Override
     public void ActualizarContrasena(String correo) {
-        Connection cn = cc.conexion();
         String Update = "UPDATE Personas\n"
                 + "SET Contraseña = nuevo123*\n"
                 + "WHERE Correo = " + correo + ";";
         try {
-            Statement stmt = cn.createStatement();
-            PreparedStatement pst = cn.prepareStatement(Update);
+            Statement stmt = connection.createStatement();
+            PreparedStatement pst = connection.prepareStatement(Update);
             pst.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());

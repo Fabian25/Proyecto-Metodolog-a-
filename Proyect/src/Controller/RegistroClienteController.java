@@ -128,6 +128,7 @@ public class RegistroClienteController implements Initializable {
 
        
         try {
+<<<<<<< HEAD
 
             data = FXCollections.observableArrayList();
             ResultSet exe = connection.createStatement().executeQuery("SELECT Persona.Nombre, Persona.Apellido, Persona.IdPersona, Persona.Telefono, Persona.Correo FROM Persona");
@@ -139,6 +140,15 @@ public class RegistroClienteController implements Initializable {
                     }
                 });
 
+=======
+    
+    data=FXCollections.observableArrayList();
+    ResultSet exe=connection.createStatement().executeQuery("SELECT Persona.Nombre, Persona.Apellido, Persona.IdPersona, Persona.Telefono, Persona.Correo FROM Persona");
+            while (exe.next()) {                
+//                data.add(new Persona(exe.getInt(1), exe.getString(2), exe.getString(2), exe.getInt(1), exe.getString(2), exe.getString(2), exe.getString(2)));
+                
+              
+>>>>>>> 4d1f71cde5103240bba9d11d754f7c96f6e8ea9e
             }
 
         } catch (Exception e) {
@@ -249,7 +259,11 @@ public class RegistroClienteController implements Initializable {
     }
 
     private boolean validaID() {
+<<<<<<< HEAD
+        Pattern p = Pattern.compile("[0-9]+");
+=======
         Pattern p = Pattern.compile("[0-9]{7}");
+>>>>>>> 7471574c41ebd97360fdf5bfee0278459d157862
         Matcher m = p.matcher(txtCIDnum.getText());
         if (m.find() && m.group().equals(txtCIDnum.getText())) {
             return true;
