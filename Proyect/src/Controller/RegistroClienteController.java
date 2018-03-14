@@ -174,7 +174,8 @@ public class RegistroClienteController implements Initializable {
         txtCIDnum.setText("");
         txtCPhoneNum.setText("");
         txtCEmail.setText("");
-        ClientesMenu("Menu", "Menu");
+        CargarDatos();
+//        ClientesMenu("Menu", "Menu");
         //}
     }
 
