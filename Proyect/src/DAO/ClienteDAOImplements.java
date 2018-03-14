@@ -7,15 +7,9 @@ package DAO;
 
 import Model.Persona;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-
-import BaseDatos.Conexion;
 import IDAO.*;
-import Model.Clientes;
 import java.sql.PreparedStatement;
 import java.util.Random;
 import javafx.scene.control.TextField;
@@ -24,7 +18,7 @@ import javax.swing.JOptionPane;
 public class ClienteDAOImplements implements IClienteDAO {
 
     PreparedStatement preparedStatement = null;
-    Connection connection = null;
+    Connection connection =  BaseDatos.Conexion.getConnection();
 
 //    public boolean ExisteCedula(String ced, String cod) {
 //        Connection cn = cc.conexion();
@@ -49,8 +43,8 @@ public class ClienteDAOImplements implements IClienteDAO {
 //    }
     @Override
     public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
-        connection = BaseDatos.Conexion.conexion();
-        String Cod = "";
+        
+        String Cod;
         Random rand = new Random();
         int randomNum = rand.nextInt((999 - 100) + 1) + 100;
         Cod = "CL-" + randomNum;
@@ -73,7 +67,7 @@ public class ClienteDAOImplements implements IClienteDAO {
                 preparedStatement.setString(8, "3");
                 preparedStatement.setString(9, "1");
 
-                preparedStatement.executeUpdate();
+                int executeUpdate = preparedStatement.executeUpdate();
 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);

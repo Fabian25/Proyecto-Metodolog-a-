@@ -6,10 +6,21 @@
 package Controller;
 
 import DAO.ClienteDAOImplements;
+<<<<<<< HEAD
+
+=======
+import Model.Clientes;
+import Model.Clones;
+import Model.Persona;
+>>>>>>> 47816f00d9c4a3862e3827b4d18de88e801c02d2
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,10 +29,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+<<<<<<< HEAD
+
+=======
+import javafx.scene.control.cell.PropertyValueFactory;
+>>>>>>> 47816f00d9c4a3862e3827b4d18de88e801c02d2
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+
 
 /**
  * FXML Controller class
@@ -55,13 +73,94 @@ public class RegistroClienteController implements Initializable {
     private Button BarViewClient;
     @FXML
     private Button BarHomeC;
+    @FXML
+<<<<<<< HEAD
+    private TableView<?> tableRegistCLient;
+    @FXML
+    private TableColumn<?, ?> ColNameCLient;
+    @FXML
+    private TableColumn<?, ?> ColLaNameCLient;
+    @FXML
+    private TableColumn<?, ?> ColIDCLient;
+    @FXML
+    private TableColumn<?, ?> ColPhoneCLient;
+    @FXML
+    private TableColumn<?, ?> ColEmailCLient;
+=======
+    private TableView<Persona> tbClientes;
+    @FXML
+    private TableColumn<Persona, String> columName;
+    @FXML
+    private TableColumn<Persona,String> columLastname;
+    @FXML
+    private TableColumn<Persona,Integer> columID;
+    @FXML
+    private TableColumn<Persona, String> columPhone;
+    @FXML
+    private TableColumn<Persona, String> columEmail;
+>>>>>>> 47816f00d9c4a3862e3827b4d18de88e801c02d2
 
     /**
      * Initializes the controller class.
      */
+            Connection connection =  BaseDatos.Conexion.getConnection();
+    ObservableList<Persona> data;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+<<<<<<< HEAD
+//        tableRegistCLient = new TableView<>();
+//        
+//        TableColumn ColNameCLient = new TableColumn("Name");
+//        ColNameCLient.setMinWidth(80);
+//        ColNameCLient.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+//        
+//        TableColumn ColLaNameCLient = new TableColumn("Last Name");
+//        ColLaNameCLient.setMinWidth(80);
+//        ColLaNameCLient.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+//        
+//        TableColumn ColIDCLient = new TableColumn("ID");
+//        ColIDCLient.setMaxWidth(50);
+//        ColIDCLient.setCellValueFactory(new PropertyValueFactory<>("ID"));
+//        
+//        TableColumn ColPhoneCLient = new TableColumn("Mobile No.");
+//        ColPhoneCLient.setMinWidth(70);
+//        ColPhoneCLient.setCellValueFactory(new PropertyValueFactory<>("MobileNo"));
+//        
+//        TableColumn ColEmailCLient = new TableColumn("Email");
+//        ColEmailCLient.setMinWidth(150);
+//        ColEmailCLient.setCellValueFactory(new PropertyValueFactory<>("email"));
+//        
+//                
+//        table.getColumns().addAll(ColNameCLient, ColLaNameCLient, ColIDCLient, ColPhoneCLient, ColEmailCLient);
+//        table.setTableMenuButtonVisible(true);
 
+=======
+        try {
+    
+    data=FXCollections.observableArrayList();
+    ResultSet exe=connection.createStatement().executeQuery("SELECT Persona.Nombre, Persona.Apellido, Persona.IdPersona, Persona.Telefono, Persona.Correo FROM Persona");
+            while (exe.next()) {                
+                data.add(new Persona(exe.getInt(1), exe.getString(2), exe.getString(2), exe.getInt(1), exe.getString(2), exe.getString(2), exe.getString(2)) {
+                    @Override
+                    public String verPersona() {
+                       return "CLIENTE: " + this.getCodigo() + " NUMERO DE CEDULA:" + this.getCedula()+" NOMBRE:" +this.getNombre();
+                    }
+                });
+              
+            }
+    
+    
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        columName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+         columLastname.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+          columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+           columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+            columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+            tbClientes.setItems(null);
+            tbClientes.setItems(data);
+>>>>>>> 47816f00d9c4a3862e3827b4d18de88e801c02d2
     }
 
     private void ClientesMenu(String Vista, String Titulo) {
@@ -112,7 +211,9 @@ public class RegistroClienteController implements Initializable {
 
     @FXML
     private void c_add(ActionEvent event) {
-        if (validaNombre() | validaApellido() | validaID() | validaTelefono() | validateEmaill()) {
+//        if (validaNombre() | validaApellido() | validaID() | validaTelefono() | validateEmaill()) {
+        if(validaID()){
+    
             h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
             //agrega a nivel de base de datos pero no a tabla
             txtCName.setText("");
@@ -124,6 +225,12 @@ public class RegistroClienteController implements Initializable {
         }
 
     }
+    
+    
+    
+    
+    
+    
 
     private boolean validaNombre() {
         Pattern p = Pattern.compile("[a-zA-Z]+");
@@ -158,7 +265,7 @@ public class RegistroClienteController implements Initializable {
     }
 
     private boolean validaID() {
-        Pattern p = Pattern.compile("[0-8]+");
+        Pattern p = Pattern.compile("[0-9]{7}");
         Matcher m = p.matcher(txtCIDnum.getText());
         if (m.find() && m.group().equals(txtCIDnum.getText())) {
             return true;
@@ -204,4 +311,9 @@ public class RegistroClienteController implements Initializable {
             return false;
         }
     }
+
+    @FXML
+    private void c_add(MouseEvent event) {
+    }
 }
+   

@@ -93,7 +93,7 @@ public class LoginController implements Initializable {
     @FXML
     private void Ingresar(ActionEvent event) {
 
-//        if (validaEmail()) {
+//        if (validaEmail() | validaPassword()) {
             IngresarMenu("Menu", "Menu");
 //        }
     }
@@ -108,6 +108,22 @@ public class LoginController implements Initializable {
 //            alert.setTitle("Validate Number");
 //            alert.setHeaderText(null);
 //            alert.setContentText("Digite los valores basico");
+//            alert.showAndWait();
+//            return false;
+//        }
+//    }
+    
+//    private boolean validaPassword() {
+//       
+//        Pattern p = Pattern.compile("((?=.\\d)(?=.[a-z])(?=.*[A-Z]).{6,15})");
+//        Matcher m = p.matcher(txt_Contra.getText());
+//        if (m.matches()) {
+//            return true;
+//        } else {
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("Validate Password");
+//            alert.setHeaderText(null);
+//            alert.setContentText("La contraseña debe tener(Digitos, minusculas, mayusculas y caracteres) y  debe tener de 6- 15 digitos");
 //            alert.showAndWait();
 //            return false;
 //        }

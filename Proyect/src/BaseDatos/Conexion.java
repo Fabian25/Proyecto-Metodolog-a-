@@ -8,22 +8,33 @@ package BaseDatos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.*;
-import javax.swing.*;
+
 
 public class Conexion {
 
-    Connection con = null;
-
-    public static Connection conexion() {
+    private static Connection connect = null;
+   
+ 
+    private static void conexion(){
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://sql10.freemysqlhosting.net/sql10218899", "sql10218899", "dqlkLPTbHd");
-            return conn;
-        } catch (Exception e) {
-            return null;
+             connect = DriverManager.getConnection("jdbc:mysql://sql10.freemysqlhosting.net/sql10218899", "sql10218899", "dqlkLPTbHd");
+              
+            
+        } catch (ClassNotFoundException | SQLException e) {
+             System.out.println("MysqlDataSource err: " + e.getMessage());
+            e.printStackTrace();
 
         }
+       
+    }
+     public static Connection getConnection() {
+        if (connect == null) {
+        
+            conexion();
+        }
+        
+        return connect;
     }
 }
