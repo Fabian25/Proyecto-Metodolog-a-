@@ -81,13 +81,13 @@
             </Lighting>
          </effect>
       </Button>
-      <TableView layoutX="650.0" layoutY="202.0" prefHeight="298.0" prefWidth="398.0">
+      <TableView fx:id="tbClientes" layoutX="650.0" layoutY="202.0" prefHeight="298.0" prefWidth="398.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="Name" />
-            <TableColumn prefWidth="75.0" text="Last Name" />
-            <TableColumn prefWidth="75.0" text="ID Number" />
-            <TableColumn prefWidth="96.0" text="Phone Number" />
-            <TableColumn prefWidth="77.0" text="Email" />
+            <TableColumn fx:id="columName" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="columLastname" prefWidth="75.0" text="Last Name" />
+            <TableColumn fx:id="columID" prefWidth="75.0" text="ID Number" />
+            <TableColumn fx:id="columPhone" prefWidth="96.0" text="Phone Number" />
+            <TableColumn fx:id="columEmail" prefWidth="77.0" text="Email" />
          </columns>
       </TableView>
       <TextField fx:id="txtCEmail" layoutX="322.0" layoutY="469.0" prefHeight="35.0" prefWidth="184.0" />

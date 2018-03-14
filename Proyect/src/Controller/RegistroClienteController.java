@@ -6,10 +6,17 @@
 package Controller;
 
 import DAO.ClienteDAOImplements;
+import Model.Clientes;
+import Model.Clones;
+import Model.Persona;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +25,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -55,13 +65,51 @@ public class RegistroClienteController implements Initializable {
     private Button BarViewClient;
     @FXML
     private Button BarHomeC;
+    @FXML
+    private TableView<Persona> tbClientes;
+    @FXML
+    private TableColumn<Persona, String> columName;
+    @FXML
+    private TableColumn<Persona,String> columLastname;
+    @FXML
+    private TableColumn<Persona,Integer> columID;
+    @FXML
+    private TableColumn<Persona, String> columPhone;
+    @FXML
+    private TableColumn<Persona, String> columEmail;
 
     /**
      * Initializes the controller class.
      */
+            Connection connection =  BaseDatos.Conexion.getConnection();
+    ObservableList<Persona> data;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        try {
+    
+    data=FXCollections.observableArrayList();
+    ResultSet exe=connection.createStatement().executeQuery("SELECT Persona.Nombre, Persona.Apellido, Persona.IdPersona, Persona.Telefono, Persona.Correo FROM Persona");
+            while (exe.next()) {                
+                data.add(new Persona(exe.getInt(1), exe.getString(2), exe.getString(2), exe.getInt(1), exe.getString(2), exe.getString(2), exe.getString(2)) {
+                    @Override
+                    public String verPersona() {
+                       return "CLIENTE: " + this.getCodigo() + " NUMERO DE CEDULA:" + this.getCedula()+" NOMBRE:" +this.getNombre();
+                    }
+                });
+              
+            }
+    
+    
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        columName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+         columLastname.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+          columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+           columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+            columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+            tbClientes.setItems(null);
+            tbClientes.setItems(data);
     }
 
     private void ClientesMenu(String Vista, String Titulo) {
@@ -204,4 +252,9 @@ public class RegistroClienteController implements Initializable {
             return false;
         }
     }
+
+    @FXML
+    private void c_add(MouseEvent event) {
+    }
 }
+   
