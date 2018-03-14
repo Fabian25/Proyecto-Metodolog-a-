@@ -87,8 +87,7 @@ EmpleadoDAOImplements h = new EmpleadoDAOImplements();
       @FXML
     private void c_add(ActionEvent event) {
         if (validaNombre() | validaApellido() | validaID() | validaTelefono() | validateEmaill()) {
-      //      h.registrar(txt_Name.getText(), txt_LastName.getText(), txt_ID.getText(), txt_Phone.getText(), txt_Email.getText());
-            h.registrar(txt_Name, txt_Phone, txt_ID, txt_LastName, txt_Email);
+            h.registrar(txt_Name.getText(), txt_LastName.getText(), txt_ID.getText(), txt_Phone.getText(), txt_Email.getText());
             //agrega a nivel de base de datos pero no a tabla
             txt_Name.setText("");
             txt_LastName.setText("");
@@ -102,7 +101,6 @@ EmpleadoDAOImplements h = new EmpleadoDAOImplements();
     
     @FXML
     private void c_add(MouseEvent event) {
-       h.registrar(txt_Name, txt_Phone, txt_ID, txt_LastName, txt_Email);
        //agrega a nivel de base de datos no en el tabla
     }
 

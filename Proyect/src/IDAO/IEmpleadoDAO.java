@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
  */
 public interface IEmpleadoDAO {
 
-    public void registrar(TextField txt_Name, TextField txt_Phone, TextField txt_ID, TextField txt_LastName, TextField txt_Email);
+    public void registrar(String txt_Name,String txt_Phone, String txt_ID, String txt_LastName, String txt_Email);
 
     public List<Persona> ver();
 
