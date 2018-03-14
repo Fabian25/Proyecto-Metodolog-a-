@@ -90,12 +90,8 @@ public class RegistroClienteController implements Initializable {
     data=FXCollections.observableArrayList();
     ResultSet exe=connection.createStatement().executeQuery("SELECT Persona.Nombre, Persona.Apellido, Persona.IdPersona, Persona.Telefono, Persona.Correo FROM Persona");
             while (exe.next()) {                
-                data.add(new Persona(exe.getInt(1), exe.getString(2), exe.getString(2), exe.getInt(1), exe.getString(2), exe.getString(2), exe.getString(2)) {
-                    @Override
-                    public String verPersona() {
-                       return "CLIENTE: " + this.getCodigo() + " NUMERO DE CEDULA:" + this.getCedula()+" NOMBRE:" +this.getNombre();
-                    }
-                });
+//                data.add(new Persona(exe.getInt(1), exe.getString(2), exe.getString(2), exe.getInt(1), exe.getString(2), exe.getString(2), exe.getString(2)));
+                
               
             }
     
