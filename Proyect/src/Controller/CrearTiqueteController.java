@@ -19,12 +19,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
  *
- * @author ALONSITO
+ * @author erick
  */
 public class CrearTiqueteController implements Initializable {
 
