@@ -8,12 +8,15 @@ package Controller;
 import DAO.EmpleadoDAOImplements;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -81,6 +84,22 @@ EmpleadoDAOImplements h = new EmpleadoDAOImplements();
         EmpleadosMenu("Menu", "Menu");        
     }
 
+      @FXML
+    private void c_add(ActionEvent event) {
+        if (validaNombre() | validaApellido() | validaID() | validaTelefono() | validateEmaill()) {
+         //   h.registrar(txt_Name.getText(), txt_LastName.getText(), txt_ID.getText(), txt_Phone.getText(), txt_Email.getText());
+            h.registrar(txt_Name, txt_Phone, txt_ID, txt_LastName, txt_Email);
+            //agrega a nivel de base de datos pero no a tabla
+            txt_Name.setText("");
+            txt_LastName.setText("");
+            txt_ID.setText("");
+            txt_Phone.setText("");
+            txt_Email.setText("");
+          //  ClientesMenu("Menu", "Menu");
+        }
+
+    }
+    
     @FXML
     private void c_add(MouseEvent event) {
        h.registrar(txt_Name, txt_Phone, txt_ID, txt_LastName, txt_Email);
@@ -111,5 +130,89 @@ EmpleadoDAOImplements h = new EmpleadoDAOImplements();
     private void E_Home(ActionEvent event) {
         EmpleadosMenu("Menu", "Menu");
     }
+    
+    private boolean validaNombre() {
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(txt_Name.getText());
+        if (m.find() && m.group().equals(txt_Name.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar Nombre");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digite un nombre valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+    
+     private boolean validaApellido() {
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(txt_LastName.getText());
+        if (m.find() && m.group().equals(txt_LastName.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar Apellido");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digite un apelledio valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+     
+     
+    private boolean validaID() {
+        Pattern p = Pattern.compile("[0-9]+");
+        Matcher m = p.matcher(txt_ID.getText());
+        if (m.find() && m.group().equals(txt_ID.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar ID");
+            alert.setHeaderText(null);
+            alert.setContentText("Porfavor Digite un ID valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
+    private boolean validateEmaill() {
+        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+        Matcher m = p.matcher(txt_Email.getText());
+        if (m.find() && m.group().equals(txt_Email.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Email");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digire un email valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
+    private boolean validaTelefono() {
+        Pattern p = Pattern.compile("(0|91)?[7-9][0-9]{7}");
+        Matcher m = p.matcher(txt_Phone.getText());
+        if (m.find() && m.group().equals(txt_Phone.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Mobile Number");
+            alert.setHeaderText(null);
+            alert.setContentText("Please Enter Valid Mobile Number");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
+
+    
     
 }
