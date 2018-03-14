@@ -7,12 +7,18 @@ package Controller;
 
 import DAO.ClienteDAOImplements;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 import Model.Clientes;
 import Model.Clones;
 import Model.Persona;
 >>>>>>> 47816f00d9c4a3862e3827b4d18de88e801c02d2
+=======
+import Model.Clientes;
+import Model.Clones;
+import Model.Persona;
+>>>>>>> e3fbbbe01116b7d67c641b68de2509f89a10de48
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -33,10 +39,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 import javafx.scene.control.cell.PropertyValueFactory;
 >>>>>>> 47816f00d9c4a3862e3827b4d18de88e801c02d2
+=======
+import javafx.scene.control.cell.PropertyValueFactory;
+>>>>>>> e3fbbbe01116b7d67c641b68de2509f89a10de48
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -75,6 +85,7 @@ public class RegistroClienteController implements Initializable {
     private Button BarHomeC;
     @FXML
 <<<<<<< HEAD
+<<<<<<< HEAD
     private TableView<?> tableRegistCLient;
     @FXML
     private TableColumn<?, ?> ColNameCLient;
@@ -87,6 +98,8 @@ public class RegistroClienteController implements Initializable {
     @FXML
     private TableColumn<?, ?> ColEmailCLient;
 =======
+=======
+>>>>>>> e3fbbbe01116b7d67c641b68de2509f89a10de48
     private TableView<Persona> tbClientes;
     @FXML
     private TableColumn<Persona, String> columName;
@@ -98,7 +111,10 @@ public class RegistroClienteController implements Initializable {
     private TableColumn<Persona, String> columPhone;
     @FXML
     private TableColumn<Persona, String> columEmail;
+<<<<<<< HEAD
 >>>>>>> 47816f00d9c4a3862e3827b4d18de88e801c02d2
+=======
+>>>>>>> e3fbbbe01116b7d67c641b68de2509f89a10de48
 
     /**
      * Initializes the controller class.
@@ -107,6 +123,7 @@ public class RegistroClienteController implements Initializable {
     ObservableList<Persona> data;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 //        tableRegistCLient = new TableView<>();
 //        
@@ -135,6 +152,8 @@ public class RegistroClienteController implements Initializable {
 //        table.setTableMenuButtonVisible(true);
 
 =======
+=======
+>>>>>>> e3fbbbe01116b7d67c641b68de2509f89a10de48
         try {
     
     data=FXCollections.observableArrayList();
@@ -160,7 +179,10 @@ public class RegistroClienteController implements Initializable {
             columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
             tbClientes.setItems(null);
             tbClientes.setItems(data);
+<<<<<<< HEAD
 >>>>>>> 47816f00d9c4a3862e3827b4d18de88e801c02d2
+=======
+>>>>>>> e3fbbbe01116b7d67c641b68de2509f89a10de48
     }
 
     private void ClientesMenu(String Vista, String Titulo) {

@@ -82,6 +82,7 @@
          </effect>
       </Button>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <TableView fx:id="tableRegistCLient" layoutX="650.0" layoutY="202.0" prefHeight="298.0" prefWidth="555.0">
          <columns>
             <TableColumn fx:id="ColNameCLient" prefWidth="75.0" text="Name" />
@@ -92,12 +93,19 @@
 =======
       <TableView fx:id="tbClientes" layoutX="650.0" layoutY="202.0" prefHeight="298.0" prefWidth="398.0">
          <columns>
+=======
+      <TableView fx:id="tbClientes" layoutX="650.0" layoutY="202.0" prefHeight="298.0" prefWidth="398.0">
+         <columns>
+>>>>>>> e3fbbbe01116b7d67c641b68de2509f89a10de48
             <TableColumn fx:id="columName" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="columLastname" prefWidth="75.0" text="Last Name" />
             <TableColumn fx:id="columID" prefWidth="75.0" text="ID Number" />
             <TableColumn fx:id="columPhone" prefWidth="96.0" text="Phone Number" />
             <TableColumn fx:id="columEmail" prefWidth="77.0" text="Email" />
+<<<<<<< HEAD
 >>>>>>> 47816f00d9c4a3862e3827b4d18de88e801c02d2
+=======
+>>>>>>> e3fbbbe01116b7d67c641b68de2509f89a10de48
          </columns>
       </TableView>
       <TextField fx:id="txtCEmail" layoutX="322.0" layoutY="469.0" prefHeight="35.0" prefWidth="184.0" />
