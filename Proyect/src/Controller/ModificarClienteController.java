@@ -7,12 +7,15 @@ package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -27,10 +30,6 @@ import javafx.stage.StageStyle;
 public class ModificarClienteController implements Initializable {
 
     @FXML
-    private TextField txtCName;
-    @FXML
-    private TextField txtCName1;
-    @FXML
     private Button btnADD;
     @FXML
     private Button BarRegisClient;
@@ -42,6 +41,10 @@ public class ModificarClienteController implements Initializable {
     private Button BarViewClient;
     @FXML
     private Button BarHomeC;
+    @FXML
+    private TextField txt_Phone;
+    @FXML
+    private TextField txt_Email;
 
     /**
      * Initializes the controller class.
@@ -100,6 +103,38 @@ public class ModificarClienteController implements Initializable {
         ClientesMenu("Menu", "Menu");
     }
 
+
+    private boolean validateEmaill() {
+        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+        Matcher m = p.matcher(txt_Email.getText());
+        if (m.find() && m.group().equals(txt_Email.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Email");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digire un email valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
+    private boolean validaTelefono() {
+        Pattern p = Pattern.compile("(0|91)?[7-9][0-9]{7}");
+        Matcher m = p.matcher(txt_Phone.getText());
+        if (m.find() && m.group().equals(txt_Phone.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Mobile Number");
+            alert.setHeaderText(null);
+            alert.setContentText("Please Enter Valid Mobile Number");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
 
     
 }
