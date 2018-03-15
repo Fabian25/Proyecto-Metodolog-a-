@@ -5,7 +5,14 @@
  */
 package Controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,6 +29,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * FXML Controller class
@@ -30,6 +40,7 @@ import javafx.stage.StageStyle;
  */
 public class RegristroEmpresaController implements Initializable {
 
+    Connection connection = BaseDatos.Conexion.getConnection();
     @FXML
     private TextField txt_EntrepriceName;
     @FXML
@@ -77,6 +88,39 @@ public class RegristroEmpresaController implements Initializable {
         }
     }
 
+    private void CargarDatos() {
+        table_Enterprice.getItems().clear();
+        table_Enterprice.getItems().addAll(h.Personas());
+    }
+
+    
+    @FXML
+    private void c_Import(ActionEvent event) throws IOException, SQLException {
+        try {
+            String query = "Insert into Empresas(ID_EMPRESA,Nombre,Siglas,Telefono,Activo) values (?,?,?,?,?)";
+            PreparedStatement pst = connection.prepareStatement(query);
+            FileInputStream fileIn = new FileInputStream(new File("Empresas.xlsx"));
+            XSSFWorkbook wb = new XSSFWorkbook(fileIn);
+            XSSFSheet sheet = wb.getSheetAt(0);
+            Row row;
+            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+                row = sheet.getRow(i);
+                pst.setString(1, row.getCell(0).getStringCellValue());
+                pst.setString(2, row.getCell(1).getStringCellValue());
+                pst.setString(3, row.getCell(2).getStringCellValue());
+                pst.setString(4, row.getCell(3).getStringCellValue());
+                pst.setInt(5,(int)row.getCell(4).getNumericCellValue());
+                pst.execute();
+            }
+            //wb.close();
+            fileIn.close();
+            pst.close();
+        } catch (SQLException | FileNotFoundException ex) {
+        }
+     CargarDatos();
+    }
+    
+    
      @FXML
     private void c_add(ActionEvent event) {
         if (validaNombreEmpresa()| validarSiglas()| validaTelefono()) {
