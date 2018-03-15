@@ -122,7 +122,7 @@ public class ClienteDAOImplements implements IClienteDAO {
                 preparedStatement.setString(3, txtCLastNmae);
                 preparedStatement.setString(4, txtCPhoneNum);
                 preparedStatement.setString(5, txtCEmail);
-                preparedStatement.setString(6, "nuevo123");
+                preparedStatement.setString(6, "Nuevo123$");
                 preparedStatement.setString(7, Cod);
                 preparedStatement.setString(8, "3");
                 preparedStatement.setString(9, "1");
