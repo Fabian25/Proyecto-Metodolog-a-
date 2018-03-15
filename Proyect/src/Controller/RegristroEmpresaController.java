@@ -5,14 +5,11 @@
  */
 package Controller;
 
-<<<<<<< HEAD
 import DAO.EmpresaDAOImplements;
-=======
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
->>>>>>> 579bc601c4ba00446d37e4e597341e6b1c8656a5
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -94,10 +91,10 @@ public class RegristroEmpresaController implements Initializable {
         }
     }
 
-    private void CargarDatos() {
-        table_Enterprice.getItems().clear();
-        table_Enterprice.getItems().addAll(h.Personas());
-    }
+//    private void CargarDatos() {
+//        table_Enterprice.getItems().clear();
+//        table_Enterprice.getItems().addAll(h.Personas());
+//    }
 
     
     @FXML
@@ -123,13 +120,12 @@ public class RegristroEmpresaController implements Initializable {
             pst.close();
         } catch (SQLException | FileNotFoundException ex) {
         }
-     CargarDatos();
+//     CargarDatos();
     }
     
     
-     @FXML
-    private void c_add(MouseEvent event) {
-//         
+    @FXML
+    private void c_add(MouseEvent event) {         
     }
   
     private void c_back(MouseEvent event) {
@@ -210,14 +206,15 @@ public class RegristroEmpresaController implements Initializable {
 
     @FXML
     private void E_Enterprice(ActionEvent event) {
-        if (validaNombreEmpresa()| validarSiglas()| validaTelefono()) {
-            h.registrarEmp(txt_EntrepriceName.getText(), txt_Phone.getText(), txt_Acronym.getText());
+//        if (validaNombreEmpresa()| validarSiglas()| validaTelefono()) {
+            h.registrarEmp(txt_EntrepriceName.getText(), txt_Acronym.getText(), txt_Phone.getText());
             //agrega a nivel de base de datos pero no a tabla
             txt_EntrepriceName.setText("");
-            txt_Phone.setText("");
             txt_Acronym.setText("");
+            txt_Phone.setText("");
+            
           //  ClientesMenu("Menu", "Menu");
-        }
+//        }
     }
 }
    
