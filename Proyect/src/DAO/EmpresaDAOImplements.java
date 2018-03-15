@@ -46,8 +46,8 @@ public class EmpresaDAOImplements implements IEmpresaDAO {
                 preparedStatement.setString(2, txt_EntrepriceName);
                 preparedStatement.setString(3, txt_Acronym);
                 preparedStatement.setString(4, txt_Phone);
-                preparedStatement.setString(5, "Activo");
-                preparedStatement.setString(6, "123");
+                preparedStatement.setString(5, "1");
+                preparedStatement.setString(6, "12354");
                 preparedStatement.setString(7, "3");
 
                 int executeUpdate = preparedStatement.executeUpdate();
