@@ -9,6 +9,7 @@ import DAO.GeneralDAOImplements;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,6 +22,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -31,7 +33,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -96,20 +98,44 @@ public class LoginController implements Initializable {
 
     @FXML
     private void Ingresar(ActionEvent event) {
+        //Falta Validar el patron de la contraseña
         if (validaEmail()) {
-            if (ExisteCorreo(txt_Usuario.getText()) |ExistePassword(txt_Contra.getText()) ) {
-                if (EstadoUser(txt_Contra.getText())==1) {
-                    IngresarMenu("Menu", "Menu");
-                }else{
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Usuario Inactivo");
-            alert.showAndWait();
-                }       
-  
+
+            PreparedStatement preparedStatement;
+            String email = txt_Usuario.getText();
+            String password = txt_Contra.getText();
+
+            String sql = "SELECT * FROM Persona WHERE correo = ? and contraseña = ?";
+
+            try {
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, email);
+                preparedStatement.setString(2, password);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if (!resultSet.next()) {
+
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Usuario no existe");
+                    alert.showAndWait();
+                } else {
+                    if (resultSet.getInt(9) == 1) {
+                        IngresarMenu("Menu", "Menu");
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Error");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Usuario Inactivo");
+                        alert.showAndWait();
+                    }
+
+                }
+
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e);
             }
-            
+
         }
     }
 
@@ -142,78 +168,6 @@ public class LoginController implements Initializable {
             alert.showAndWait();
             return false;
         }
-    }
-
-    private boolean ExisteCorreo(String email) {
-        String sql = "SELECT * FROM Persona p where p.Correo = " + email + ";";
-        String[] datos = new String[10];
-        try {
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                datos[0] = rs.getString(1);
-            }
-            if (datos[0] != null) {
-                if (datos[0].equals(email)) {
-
-                    return true;
-                }
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Validate Email");
-        alert.setHeaderText(null);
-        alert.setContentText("Correo Invalido");
-        alert.showAndWait();
-        return false;
-    }
-
-    private boolean ExistePassword(String Password) {
-        String sql = "SELECT * FROM Persona p where p.Contraseña = " + Password + ";";
-        String[] datos = new String[10];
-        try {
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                datos[0] = rs.getString(1);
-            }
-            if (datos[0] != null) {
-                if (datos[0].equals(Password)) {
-
-                    return true;
-                }
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Validate Email");
-        alert.setHeaderText(null);
-        alert.setContentText("Contraseña Invalido");
-        alert.showAndWait();
-        return false;
-    }
-     private int EstadoUser(String Password) {
-        String sql = "SELECT * FROM Persona p where p.Contraseña = " + Password + ";";
-        int[] datos = new int[10];
-        try {
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                datos[0] = rs.getInt(9);
-            }
-            if (datos[0] != 0) {
-                if (datos[0]==1) {
-
-                    return 1;
-                }
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return 0;
     }
 
     @FXML
