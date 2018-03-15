@@ -5,14 +5,14 @@
  */
 package Controller;
 
-<<<<<<< HEAD
+
 import DAO.EmpresaDAOImplements;
-=======
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
->>>>>>> 579bc601c4ba00446d37e4e597341e6b1c8656a5
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,6 +34,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -96,34 +98,34 @@ public class RegristroEmpresaController implements Initializable {
 
     private void CargarDatos() {
         table_Enterprice.getItems().clear();
-        table_Enterprice.getItems().addAll(h.Personas());
+        table_Enterprice.getItems().addAll();
     }
 
     
     @FXML
     private void c_Import(ActionEvent event) throws IOException, SQLException {
-        try {
-            String query = "Insert into Empresas(ID_EMPRESA,Nombre,Siglas,Telefono,Activo) values (?,?,?,?,?)";
-            PreparedStatement pst = connection.prepareStatement(query);
-            FileInputStream fileIn = new FileInputStream(new File("Empresas.xlsx"));
-            XSSFWorkbook wb = new XSSFWorkbook(fileIn);
-            XSSFSheet sheet = wb.getSheetAt(0);
-            Row row;
-            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-                row = sheet.getRow(i);
-                pst.setString(1, row.getCell(0).getStringCellValue());
-                pst.setString(2, row.getCell(1).getStringCellValue());
-                pst.setString(3, row.getCell(2).getStringCellValue());
-                pst.setString(4, row.getCell(3).getStringCellValue());
-                pst.setInt(5,(int)row.getCell(4).getNumericCellValue());
-                pst.execute();
-            }
-            //wb.close();
-            fileIn.close();
-            pst.close();
-        } catch (SQLException | FileNotFoundException ex) {
-        }
-     CargarDatos();
+//        try {
+//            String query = "Insert into Empresas(ID_EMPRESA,Nombre,Siglas,Telefono,Activo) values (?,?,?,?,?)";
+//            PreparedStatement pst = connection.prepareStatement(query);
+//            FileInputStream fileIn = new FileInputStream(new File("Empresas.xlsx"));
+////       Workbook wb =  Workbook.getWorkbook(fileIn);
+////           Sheet sheet = wb.getSheetAt(0);
+//            Row row;
+//            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+//                row = sheet.getRow(i);
+//                pst.setString(1, row.getCell(0).getStringCellValue());
+//                pst.setString(2, row.getCell(1).getStringCellValue());
+//                pst.setString(3, row.getCell(2).getStringCellValue());
+//                pst.setString(4, row.getCell(3).getStringCellValue());
+//                pst.setInt(5,(int)row.getCell(4).getNumericCellValue());
+//                pst.execute();
+//            }
+//            //wb.close();
+//            fileIn.close();
+//            pst.close();
+//        } catch (SQLException | FileNotFoundException ex) {
+//        }
+//     CargarDatos();
     }
     
     
