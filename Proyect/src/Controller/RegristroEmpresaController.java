@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import DAO.EmpresaDAOImplements;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -29,6 +30,8 @@ import javafx.stage.StageStyle;
  * @author ALONSITO
  */
 public class RegristroEmpresaController implements Initializable {
+    
+    EmpresaDAOImplements h = new EmpresaDAOImplements();
 
     @FXML
     private TextField txt_EntrepriceName;
@@ -78,23 +81,10 @@ public class RegristroEmpresaController implements Initializable {
     }
 
      @FXML
-    private void c_add(ActionEvent event) {
-        if (validaNombreEmpresa()| validarSiglas()| validaTelefono()) {
-            
-            //agrega a nivel de base de datos pero no a tabla
-            txt_EntrepriceName.setText("");
-            txt_Phone.setText("");
-            txt_Acronym.setText("");
-          //  ClientesMenu("Menu", "Menu");
-        }
-
-    }
-    
-    
-    @FXML
     private void c_add(MouseEvent event) {
+//         
     }
-
+  
     private void c_back(MouseEvent event) {
         EmpresasMenu("Menu", "Menu");
     }
@@ -170,6 +160,20 @@ public class RegristroEmpresaController implements Initializable {
             return false;
         }
     }
-    
-    
+
+    @FXML
+    private void E_Enterprice(ActionEvent event) {
+        if (validaNombreEmpresa()| validarSiglas()| validaTelefono()) {
+            h.registrarEmp(txt_EntrepriceName.getText(), txt_Phone.getText(), txt_Acronym.getText());
+            //agrega a nivel de base de datos pero no a tabla
+            txt_EntrepriceName.setText("");
+            txt_Phone.setText("");
+            txt_Acronym.setText("");
+          //  ClientesMenu("Menu", "Menu");
+        }
+    }
 }
+   
+    
+    
+

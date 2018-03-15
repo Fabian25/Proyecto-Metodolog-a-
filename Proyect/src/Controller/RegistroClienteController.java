@@ -97,7 +97,7 @@ public class RegistroClienteController implements Initializable {
         columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
-          CargarDatos();
+        CargarDatos();
 //        try {
 //
 //            data = FXCollections.observableArrayList();
