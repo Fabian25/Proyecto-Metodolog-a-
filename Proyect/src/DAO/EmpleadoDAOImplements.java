@@ -49,20 +49,20 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO{
  
 
     @Override
-    public void registrar(TextField txt_Name, TextField txt_Phone, TextField txt_ID, TextField txt_LastName, TextField txt_Email) {
+    public void registrar(String txt_Name, String txt_Phone, String txt_ID, String txt_LastName, String txt_Email) {
        String Cod = "";
         Random rand = new Random();
         int randomNum = rand.nextInt((999 - 100) + 1) + 100;
         Cod = "EMP-" + randomNum;
-        if (txt_Name.getText().length() == 0 ||txt_LastName.getText().length() == 0
-                ||txt_ID.getText().length() == 0 || txt_Phone.getText().length() == 0
-                ||  txt_Email.getText().length() == 0) {
+        if (txt_Name.length() == 0 ||txt_LastName.length() == 0
+                ||txt_ID.length() == 0 || txt_Phone.length() == 0
+                ||  txt_Email.length() == 0) {
             JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
         } else {
-            if (ExisteCedula(txt_ID.getText(), Cod) == false) {
+            if (ExisteCedula(txt_ID, Cod) == false) {
                 
-                String sql = "Insert into Persona values(" +txt_ID.getText() + "," + txt_Name.getText() + ","
-                        + txt_Phone.getText() + "," +  txt_Email.getText() + "," + "Nuevo123*" + "," + Cod+ "," + txt_LastName.getText() + ");";
+                String sql = "Insert into Persona values(" +txt_ID + "," + txt_Name + ","
+                        + txt_Phone + "," +  txt_Email + "," + "Nuevo123*" + "," + Cod+ "," + txt_LastName + ");";
                 String[] datos = new String[10];
                 try {
                     Statement stmt = connection.createStatement();

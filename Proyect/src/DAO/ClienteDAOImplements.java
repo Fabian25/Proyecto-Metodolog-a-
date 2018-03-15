@@ -22,14 +22,14 @@ import javax.swing.JOptionPane;
 public class ClienteDAOImplements implements IClienteDAO {
 
     PreparedStatement preparedStatement = null;
-    Connection connection =  BaseDatos.Conexion.getConnection();
+    Connection connection = BaseDatos.Conexion.getConnection();
 
 //    public boolean ExisteCedula(String ced, String cod) {
-//        Connection cn = cc.conexion();
+//       
 //        String sql = "SELECT * FROM Persona p where p.IdPersona = " + ced + "and p.Codigo = " + cod + ";";
 //        String[] datos = new String[10];
 //        try {
-//            Statement st = cn.createStatement();
+//            Statement st = connection.createStatement();
 //            ResultSet rs = st.executeQuery(sql);
 //            while (rs.next()) {
 //                datos[0] = rs.getString(1);
@@ -45,14 +45,70 @@ public class ClienteDAOImplements implements IClienteDAO {
 //        }
 //        return false;
 //    }
-    @Override
-    public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
+    private boolean ExisteCedula(String ced) {
+
+        String sql = "SELECT * FROM Persona p where p.IdPersona = " + ced + ";";
+        String[] datos = new String[10];
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+            }
+            if (datos[0] != null) {
+                if (datos[0].equals(ced)) {
+                    return true;
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    private boolean ExisteCodigo(String cod) {
+
+        String sql = "SELECT * FROM Persona p where p.Codigo = " + cod + ";";
+        String[] datos = new String[10];
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                datos[0] = rs.getString(9);
+            }
+            if (datos[0] != null) {
+                if (datos[0].equals(cod)) {
+                    return true;
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+    private String GenerarCodigo(String Cod){
         
-        String Cod;
-        Random rand = new Random();
+       Random rand = new Random();
         int randomNum = rand.nextInt((999 - 100) + 1) + 100;
         Cod = "CL-" + randomNum;
-        if (txtCName.length() == 0 || txtCLastNmae.length() == 0
+        return Cod;
+        
+    }
+
+    @Override
+    public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
+
+        String Cod = "";
+        GenerarCodigo(Cod);
+        
+        while(ExisteCodigo(Cod)) {            
+        GenerarCodigo(Cod);
+        }
+        if (ExisteCedula(txtCIDnum)) {
+            JOptionPane.showMessageDialog(null, "There is already a client with this id");
+        }else{
+            
+             if (txtCName.length() == 0 || txtCLastNmae.length() == 0
                 || txtCIDnum.length() == 0 || txtCPhoneNum.length() == 0
                 || txtCEmail.length() == 0) {
             JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
@@ -77,6 +133,10 @@ public class ClienteDAOImplements implements IClienteDAO {
                 JOptionPane.showMessageDialog(null, ex);
             }
         }
+        }
+
+       
+
     }
 
     @Override
@@ -148,10 +208,10 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     @Override
     public ObservableList<Persona> Personas() {
-        ObservableList <Persona> personas = FXCollections.observableArrayList();
-        Connection conexion = BaseDatos.Conexion.getConnection();
+        ObservableList<Persona> personas = FXCollections.observableArrayList();
+
         try {
-            Statement st = conexion.createStatement();
+            Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("Select IdPersona, Nombre, Apellido, Telefono, Correo from Persona where TipoPersona = 3");
             while (rs.next()) {
                 personas.add(new Persona(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), "", "") {
@@ -162,7 +222,7 @@ public class ClienteDAOImplements implements IClienteDAO {
                 });
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error Cargar Facturas \n" + ex);
+            JOptionPane.showMessageDialog(null, "Error Cargar Cliente \n" + ex);
         }
         return personas;
     }
