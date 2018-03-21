@@ -5,11 +5,14 @@
  */
 package Controller;
 
+
 import DAO.EmpresaDAOImplements;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,6 +35,8 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -94,14 +99,15 @@ public class RegristroEmpresaController implements Initializable {
         }
     }
 
-//    private void CargarDatos() {
-//        table_Enterprice.getItems().clear();
-//        table_Enterprice.getItems().addAll(h.Personas());
-//    }
+    private void CargarDatos() {
+        table_Enterprice.getItems().clear();
+        table_Enterprice.getItems().addAll();
+    }
 
     
     @FXML
     private void c_Import(ActionEvent event) throws IOException, SQLException {
+<<<<<<< HEAD
         try {
             String query = "Insert into Empresas(ID_EMPRESA,Nombre,Siglas,Telefono,Activo) values (?,?,?,?,?)";
             preparedStatement = connection.prepareStatement(query);
@@ -125,12 +131,36 @@ public class RegristroEmpresaController implements Initializable {
         }
         HBox hbox = new HBox(5);
         hbox.getChildren().addAll();
+=======
+//        try {
+//            String query = "Insert into Empresas(ID_EMPRESA,Nombre,Siglas,Telefono,Activo) values (?,?,?,?,?)";
+//            PreparedStatement pst = connection.prepareStatement(query);
+//            FileInputStream fileIn = new FileInputStream(new File("Empresas.xlsx"));
+////       Workbook wb =  Workbook.getWorkbook(fileIn);
+////           Sheet sheet = wb.getSheetAt(0);
+//            Row row;
+//            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+//                row = sheet.getRow(i);
+//                pst.setString(1, row.getCell(0).getStringCellValue());
+//                pst.setString(2, row.getCell(1).getStringCellValue());
+//                pst.setString(3, row.getCell(2).getStringCellValue());
+//                pst.setString(4, row.getCell(3).getStringCellValue());
+//                pst.setInt(5,(int)row.getCell(4).getNumericCellValue());
+//                pst.execute();
+//            }
+//            //wb.close();
+//            fileIn.close();
+//            pst.close();
+//        } catch (SQLException | FileNotFoundException ex) {
+//        }
+>>>>>>> 0e6ff362150c808a9eef27169769dda61470c372
 //     CargarDatos();
     }
     
     
-    @FXML
-    private void c_add(MouseEvent event) {         
+     @FXML
+    private void c_add(MouseEvent event) {
+//         
     }
   
     private void c_back(MouseEvent event) {
@@ -211,15 +241,14 @@ public class RegristroEmpresaController implements Initializable {
 
     @FXML
     private void E_Enterprice(ActionEvent event) {
-//        if (validaNombreEmpresa()| validarSiglas()| validaTelefono()) {
-            h.registrarEmp(txt_EntrepriceName.getText(), txt_Acronym.getText(), txt_Phone.getText());
+        if (validaNombreEmpresa()| validarSiglas()| validaTelefono()) {
+            h.registrarEmp(txt_EntrepriceName.getText(), txt_Phone.getText(), txt_Acronym.getText());
             //agrega a nivel de base de datos pero no a tabla
             txt_EntrepriceName.setText("");
-            txt_Acronym.setText("");
             txt_Phone.setText("");
-            
+            txt_Acronym.setText("");
           //  ClientesMenu("Menu", "Menu");
-//        }
+        }
     }
 }
    
