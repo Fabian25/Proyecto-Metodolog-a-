@@ -107,7 +107,7 @@ public class RegristroEmpresaController implements Initializable {
     
     @FXML
     private void c_Import(ActionEvent event) throws IOException, SQLException {
-<<<<<<< HEAD
+
         try {
             String query = "Insert into Empresas(ID_EMPRESA,Nombre,Siglas,Telefono,Activo) values (?,?,?,?,?)";
             preparedStatement = connection.prepareStatement(query);
@@ -131,7 +131,7 @@ public class RegristroEmpresaController implements Initializable {
         }
         HBox hbox = new HBox(5);
         hbox.getChildren().addAll();
-=======
+
 //        try {
 //            String query = "Insert into Empresas(ID_EMPRESA,Nombre,Siglas,Telefono,Activo) values (?,?,?,?,?)";
 //            PreparedStatement pst = connection.prepareStatement(query);
@@ -153,7 +153,6 @@ public class RegristroEmpresaController implements Initializable {
 //            pst.close();
 //        } catch (SQLException | FileNotFoundException ex) {
 //        }
->>>>>>> 0e6ff362150c808a9eef27169769dda61470c372
 //     CargarDatos();
     }
     

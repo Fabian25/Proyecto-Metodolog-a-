@@ -25,27 +25,7 @@ public class ClienteDAOImplements implements IClienteDAO {
     PreparedStatement preparedStatement = null;
     Connection connection = BaseDatos.Conexion.getConnection();
 
-//    public boolean ExisteCedula(String ced, String cod) {
-//       
-//        String sql = "SELECT * FROM Persona p where p.IdPersona = " + ced + "and p.Codigo = " + cod + ";";
-//        String[] datos = new String[10];
-//        try {
-//            Statement st = connection.createStatement();
-//            ResultSet rs = st.executeQuery(sql);
-//            while (rs.next()) {
-//                datos[0] = rs.getString(1);
-//                datos[1] = rs.getString(9);
-//            }
-//            if (datos[0] != null) {
-//                if (datos[0].equals(ced) || datos[1].equals(cod)) {
-//                    return true;
-//                }
-//            }
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//        return false;
-//    }
+
     private boolean ExisteCedula(String ced) {
 
         String sql = "SELECT * FROM Persona p where p.IdPersona = " + ced + ";";
@@ -53,14 +33,17 @@ public class ClienteDAOImplements implements IClienteDAO {
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                datos[0] = rs.getString(1);
+            if (rs!=null) {
+              while (rs.next()) {
+               datos[0] = rs.getString(1);
             }
             if (datos[0] != null) {
                 if (datos[0].equals(ced)) {
                     return true;
                 }
             }
+            }
+          
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -74,7 +57,8 @@ public class ClienteDAOImplements implements IClienteDAO {
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
+            if (rs!=null) {
+                  while (rs.next()) {
                 datos[0] = rs.getString(9);
             }
             if (datos[0] != null) {
@@ -82,6 +66,8 @@ public class ClienteDAOImplements implements IClienteDAO {
                     return true;
                 }
             }
+            }
+          
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
