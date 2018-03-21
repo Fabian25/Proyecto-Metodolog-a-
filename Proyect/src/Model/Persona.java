@@ -23,19 +23,19 @@ public abstract class Persona implements Cloneable {
     private int Telefono;
     private String Correo;
     private String Contrasena;
-    private String Codigo;
+//    private String Codigo;
 
     public Persona() {
     }
 
-    public Persona(int cedula, String nombre, String apellido, int Telefono, String Correo, String Contrasena, String Codigo) {
+    public Persona(int cedula, String nombre, String apellido, int Telefono, String Correo, String Contrasena) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.Telefono = Telefono;
         this.Correo = Correo;
         this.Contrasena = Contrasena;
-        this.Codigo = Codigo;
+     
     }
 
     public int getTelefono() {
@@ -86,15 +86,15 @@ public abstract class Persona implements Cloneable {
         this.apellido = apellido;
     }
 
-    public String getCodigo() {
-        return Codigo;
-    }
-
-    public void setCodigo(String Codigo) {
-        this.Codigo = Codigo;
-    }
+//    public String getCodigo() {
+//        return Codigo;
+//    }
+//
+//    public void setCodigo(String Codigo) {
+//        this.Codigo = Codigo;
+//    }
     @Override
     public String toString() {
-        return this.cedula + ", " + this.nombre + ", " + this.apellido + ", " + this.Correo + ", " + this.Telefono+ ", "+this.Codigo;
+        return this.cedula + ", " + this.nombre + ", " + this.apellido + ", " + this.Correo + ", " + this.Telefono;
     }
 }
