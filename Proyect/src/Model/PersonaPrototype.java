@@ -6,13 +6,14 @@
 package Model;
 
 import java.util.HashMap;
+import javafx.scene.control.Button;
 public class PersonaPrototype{
 private HashMap<String,Persona>clones=new HashMap<String,Persona>();
 
 public PersonaPrototype(){
-
-Clientes client = new Clientes(00000000,"XXX",000000000,"Cliente","Cliente",8888888,"AAAA@GMAIL.COM","Nuevo123");
-Empleados employee=new Empleados("EMP000",000000000,"Empleado","Empleado",88888888,"EEEM@GMAIL.COM","Nuevo123");
+Button button = null;
+Clientes client = new Clientes(00000000,"XXX",000000000,"Cliente","Cliente",8888888,"AAAA@GMAIL.COM","Nuevo123",button);
+Empleados employee=new Empleados("EMP000",000000000,"Empleado","Empleado",88888888,"EEEM@GMAIL.COM","Nuevo123",button);
 clones.put("Employees",employee);
 clones.put("Clients",client);
 }

@@ -5,6 +5,8 @@
  */
 package Model;
 
+import javafx.scene.control.Button;
+
 /**
  *
  * @author jose
@@ -23,20 +25,31 @@ public abstract class Persona implements Cloneable {
     private int Telefono;
     private String Correo;
     private String Contrasena;
+
+    public Button getButton() {
+        return button;
+    }
+
+    public void setButton(Button button) {
+        this.button = button;
+    }
+    private Button button;
 //    private String Codigo;
 
     public Persona() {
     }
 
-    public Persona(int cedula, String nombre, String apellido, int Telefono, String Correo, String Contrasena) {
+    public Persona(int cedula, String nombre, String apellido, int Telefono, String Correo, String Contrasena, Button button) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.Telefono = Telefono;
         this.Correo = Correo;
         this.Contrasena = Contrasena;
-     
+        this.button = button;
     }
+
+ 
 
     public int getTelefono() {
         return Telefono;

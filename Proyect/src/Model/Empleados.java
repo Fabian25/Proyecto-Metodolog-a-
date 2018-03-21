@@ -5,14 +5,16 @@
  */
 package Model;
 
+import javafx.scene.control.Button;
+
 /**
  *
  * @author jose
  */
 public class Empleados extends Persona{
 
-    public Empleados(String codigo, int cedula, String nombre, String apellido, int Telefono, String Correo, String Contrasena) {
-        super(cedula, nombre, apellido, Telefono, Correo, Contrasena);
+    public Empleados(String codigo, int cedula, String nombre, String apellido, int Telefono, String Correo, String Contrasena,Button button) {
+        super(cedula, nombre, apellido, Telefono, Correo, Contrasena,button);
         this.codigo = codigo;
     }
 

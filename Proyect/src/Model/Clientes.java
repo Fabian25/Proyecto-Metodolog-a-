@@ -5,14 +5,16 @@
  */
 package Model;
 
+import javafx.scene.control.Button;
+
 /**
  *
  * @author jose
  */
 public class Clientes extends Persona {
 
-    public Clientes(int Codigo, String EmpresaAsociar, int cedula, String nombre, String apellido, int Telefono, String Correo, String Contrasena) {
-        super(cedula, nombre, apellido, Telefono, Correo, Contrasena);
+    public Clientes(int Codigo, String EmpresaAsociar, int cedula, String nombre, String apellido, int Telefono, String Correo, String Contrasena,Button button) {
+        super(cedula, nombre, apellido, Telefono, Correo, Contrasena,button);
         this.Codigo = Codigo;
         this.EmpresaAsociar = EmpresaAsociar;
     }
