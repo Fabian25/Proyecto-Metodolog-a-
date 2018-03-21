@@ -69,7 +69,6 @@ public class ClienteDAOImplements implements IClienteDAO {
             }
           
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
         return false;
     }
