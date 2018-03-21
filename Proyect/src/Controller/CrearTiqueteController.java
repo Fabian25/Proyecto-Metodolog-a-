@@ -7,6 +7,8 @@ package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -58,6 +60,9 @@ public class CrearTiqueteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+     ObservableList<String> items = FXCollections.observableArrayList();
+     items.addAll("item-1", "item-2", "item-3", "item-4", "item-5");
+     cbx_Status = new ComboBox<>(items);
     }    
 
      private void TiquetesMenu(String Vista, String Titulo) {

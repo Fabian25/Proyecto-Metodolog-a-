@@ -31,6 +31,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -45,10 +46,11 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author ALONSITO
  */
 public class RegristroEmpresaController implements Initializable {
+    PreparedStatement preparedStatement = null;
     
     EmpresaDAOImplements h = new EmpresaDAOImplements();
 
-    Connection connection = BaseDatos.Conexion.getConnection();
+     Connection connection = BaseDatos.Conexion.getConnection();
     @FXML
     private TextField txt_EntrepriceName;
     @FXML
@@ -79,6 +81,7 @@ public class RegristroEmpresaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
+   
     
     private void EmpresasMenu(String Vista, String Titulo) {
 
@@ -104,6 +107,31 @@ public class RegristroEmpresaController implements Initializable {
     
     @FXML
     private void c_Import(ActionEvent event) throws IOException, SQLException {
+
+        try {
+            String query = "Insert into Empresas(ID_EMPRESA,Nombre,Siglas,Telefono,Activo) values (?,?,?,?,?)";
+            preparedStatement = connection.prepareStatement(query);
+            FileInputStream fileIn = new FileInputStream(new File("Empresas.xlsx"));
+            XSSFWorkbook wb = new XSSFWorkbook(fileIn);
+            XSSFSheet sheet = wb.getSheetAt(0);
+            Row row;
+            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+                row = sheet.getRow(i);
+                preparedStatement.setString(1, row.getCell(0).getStringCellValue());
+                preparedStatement.setString(2, row.getCell(1).getStringCellValue());
+                preparedStatement.setString(3, row.getCell(2).getStringCellValue());
+                preparedStatement.setString(4, row.getCell(3).getStringCellValue());
+                preparedStatement.setInt(5,(int)row.getCell(4).getNumericCellValue());
+                preparedStatement.execute();
+            }
+//            wb.close();
+            fileIn.close();
+            preparedStatement.close();
+        } catch (SQLException | FileNotFoundException ex) {
+        }
+        HBox hbox = new HBox(5);
+        hbox.getChildren().addAll();
+
 //        try {
 //            String query = "Insert into Empresas(ID_EMPRESA,Nombre,Siglas,Telefono,Activo) values (?,?,?,?,?)";
 //            PreparedStatement pst = connection.prepareStatement(query);

@@ -126,12 +126,10 @@ public class LoginController implements Initializable {
                         Alert alert = new Alert(Alert.AlertType.WARNING);
                         alert.setTitle("Error");
                         alert.setHeaderText(null);
-                        alert.setContentText("Usuario Inactivo");
+                        alert.setContentText("User Inactivo");
                         alert.showAndWait();
                     }
-
                 }
-
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, e);
             }
