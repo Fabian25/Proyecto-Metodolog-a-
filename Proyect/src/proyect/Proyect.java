@@ -7,6 +7,7 @@ package proyect;
 
 import Model.Persona;
 import Controller.*;
+import Model.PersonaPrototype;
  
 
 
@@ -15,12 +16,10 @@ public class Proyect {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-
-
-                                                                                                                                
-                                                                                                                                
-                                                                                                    
+    public static void main(String[] args) throws CloneNotSupportedException {
+                           PersonaPrototype a = new PersonaPrototype();
+        Persona x = (Persona) a.prototipo("Client");
+        System.out.println(x.getNombre());                                                                   
     }
     
 }
