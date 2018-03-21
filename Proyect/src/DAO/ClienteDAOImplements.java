@@ -18,6 +18,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
+import javafx.scene.layout.HBox;
 
 public class ClienteDAOImplements implements IClienteDAO {
 
@@ -134,6 +135,7 @@ public class ClienteDAOImplements implements IClienteDAO {
             }
         }
         }
+        
 
        
 
