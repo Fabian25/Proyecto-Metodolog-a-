@@ -165,8 +165,7 @@ public class RegistroClienteController implements Initializable {
 
     @FXML
     private void c_add(ActionEvent event) {
-//        if (validaNombre() | validaApellido() | validaID() | validaTelefono() | validateEmaill()) {
-
+        if (validaNombre() | validaApellido() | validaID() | validaTelefono() | validateEmaill()) {
         h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
         //agrega a nivel de base de datos pero no a tabla
         txtCName.setText("");
@@ -176,7 +175,7 @@ public class RegistroClienteController implements Initializable {
         txtCEmail.setText("");
         CargarDatos();
 //        ClientesMenu("Menu", "Menu");
-        //}
+        }
     }
 
     private boolean validaNombre() {

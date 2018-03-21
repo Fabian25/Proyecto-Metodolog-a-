@@ -16,29 +16,116 @@ import IDAO.*;
 import Model.Empleados;
 import Model.Tiquetes;
 import java.sql.PreparedStatement;
+import java.util.Random;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author jose
  */
 public class TiquetesDAOImplements implements ITiqueteDAO {
+ Connection connection = BaseDatos.Conexion.getConnection();
+ 
+    private String GenerarCodigoTiquete(String Cod){
+       Random rand = new Random();
+        int randomNum = rand.nextInt((999 - 100) + 1) + 100;
+        Cod = "T-" + randomNum;
+        return Cod;
+    }
+ 
+    private boolean ExisteCodigoTiquete(String cod) {
 
+        String sql = "SELECT * FROM Tiquete t where t.idTiquete = " + cod + ";";
+        String[] datos = new String[10];
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                datos[0] = rs.getString(9);
+            }
+            if (datos[0] != null) {
+                if (datos[0].equals(cod)) {
+                    return true;
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+    
+    
     @Override
-    public boolean registrarTiquetes(TextField txt_Series, ComboBox<?> txt_Status, TextArea txt_description) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void registrarTiquetes(TextField txt_Series, ComboBox<?> txt_Status, TextArea txt_description) {
+         String Cod = " "; 
+         Cod = this.GenerarCodigoTiquete(Cod);
+        if (txt_Series.getText().length() == 0 ||txt_Status.getValue().toString().length() == 0
+                ||txt_description.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
+        } else {  
+             if (ExisteCodigoTiquete(Cod) == false) {
+                String sql = "Insert into Tiquete values(" +txt_Series + "," + txt_Status + ","
+                        + txt_description + ");";
+                String[] datos = new String[10];
+                try {
+                    Statement stmt = connection.createStatement();
+                    PreparedStatement pst = connection.prepareStatement(sql);
+                    pst.executeUpdate();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+              } else {
+                JOptionPane.showMessageDialog(null, "The user alredy exists");
+              }
+        }
+        
     }
 
     @Override
     public List<Tiquetes> VerTiquetes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Statement stm = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM Tiquete where idTiquete = "+ "*" +";";
+        List<Tiquetes> listaTiquete = new ArrayList<Tiquetes>();
+        try {
+            
+            stm = connection.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Tiquetes c = new Tiquetes();
+                c.setEstado(rs.getString(3));
+                c.setID_Tiquete(rs.getString(1));
+                c.setPrioridad(rs.getString(6));
+                listaTiquete.add(c);
+            }
+            stm.close();
+            rs.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Error: Clase ClienteDaoImple, método obtener");
+            e.printStackTrace();
+        }
+        return listaTiquete;
     }
 
     @Override
-    public boolean EditarTiquetes(ComboBox<?> txt_Status, TextArea txt_description) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void EditarTiquetes(ComboBox<?> txt_Status, TextArea txt_description, Tiquetes t) {
+               String Update = "UPDATE Tiquete\n"
+                + "SET Estado = "+txt_Status.getValue()
+                 + "SET Descripcion = "+txt_description.getText()
+                + "WHERE idTiquete = " + t.getID_Tiquete() + ";";
+        try {
+            Statement stmt = connection.createStatement();
+            PreparedStatement pst = connection.prepareStatement(Update);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+
     }
 
     @Override

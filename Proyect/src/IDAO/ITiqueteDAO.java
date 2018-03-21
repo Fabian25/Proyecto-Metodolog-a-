@@ -18,11 +18,12 @@ import javafx.scene.control.TextField;
  */
 public interface ITiqueteDAO {
 
-    public boolean registrarTiquetes(TextField txt_Series,ComboBox<?> txt_Status,TextArea txt_description);
+    public void registrarTiquetes(TextField txt_Series,ComboBox<?> txt_Status,TextArea txt_description);
 
     public List<Tiquetes> VerTiquetes();
+    
 
-    public boolean EditarTiquetes(ComboBox<?> txt_Status,TextArea txt_description);
+    public void EditarTiquetes(ComboBox<?> txt_Status,TextArea txt_description, Tiquetes t);
 
     public void procesarTiquete(Tiquetes tiquete);
 

@@ -117,7 +117,7 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO{
 
     @Override
     public List<Persona> ver() {
-  Statement stm = null;
+    Statement stm = null;
         ResultSet rs = null;
         
         String sql = "SELECT * FROM Persona where TipoPersona_ID_TipoPersona= "+"2"  +";";
