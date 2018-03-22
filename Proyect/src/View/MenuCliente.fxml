@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.MenuClienteController">
+   <children>
+      <ImageView fitHeight="711.0" fitWidth="1512.0" layoutX="6.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagen/fondoPro.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="116.0" layoutY="161.0" text="Choose an option" textFill="#111111">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_Tiquete" layoutX="206.0" layoutY="260.0" mnemonicParsing="false" onAction="#Tiquetes" prefHeight="96.0" prefWidth="198.0" text="Tickets">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_Perfil" layoutX="206.0" layoutY="398.0" mnemonicParsing="false" onAction="#Tiquetes" prefHeight="96.0" prefWidth="198.0" text="Profile">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnExit" layoutX="1109.0" layoutY="34.0" mnemonicParsing="false" onMouseClicked="#B_Salir" prefHeight="66.0" prefWidth="140.0" text="Log out">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
