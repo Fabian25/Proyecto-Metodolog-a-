@@ -84,9 +84,7 @@ public class ModificarEmpresaController implements Initializable {
 
     }
     
-    @FXML
-    private void c_add(MouseEvent event) {
-    }
+ 
 
     @FXML
     private void Ent_BarRegist(ActionEvent event) {

@@ -45,15 +45,14 @@
             </Lighting>
          </effect>
       </Button>
-      <TableView fx:id="table_Enterprice" layoutX="666.0" layoutY="232.0" prefHeight="200.0" prefWidth="328.0">
+      <TableView fx:id="table_Enterprice" layoutX="666.0" layoutY="232.0" prefHeight="200.0" prefWidth="344.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Code" />
-          <TableColumn prefWidth="75.0" text="Name" />
-            <TableColumn prefWidth="75.0" text="Acronym" />
-            <TableColumn prefWidth="101.0" text="Phone Number" />
+          <TableColumn fx:id="tblCodeEnt" prefWidth="75.0" text="Code" />
+          <TableColumn fx:id="tblNameEnt" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="tblAcronymEnt" prefWidth="75.0" text="Acronym" />
+            <TableColumn fx:id="tblPhoneEnt" prefWidth="101.0" text="Phone Number" />
         </columns>
       </TableView>
-      <ScrollBar layoutX="994.0" layoutY="232.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="15.0" />
       <ComboBox layoutX="818.0" layoutY="201.0" prefHeight="25.0" prefWidth="83.0" />
       <MenuBar prefHeight="33.0" prefWidth="1264.0">
          <menus>

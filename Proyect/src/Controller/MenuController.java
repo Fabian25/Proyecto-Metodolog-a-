@@ -71,7 +71,7 @@ public class MenuController implements Initializable {
 
     @FXML
     private void Empresas(ActionEvent event) {
-        CargarVistas("RegristroEmpresa", "Enterprises");
+        CargarVistas("RegistroEmpresa", "Enterprises");
     }
 
     @FXML
