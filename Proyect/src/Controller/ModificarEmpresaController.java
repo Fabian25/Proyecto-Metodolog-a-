@@ -90,7 +90,7 @@ public class ModificarEmpresaController implements Initializable {
 
     @FXML
     private void Ent_BarRegist(ActionEvent event) {
-        EmpresasMenu("RegistroEmpleado", "Enterprise");
+        EmpresasMenu("RegistroEmpresa", "Enterprise");
     }
 
     @FXML
