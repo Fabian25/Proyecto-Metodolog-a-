@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import IDAO.*;
+import Model.Clientes;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -193,16 +194,15 @@ public class ClienteDAOImplements implements IClienteDAO {
 //        return listaCliente;
         return null;
     }
-
-    @Override
-    public ObservableList<Persona> Personas() {
-        ObservableList<Persona> personas = FXCollections.observableArrayList();
+@Override
+    public ObservableList<Clientes> Clientes() {
+        ObservableList<Clientes> Clientes = FXCollections.observableArrayList();
 
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("Select IdPersona, Nombre, Apellido, Telefono, Correo from Persona where TipoPersona = 3");
             while (rs.next()) {
-                personas.add(new Persona(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), "",new Button("Remove")) {
+                Clientes.add(new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "",new Button("Remove")) {
                     @Override
                     public String verPersona() {
                         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -212,7 +212,7 @@ public class ClienteDAOImplements implements IClienteDAO {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Cliente \n" + ex);
         }
-        return personas;
+        return Clientes;
     }
 
 }

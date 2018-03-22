@@ -6,6 +6,7 @@
 package Controller;
 
 import DAO.ClienteDAOImplements;
+import Model.Clientes;
 import Model.Persona;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,7 +34,7 @@ public class VerClienteController implements Initializable {
 
     ClienteDAOImplements h = new ClienteDAOImplements();
     @FXML
-    private TableView<Persona> tblViewClient;
+    private TableView<Clientes> tblViewClient;
     @FXML
     private Button BarRegisClient;
     @FXML
@@ -45,15 +46,15 @@ public class VerClienteController implements Initializable {
     @FXML
     private Button BarHomeC;
     @FXML
-    private TableColumn<Persona, String> columName;
+    private TableColumn<Clientes, String> columName;
     @FXML
-    private TableColumn<Persona, String> columLastName;
+    private TableColumn<Clientes, String> columLastName;
     @FXML
-    private TableColumn<Persona, String> columId;
+    private TableColumn<Clientes, String> columId;
     @FXML
-    private TableColumn<Persona, String> columPhoneNumber;
+    private TableColumn<Clientes, String> columPhoneNumber;
     @FXML
-    private TableColumn<Persona, String> columEmail;
+    private TableColumn<Clientes, String> columEmail;
 
     /**
      * Initializes the controller class.
@@ -87,7 +88,7 @@ public class VerClienteController implements Initializable {
 
     private void CargarDatos() {
         tblViewClient.getItems().clear();
-        tblViewClient.setItems(h.Personas());
+        tblViewClient.setItems(h.Clientes());
 
     }
 

@@ -5,6 +5,9 @@
  */
 package Controller;
 
+import DAO.ClienteDAOImplements;
+import Model.Clientes;
+import Model.Persona;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,7 +20,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -29,8 +34,9 @@ import javafx.stage.StageStyle;
  */
 public class EliminarClienteController implements Initializable {
 
+    ClienteDAOImplements h = new ClienteDAOImplements();
     @FXML
-    private TableView<?> tblRemoveClient;
+    private TableView<Clientes> tblRemoveClient;
     @FXML
     private Button BarRegisClient;
     private MenuItem BarRegisClientItem;
@@ -42,13 +48,37 @@ public class EliminarClienteController implements Initializable {
     private Button BarViewClient;
     @FXML
     private Button BarHomeC;
+    @FXML
+    private TableColumn<Clientes, String> columRemove;
+    @FXML
+    private TableColumn<Clientes, String> columName;
+    @FXML
+    private TableColumn<Clientes, String> columLastName;
+    @FXML
+    private TableColumn<Clientes, String> columId;
+    @FXML
+    private TableColumn<Clientes, String> columPhoneNumber;
+    @FXML
+    private TableColumn<Clientes, String> columEmail;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        columName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columLastName.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        columId.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+        columPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+        columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+        columRemove.setCellValueFactory(new PropertyValueFactory<>("button"));
+        CargarDatos();
+    }
+
+    private void CargarDatos() {
+        tblRemoveClient.getItems().clear();
+        tblRemoveClient.setItems(h.Clientes());
+
     }
 
     private void ClientesMenu(String Vista, String Titulo) {
@@ -70,7 +100,6 @@ public class EliminarClienteController implements Initializable {
     private void c_back(MouseEvent event) {
         ClientesMenu("ModificarCliente", "Clients");
     }
-    
 
     @FXML
     private void C_BarRegist(ActionEvent event) {

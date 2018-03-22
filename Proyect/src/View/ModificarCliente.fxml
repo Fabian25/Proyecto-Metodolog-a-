@@ -21,15 +21,15 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <TableView layoutX="10.0" layoutY="174.0" prefHeight="313.0" prefWidth="749.0">
+      <TableView fx:id="tblEditClient" layoutX="10.0" layoutY="174.0" prefHeight="313.0" prefWidth="749.0">
         <columns>
-          <TableColumn prefWidth="66.0" text="Code" />
-          <TableColumn prefWidth="73.0" text="Name" />
-            <TableColumn prefWidth="86.0" text="Last Name" />
-            <TableColumn prefWidth="87.0" text="ID Number" />
-            <TableColumn prefWidth="94.0" text="Phone Number" />
-            <TableColumn prefWidth="262.0" text="Email" />
-            <TableColumn prefWidth="79.0" text="Edit" />
+          <TableColumn fx:id="columCode" prefWidth="66.0" text="Code" />
+          <TableColumn fx:id="columName" prefWidth="73.0" text="Name" />
+            <TableColumn fx:id="columLastName" prefWidth="86.0" text="Last Name" />
+            <TableColumn fx:id="columId" prefWidth="87.0" text="ID Number" />
+            <TableColumn fx:id="columPhoneNumber" prefWidth="94.0" text="Phone Number" />
+            <TableColumn fx:id="columEmail" prefWidth="262.0" text="Email" />
+            <TableColumn fx:id="columEdit" prefWidth="79.0" text="Edit" />
         </columns>
       </TableView>
       <Button layoutX="787.0" layoutY="192.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />

@@ -6,6 +6,7 @@
 package Controller;
 
 import DAO.ClienteDAOImplements;
+import Model.Clientes;
 
 import Model.Persona;
 import java.net.URL;
@@ -67,19 +68,17 @@ public class RegistroClienteController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    private TableView<Persona> tbClientes;
+    private TableView<Clientes> tbClientes;
     @FXML
-    private TableColumn<Persona, String> columName;
+    private TableColumn<Clientes, String> columName;
     @FXML
-    private TableColumn<Persona, String> columLastname;
+    private TableColumn<Clientes, String> columLastname;
     @FXML
-    private TableColumn<Persona, Integer> columID;
+    private TableColumn<Clientes, Integer> columID;
     @FXML
-    private TableColumn<Persona, String> columPhone;
+    private TableColumn<Clientes, String> columPhone;
     @FXML
-    private TableColumn<Persona, String> columEmail;
-    @FXML
-    private TableColumn<Persona, String> columRemove;
+    private TableColumn<Clientes, String> columEmail;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -88,14 +87,14 @@ public class RegistroClienteController implements Initializable {
         columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
-        columRemove.setCellValueFactory(new PropertyValueFactory<>("button"));
+       
         CargarDatos();
 
     }
 
     private void CargarDatos() {
         tbClientes.getItems().clear();
-        tbClientes.setItems(h.Personas());
+        tbClientes.setItems(h.Clientes());
 
     }
 

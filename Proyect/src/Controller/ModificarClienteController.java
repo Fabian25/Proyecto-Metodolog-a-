@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.Persona;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -17,7 +18,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -45,11 +49,27 @@ public class ModificarClienteController implements Initializable {
     private TextField txt_Phone;
     @FXML
     private TextField txt_Email;
+    @FXML
+    private TableColumn<Persona, String> columCode;
+    @FXML
+    private TableColumn<Persona, String> columName;
+    @FXML
+    private TableColumn<Persona, String> columLastName;
+    @FXML
+    private TableColumn<Persona, String> columId;
+    @FXML
+    private TableColumn<Persona, String> columPhoneNumber;
+    @FXML
+    private TableColumn<Persona, String> columEmail;
+    @FXML
+    private TableColumn<Persona, String> columEdit;
+    @FXML
+    private TableView<Persona> tblEditClient;
 
     /**
      * Initializes the controller class.
      */
-     private void ClientesMenu(String Vista, String Titulo) {
+    private void ClientesMenu(String Vista, String Titulo) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
@@ -64,13 +84,17 @@ public class ModificarClienteController implements Initializable {
             System.out.println("Error");
         }
     }
-    
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        columName.setCellValueFactory(new PropertyValueFactory<>("Codigo"));
+        columName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columLastName.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        columId.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+        columPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+        columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+        columEdit.setCellValueFactory(new PropertyValueFactory<>("button"));
+    }
 
     @FXML
     private void c_add(MouseEvent event) {
@@ -80,7 +104,7 @@ public class ModificarClienteController implements Initializable {
     @FXML
     private void C_BarRegist(ActionEvent event) {
         ClientesMenu("RegistroCliente", "Clients");
-        
+
     }
 
     @FXML
@@ -102,7 +126,6 @@ public class ModificarClienteController implements Initializable {
     private void C_Home(ActionEvent event) {
         ClientesMenu("Menu", "Menu");
     }
-
 
     private boolean validateEmaill() {
         Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
@@ -136,5 +159,4 @@ public class ModificarClienteController implements Initializable {
         }
     }
 
-    
 }
