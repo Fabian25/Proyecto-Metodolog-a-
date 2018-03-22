@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import DAO.ClienteDAOImplements;
+import Model.Clientes;
 import Model.Persona;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,7 +34,7 @@ import javafx.stage.StageStyle;
  * @author Fabian
  */
 public class ModificarClienteController implements Initializable {
-
+  ClienteDAOImplements h = new ClienteDAOImplements();
     @FXML
     private Button btnADD;
     @FXML
@@ -50,21 +52,21 @@ public class ModificarClienteController implements Initializable {
     @FXML
     private TextField txt_Email;
     @FXML
-    private TableColumn<Persona, String> columCode;
+    private TableColumn<Clientes, String> columCode;
     @FXML
-    private TableColumn<Persona, String> columName;
+    private TableColumn<Clientes, String> columName;
     @FXML
-    private TableColumn<Persona, String> columLastName;
+    private TableColumn<Clientes, String> columLastName;
     @FXML
-    private TableColumn<Persona, String> columId;
+    private TableColumn<Clientes, String> columId;
     @FXML
-    private TableColumn<Persona, String> columPhoneNumber;
+    private TableColumn<Clientes, String> columPhoneNumber;
     @FXML
-    private TableColumn<Persona, String> columEmail;
+    private TableColumn<Clientes, String> columEmail;
     @FXML
-    private TableColumn<Persona, String> columEdit;
+    private TableColumn<Clientes, String> columEdit;
     @FXML
-    private TableView<Persona> tblEditClient;
+    private TableView<Clientes> tblEditClient;
 
     /**
      * Initializes the controller class.
@@ -94,6 +96,12 @@ public class ModificarClienteController implements Initializable {
         columPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
         columEdit.setCellValueFactory(new PropertyValueFactory<>("button"));
+        CargarDatos();
+    }
+     private void CargarDatos() {
+        tblEditClient.getItems().clear();
+        tblEditClient.setItems(h.Clientes());
+
     }
 
     @FXML
