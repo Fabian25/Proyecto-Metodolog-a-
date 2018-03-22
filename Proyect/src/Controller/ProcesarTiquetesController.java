@@ -28,10 +28,15 @@ public class ProcesarTiquetesController implements Initializable {
     @FXML
     private TextArea txt_Solution;
     @FXML
-    private ComboBox<?> cb_status;
+    private ComboBox<String> cb_status;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       cb_status.getItems().add(0, "Mild");
+       cb_status.getItems().add(1, "Severe");
+       cb_status.getItems().add(2, "Critic");
+       cb_status.getItems().add(3, "Aproved");
+        
         btnSend.setDisable(true);
         btnApproved.setDisable(true);
         btnAnalyzing.setDisable(true);

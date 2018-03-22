@@ -30,15 +30,14 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
  Connection connection = BaseDatos.Conexion.getConnection();
  
     private String GenerarCodigoTiquete(String Cod){
-       Random rand = new Random();
+        Random rand = new Random();
         int randomNum = rand.nextInt((999 - 100) + 1) + 100;
         Cod = "T-" + randomNum;
         return Cod;
     }
  
     private boolean ExisteCodigoTiquete(String cod) {
-
-        String sql = "SELECT * FROM Tiquete t where t.idTiquete = " + cod + ";";
+        String sql = "SELECT * FROM Tiquete t where .idTiquete = " + cod + ";";
         String[] datos = new String[10];
         try {
             Statement st = connection.createStatement();
