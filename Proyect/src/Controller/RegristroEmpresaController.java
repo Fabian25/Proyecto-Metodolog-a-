@@ -227,13 +227,9 @@ public class RegristroEmpresaController implements Initializable {
 
     @FXML
     private void ImportClients(ActionEvent event) {
-<<<<<<< HEAD
-        try {
-            String query = "Insert into Empresa(idEmpresa, Nombre, Acronimo, Telefono, Activo) values (?,?,?,?,?)";
-=======
          try {
             String query = "Insert IGNORE into Empresa(idEmpresa, Nombre, Acronimo, Telefono, Activo) values (?,?,?,?,?)";
->>>>>>> cd6f7588a1393d7ca996c09bf921589626b5cd83
+
             pst = connection.prepareStatement(query);
 
             InputStream fileIn = new FileInputStream(new File("Empresas.xlsx"));
