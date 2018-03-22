@@ -25,7 +25,7 @@ public interface ITiqueteDAO {
 
     public void EditarTiquetes(ComboBox<?> txt_Status,TextArea txt_description, Tiquetes t);
 
-    public void procesarTiquete(Tiquetes tiquete);
+    public void procesarTiquete(ComboBox<?> txt_Status, TextArea txt_description, TextArea txt_Solution,Tiquetes tiquete);
 
     public void asignarTiquete(Tiquetes tiquete, Empleados empleado);
 

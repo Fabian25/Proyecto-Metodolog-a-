@@ -45,8 +45,27 @@ public class Tiquetes {
         this.estado = estado;
     }
     
+     public String getSolucion() {
+        return solucion;
+    }
+
+    public void setSolucion(String estado) {
+        this.solucion = estado;
+    }
+    
+     public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String estado) {
+        this.descripcion = estado;
+    }
+    
     private String ID_Tiquete;
     private String prioridad;
     private String estado;
+    private String solucion;
+    private String descripcion;
+    
 }
 

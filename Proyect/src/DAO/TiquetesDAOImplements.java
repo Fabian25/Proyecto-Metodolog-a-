@@ -129,8 +129,19 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
     }
 
     @Override
-    public void procesarTiquete(Tiquetes tiquete) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void procesarTiquete(ComboBox<?> txt_Status, TextArea txt_description, TextArea txt_solution,Tiquetes tiquete) {
+         String Update = "UPDATE Tiquete\n"
+                + "SET Estado = "+txt_Status.getValue()
+                + "SET Descripcion = "+txt_description.getText()
+                + "SET Solucion =" + txt_solution.getText()
+                + "WHERE idTiquete = " + tiquete.getID_Tiquete() + ";";
+        try {
+            Statement stmt = connection.createStatement();
+            PreparedStatement pst = connection.prepareStatement(Update);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override

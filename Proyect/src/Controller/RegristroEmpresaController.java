@@ -240,7 +240,17 @@ public class RegristroEmpresaController implements Initializable {
 
     @FXML
     private void E_Enterprice(ActionEvent event) {
-        if (validaNombreEmpresa()| validarSiglas()| validaTelefono()) {
+        boolean flag = true;
+        if(!validaNombreEmpresa()){
+            flag = false;
+        }
+        if(!validaTelefono()){
+            flag = false;
+        } 
+        if(!validarSiglas()){
+            flag = false;
+        }
+        if (flag) {
             h.registrarEmp(txt_EntrepriceName.getText(), txt_Phone.getText(), txt_Acronym.getText());
             //agrega a nivel de base de datos pero no a tabla
             txt_EntrepriceName.setText("");
