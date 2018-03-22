@@ -6,14 +6,12 @@
 package Controller;
 
 import DAO.EmpresaDAOImplements;
-
+import Model.Empresa;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,25 +29,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * FXML Controller class
  *
- * @author ALONSITO
+ * @author erick
  */
 public class RegristroEmpresaController implements Initializable {
 
@@ -69,7 +62,7 @@ public class RegristroEmpresaController implements Initializable {
     @FXML
     private Button btn_Import;
     @FXML
-    private TableView<?> table_Enterprice;
+    private TableView<Empresa> table_Enterprice;
     @FXML
     private Button BarRegisEntp;
     @FXML
@@ -82,12 +75,32 @@ public class RegristroEmpresaController implements Initializable {
     private Button BarHomeEnt;
 
     private Button importXLToDB;
+    @FXML
+    private TableColumn<Empresa, String> tblCodeEnt;
+    @FXML
+    private TableColumn<Empresa, String> tblNameEnt;
+    @FXML
+    private TableColumn<Empresa, String> tblAcronymEnt;
+    @FXML
+    private TableColumn<Empresa, Integer> tblPhoneEnt;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        tblCodeEnt.setCellValueFactory(new PropertyValueFactory<>("idEmpresa"));
+        tblNameEnt.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
+        tblAcronymEnt.setCellValueFactory(new PropertyValueFactory<>("Acronimo"));
+        tblPhoneEnt.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+
+        CargarDatos();
+
+    }
+
+    private void CargarDatos() {
+        table_Enterprice.getItems().clear();
+        table_Enterprice.setItems(h.Empresa());
 
     }
 
@@ -105,11 +118,6 @@ public class RegristroEmpresaController implements Initializable {
         } catch (Exception e) {
             System.out.println("Error");
         }
-    }
-
-    private void CargarDatos() {
-        table_Enterprice.getItems().clear();
-        table_Enterprice.getItems().addAll();
     }
 
     @FXML
@@ -211,6 +219,7 @@ public class RegristroEmpresaController implements Initializable {
                 txt_EntrepriceName.setText("");
                 txt_Phone.setText("");
                 txt_Acronym.setText("");
+                CargarDatos();
                 //  ClientesMenu("Menu", "Menu");
             }
         }
@@ -220,6 +229,7 @@ public class RegristroEmpresaController implements Initializable {
     private void ImportClients(ActionEvent event) {
          try {
             String query = "Insert IGNORE into Empresa(idEmpresa, Nombre, Acronimo, Telefono, Activo) values (?,?,?,?,?)";
+
             pst = connection.prepareStatement(query);
 
             InputStream fileIn = new FileInputStream(new File("Empresas.xlsx"));
@@ -237,7 +247,7 @@ public class RegristroEmpresaController implements Initializable {
                 pst.setInt(5, (int) row.getCell(4).getNumericCellValue());
                 pst.execute();
             }
-            Alert alert = new Alert(AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
             alert.setContentText("Enterprise info Imported From Excel Sheet To Database.");
@@ -252,6 +262,7 @@ public class RegristroEmpresaController implements Initializable {
             Logger.getLogger(EmpresaDAOImplements.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(EmpresaDAOImplements.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }
+
 }

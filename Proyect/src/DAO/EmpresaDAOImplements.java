@@ -6,12 +6,17 @@
 package DAO;
 
 import IDAO.IEmpresaDAO;
+import Model.Clientes;
+import Model.Empresa;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Random;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,8 +33,6 @@ public class EmpresaDAOImplements implements IEmpresaDAO {
                 + Integer.toString((int) (Math.random() * 9) + 1);
         return codigo;
     }
-
-   
 
     @Override
     public void registrarEmp(String txt_EntrepriceName, String txt_Acronym, String txt_Phone) {
@@ -56,6 +59,23 @@ public class EmpresaDAOImplements implements IEmpresaDAO {
                 JOptionPane.showMessageDialog(null, ex);
             }
         }
+    }
+
+    @Override
+    public ObservableList<Empresa> Empresa() {
+        ObservableList<Empresa> Empresa = FXCollections.observableArrayList();
+
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("Select idEmpresa, Nombre, Acronimo, Telefono, Activo from Empresa");
+            while (rs.next()) {
+                Empresa.add(new Empresa(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5)));
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Cargar Empresa \n" + ex);
+        }
+        return Empresa;
     }
 
 }

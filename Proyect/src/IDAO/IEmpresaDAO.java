@@ -5,6 +5,7 @@
  */
 package IDAO;
 
+import Model.Empresa;
 import Model.Persona;
 import javafx.collections.ObservableList;
 
@@ -15,5 +16,5 @@ import javafx.collections.ObservableList;
 public interface IEmpresaDAO {
     
     public void registrarEmp(String txt_EntrepriceName, String txt_Acronym, String txt_Phone);
-//     public ObservableList<Persona> Personas();
+     public ObservableList<Empresa> Empresa();
 }
