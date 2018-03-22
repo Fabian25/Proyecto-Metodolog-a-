@@ -78,6 +78,8 @@ public class RegistroClienteController implements Initializable {
     private TableColumn<Persona, String> columPhone;
     @FXML
     private TableColumn<Persona, String> columEmail;
+    @FXML
+    private TableColumn<Persona, String> columRemove;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -86,35 +88,15 @@ public class RegistroClienteController implements Initializable {
         columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+        columRemove.setCellValueFactory(new PropertyValueFactory<>("button"));
         CargarDatos();
-//        try {
-//
-//            data = FXCollections.observableArrayList();
-//            ResultSet exe = connection.createStatement().executeQuery("SELECT Persona.Nombre, Persona.Apellido, Persona.IdPersona, Persona.Telefono, Persona.Correo FROM Persona");
-//            while (exe.next()) {
-//                data.add(new Persona(exe.getInt(1), exe.getString(2), exe.getString(2), exe.getInt(1), exe.getString(2), exe.getString(2), exe.getString(2)) {
-//                    @Override
-//                    public String verPersona() {
-//                        return "CLIENTE: " + this.getCodigo() + " NUMERO DE CEDULA:" + this.getCedula() + " NOMBRE:" + this.getNombre();
-//                    }
-//                });
-//
-//            }
-//            columName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-//            columLastname.setCellValueFactory(new PropertyValueFactory<>("apellido"));
-//            columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
-//            columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
-//            columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
-//            tbClientes.setItems(null);
-//            tbClientes.setItems(data);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(RegistroClienteController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+
     }
 
     private void CargarDatos() {
         tbClientes.getItems().clear();
-        tbClientes.getItems().addAll(h.Personas());
+        tbClientes.setItems(h.Personas());
+
     }
 
     private void ClientesMenu(String Vista, String Titulo) {
@@ -165,7 +147,7 @@ public class RegistroClienteController implements Initializable {
 
     @FXML
     private void c_add(ActionEvent event) {
-        
+
         boolean flag = true;
         if (!validaNombre()) {
             flag = false;
@@ -182,7 +164,7 @@ public class RegistroClienteController implements Initializable {
         if (!validateEmaill()) {
             flag = false;
         }
-        
+
         if (flag) {
             h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
             //agrega a nivel de base de datos pero no a tabla
