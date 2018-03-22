@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javax.swing.JOptionPane;
@@ -26,6 +27,8 @@ public class ProcesarTiquetesController implements Initializable {
     private Button btnChecked;
     @FXML
     private TextArea txt_Solution;
+    @FXML
+    private ComboBox<?> cb_status;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
