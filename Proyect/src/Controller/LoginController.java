@@ -122,7 +122,12 @@ public class LoginController implements Initializable {
                         alert.showAndWait();
                     } else {
                         if (resultSet.getInt(8) == 1) {
-                            IngresarMenu("Menu", "Menu");
+                            if (resultSet.getInt(9) == 1) {
+                                    IngresarMenu("Menu", "Menu");
+                            }else{
+                                IngresarMenu("MenuEmpleado", "Menu");
+                            }
+                        
                         } else {
                             Alert alert = new Alert(Alert.AlertType.WARNING);
                             alert.setTitle("Error");
@@ -155,7 +160,7 @@ public class LoginController implements Initializable {
                         alert.showAndWait();
                     } else {
                         if (resultSet.getInt(8) == 1) {
-                            IngresarMenu("Menu", "Menu");
+                            IngresarMenu("MenuCliente", "Menu Cliente");
                         } else {
                             Alert alert = new Alert(Alert.AlertType.WARNING);
                             alert.setTitle("Error");

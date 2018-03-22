@@ -227,8 +227,13 @@ public class RegristroEmpresaController implements Initializable {
 
     @FXML
     private void ImportClients(ActionEvent event) {
+<<<<<<< HEAD
         try {
             String query = "Insert into Empresa(idEmpresa, Nombre, Acronimo, Telefono, Activo) values (?,?,?,?,?)";
+=======
+         try {
+            String query = "Insert IGNORE into Empresa(idEmpresa, Nombre, Acronimo, Telefono, Activo) values (?,?,?,?,?)";
+>>>>>>> cd6f7588a1393d7ca996c09bf921589626b5cd83
             pst = connection.prepareStatement(query);
 
             InputStream fileIn = new FileInputStream(new File("Empresas.xlsx"));
@@ -249,7 +254,7 @@ public class RegristroEmpresaController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("User Details Imported From Excel Sheet To Database.");
+            alert.setContentText("Enterprise info Imported From Excel Sheet To Database.");
             alert.showAndWait();
 
 //                wb.close();
