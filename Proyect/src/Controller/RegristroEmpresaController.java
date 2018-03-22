@@ -88,7 +88,7 @@ public class RegristroEmpresaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     
+
     }
 
     private void EmpresasMenu(String Vista, String Titulo) {
@@ -111,92 +111,7 @@ public class RegristroEmpresaController implements Initializable {
         table_Enterprice.getItems().clear();
         table_Enterprice.getItems().addAll();
     }
-<<<<<<< HEAD
-=======
 
-    
-    private void c_Import(ActionEvent event) throws IOException, SQLException {
-
-        try {
-            String query = "Insert into Empresas(ID_EMPRESA,Nombre,Siglas,Telefono,Activo) values (?,?,?,?,?)";
-            preparedStatement = connection.prepareStatement(query);
-            FileInputStream fileIn = new FileInputStream(new File("Empresas.xlsx"));
-            XSSFWorkbook wb = new XSSFWorkbook(fileIn);
-            XSSFSheet sheet = wb.getSheetAt(0);
-            Row row;
-            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-                row = sheet.getRow(i);
-                preparedStatement.setString(1, row.getCell(0).getStringCellValue());
-                preparedStatement.setString(2, row.getCell(1).getStringCellValue());
-                preparedStatement.setString(3, row.getCell(2).getStringCellValue());
-                preparedStatement.setString(4, row.getCell(3).getStringCellValue());
-                preparedStatement.setInt(5,(int)row.getCell(4).getNumericCellValue());
-                preparedStatement.execute();
-            }
-//            wb.close();
-            fileIn.close();
-            preparedStatement.close();
-        } catch (SQLException | FileNotFoundException ex) {
-        }
-        HBox hbox = new HBox(5);
-        hbox.getChildren().addAll();
-
-//        try {
-//            String query = "Insert into Empresas(ID_EMPRESA,Nombre,Siglas,Telefono,Activo) values (?,?,?,?,?)";
-//            PreparedStatement pst = connection.prepareStatement(query);
-//            FileInputStream fileIn = new FileInputStream(new File("Empresas.xlsx"));
-////       Workbook wb =  Workbook.getWorkbook(fileIn);
-////           Sheet sheet = wb.getSheetAt(0);
-//            Row row;
-//            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-//                row = sheet.getRow(i);
-//                pst.setString(1, row.getCell(0).getStringCellValue());
-//                pst.setString(2, row.getCell(1).getStringCellValue());
-//                pst.setString(3, row.getCell(2).getStringCellValue());
-//                pst.setString(4, row.getCell(3).getStringCellValue());
-//                pst.setInt(5,(int)row.getCell(4).getNumericCellValue());
-//                pst.execute();
-//            }
-//            //wb.close();
-//            fileIn.close();
-//            pst.close();
-//        } catch (SQLException | FileNotFoundException ex) {
-//        }
-//     CargarDatos();
-    }
-    
->>>>>>> c275ae045215b6c8d9949f571dca1a02f523b76a
-    
-
-//    private void c_Import(ActionEvent event) throws IOException, SQLException {
-//     
-//           
-//        
-////        try {
-////            String query = "Insert into Empresas(ID_EMPRESA,Nombre,Siglas,Telefono,Activo) values (?,?,?,?,?)";
-////            PreparedStatement pst = connection.prepareStatement(query);
-////            FileInputStream fileIn = new FileInputStream(new File("Empresas.xlsx"));
-//////       Workbook wb =  Workbook.getWorkbook(fileIn);
-//////           Sheet sheet = wb.getSheetAt(0);
-////            Row row;
-////            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-////                row = sheet.getRow(i);
-////                pst.setString(1, row.getCell(0).getStringCellValue());
-////                pst.setString(2, row.getCell(1).getStringCellValue());
-////                pst.setString(3, row.getCell(2).getStringCellValue());
-////                pst.setString(4, row.getCell(3).getStringCellValue());
-////                pst.setInt(5,(int)row.getCell(4).getNumericCellValue());
-////                pst.execute();
-////            }
-////            //wb.close();
-////            fileIn.close();
-////            pst.close();
-////        } catch (SQLException | FileNotFoundException ex) {
-////        }
-////     CargarDatos();
-//    }
-
-    @FXML
     @FXML
     private void Ent_BarRegist(ActionEvent event
     ) {
@@ -277,75 +192,66 @@ public class RegristroEmpresaController implements Initializable {
 
     @FXML
     private void E_Enterprice(ActionEvent event) {
-<<<<<<< HEAD
         if (validaNombreEmpresa() | validarSiglas() | validaTelefono()) {
-=======
-        boolean flag = true;
-        if(!validaNombreEmpresa()){
-            flag = false;
-        }
-        if(!validaTelefono()){
-            flag = false;
-        } 
-        if(!validarSiglas()){
-            flag = false;
-        }
-        if (flag) {
->>>>>>> c275ae045215b6c8d9949f571dca1a02f523b76a
-            h.registrarEmp(txt_EntrepriceName.getText(), txt_Phone.getText(), txt_Acronym.getText());
-            //agrega a nivel de base de datos pero no a tabla
-            txt_EntrepriceName.setText("");
-            txt_Phone.setText("");
-            txt_Acronym.setText("");
-            //  ClientesMenu("Menu", "Menu");
-        }
-    }
 
-    @FXML
-    private void ImportClients(ActionEvent event)  throws IOException, SQLException{
-        
-         try {
-                String query = "Insert into Empresa(idEmpresa, Nombre, Acronimo, Telefono, Activo) values (?,?,?,?,?)";
-                pst = connection.prepareStatement(query);
-
-                InputStream fileIn = new FileInputStream(new File("Empresas.xlsx"));
-
-                XSSFWorkbook wb = new XSSFWorkbook(fileIn);
-                
-                XSSFSheet sheet = wb.getSheetAt(0);
-                Row row;
-                for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-                    row = sheet.getRow(i);
-                    pst.setString(1, row.getCell(0).getStringCellValue());
-                    pst.setString(2, row.getCell(1).getStringCellValue());
-                    pst.setString(3, row.getCell(2).getStringCellValue());
-                    pst.setInt(4, (int)row.getCell(3).getNumericCellValue());
-                    pst.setInt(5, (int) row.getCell(4).getNumericCellValue());
-                    pst.execute();
-                }
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.setContentText("User Details Imported From Excel Sheet To Database.");
-                alert.showAndWait();
-
-//                wb.close();
-                fileIn.close();
-                pst.close();
-                rs.close();
-            } catch (SQLException | FileNotFoundException | RuntimeException ex) {
-                System.out.println(ex);
-                Logger.getLogger(EmpresaDAOImplements.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(EmpresaDAOImplements.class.getName()).log(Level.SEVERE, null, ex);
+            boolean flag = true;
+            if (!validaNombreEmpresa()) {
+                flag = false;
             }
+            if (!validaTelefono()) {
+                flag = false;
+            }
+            if (!validarSiglas()) {
+                flag = false;
+            }
+            if (flag) {
 
-//        HBox hbox = new HBox(5);
-//        hbox.getChildren().addAll(importXLToDB);
+                h.registrarEmp(txt_EntrepriceName.getText(), txt_Phone.getText(), txt_Acronym.getText());
+                //agrega a nivel de base de datos pero no a tabla
+                txt_EntrepriceName.setText("");
+                txt_Phone.setText("");
+                txt_Acronym.setText("");
+                //  ClientesMenu("Menu", "Menu");
+            }
+        }
     }
-
-}
 
     @FXML
     private void ImportClients(ActionEvent event) {
+         try {
+            String query = "Insert into Empresa(idEmpresa, Nombre, Acronimo, Telefono, Activo) values (?,?,?,?,?)";
+            pst = connection.prepareStatement(query);
+
+            InputStream fileIn = new FileInputStream(new File("Empresas.xlsx"));
+
+            XSSFWorkbook wb = new XSSFWorkbook(fileIn);
+
+            XSSFSheet sheet = wb.getSheetAt(0);
+            Row row;
+            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+                row = sheet.getRow(i);
+                pst.setString(1, row.getCell(0).getStringCellValue());
+                pst.setString(2, row.getCell(1).getStringCellValue());
+                pst.setString(3, row.getCell(2).getStringCellValue());
+                pst.setInt(4, (int) row.getCell(3).getNumericCellValue());
+                pst.setInt(5, (int) row.getCell(4).getNumericCellValue());
+                pst.execute();
+            }
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("User Details Imported From Excel Sheet To Database.");
+            alert.showAndWait();
+
+//                wb.close();
+            fileIn.close();
+            pst.close();
+            rs.close();
+        } catch (SQLException | FileNotFoundException | RuntimeException ex) {
+            System.out.println(ex);
+            Logger.getLogger(EmpresaDAOImplements.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(EmpresaDAOImplements.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
+}

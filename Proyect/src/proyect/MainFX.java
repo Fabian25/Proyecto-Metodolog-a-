@@ -20,14 +20,9 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-<<<<<<< HEAD
       try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Menu.fxml"));
-=======
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Login.fxml"));
->>>>>>> c275ae045215b6c8d9949f571dca1a02f523b76a
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Login");
