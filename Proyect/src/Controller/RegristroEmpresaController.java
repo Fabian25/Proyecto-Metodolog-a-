@@ -115,7 +115,6 @@ public class RegristroEmpresaController implements Initializable {
 =======
 
     
-    @FXML
     private void c_Import(ActionEvent event) throws IOException, SQLException {
 
         try {
@@ -197,6 +196,7 @@ public class RegristroEmpresaController implements Initializable {
 ////     CargarDatos();
 //    }
 
+    @FXML
     @FXML
     private void Ent_BarRegist(ActionEvent event
     ) {
@@ -345,3 +345,7 @@ public class RegristroEmpresaController implements Initializable {
     }
 
 }
+
+    @FXML
+    private void ImportClients(ActionEvent event) {
+    }
