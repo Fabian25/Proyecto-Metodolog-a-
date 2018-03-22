@@ -34,6 +34,9 @@ public class Clientes extends Persona {
     public String getEmpresaAsociar() {
         return EmpresaAsociar;
     }
+
+    public Clientes() {
+    }
 private int Codigo;
 private String EmpresaAsociar;
 

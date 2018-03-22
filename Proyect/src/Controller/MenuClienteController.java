@@ -30,7 +30,8 @@ public class MenuClienteController implements Initializable {
     private Button btn_Perfil;
     @FXML
     private Button btnExit;
-      private void CargarVistas(String Vista, String Titulo) {
+
+    private void CargarVistas(String Vista, String Titulo) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -38,27 +39,29 @@ public class MenuClienteController implements Initializable {
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
-            Stage act = (Stage) btnExit.getScene().getWindow();
+            Stage act = (Stage) btn_Tiquete.getScene().getWindow();
             act.close();
         } catch (Exception e) {
             System.out.println("Error");
         }
     }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void Tiquetes(ActionEvent event) {
+
     }
 
     @FXML
     private void B_Salir(MouseEvent event) {
-              CargarVistas("Login", "Log In");
+        CargarVistas("Login", "Log In");
     }
-    
+
 }
