@@ -27,104 +27,97 @@ public class ClienteDAOImplements implements IClienteDAO {
     PreparedStatement preparedStatement = null;
     Connection connection = BaseDatos.Conexion.getConnection();
 
-
     private boolean ExisteCedula(String ced) {
 
-        String sql = "SELECT * FROM Persona p where p.IdPersona = " + ced + ";";
+        String sql = "SELECT * FROM Clientes p where p.IdPersona = " + ced + ";";
         String[] datos = new String[10];
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            if (rs!=null) {
-              while (rs.next()) {
-               datos[0] = rs.getString(1);
-            }
-            if (datos[0] != null) {
-                if (datos[0].equals(ced)) {
-                    return true;
+            if (rs != null) {
+                while (rs.next()) {
+                    datos[0] = rs.getString(1);
+                }
+                if (datos[0] != null) {
+                    if (datos[0].equals(ced)) {
+                        return true;
+                    }
                 }
             }
-            }
-          
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return false;
     }
 
-    private boolean ExisteCodigo(String cod) {
+    private boolean ExisteCodigo(int cod) {
 
-        String sql = "SELECT * FROM Persona p where p.Codigo = " + cod + ";";
+        String sql = "SELECT * FROM Clientes p where p.Codigo = " + cod + ";";
         String[] datos = new String[10];
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            if (rs!=null) {
-                  while (rs.next()) {
-                datos[0] = rs.getString(9);
-            }
-            if (datos[0] != null) {
-                if (datos[0].equals(cod)) {
-                    return true;
+            if (rs != null) {
+                while (rs.next()) {
+                    datos[0] = rs.getString(5);
                 }
+                return datos[0].equals(cod);
+
             }
-            }
-          
+
         } catch (SQLException ex) {
         }
         return false;
     }
-    private String GenerarCodigo(String Cod){
-        
-       Random rand = new Random();
-        int randomNum = rand.nextInt((999 - 100) + 1) + 100;
-        Cod = "CL-" + randomNum;
+
+    private int GenerarCodigo(int Cod) {
+
+        Random rand = new Random();
+        int randomNum = rand.nextInt((9999999 - 1000000) + 1) + 100;
+        Cod = randomNum;
         return Cod;
-        
+
     }
 
     @Override
     public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
 
-        String Cod = "";
+        int Cod = 0;
         GenerarCodigo(Cod);
-        
-        while(ExisteCodigo(Cod)) {            
-        GenerarCodigo(Cod);
+
+        while (ExisteCodigo(Cod)) {
+            GenerarCodigo(Cod);
         }
         if (ExisteCedula(txtCIDnum)) {
             JOptionPane.showMessageDialog(null, "There is already a client with this id");
-        }else{
-            
-             if (txtCName.length() == 0 || txtCLastNmae.length() == 0
-                || txtCIDnum.length() == 0 || txtCPhoneNum.length() == 0
-                || txtCEmail.length() == 0) {
-            JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
         } else {
-            try {
-                String sql = "Insert into Persona values(?,?,?,?,?,?,?,?,?);";
 
-                preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, txtCIDnum);
-                preparedStatement.setString(2, txtCName);
-                preparedStatement.setString(3, txtCLastNmae);
-                preparedStatement.setString(4, txtCPhoneNum);
-                preparedStatement.setString(5, txtCEmail);
-                preparedStatement.setString(6, "Nuevo123$");
-                preparedStatement.setString(7, Cod);
-                preparedStatement.setString(8, "3");
-                preparedStatement.setString(9, "1");
+            if (txtCName.length() == 0 || txtCLastNmae.length() == 0
+                    || txtCIDnum.length() == 0 || txtCPhoneNum.length() == 0
+                    || txtCEmail.length() == 0) {
+                JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
+            } else {
+                try {
+                    String sql = "Insert into Clientes values(?,?,?,?,?,?,?,?,?);";
 
-                int executeUpdate = preparedStatement.executeUpdate();
+                    preparedStatement = connection.prepareStatement(sql);
+                    preparedStatement.setString(1, txtCIDnum);
+                    preparedStatement.setString(2, txtCName);
+                    preparedStatement.setString(3, txtCLastNmae);
+                    preparedStatement.setString(4, txtCEmail);
+                    preparedStatement.setString(5, "Nuevo123$");
+                    preparedStatement.setInt(6, Cod);
+                    preparedStatement.setString(7, txtCPhoneNum);
+                    preparedStatement.setInt(8, 1);
 
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex);
+                    int executeUpdate = preparedStatement.executeUpdate();
+
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
             }
         }
-        }
-        
-
-       
 
     }
 
@@ -194,7 +187,8 @@ public class ClienteDAOImplements implements IClienteDAO {
 //        return listaCliente;
         return null;
     }
-@Override
+
+    @Override
     public ObservableList<Clientes> Clientes() {
         ObservableList<Clientes> Clientes = FXCollections.observableArrayList();
 
@@ -202,7 +196,7 @@ public class ClienteDAOImplements implements IClienteDAO {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("Select IdPersona, Nombre, Apellido, Telefono, Correo from Persona where TipoPersona = 3");
             while (rs.next()) {
-                Clientes.add(new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "",new Button("Remove")) {
+                Clientes.add(new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("Remove")) {
                     @Override
                     public String verPersona() {
                         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
