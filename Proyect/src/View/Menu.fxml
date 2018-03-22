@@ -19,15 +19,15 @@
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button fx:id="btn_Tiquete" layoutX="72.0" layoutY="469.0" mnemonicParsing="false" onAction="#Tiquetes" prefHeight="96.0" prefWidth="198.0" text="Tickets">
+      <Button fx:id="btn_Tiquete" layoutX="82.0" layoutY="469.0" mnemonicParsing="false" onAction="#Tiquetes" prefHeight="96.0" prefWidth="198.0" text="Tickets">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button fx:id="btn_Empresa" layoutX="374.0" layoutY="477.0" mnemonicParsing="false" onAction="#Empresas" prefHeight="96.0" prefWidth="198.0" text="Enterprises">
+      <Button fx:id="btn_Empresa" layoutX="384.0" layoutY="469.0" mnemonicParsing="false" onAction="#Empresas" prefHeight="96.0" prefWidth="198.0" text="Enterprises">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button fx:id="btn_Empleado" layoutX="374.0" layoutY="277.0" mnemonicParsing="false" onAction="#Empleados" prefHeight="96.0" prefWidth="198.0" text="Employees">
+      <Button fx:id="btn_Empleado" layoutX="384.0" layoutY="277.0" mnemonicParsing="false" onAction="#Empleados" prefHeight="96.0" prefWidth="198.0" text="Employees">
          <font>
             <Font size="20.0" />
          </font></Button>

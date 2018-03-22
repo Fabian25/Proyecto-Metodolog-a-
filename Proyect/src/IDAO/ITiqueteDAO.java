@@ -18,20 +18,20 @@ import javafx.scene.control.TextField;
  */
 public interface ITiqueteDAO {
 
-    public boolean registrarTiquetes(TextField txt_Series,ComboBox<?> txt_Status,TextArea txt_description);
+    public void registrarTiquetes(TextField txt_Series,ComboBox<?> txt_Status,TextArea txt_description);
 
     public List<Tiquetes> VerTiquetes();
+    
 
-    public boolean EditarTiquetes(ComboBox<?> txt_Status,TextArea txt_description);
+    public void EditarTiquetes(ComboBox<?> txt_Status,TextArea txt_description, Tiquetes t);
 
-    public void procesarTiquete(Tiquetes tiquete);
+    public void procesarTiquete(ComboBox<?> txt_Status, TextArea txt_description, TextArea txt_Solution,Tiquetes tiquete);
 
     public void asignarTiquete(Tiquetes tiquete, Empleados empleado);
 
-    public boolean eliminarTiquetes(Tiquetes tiquete);
+    public void eliminarTiquetes(Tiquetes tiquete);
 
-    public List<Tiquetes> obtenerTodos();
-
-    public List<Tiquetes> obtenerporEmpleado();
+   
+    public List<Tiquetes> obtenerporEmpleado(Empleados empleado);
     
 }

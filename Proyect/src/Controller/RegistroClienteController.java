@@ -6,6 +6,7 @@
 package Controller;
 
 import DAO.ClienteDAOImplements;
+import Model.Clientes;
 
 import Model.Persona;
 import java.net.URL;
@@ -67,17 +68,17 @@ public class RegistroClienteController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    private TableView<Persona> tbClientes;
+    private TableView<Clientes> tbClientes;
     @FXML
-    private TableColumn<Persona, String> columName;
+    private TableColumn<Clientes, String> columName;
     @FXML
-    private TableColumn<Persona, String> columLastname;
+    private TableColumn<Clientes, String> columLastname;
     @FXML
-    private TableColumn<Persona, Integer> columID;
+    private TableColumn<Clientes, Integer> columID;
     @FXML
-    private TableColumn<Persona, String> columPhone;
+    private TableColumn<Clientes, String> columPhone;
     @FXML
-    private TableColumn<Persona, String> columEmail;
+    private TableColumn<Clientes, String> columEmail;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -86,35 +87,15 @@ public class RegistroClienteController implements Initializable {
         columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+       
         CargarDatos();
-//        try {
-//
-//            data = FXCollections.observableArrayList();
-//            ResultSet exe = connection.createStatement().executeQuery("SELECT Persona.Nombre, Persona.Apellido, Persona.IdPersona, Persona.Telefono, Persona.Correo FROM Persona");
-//            while (exe.next()) {
-//                data.add(new Persona(exe.getInt(1), exe.getString(2), exe.getString(2), exe.getInt(1), exe.getString(2), exe.getString(2), exe.getString(2)) {
-//                    @Override
-//                    public String verPersona() {
-//                        return "CLIENTE: " + this.getCodigo() + " NUMERO DE CEDULA:" + this.getCedula() + " NOMBRE:" + this.getNombre();
-//                    }
-//                });
-//
-//            }
-//            columName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-//            columLastname.setCellValueFactory(new PropertyValueFactory<>("apellido"));
-//            columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
-//            columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
-//            columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
-//            tbClientes.setItems(null);
-//            tbClientes.setItems(data);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(RegistroClienteController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+
     }
 
     private void CargarDatos() {
         tbClientes.getItems().clear();
-        tbClientes.getItems().addAll(h.Personas());
+        tbClientes.setItems(h.Clientes());
+
     }
 
     private void ClientesMenu(String Vista, String Titulo) {
@@ -165,18 +146,35 @@ public class RegistroClienteController implements Initializable {
 
     @FXML
     private void c_add(ActionEvent event) {
-//        if (validaNombre() | validaApellido() | validaID() | validaTelefono() | validateEmaill()) {
 
-        h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
-        //agrega a nivel de base de datos pero no a tabla
-        txtCName.setText("");
-        txtCLastNmae.setText("");
-        txtCIDnum.setText("");
-        txtCPhoneNum.setText("");
-        txtCEmail.setText("");
-        CargarDatos();
+        boolean flag = true;
+        if (!validaNombre()) {
+            flag = false;
+        }
+        if (!validaApellido()) {
+            flag = false;
+        }
+        if (!validaID()) {
+            flag = false;
+        }
+        if (!validaTelefono()) {
+            flag = false;
+        }
+        if (!validateEmaill()) {
+            flag = false;
+        }
+
+        if (flag) {
+            h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
+            //agrega a nivel de base de datos pero no a tabla
+            txtCName.setText("");
+            txtCLastNmae.setText("");
+            txtCIDnum.setText("");
+            txtCPhoneNum.setText("");
+            txtCEmail.setText("");
+            CargarDatos();
 //        ClientesMenu("Menu", "Menu");
-        //}
+        }
     }
 
     private boolean validaNombre() {

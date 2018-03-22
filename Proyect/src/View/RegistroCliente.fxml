@@ -70,7 +70,6 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <ScrollBar layoutX="1048.0" layoutY="202.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="16.0" />
       <ComboBox layoutX="808.0" layoutY="166.0" prefHeight="25.0" prefWidth="81.0" />
       <Button fx:id="btnADD" layoutX="390.0" layoutY="599.0" mnemonicParsing="false" onAction="#c_add" prefHeight="45.0" prefWidth="99.0" text="ADD">
          <effect>
@@ -81,13 +80,13 @@
             </Lighting>
          </effect>
       </Button>
-      <TableView fx:id="tbClientes" layoutX="650.0" layoutY="202.0" prefHeight="298.0" prefWidth="398.0">
+      <TableView fx:id="tbClientes" layoutX="650.0" layoutY="202.0" prefHeight="298.0" prefWidth="537.0">
          <columns>
-            <TableColumn fx:id="columName" prefWidth="75.0" text="Name" />
-            <TableColumn fx:id="columLastname" prefWidth="75.0" text="Last Name" />
-            <TableColumn fx:id="columID" prefWidth="75.0" text="ID Number" />
-            <TableColumn fx:id="columPhone" prefWidth="96.0" text="Phone Number" />
-            <TableColumn fx:id="columEmail" prefWidth="77.0" text="Email" />
+            <TableColumn fx:id="columName" editable="false" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="columLastname" editable="false" prefWidth="81.0" text="Last Name" />
+            <TableColumn fx:id="columID" editable="false" prefWidth="102.0" text="ID Number" />
+            <TableColumn fx:id="columPhone" editable="false" prefWidth="113.0" text="Phone Number" />
+            <TableColumn fx:id="columEmail" editable="false" prefWidth="165.0" text="Email" />
          </columns>
       </TableView>
       <TextField fx:id="txtCEmail" layoutX="322.0" layoutY="469.0" prefHeight="35.0" prefWidth="184.0" />

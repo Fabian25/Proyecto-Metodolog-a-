@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -42,13 +43,17 @@ public class ModificarTiqueteController implements Initializable {
     private Button BarViewTickets;
     @FXML
     private Button BarHomeTik;
+    @FXML
+    private ComboBox<String> cbx_status;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+     cbx_status.getItems().add(0, "Mild");
+     cbx_status.getItems().add(1, "Severe");
+     cbx_status.getItems().add(2, "Critic");
     }    
  private void TiquetesMenu(String Vista, String Titulo) {
 

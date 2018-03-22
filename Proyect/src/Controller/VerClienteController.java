@@ -5,6 +5,9 @@
  */
 package Controller;
 
+import DAO.ClienteDAOImplements;
+import Model.Clientes;
+import Model.Persona;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,7 +18,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -27,8 +32,9 @@ import javafx.stage.StageStyle;
  */
 public class VerClienteController implements Initializable {
 
+    ClienteDAOImplements h = new ClienteDAOImplements();
     @FXML
-    private TableView<?> tblViewClient;
+    private TableView<Clientes> tblViewClient;
     @FXML
     private Button BarRegisClient;
     @FXML
@@ -39,6 +45,16 @@ public class VerClienteController implements Initializable {
     private Button BarViewClient;
     @FXML
     private Button BarHomeC;
+    @FXML
+    private TableColumn<Clientes, String> columName;
+    @FXML
+    private TableColumn<Clientes, String> columLastName;
+    @FXML
+    private TableColumn<Clientes, String> columId;
+    @FXML
+    private TableColumn<Clientes, String> columPhoneNumber;
+    @FXML
+    private TableColumn<Clientes, String> columEmail;
 
     /**
      * Initializes the controller class.
@@ -62,7 +78,18 @@ public class VerClienteController implements Initializable {
     @Override
 
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        columName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columLastName.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        columId.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+        columPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+        columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+        CargarDatos();
+    }
+
+    private void CargarDatos() {
+        tblViewClient.getItems().clear();
+        tblViewClient.setItems(h.Clientes());
+
     }
 
     private void c_back(MouseEvent event) {

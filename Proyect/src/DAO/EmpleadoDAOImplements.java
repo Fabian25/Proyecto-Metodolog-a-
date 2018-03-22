@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import BaseDatos.Conexion;
 import Model.Empleados;
 import IDAO.IEmpleadoDAO;
@@ -26,7 +25,6 @@ import javax.swing.JOptionPane;
 public class EmpleadoDAOImplements implements IEmpleadoDAO{
     Connection connection = BaseDatos.Conexion.getConnection();
     public boolean ExisteCedula(String ced, String cod) {
-        
         String sql = "SELECT * FROM Persona p where p.IdPersona = " + ced + "and p.Codigo = " + cod + ";";
         String[] datos = new String[10];
         try {
@@ -81,11 +79,8 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO{
 
     @Override
     public void eliminar(TextField txt_ID) {
-    
-
         String Update = "UPDATE Personas\n"
                 + "SET Activo = " + "0"
-             
                 + "WHERE IdPersona = " +txt_ID.getText() + ";";
         try {
             Statement stmt = connection.createStatement();
@@ -98,7 +93,6 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO{
 
     @Override
     public void actualizar(TextField txt_Name, TextField txt_Phone, TextField txt_LastName, TextField txt_Email, Persona p) {
-           
         String Update = "UPDATE Personas\n"
                 + "SET Nombre = "+txt_Name.getText()
                  + "SET Apellido = "+txt_LastName.getText()
@@ -112,35 +106,39 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO{
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
     @Override
     public List<Persona> ver() {
-  Statement stm = null;
+
+//  Statement stm = null;
+//        ResultSet rs = null;
+//        String sql = "SELECT * FROM Persona where TipoPersona_ID_TipoPersona= "+"2"  +";";
+
+    Statement stm = null;
         ResultSet rs = null;
         
         String sql = "SELECT * FROM Persona where TipoPersona_ID_TipoPersona= "+"2"  +";";
+
         List<Persona> listaCliente = new ArrayList<Persona>();
-        try {
-            
-            stm = connection.createStatement();
-            rs = stm.executeQuery(sql);
-            while (rs.next()) {
-                Persona c = new Empleados();
-                c.setCodigo(rs.getString(7));
-                c.setCedula(rs.getInt(1));
-                c.setNombre(rs.getString(2));
-                c.setApellido(rs.getString(8));
-                listaCliente.add(c);
-            }
-            stm.close();
-            rs.close();
-            connection.close();
-        } catch (SQLException e) {
-            System.out.println("Error: Clase ClienteDaoImple, método obtener");
-            e.printStackTrace();
-        }
+//        try {
+//            stm = connection.createStatement();
+//            rs = stm.executeQuery(sql);
+//            while (rs.next()) {
+//                Persona c = new Empleados();
+//                c.setCodigo(rs.getString(7));
+//                c.setCedula(rs.getInt(1));
+//                c.setNombre(rs.getString(2));
+//                c.setApellido(rs.getString(8));
+//                listaCliente.add(c);
+//            }
+//            stm.close();
+//            rs.close();
+//            connection.close();
+//        } catch (SQLException e) {
+//            System.out.println("Error: Clase ClienteDaoImple, método obtener");
+//            e.printStackTrace();
+//        }
 
         return listaCliente;
     }

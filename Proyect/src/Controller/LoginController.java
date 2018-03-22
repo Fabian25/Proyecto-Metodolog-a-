@@ -101,42 +101,96 @@ public class LoginController implements Initializable {
         //Falta Validar el patron de la contraseña
         if (validaEmail()) {
 
-            PreparedStatement preparedStatement;
-            String email = txt_Usuario.getText();
-            String password = txt_Contra.getText();
+            if (!tipoUsuario()) {
+                PreparedStatement preparedStatement;
+                String email = txt_Usuario.getText();
+                String password = txt_Contra.getText();
 
-            String sql = "SELECT * FROM Persona WHERE correo = ? and contraseña = ?";
+                String sql = "SELECT * FROM Employees WHERE correo = ? and contraseña = ?";
 
-            try {
-                preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, email);
-                preparedStatement.setString(2, password);
-                ResultSet resultSet = preparedStatement.executeQuery();
-                if (!resultSet.next()) {
+                try {
+                    preparedStatement = connection.prepareStatement(sql);
+                    preparedStatement.setString(1, email);
+                    preparedStatement.setString(2, password);
+                    ResultSet resultSet = preparedStatement.executeQuery();
+                    if (!resultSet.next()) {
 
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Error");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Usuario no existe");
-                    alert.showAndWait();
-                } else {
-                    if (resultSet.getInt(9) == 1) {
-                        IngresarMenu("Menu", "Menu");
-                    } else {
                         Alert alert = new Alert(Alert.AlertType.WARNING);
                         alert.setTitle("Error");
                         alert.setHeaderText(null);
-                        alert.setContentText("Usuario Inactivo");
+                        alert.setContentText("Usuario no existe");
                         alert.showAndWait();
+                    } else {
+                        if (resultSet.getInt(8) == 1) {
+                            IngresarMenu("Menu", "Menu");
+                        } else {
+                            Alert alert = new Alert(Alert.AlertType.WARNING);
+                            alert.setTitle("Error");
+                            alert.setHeaderText(null);
+                            alert.setContentText("User Inactivo");
+                            alert.showAndWait();
+                        }
                     }
-
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, e);
                 }
+            } else {
+                PreparedStatement preparedStatement;
+                String email = txt_Usuario.getText();
+                String password = txt_Contra.getText();
 
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, e);
+                String sql = "SELECT * FROM Clientes WHERE correo = ? and Contraseña = ?";
+
+                try {
+                    preparedStatement = connection.prepareStatement(sql);
+                    preparedStatement.setString(1, email);
+                    preparedStatement.setString(2, password);
+                    ResultSet resultSet = preparedStatement.executeQuery();
+                    if (!resultSet.next()) {
+
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Error");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Usuario no existe");
+                        alert.showAndWait();
+                    } else {
+                        if (resultSet.getInt(8) == 1) {
+                            IngresarMenu("Menu", "Menu");
+                        } else {
+                            Alert alert = new Alert(Alert.AlertType.WARNING);
+                            alert.setTitle("Error");
+                            alert.setHeaderText(null);
+                            alert.setContentText("User Inactivo");
+                            alert.showAndWait();
+                        }
+                    }
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
             }
 
         }
+    }
+
+    private boolean tipoUsuario() {
+        PreparedStatement preparedStatement;
+        String email = txt_Usuario.getText();
+        String password = txt_Contra.getText();
+
+        String sql = "SELECT * FROM Clientes WHERE correo = ? and contraseña = ?";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+                return false;
+            }
+
+        } catch (SQLException e) {
+        }
+        return true;
+
     }
 
     private boolean validaEmail() {

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package IDAO;
+import Model.Clientes;
 import java.util.List;
 import Model.Persona;
 import javafx.collections.ObservableList;
@@ -18,5 +19,5 @@ public interface IClienteDAO {
 	public List<Persona> ver();
 	public void actualizar(TextField txtCName,TextField txtCLastNmae,TextField txtCPhoneNum,TextField txtCEmail,Persona p);
 	public void eliminar(TextField txtCIDnum); 
-        public ObservableList<Persona> Personas();
+        public ObservableList<Clientes> Clientes();
 }

@@ -86,7 +86,23 @@ EmpleadoDAOImplements h = new EmpleadoDAOImplements();
 
       @FXML
     private void c_add(ActionEvent event) {
-        if (validaNombre() | validaApellido() | validaID() | validaTelefono() | validateEmaill()) {
+        boolean flag = true;
+        if (!validaNombre()) {
+            flag = false;
+        }
+        if (!validaApellido()) {
+            flag = false;
+        }
+        if (!validaID()) {
+            flag = false;
+        }
+        if (!validaTelefono()) {
+            flag = false;
+        }
+        if (!validateEmaill()) {
+            flag = false;
+        }
+        if (flag) {
             h.registrar(txt_Name.getText(), txt_LastName.getText(), txt_ID.getText(), txt_Phone.getText(), txt_Email.getText());
             //agrega a nivel de base de datos pero no a tabla
             txt_Name.setText("");
