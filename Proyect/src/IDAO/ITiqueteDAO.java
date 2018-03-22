@@ -29,10 +29,9 @@ public interface ITiqueteDAO {
 
     public void asignarTiquete(Tiquetes tiquete, Empleados empleado);
 
-    public boolean eliminarTiquetes(Tiquetes tiquete);
+    public void eliminarTiquetes(Tiquetes tiquete);
 
-    public List<Tiquetes> obtenerTodos();
-
-    public List<Tiquetes> obtenerporEmpleado();
+   
+    public List<Tiquetes> obtenerporEmpleado(Empleados empleado);
     
 }

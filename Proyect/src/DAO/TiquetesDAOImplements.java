@@ -37,7 +37,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
     }
  
     private boolean ExisteCodigoTiquete(String cod) {
-        String sql = "SELECT * FROM Tiquete t where .idTiquete = " + cod + ";";
+        String sql = "SELECT * FROM Tiquetes t where t.idTiquete = " + cod + ";";
         String[] datos = new String[10];
         try {
             Statement st = connection.createStatement();
@@ -66,7 +66,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
         } else {  
              if (ExisteCodigoTiquete(Cod) == false) {
-                String sql = "Insert into Tiquete values(" +txt_Series + "," + txt_Status + ","
+                String sql = "Insert into Tiquetes values(" +txt_Series + "," + txt_Status + ","
                         + txt_description + ");";
                 String[] datos = new String[10];
                 try {
@@ -80,31 +80,29 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
                 JOptionPane.showMessageDialog(null, "The user alredy exists");
               }
         }
-        
     }
 
     @Override
     public List<Tiquetes> VerTiquetes() {
         Statement stm = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM Tiquete where idTiquete = "+ "*" +";";
+        String sql = "SELECT * FROM Tiquetes "+";";
         List<Tiquetes> listaTiquete = new ArrayList<Tiquetes>();
-        try {
-            
+        try {   
             stm = connection.createStatement();
             rs = stm.executeQuery(sql);
             while (rs.next()) {
                 Tiquetes c = new Tiquetes();
-                c.setEstado(rs.getString(3));
+                c.setEstado(rs.getString(2));
                 c.setID_Tiquete(rs.getString(1));
-                c.setPrioridad(rs.getString(6));
+                c.setPrioridad(rs.getString(5));
                 listaTiquete.add(c);
             }
             stm.close();
             rs.close();
             connection.close();
         } catch (SQLException e) {
-            System.out.println("Error: Clase ClienteDaoImple, método obtener");
+            System.out.println("Error: Class TiqueteDaoImple, method: VerTiquetes");
             e.printStackTrace();
         }
         return listaTiquete;
@@ -112,10 +110,10 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 
     @Override
     public void EditarTiquetes(ComboBox<?> txt_Status, TextArea txt_description, Tiquetes t) {
-               String Update = "UPDATE Tiquete\n"
+               String Update = "UPDATE Tiquetes\n"
                 + "SET Estado = "+txt_Status.getValue()
                  + "SET Descripcion = "+txt_description.getText()
-                + "WHERE idTiquete = " + t.getID_Tiquete() + ";";
+                + "WHERE idTiquetes = " + t.getID_Tiquete() + ";";
         try {
             Statement stmt = connection.createStatement();
             PreparedStatement pst = connection.prepareStatement(Update);
@@ -123,17 +121,15 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        
-
     }
 
     @Override
     public void procesarTiquete(ComboBox<?> txt_Status, TextArea txt_description, TextArea txt_solution,Tiquetes tiquete) {
-         String Update = "UPDATE Tiquete\n"
+         String Update = "UPDATE Tiquetes\n"
                 + "SET Estado = "+txt_Status.getValue()
                 + "SET Descripcion = "+txt_description.getText()
                 + "SET Solucion =" + txt_solution.getText()
-                + "WHERE idTiquete = " + tiquete.getID_Tiquete() + ";";
+                + "WHERE idTiquetes = " + tiquete.getID_Tiquete() + ";";
         try {
             Statement stmt = connection.createStatement();
             PreparedStatement pst = connection.prepareStatement(Update);
@@ -149,19 +145,45 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
     }
 
     @Override
-    public boolean eliminarTiquetes(Tiquetes tiquete) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void eliminarTiquetes(Tiquetes tiquete) {
+     String Update = "UPDATE Tiquetes\n"
+                + "SET Activo = " + "0"
+                + "WHERE idTiquetes = " + tiquete.getID_Tiquete() + ";";
+        try {
+            Statement stmt = connection.createStatement();
+            PreparedStatement pst = connection.prepareStatement(Update);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }  
 
+ 
     @Override
-    public List<Tiquetes> obtenerTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Tiquetes> obtenerporEmpleado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public List<Tiquetes> obtenerporEmpleado(Empleados emp) {
+     Statement stm = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM Tiquetes WHERE Empleado_LaborandoID =" + emp.getCodigo() + ";";
+        List<Tiquetes> listaTiquete = new ArrayList<Tiquetes>();
+        try {   
+            stm = connection.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Tiquetes c = new Tiquetes();
+                c.setEstado(rs.getString(3));
+                c.setID_Tiquete(rs.getString(1));
+                c.setPrioridad(rs.getString(6));
+                listaTiquete.add(c);
+            }
+            stm.close();
+            rs.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Error: Class TiqueteDaoImple, method: obtenerporEmpleado");
+            e.printStackTrace();
+        }
+        return listaTiquete;
+ }
 
 //    BaseDatos.Conexion cc = new BaseDatos.Conexion();
 //
