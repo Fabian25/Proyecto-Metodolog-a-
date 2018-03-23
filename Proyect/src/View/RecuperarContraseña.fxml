@@ -49,7 +49,7 @@
             <Blend />
          </effect>
       </Button>
-      <TextField id="Contra" layoutX="46.0" layoutY="294.0" prefHeight="31.0" prefWidth="342.0" promptText="New Password" />
-      <TextField id="ContraAgain" layoutX="46.0" layoutY="354.0" prefHeight="31.0" prefWidth="342.0" promptText="New Password" />
+      <TextField id="Contra" fx:id="NewPassword" layoutX="46.0" layoutY="294.0" prefHeight="31.0" prefWidth="342.0" promptText="New Password" />
+      <TextField id="ContraAgain" fx:id="NewPasswordl" layoutX="46.0" layoutY="354.0" prefHeight="31.0" prefWidth="342.0" promptText="New Password" />
    </children>
 </AnchorPane>

@@ -42,6 +42,10 @@ public class RecuperarContraseñaController implements Initializable {
     private TextField lblCaptcha;
     @FXML
     private Button btn_Back;
+    @FXML
+    private TextField NewPassword;
+    @FXML
+    private TextField NewPasswordl;
 
     /**
      * Initializes the controller class.
