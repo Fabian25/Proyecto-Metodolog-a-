@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -22,29 +22,24 @@ import javafx.stage.Stage;
  *
  * @author ALONSITO
  */
-public class MenuClienteController implements Initializable {
+public class VerPerfilClienteController implements Initializable {
 
     @FXML
-    private Button btn_Tiquete;
+    private TextField txtCName;
     @FXML
-    private Button btn_Perfil;
+    private TextField txtCLastNmae;
     @FXML
-    private Button btnExit;
-
-    private void CargarVistas(String Vista, String Titulo) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setTitle(Titulo);
-            stage.setScene(new Scene(root1));
-            stage.show();
-            Stage act = (Stage) btn_Tiquete.getScene().getWindow();
-            act.close();
-        } catch (Exception e) {
-            System.out.println("Error");
-        }
-    }
+    private TextField txtCIDnum;
+    @FXML
+    private TextField txtCPhoneNum;
+    @FXML
+    private TextField txtCEmail;
+    @FXML
+    private Button BarMyProfile;
+    @FXML
+    private Button BarEditProfile;
+    @FXML
+    private Button BarHomeC;
 
     /**
      * Initializes the controller class.
@@ -52,21 +47,36 @@ public class MenuClienteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }    
+
+      private void CargarVistas(String Vista, String Titulo) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle(Titulo);
+            stage.setScene(new Scene(root1));
+            stage.show();
+            Stage act = (Stage) BarHomeC.getScene().getWindow();
+            act.close();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+    }
+      
+    @FXML
+    private void C_BarMyProfile(ActionEvent event) {
+        CargarVistas("VerPerfilCliente", "Profile");
     }
 
     @FXML
-    private void Tiquetes(ActionEvent event) {
-        CargarVistas("CrearTiquete", "Tickets");
+    private void C_BarEditProfile(ActionEvent event) {
+        CargarVistas("EditarPerfilCliente", "Profile");
     }
 
     @FXML
-    private void B_Salir(MouseEvent event) {
-        CargarVistas("Login", "Log In");
+    private void C_Home(ActionEvent event) {
+         CargarVistas("MenuCliente", "Profile");
     }
-
-    @FXML
-    private void Profile(ActionEvent event) {
-         CargarVistas("VerPerfilCliente", "Profile");
-    }
-
+    
 }
