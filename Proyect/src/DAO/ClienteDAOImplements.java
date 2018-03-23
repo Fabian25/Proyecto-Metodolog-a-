@@ -18,7 +18,12 @@ import java.util.Random;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
+<<<<<<< HEAD
+=======
+import javafx.scene.layout.HBox;
+>>>>>>> 455e1e7c8dc39aa8a00d20fe25aa26eb36de234a
 
 public class ClienteDAOImplements implements IClienteDAO {
 
@@ -27,7 +32,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     private boolean ExisteCedula(String ced) {
 
-        String sql = "SELECT * FROM Clientes p where p.Cedula = " + ced + ";";
+        String sql = "SELECT * FROM Clientes p where p.IdPersona = " + ced + ";";
         String[] datos = new String[10];
         try {
             Statement st = connection.createStatement();
@@ -52,6 +57,7 @@ public class ClienteDAOImplements implements IClienteDAO {
     private boolean ExisteCodigo(int cod) {
 
         String sql = "SELECT * FROM Clientes p where p.Codigo = " + cod + ";";
+<<<<<<< HEAD
 
         int[] datos = new int[10];
         try {
@@ -66,6 +72,16 @@ public class ClienteDAOImplements implements IClienteDAO {
                 }
                 return false;
 
+=======
+        int datos = 0;
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+//            if (rs != null) {
+            while (rs.next()) {
+                datos = rs.getInt(5);
+                return datos == cod;
+>>>>>>> 455e1e7c8dc39aa8a00d20fe25aa26eb36de234a
             }
 
 //            }
@@ -75,8 +91,13 @@ public class ClienteDAOImplements implements IClienteDAO {
         return false;
     }
 
+<<<<<<< HEAD
     private int GenerarCodigo() {
         int Cod;
+=======
+    private int GenerarCodigo(int Cod) {
+
+>>>>>>> 455e1e7c8dc39aa8a00d20fe25aa26eb36de234a
         Random rand = new Random();
         int randomNum = rand.nextInt((9999999 - 1000000) + 1) + 100;
         Cod = randomNum;
@@ -124,6 +145,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 //        }
 //
 //    }
+<<<<<<< HEAD
     @Override
     public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
 
@@ -164,6 +186,8 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     }
 
+=======
+>>>>>>> 455e1e7c8dc39aa8a00d20fe25aa26eb36de234a
 //    @Override
 //    public void eliminar(TextField txtCIDnum) {
 ////        Connection cn = cc.conexion();
@@ -229,6 +253,7 @@ public class ClienteDAOImplements implements IClienteDAO {
         return null;
     }
 
+<<<<<<< HEAD
 //    @Override
 //
 //    public void registrar(Clientes h) {
@@ -290,6 +315,50 @@ public class ClienteDAOImplements implements IClienteDAO {
     @Override
     public Clientes obtenerCliente(Clientes h) {
         return h;
+=======
+    @Override
+    public void registrar(Clientes h) {
+        int Cod = 0;
+        GenerarCodigo(Cod);
+
+        while (ExisteCodigo(Cod)) {
+            GenerarCodigo(Cod);
+        }
+        if (ExisteCedula(Integer.toString(h.getCedula()))) {
+            JOptionPane.showMessageDialog(null, "There is already a client with this id");
+        } else {
+
+            if (h.getNombre().length() == 0 || h.getApellido().length() == 0
+                    || Integer.toString(h.getCedula()).length() == 0 || Integer.toString(h.getTelefono()).length() == 0
+                    || h.getCorreo().length() == 0) {
+                JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
+            } else {
+                try {
+                    String sql = "Insert into Clientes values(?,?,?,?,?,?,?,?,?);";
+
+                    preparedStatement = connection.prepareStatement(sql);
+                    preparedStatement.setString(1, Integer.toString(h.getCedula()));
+                    preparedStatement.setString(2, h.getNombre());
+                    preparedStatement.setString(3, h.getApellido());
+                    preparedStatement.setString(4, h.getCorreo());
+                    preparedStatement.setString(5, "Nuevo123$");
+                    preparedStatement.setInt(6, Cod);
+                    preparedStatement.setString(7, Integer.toString(h.getTelefono()));
+                    preparedStatement.setInt(8, 1);
+
+                    int executeUpdate = preparedStatement.executeUpdate();
+
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
+            }
+        }
+    }
+
+    @Override
+    public ObservableList<Clientes> Clientes() {
+        ObservableList<Clientes> Clientes = FXCollections.observableArrayList();
+>>>>>>> 455e1e7c8dc39aa8a00d20fe25aa26eb36de234a
 
     }
 

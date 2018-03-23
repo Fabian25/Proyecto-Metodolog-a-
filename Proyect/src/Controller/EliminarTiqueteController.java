@@ -29,8 +29,7 @@ public class EliminarTiqueteController implements Initializable {
 
     @FXML
     private TableView<?> tblRemoveTiq;
-    @FXML
-    private Button BarRegisTickets;
+  
     @FXML
     private Button BarEditTickets;
     @FXML
@@ -57,7 +56,7 @@ public class EliminarTiqueteController implements Initializable {
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
-            Stage act = (Stage) BarRegisTickets.getScene().getWindow();
+            Stage act = (Stage) BarHomeTik.getScene().getWindow();
             act.close();
         } catch (Exception e) {
             System.out.println("Error");
@@ -69,10 +68,6 @@ public class EliminarTiqueteController implements Initializable {
         TiquetesMenu("Menu", "Menu");
     }
 
-    @FXML
-    private void Tik_BarRegist(ActionEvent event) {
-        TiquetesMenu("CrearTiquete", "Ticket");
-    }
 
     @FXML
     private void Tik_BarEdit(ActionEvent event) {

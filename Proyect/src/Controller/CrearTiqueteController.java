@@ -48,8 +48,6 @@ public class CrearTiqueteController implements Initializable {
     @FXML
     private Button BarEditTickets;
     @FXML
-    private Button BarRemoveTickets;
-    @FXML
     private Button BarViewTickets;
     @FXML
     private Button BarHomeTik;
@@ -97,22 +95,18 @@ public class CrearTiqueteController implements Initializable {
 
     @FXML
     private void Tik_BarEdit(ActionEvent event) {
-        TiquetesMenu("ModificarTiquete", "Ticket");
+        TiquetesMenu("ModificarTiqueteCliente", "Ticket");
     }
 
-    @FXML
-    private void Tik_BarRemove(ActionEvent event) {
-        TiquetesMenu("EliminarTiquete", "Ticket");
-    }
 
     @FXML
     private void Tik_BarView(ActionEvent event) {
-        TiquetesMenu("VerTiquetes", "Ticket");
+        TiquetesMenu("VerEliminarTiqueteCliente", "Ticket");
     }
 
     @FXML
     private void Tik_Home(ActionEvent event) {
-        TiquetesMenu("Menu", "Menu");
+        TiquetesMenu("MenuCliente", "Menu");
     }
 
     @FXML

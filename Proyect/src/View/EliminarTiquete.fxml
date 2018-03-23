@@ -33,11 +33,7 @@
       </Label>
       <MenuBar layoutX="1.0" prefHeight="33.0" prefWidth="1264.0">
          <menus>
-            <Menu mnemonicParsing="false">
-               <graphic>
-                  <Button fx:id="BarRegisTickets" mnemonicParsing="false" onAction="#Tik_BarRegist" text="Register Tickets" />
-               </graphic>
-            </Menu>
+            <Menu mnemonicParsing="false" />
             <Menu mnemonicParsing="false">
                <graphic>
                   <Button fx:id="BarEditTickets" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#Tik_BarEdit" scaleShape="false" text="Edit Tickets">
