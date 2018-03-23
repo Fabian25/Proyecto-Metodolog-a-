@@ -4,20 +4,28 @@
  * and open the template in the editor.
  */
 package IDAO;
+
 import Model.Clientes;
 import java.util.List;
 import Model.*;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
+
 /**
  *
  * @author jose
  */
 public interface IClienteDAO {
-              public Clientes obtenerCliente(Clientes h);
-   	public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail);
-	public List<Persona> ver();
-	public void actualizar(Clientes h);
-	public void eliminar(Clientes h); 
-        public ObservableList<Clientes> Clientes();
+
+    public Clientes obtenerCliente(Clientes h);
+
+    public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail);
+
+    public List<Persona> ver();
+
+    public void actualizar(Clientes h);
+
+    public void eliminar(Clientes h);
+
+    public ObservableList<Clientes> Clientes();
 }
