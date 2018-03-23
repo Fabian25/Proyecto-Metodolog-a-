@@ -18,9 +18,8 @@ import java.util.Random;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
-import javafx.scene.layout.HBox;
+
 
 public class ClienteDAOImplements implements IClienteDAO {
 
@@ -29,7 +28,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     private boolean ExisteCedula(String ced) {
 
-        String sql = "SELECT * FROM Clientes p where p.IdPersona = " + ced + ";";
+        String sql = "SELECT * FROM Clientes p where p.Cedula = " + ced + ";";
         String[] datos = new String[10];
         try {
             Statement st = connection.createStatement();
@@ -54,6 +53,7 @@ public class ClienteDAOImplements implements IClienteDAO {
     private boolean ExisteCodigo(int cod) {
 
         String sql = "SELECT * FROM Clientes p where p.Codigo = " + cod + ";";
+<<<<<<< HEAD
         int datos = 0;
         try {
             Statement st = connection.createStatement();
@@ -62,6 +62,20 @@ public class ClienteDAOImplements implements IClienteDAO {
             while (rs.next()) {
                 datos = rs.getInt(5);
                 return datos == cod;
+=======
+        int[] datos = new int[10];
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs != null) {
+                while (rs.next()) {
+                    datos[0] = rs.getInt(6);
+                }
+                if (datos[0]==cod) {
+                    return true;
+                }
+               return false;
+>>>>>>> 1825e3b942617f4aeb7297e69e5ecf2ff26630a3
             }
 
 //            }
@@ -71,8 +85,8 @@ public class ClienteDAOImplements implements IClienteDAO {
         return false;
     }
 
-    private int GenerarCodigo(int Cod) {
-
+    private int GenerarCodigo() {
+    int Cod;
         Random rand = new Random();
         int randomNum = rand.nextInt((9999999 - 1000000) + 1) + 100;
         Cod = randomNum;
@@ -80,6 +94,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     }
 
+<<<<<<< HEAD
 //    @Override
 //    public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
 //
@@ -120,6 +135,49 @@ public class ClienteDAOImplements implements IClienteDAO {
 //        }
 //
 //    }
+=======
+    @Override
+    public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
+
+        int Cod = GenerarCodigo();
+        
+
+        while (ExisteCodigo(Cod)) {
+           Cod = GenerarCodigo();
+        }
+        if (ExisteCedula(txtCIDnum)) {
+            JOptionPane.showMessageDialog(null, "There is already a client with this id");
+        } else {
+
+            if (txtCName.length() == 0 || txtCLastNmae.length() == 0
+                    || txtCIDnum.length() == 0 || txtCPhoneNum.length() == 0
+                    || txtCEmail.length() == 0) {
+                JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
+            } else {
+                try {
+                    String sql = "Insert into Clientes values(?,?,?,?,?,?,?,?,?);";
+
+                    preparedStatement = connection.prepareStatement(sql);
+                    preparedStatement.setString(1, txtCIDnum);
+                    preparedStatement.setString(2, txtCName);
+                    preparedStatement.setString(3, txtCLastNmae);
+                    preparedStatement.setString(4, txtCEmail);
+                    preparedStatement.setString(5, "Nuevo123$");
+                    preparedStatement.setInt(6, Cod);
+                    preparedStatement.setString(7, txtCPhoneNum);
+                    preparedStatement.setInt(8, 1);
+
+                    int executeUpdate = preparedStatement.executeUpdate();
+
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
+            }
+        }
+
+    }
+
+>>>>>>> 1825e3b942617f4aeb7297e69e5ecf2ff26630a3
 //    @Override
 //    public void eliminar(TextField txtCIDnum) {
 ////        Connection cn = cc.conexion();
@@ -186,6 +244,7 @@ public class ClienteDAOImplements implements IClienteDAO {
     }
 
     @Override
+<<<<<<< HEAD
     public void registrar(Clientes h) {
         int Cod = 0;
         GenerarCodigo(Cod);
@@ -222,6 +281,31 @@ public class ClienteDAOImplements implements IClienteDAO {
                 }
             }
         }
+=======
+    public ObservableList<Clientes> Clientes() {
+        ObservableList<Clientes> Clientes = FXCollections.observableArrayList();
+
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1");
+            while (rs.next()) {
+                Clientes.add(new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X")) {
+                    @Override
+                    public String verPersona() {
+                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    }
+                });
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Cargar Cliente \n" + ex);
+        }
+        return Clientes;
+    }
+
+    @Override
+    public Clientes obtenerCliente(Clientes h) {
+        return h;
+>>>>>>> 1825e3b942617f4aeb7297e69e5ecf2ff26630a3
     }
 
     @Override
