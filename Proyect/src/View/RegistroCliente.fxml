@@ -74,7 +74,7 @@
             <TableColumn fx:id="columEmail" editable="false" prefWidth="165.0" text="Email" />
          </columns>
       </TableView>
-      <Button fx:id="btnADD" layoutX="400.0" layoutY="609.0" mnemonicParsing="false" onAction="#C_add" prefHeight="45.0" prefWidth="99.0" text="ADD">
+      <Button fx:id="btnADD" layoutX="400.0" layoutY="609.0" mnemonicParsing="false" onAction="#C_addCl" prefHeight="45.0" prefWidth="99.0" text="ADD">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
                <light>

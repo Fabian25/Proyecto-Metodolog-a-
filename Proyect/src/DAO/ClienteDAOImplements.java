@@ -54,19 +54,19 @@ public class ClienteDAOImplements implements IClienteDAO {
     private boolean ExisteCodigo(int cod) {
 
         String sql = "SELECT * FROM Clientes p where p.Codigo = " + cod + ";";
-        String[] datos = new String[10];
+        int datos = 0;
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            if (rs != null) {
-                while (rs.next()) {
-                    datos[0] = rs.getString(5);
-                }
-                return datos[0].equals(cod);
-
+//            if (rs != null) {
+            while (rs.next()) {
+                datos = rs.getInt(5);
+                return datos == cod;
             }
 
+//            }
         } catch (SQLException ex) {
+            
         }
         return false;
     }
@@ -120,7 +120,6 @@ public class ClienteDAOImplements implements IClienteDAO {
 //        }
 //
 //    }
-
 //    @Override
 //    public void eliminar(TextField txtCIDnum) {
 ////        Connection cn = cc.conexion();
@@ -137,7 +136,6 @@ public class ClienteDAOImplements implements IClienteDAO {
 ////            System.out.println(e.getMessage());
 ////        }
 //    }
-
 //    @Override
 //    public void actualizar(TextField txtCName, TextField txtCLastNmae, TextField txtCPhoneNum, TextField txtCEmail, Persona p) {
 ////        Connection cn = cc.conexion();
@@ -156,7 +154,6 @@ public class ClienteDAOImplements implements IClienteDAO {
 ////        }
 //
 //    }
-
     @Override
     public List<Persona> ver() {
 //        Statement stm = null;
@@ -189,6 +186,45 @@ public class ClienteDAOImplements implements IClienteDAO {
     }
 
     @Override
+    public void registrar(Clientes h) {
+        int Cod = 0;
+        GenerarCodigo(Cod);
+
+        while (ExisteCodigo(Cod)) {
+            GenerarCodigo(Cod);
+        }
+        if (ExisteCedula(Integer.toString(h.getCedula()))) {
+            JOptionPane.showMessageDialog(null, "There is already a client with this id");
+        } else {
+
+            if (h.getNombre().length() == 0 || h.getApellido().length() == 0
+                    || Integer.toString(h.getCedula()).length() == 0 || Integer.toString(h.getTelefono()).length() == 0
+                    || h.getCorreo().length() == 0) {
+                JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
+            } else {
+                try {
+                    String sql = "Insert into Clientes values(?,?,?,?,?,?,?,?,?);";
+
+                    preparedStatement = connection.prepareStatement(sql);
+                    preparedStatement.setString(1, Integer.toString(h.getCedula()));
+                    preparedStatement.setString(2, h.getNombre());
+                    preparedStatement.setString(3, h.getApellido());
+                    preparedStatement.setString(4, h.getCorreo());
+                    preparedStatement.setString(5, "Nuevo123$");
+                    preparedStatement.setInt(6, Cod);
+                    preparedStatement.setString(7, Integer.toString(h.getTelefono()));
+                    preparedStatement.setInt(8, 1);
+
+                    int executeUpdate = preparedStatement.executeUpdate();
+
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
+            }
+        }
+    }
+
+    @Override
     public ObservableList<Clientes> Clientes() {
         ObservableList<Clientes> Clientes = FXCollections.observableArrayList();
 
@@ -211,46 +247,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     @Override
     public Clientes obtenerCliente(Clientes h) {
-    return h;
-    }
-
-    @Override
-    public void registrar(Clientes h) {
-   int Cod = 0;
-        GenerarCodigo(Cod);
-
-        while (ExisteCodigo(Cod)) {
-            GenerarCodigo(Cod);
-        }
-        if (ExisteCedula(Integer.toString(h.getCedula()))) {
-            JOptionPane.showMessageDialog(null, "There is already a client with this id");
-        } else {
-
-            if (h.getNombre().length() == 0 || h.getApellido().length() == 0
-                    || Integer.toString(h.getCedula()).length() == 0 || Integer.toString(h.getTelefono()).length() == 0
-                    ||h.getCorreo().length() == 0) {
-                JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
-            } else {
-                try {
-                    String sql = "Insert into Clientes values(?,?,?,?,?,?,?,?,?);";
-
-                    preparedStatement = connection.prepareStatement(sql);
-                    preparedStatement.setString(1,Integer.toString(h.getCedula()));
-                    preparedStatement.setString(2, h.getNombre());
-                    preparedStatement.setString(3, h.getApellido());
-                    preparedStatement.setString(4,h.getCorreo());
-                    preparedStatement.setString(5, "Nuevo123$");
-                    preparedStatement.setInt(6, Cod);
-                    preparedStatement.setString(7, Integer.toString(h.getTelefono()));
-                    preparedStatement.setInt(8, 1);
-
-                    int executeUpdate = preparedStatement.executeUpdate();
-
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, ex);
-                }
-            }
-        }
+        return h;
     }
 
     @Override

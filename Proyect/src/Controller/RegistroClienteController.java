@@ -84,14 +84,12 @@ public class RegistroClienteController implements Initializable {
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
 
 //        CargarDatos();
-
     }
 
     private void CargarDatos() {
-        
+
 //        tbClientes.getItems().clear();
 //        tbClientes.setItems(h.Clientes());
-
         tbClientes.getItems().clear();
         cliente.setNombre(txtCName.getText());
         cliente.setApellido(txtCLastNmae.getText());
@@ -145,37 +143,29 @@ public class RegistroClienteController implements Initializable {
         ClientesMenu("Menu", "Menu");
     }
 
-    @FXML
-    private void C_add(ActionEvent event) {
-//        boolean flag = true;
-//        if (!validaNombre()) {
-//            flag = false;
-//        }
-//        if (!validaApellido()) {
-//            flag = false;
-//        }
-//        if (!validaID()) {
-//            flag = false;
-//        }
-//        if (!validaTelefono()) {
-//            flag = false;
-//        }
-//        if (!validateEmaill()) {
-//            flag = false;
-//        }
+//    private void C_add(ActionEvent event) {
+////        boolean flag = true;
+////        if (!validaNombre()) {
+////            flag = false;
+////        }
+////        if (!validaApellido()) {
+////            flag = false;
+////        }
+////        if (!validaID()) {
+////            flag = false;
+////        }
+////        if (!validaTelefono()) {
+////            flag = false;
+////        }
+////        if (!validateEmaill()) {
+////            flag = false;
+////        }
+////
+////        if (flag) {
 //
-//        if (flag) {
-        h.registrar(cliente);
-        //agrega a nivel de base de datos pero no a tabla
-        txtCName.setText("");
-        txtCLastNmae.setText("");
-        txtCIDnum.setText("");
-        txtCPhoneNum.setText("");
-        txtCEmail.setText("");
-        CargarDatos();
-//        ClientesMenu("Menu", "Menu");
-//        }
-    }
+////        ClientesMenu("Menu", "Menu");
+////        }
+//    }
 
     private boolean validaNombre() {
         Pattern p = Pattern.compile("[a-zA-Z]+");
@@ -256,6 +246,18 @@ public class RegistroClienteController implements Initializable {
 
             return false;
         }
+    }
+
+    @FXML
+    private void C_addCl(ActionEvent event) {
+        h.registrar(cliente);
+        //agrega a nivel de base de datos pero no a tabla
+        txtCName.setText("");
+        txtCLastNmae.setText("");
+        txtCIDnum.setText("");
+        txtCPhoneNum.setText("");
+        txtCEmail.setText("");
+        CargarDatos();
     }
 
 }
