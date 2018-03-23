@@ -16,6 +16,10 @@ import javafx.scene.control.TextField;
  * @author jose
  */
 public interface IClienteDAO {
+<<<<<<< HEAD
+
+=======
+>>>>>>> 2cc8d195608fa83d1a0e7240e475f5eac6127b31
 
     public Clientes obtenerCliente(Clientes h);
 
@@ -28,7 +32,10 @@ public interface IClienteDAO {
     public void eliminar(Clientes h);
 
     public ObservableList<Clientes> Clientes();
+<<<<<<< HEAD
+=======
 
     public void registrar(Clientes h);
 
+>>>>>>> 2cc8d195608fa83d1a0e7240e475f5eac6127b31
 }

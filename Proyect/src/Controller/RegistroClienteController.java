@@ -182,7 +182,10 @@ public class RegistroClienteController implements Initializable {
 ////        }
 //    }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 2cc8d195608fa83d1a0e7240e475f5eac6127b31
 ////        ClientesMenu("Menu", "Menu");
 ////        }
 //    }
