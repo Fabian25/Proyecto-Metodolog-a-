@@ -90,17 +90,9 @@ public class RegistroClienteController implements Initializable {
     private void CargarDatos() {
 
 //        tbClientes.getItems().clear();
-//        tbClientes.setItems(h.Clientes()); 
-//        cliente.setNombre(txtCName.getText());
-//        cliente.setApellido(txtCLastNmae.getText());
-//        cliente.setCedula(Integer.parseInt(txtCIDnum.getText()));
-//        cliente.setCorreo(txtCEmail.getText());
-//        cliente.setEmpresaAsociar("EMP-001");
-        
+//        tbClientes.setItems(h.Clientes());     
         Clientes.add(new Clientes(0, "EMP-001", Integer.parseInt(txtCIDnum.getText()), txtCName.getText(), txtCLastNmae.getText(), 0, txtCEmail.getText(), "0000", btnADD));
         tbClientes.setItems(Clientes);
-
-//        tbClientes.setItems((ObservableList<Clientes>) h.obtenerCliente(cliente));
     }
 
     private void ClientesMenu(String Vista, String Titulo) {

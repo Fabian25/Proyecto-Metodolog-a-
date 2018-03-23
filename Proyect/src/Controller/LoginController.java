@@ -8,6 +8,7 @@ package Controller;
 import DAO.GeneralDAOImplements;
 
 import java.net.URL;
+import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -123,11 +124,11 @@ public class LoginController implements Initializable {
                     } else {
                         if (resultSet.getInt(8) == 1) {
                             if (resultSet.getInt(9) == 1) {
-                                    IngresarMenu("Menu", "Menu");
-                            }else{
+                                IngresarMenu("Menu", "Menu");
+                            } else {
                                 IngresarMenu("MenuEmpleado", "Menu");
                             }
-                        
+
                         } else {
                             Alert alert = new Alert(Alert.AlertType.WARNING);
                             alert.setTitle("Error");
@@ -227,6 +228,41 @@ public class LoginController implements Initializable {
             alert.showAndWait();
             return false;
         }
+    }
+
+    public String encriptarMD5(String palabra) {
+        String pe = "";
+        try {
+            pe = hash(palabra);
+        } catch (Exception e) {
+            throw new Error("Error: Al encriptar el password");
+        }
+        return pe;
+    }
+
+    /**
+     * Encripta un String con el algoritmo MD5. Reemplazar la palabara MENOR por
+     * el simbolo de menor
+     *
+     * @return String
+     * @throws Exception
+     */
+    private String hash(String clear) throws Exception {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] b = md.digest(clear.getBytes());
+        int size = b.length;
+        StringBuffer h = new StringBuffer(size);
+        for (int i = 0; i < size; i++) {
+            int u = b[i] & 255;
+            if (u < 16) {
+                h.append("0" + Integer.toHexString(u));
+
+            } else {
+                h.append(Integer.toHexString(u));
+            }
+        }
+
+        return h.toString();
     }
 
     @FXML
