@@ -14,8 +14,8 @@ import javafx.scene.control.TextField;
  * @author jose
  */
 public interface IClienteDAO {
-              public Clientes obtenerCliente(Clientes h);
-   	public void registrar(Clientes h);
+             public Clientes obtenerCliente(Clientes h);
+   	public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail);
 	public List<Persona> ver();
 	public void actualizar(Clientes h);
 	public void eliminar(Clientes h); 
