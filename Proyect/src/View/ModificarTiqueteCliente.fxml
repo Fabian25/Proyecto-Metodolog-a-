@@ -9,19 +9,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="276.0" prefWidth="489.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModificarTiqueteController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModificarTiqueteClienteController">
    <children>
       <ImageView fitHeight="711.0" fitWidth="1512.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="601.0" layoutY="56.0" text="Edit" textFill="WHITE">
+      <TableView fx:id="tbl_tiquetes" layoutX="44.0" layoutY="172.0" prefHeight="299.0" prefWidth="227.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="Series" />
+            <TableColumn prefWidth="75.0" text="Status" />
+            <TableColumn prefWidth="75.0" text="Edit" />
+         </columns>
+      </TableView>
+      <Label layoutX="621.0" layoutY="76.0" text="Edit" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="btnADD" layoutX="574.0" layoutY="510.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="184.0" text="SAVE">
+      <Button layoutX="413.0" layoutY="187.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Series" />
+      <Button layoutX="413.0" layoutY="269.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Status" />
+      <Button layoutX="413.0" layoutY="345.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Description" />
+      <TextField fx:id="txtCName11" layoutX="565.0" layoutY="192.0" prefHeight="35.0" prefWidth="373.0" />
+      <ComboBox fx:id="cbx_status" layoutX="565.0" layoutY="275.0" prefHeight="33.0" prefWidth="373.0" promptText="Status" />
+      <TextField fx:id="txtCName111" layoutX="565.0" layoutY="345.0" prefHeight="193.0" prefWidth="373.0" />
+      <Button fx:id="btnADD" layoutX="565.0" layoutY="564.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="184.0" text="SAVE">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
                <light>
@@ -33,14 +46,13 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="383.0" layoutY="229.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Status" />
-      <Button layoutX="383.0" layoutY="157.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Series" />
-      <Button layoutX="383.0" layoutY="300.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Description" />
-      <TextField fx:id="txtCName11" layoutX="569.0" layoutY="162.0" prefHeight="35.0" prefWidth="373.0" />
-      <TextField fx:id="txtCName111" layoutX="569.0" layoutY="300.0" prefHeight="193.0" prefWidth="373.0" />
-      <MenuBar prefHeight="33.0" prefWidth="1263.0">
+      <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="1264.0">
          <menus>
-            <Menu mnemonicParsing="false" />
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarRegisTickets" mnemonicParsing="false" onAction="#Tik_BarRegist" text="Register Tickets" />
+               </graphic>
+            </Menu>
             <Menu mnemonicParsing="false">
                <graphic>
                   <Button fx:id="BarEditTickets" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#Tik_BarEdit" scaleShape="false" text="Edit Tickets">
@@ -50,11 +62,7 @@
                   </Button>
                </graphic>
             </Menu>
-            <Menu mnemonicParsing="false">
-               <graphic>
-                  <Button fx:id="BarRemoveTickets" mnemonicParsing="false" onAction="#Tik_BarRemove" text="Remove Tickets" />
-               </graphic>
-            </Menu>
+            <Menu mnemonicParsing="false" />
             <Menu mnemonicParsing="false">
                <graphic>
                   <Button fx:id="BarViewTickets" mnemonicParsing="false" onAction="#Tik_BarView" text="View Tickets" />
@@ -67,13 +75,5 @@
             </Menu>
          </menus>
       </MenuBar>
-      <ComboBox fx:id="cbx_status" layoutX="569.0" layoutY="229.0" prefHeight="33.0" prefWidth="373.0" promptText="Status" />
-      <TableView fx:id="tbl_tiquetes" layoutX="34.0" layoutY="162.0" prefHeight="299.0" prefWidth="227.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="Series" />
-          <TableColumn prefWidth="75.0" text="Status" />
-            <TableColumn prefWidth="75.0" text="Edit" />
-        </columns>
-      </TableView>
    </children>
 </AnchorPane>
