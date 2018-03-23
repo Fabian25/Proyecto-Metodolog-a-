@@ -3,12 +3,17 @@ package Controller;
 import Model.Tiquetes;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 public class ProcesarTiquetesController implements Initializable {
@@ -29,6 +34,12 @@ public class ProcesarTiquetesController implements Initializable {
     private TextArea txt_Solution;
     @FXML
     private ComboBox<String> cb_status;
+    @FXML
+    private Button BarViewTickets;
+    @FXML
+    private Button BarProcessTickets;
+    @FXML
+    private Button BarHomeTik;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -92,6 +103,39 @@ public class ProcesarTiquetesController implements Initializable {
                 }
             }
         }).start();
+    }
+    
+     private void TiquetesMenu(String Vista, String Titulo) {
+
+       try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle(Titulo);
+            stage.setScene(new Scene(root1));
+            stage.show();
+            Stage act = (Stage)  BarHomeTik.getScene().getWindow();
+            act.close();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+    }
+
+   
+
+    @FXML
+    private void Tik_BarView(ActionEvent event) {
+        TiquetesMenu("VerTiqueteEmpleado", "Tickets");
+    }
+
+    @FXML
+    private void Tik_Home(ActionEvent event) {
+         TiquetesMenu("MenuEmpleado", "Home");
+    }
+
+    @FXML
+    private void Tik_BarProcess(ActionEvent event) {
+         TiquetesMenu("procesarTiquetes", "Tickets");
     }
 
 }
