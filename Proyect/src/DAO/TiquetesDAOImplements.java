@@ -141,7 +141,16 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 
     @Override
     public void asignarTiquete(Tiquetes tiquete, Empleados empleado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         String Update = "UPDATE Empleados\n"
+                + "SET idTiquetes = " + tiquete.getID_Tiquete()
+                + "WHERE Codigo = " + empleado.getCodigo() + ";";
+        try {
+            Statement stmt = connection.createStatement();
+            PreparedStatement pst = connection.prepareStatement(Update);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
