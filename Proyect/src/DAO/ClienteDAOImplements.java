@@ -21,11 +21,6 @@ import javafx.scene.control.Button;
 
 import javax.swing.JOptionPane;
 
-
-
-
-
-
 public class ClienteDAOImplements implements IClienteDAO {
 
     PreparedStatement preparedStatement = null;
@@ -68,30 +63,26 @@ public class ClienteDAOImplements implements IClienteDAO {
                     datos[0] = rs.getInt(6);
                 }
             }
-                if (datos[0]==cod) {
-                    return true;
-                }
-               return false;
-
+            if (datos[0] == cod) {
+                return true;
+            }
+            return false;
 
         } catch (SQLException ex) {
 
         }
-       return false;
+        return false;
     }
 
-
-   
     private int GenerarCodigo() {
 
-int Cod;
+        int Cod;
         Random rand = new Random();
         int randomNum = rand.nextInt((9999999 - 1000000) + 1) + 100;
         Cod = randomNum;
         return Cod;
 
     }
-
 
 //    @Override
 //    public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
@@ -133,7 +124,6 @@ int Cod;
 //        }
 //
 //    }
-
     @Override
     public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
 
@@ -174,7 +164,6 @@ int Cod;
         }
 
     }
-
 
 //    @Override
 //    public void eliminar(TextField txtCIDnum) {
@@ -240,7 +229,6 @@ int Cod;
 //        return listaCliente;
         return null;
     }
-
 
 //    @Override
 //
