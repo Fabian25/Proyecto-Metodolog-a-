@@ -89,8 +89,7 @@ public class RegistroClienteController implements Initializable {
     private void CargarDatos() {
 
 //        tbClientes.getItems().clear();
-//        tbClientes.setItems(h.Clientes());
-        tbClientes.getItems().clear();
+//        tbClientes.setItems(h.Clientes()); 
         cliente.setNombre(txtCName.getText());
         cliente.setApellido(txtCLastNmae.getText());
         cliente.setCedula(Integer.parseInt(txtCIDnum.getText()));
@@ -105,6 +104,7 @@ public class RegistroClienteController implements Initializable {
 
     private void ClientesMenu(String Vista, String Titulo) {
         try {
+            tbClientes.getItems().clear();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
@@ -164,7 +164,6 @@ public class RegistroClienteController implements Initializable {
 //////        if (flag) {
 ////
 //
-
 //////        ClientesMenu("Menu", "Menu");
 //////        }
 ////    }
@@ -181,13 +180,9 @@ public class RegistroClienteController implements Initializable {
 ////        ClientesMenu("Menu", "Menu");
 ////        }
 //    }
-
-
 ////        ClientesMenu("Menu", "Menu");
 ////        }
 //    }
-
-
     private boolean validaNombre() {
         Pattern p = Pattern.compile("[a-zA-Z]+");
         Matcher m = p.matcher(txtCName.getText());
@@ -288,21 +283,17 @@ public class RegistroClienteController implements Initializable {
 //        if (!validateEmaill()) {
 //            flag = false;
 //        }
-
 //        if (flag) {
-
 //        }
- 
-
         h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
-
+        CargarDatos();
         //agrega a nivel de base de datos pero no a tabla
         txtCName.setText("");
         txtCLastNmae.setText("");
         txtCIDnum.setText("");
         txtCPhoneNum.setText("");
         txtCEmail.setText("");
-        CargarDatos();
+
     }
 
 }

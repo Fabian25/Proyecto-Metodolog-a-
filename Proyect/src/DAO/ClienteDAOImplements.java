@@ -157,6 +157,7 @@ public class ClienteDAOImplements implements IClienteDAO {
                     preparedStatement.setInt(6, Cod);
                     preparedStatement.setString(7, txtCPhoneNum);
                     preparedStatement.setInt(8, 1);
+                    preparedStatement.setString(9, "ENT-001");
 
                     int executeUpdate = preparedStatement.executeUpdate();
 
