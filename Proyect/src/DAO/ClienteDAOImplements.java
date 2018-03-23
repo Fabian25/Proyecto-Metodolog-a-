@@ -18,9 +18,16 @@ import java.util.Random;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+
 import javax.swing.JOptionPane;
+<<<<<<< HEAD
 import javafx.scene.layout.HBox;
+=======
+
+
+
+
+>>>>>>> 2cc8d195608fa83d1a0e7240e475f5eac6127b31
 
 
 public class ClienteDAOImplements implements IClienteDAO {
@@ -30,7 +37,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     private boolean ExisteCedula(String ced) {
 
-        String sql = "SELECT * FROM Clientes p where p.IdPersona = " + ced + ";";
+        String sql = "SELECT * FROM Clientes p where p.Cedula = " + ced + ";";
         String[] datos = new String[10];
         try {
             Statement st = connection.createStatement();
@@ -55,7 +62,10 @@ public class ClienteDAOImplements implements IClienteDAO {
     private boolean ExisteCodigo(int cod) {
 
         String sql = "SELECT * FROM Clientes p where p.Codigo = " + cod + ";";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2cc8d195608fa83d1a0e7240e475f5eac6127b31
 
         int[] datos = new int[10];
         try {
@@ -65,28 +75,43 @@ public class ClienteDAOImplements implements IClienteDAO {
                 while (rs.next()) {
                     datos[0] = rs.getInt(6);
                 }
-                if (datos[0] == cod) {
+            }
+                if (datos[0]==cod) {
                     return true;
                 }
+<<<<<<< HEAD
                 return false;
        }
+=======
+               return false;
+
+
+>>>>>>> 2cc8d195608fa83d1a0e7240e475f5eac6127b31
         } catch (SQLException ex) {
 
         }
-        return false;
+       return false;
     }
 
 
+<<<<<<< HEAD
 
     private int GenerarCodigo(int Cod) {
 
 
+=======
+   
+    private int GenerarCodigo() {
+
+int Cod;
+>>>>>>> 2cc8d195608fa83d1a0e7240e475f5eac6127b31
         Random rand = new Random();
         int randomNum = rand.nextInt((9999999 - 1000000) + 1) + 100;
         Cod = randomNum;
         return Cod;
 
     }
+
 
 //    @Override
 //    public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
@@ -136,6 +161,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 
         while (ExisteCodigo(Cod)) {
             Cod = GenerarCodigo();
+
         }
         if (ExisteCedula(txtCIDnum)) {
             JOptionPane.showMessageDialog(null, "There is already a client with this id");
@@ -169,6 +195,10 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2cc8d195608fa83d1a0e7240e475f5eac6127b31
 //    @Override
 //    public void eliminar(TextField txtCIDnum) {
 ////        Connection cn = cc.conexion();
@@ -234,6 +264,10 @@ public class ClienteDAOImplements implements IClienteDAO {
         return null;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2cc8d195608fa83d1a0e7240e475f5eac6127b31
 //    @Override
 //
 //    public void registrar(Clientes h) {
@@ -296,7 +330,26 @@ public class ClienteDAOImplements implements IClienteDAO {
     public Clientes obtenerCliente(Clientes h) {
         return h;
 
+<<<<<<< HEAD
    
 
+=======
+    }
+
+    @Override
+    public void actualizar(Clientes h) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminar(Clientes h) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void registrar(Clientes h) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+>>>>>>> 2cc8d195608fa83d1a0e7240e475f5eac6127b31
 
 }

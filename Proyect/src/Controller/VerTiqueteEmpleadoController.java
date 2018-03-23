@@ -14,7 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -22,45 +23,55 @@ import javafx.stage.Stage;
  *
  * @author ALONSITO
  */
-public class MenuEmpleadoController implements Initializable {
+public class VerTiqueteEmpleadoController implements Initializable {
 
     @FXML
-    private Button btn_Tiquete;
+    private TableView<?> tblRemoveTiq;
     @FXML
-    private Button btn_Perfil;
+    private Button BarViewTickets;
     @FXML
-    private Button btnExit;
+    private Button BarProcessTickets;
+    @FXML
+    private Button BarHomeTik;
+    @FXML
+    private TextField txt_search;
 
     /**
      * Initializes the controller class.
      */
-      private void CargarVistas(String Vista, String Titulo) {
-        try {
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+    private void TiquetesMenu(String Vista, String Titulo) {
+
+       try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
-            Stage act = (Stage) btnExit.getScene().getWindow();
+            Stage act = (Stage)  BarHomeTik.getScene().getWindow();
             act.close();
         } catch (Exception e) {
             System.out.println("Error");
         }
     }
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
 
     @FXML
-    private void Tiquetes(ActionEvent event) {
-        CargarVistas("VerTiqueteEmpleado", "Tickets");
+    private void Tik_BarView(ActionEvent event) {
+        TiquetesMenu("VerTiqueteEmpleado", "Tickets");
     }
 
     @FXML
-    private void B_Salir(MouseEvent event) {
-             CargarVistas("Login", "Log In");
+    private void Tik_BarProcess(ActionEvent event) {
+          TiquetesMenu("procesarTiquetes", "Tickets");
+    }
+
+    @FXML
+    private void Tik_Home(ActionEvent event) {
+         TiquetesMenu("MenuEmpleado", "Home");
     }
     
 }
