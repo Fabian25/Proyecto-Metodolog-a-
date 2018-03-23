@@ -163,24 +163,9 @@ public class RegistroClienteController implements Initializable {
 ////
 ////        if (flag) {
 //
-<<<<<<< HEAD
 ////        ClientesMenu("Menu", "Menu");
 ////        }
 //    }
-=======
-//        if (flag) {
-        h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
-        //agrega a nivel de base de datos pero no a tabla
-        txtCName.setText("");
-        txtCLastNmae.setText("");
-        txtCIDnum.setText("");
-        txtCPhoneNum.setText("");
-        txtCEmail.setText("");
-        CargarDatos();
-//        ClientesMenu("Menu", "Menu");
-//        }
-    }
->>>>>>> 1825e3b942617f4aeb7297e69e5ecf2ff26630a3
 
     private boolean validaNombre() {
         Pattern p = Pattern.compile("[a-zA-Z]+");
