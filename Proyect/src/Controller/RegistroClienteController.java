@@ -143,29 +143,50 @@ public class RegistroClienteController implements Initializable {
         ClientesMenu("Menu", "Menu");
     }
 
-//    private void C_add(ActionEvent event) {
-////        boolean flag = true;
-////        if (!validaNombre()) {
-////            flag = false;
-////        }
-////        if (!validaApellido()) {
-////            flag = false;
-////        }
-////        if (!validaID()) {
-////            flag = false;
-////        }
-////        if (!validaTelefono()) {
-////            flag = false;
-////        }
-////        if (!validateEmaill()) {
-////            flag = false;
-////        }
+////    private void C_add(ActionEvent event) {
+//////        boolean flag = true;
+//////        if (!validaNombre()) {
+//////            flag = false;
+//////        }
+//////        if (!validaApellido()) {
+//////            flag = false;
+//////        }
+//////        if (!validaID()) {
+//////            flag = false;
+//////        }
+//////        if (!validaTelefono()) {
+//////            flag = false;
+//////        }
+//////        if (!validateEmaill()) {
+//////            flag = false;
+//////        }
+//////
+//////        if (flag) {
 ////
-////        if (flag) {
 //
+<<<<<<< HEAD
+//////        ClientesMenu("Menu", "Menu");
+//////        }
+////    }
+//
+////        if (flag) {
+//        h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
+//        //agrega a nivel de base de datos pero no a tabla
+//        txtCName.setText("");
+//        txtCLastNmae.setText("");
+//        txtCIDnum.setText("");
+//        txtCPhoneNum.setText("");
+//        txtCEmail.setText("");
+//        CargarDatos();
 ////        ClientesMenu("Menu", "Menu");
 ////        }
 //    }
+
+=======
+////        ClientesMenu("Menu", "Menu");
+////        }
+//    }
+>>>>>>> 455e1e7c8dc39aa8a00d20fe25aa26eb36de234a
 
     private boolean validaNombre() {
         Pattern p = Pattern.compile("[a-zA-Z]+");
@@ -250,6 +271,7 @@ public class RegistroClienteController implements Initializable {
 
     @FXML
     private void C_addCl(ActionEvent event) {
+<<<<<<< HEAD
 //         boolean flag = true;
 //        if (!validaNombre()) {
 //            flag = false;
@@ -272,6 +294,9 @@ public class RegistroClienteController implements Initializable {
         ClientesMenu("Menu", "Menu");
 //        }
  
+=======
+        h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
+>>>>>>> 5b13f6042d2cd32fd2e4f46a4e151577ce3934a6
         //agrega a nivel de base de datos pero no a tabla
         txtCName.setText("");
         txtCLastNmae.setText("");
