@@ -11,14 +11,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RecuperarContraseñaController">
    <children>
-      <ImageView fitHeight="598.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="598.0" fitWidth="1000.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
       <ChoiceBox fx:id="cbxPregunta" layoutX="46.0" layoutY="129.0" onMouseClicked="#Cpregunta" prefHeight="34.0" prefWidth="342.0" />
-      <TextField fx:id="txtRespuesta" layoutX="46.0" layoutY="212.0" prefHeight="34.0" prefWidth="342.0" />
-      <Button fx:id="btnConfirmP" layoutX="139.0" layoutY="349.0" mnemonicParsing="false" onAction="#P_Confirm" prefHeight="45.0" prefWidth="144.0" text="Confirm">
+      <TextField fx:id="txtRespuesta" layoutX="46.0" layoutY="212.0" prefHeight="34.0" prefWidth="342.0" promptText="Answer" />
+      <Button fx:id="btnConfirmP" layoutX="217.0" layoutY="473.0" mnemonicParsing="false" onAction="#P_Confirm" prefHeight="45.0" prefWidth="144.0" text="Confirm">
          <effect>
             <Blend />
          </effect>
@@ -49,5 +49,7 @@
             <Blend />
          </effect>
       </Button>
+      <TextField id="Contra" layoutX="46.0" layoutY="294.0" prefHeight="31.0" prefWidth="342.0" promptText="New Password" />
+      <TextField id="ContraAgain" layoutX="46.0" layoutY="354.0" prefHeight="31.0" prefWidth="342.0" promptText="New Password" />
    </children>
 </AnchorPane>
