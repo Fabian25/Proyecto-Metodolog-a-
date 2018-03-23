@@ -58,9 +58,10 @@ public class MenuEmpleadoController implements Initializable {
         CargarVistas("VerTiqueteEmpleado", "Tickets");
     }
 
+
     @FXML
     private void B_Salir(MouseEvent event) {
-             CargarVistas("Login", "Log In");
+        CargarVistas("Login", "Log In");
     }
     
 }
