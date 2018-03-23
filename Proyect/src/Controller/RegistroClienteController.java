@@ -36,6 +36,7 @@ public class RegistroClienteController implements Initializable {
 
     Clientes cliente = new Clientes();
     ClienteDAOImplements h = new ClienteDAOImplements();
+    ObservableList<Clientes> Clientes = FXCollections.observableArrayList();
 
     @FXML
     private Button BarRegisClient;
@@ -90,13 +91,13 @@ public class RegistroClienteController implements Initializable {
 
 //        tbClientes.getItems().clear();
 //        tbClientes.setItems(h.Clientes()); 
-        cliente.setNombre(txtCName.getText());
-        cliente.setApellido(txtCLastNmae.getText());
-        cliente.setCedula(Integer.parseInt(txtCIDnum.getText()));
-        cliente.setCorreo(txtCEmail.getText());
-        cliente.setEmpresaAsociar("EMP-001");
-        ObservableList<Clientes> Clientes = FXCollections.observableArrayList();
-        Clientes.add(cliente);
+//        cliente.setNombre(txtCName.getText());
+//        cliente.setApellido(txtCLastNmae.getText());
+//        cliente.setCedula(Integer.parseInt(txtCIDnum.getText()));
+//        cliente.setCorreo(txtCEmail.getText());
+//        cliente.setEmpresaAsociar("EMP-001");
+        
+        Clientes.add(new Clientes(0, "EMP-001", Integer.parseInt(txtCIDnum.getText()), txtCName.getText(), txtCLastNmae.getText(), 0, txtCEmail.getText(), "0000", btnADD));
         tbClientes.setItems(Clientes);
 
 //        tbClientes.setItems((ObservableList<Clientes>) h.obtenerCliente(cliente));
