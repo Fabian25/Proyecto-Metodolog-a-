@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.EditarPerfilEmpleadoController">
+   <children>
+      <ImageView fitHeight="711.0" fitWidth="1512.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagen/fondoPro.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnADD" layoutX="526.0" layoutY="502.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="184.0" text="SAVE">
+         <effect>
+            <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
+               <light>
+                  <Light.Distant color="#18d718" />
+               </light>
+            </Lighting>
+         </effect>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtCEmail" layoutX="457.0" layoutY="440.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
+      <TextField fx:id="txtCPhoneNum" layoutX="457.0" layoutY="371.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
+      <TextField fx:id="txtCLastNmae" layoutX="457.0" layoutY="301.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
+      <TextField fx:id="txtCName" layoutX="457.0" layoutY="236.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
+      <Button layoutX="301.0" layoutY="435.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Email" />
+      <Button layoutX="301.0" layoutY="366.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
+      <Button layoutX="301.0" layoutY="296.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Last Name" />
+      <Button layoutX="301.0" layoutY="231.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Name" />
+      <Label layoutX="554.0" layoutY="84.0" text="Edit my Profile" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <MenuBar layoutX="-2.0" layoutY="-2.0" prefHeight="33.0" prefWidth="1269.0">
+         <menus>
+            <Menu mnemonicParsing="false" />
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarMyProfile" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#C_BarMyProfile" scaleShape="false" text="My Profile">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false" />
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarEditProfile" mnemonicParsing="false" onAction="#C_BarEditProfile" text="View Client" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarHomeC" mnemonicParsing="false" onAction="#C_Home" text="Home" />
+               </graphic>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
