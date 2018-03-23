@@ -65,7 +65,7 @@ public class MenuController implements Initializable {
 
     @FXML
     private void Tiquetes(ActionEvent event) {
-        CargarVistas("CrearTiquete", "Tickets");
+        CargarVistas("VerTiquetes", "Tickets");
     }
 
     @FXML

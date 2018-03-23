@@ -52,11 +52,7 @@
                   </Button>
                </graphic>
             </Menu>
-            <Menu mnemonicParsing="false">
-               <graphic>
-                  <Button fx:id="BarRemoveTickets" mnemonicParsing="false" onAction="#Tik_BarRemove" text="Remove Tickets" />
-               </graphic>
-            </Menu>
+            <Menu mnemonicParsing="false" />
             <Menu mnemonicParsing="false">
                <graphic>
                   <Button fx:id="BarViewTickets" mnemonicParsing="false" onAction="#Tik_BarView" text="View Tickets" />

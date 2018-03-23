@@ -56,7 +56,7 @@ public class MenuClienteController implements Initializable {
 
     @FXML
     private void Tiquetes(ActionEvent event) {
-
+        CargarVistas("CrearTiquete", "Tickets");
     }
 
     @FXML

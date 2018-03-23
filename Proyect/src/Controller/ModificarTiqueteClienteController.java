@@ -19,88 +19,84 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
  *
- * @author Fabian
+ * @author ALONSITO
  */
-public class ModificarTiqueteController implements Initializable {
+public class ModificarTiqueteClienteController implements Initializable {
 
     @FXML
-    private Button btnADD;
+    private TableView<?> tbl_tiquetes;
     @FXML
     private TextField txtCName11;
     @FXML
+    private ComboBox<String> cbx_status;
+    @FXML
     private TextField txtCName111;
-  
+    @FXML
+    private Button btnADD;
+    @FXML
+    private Button BarRegisTickets;
     @FXML
     private Button BarEditTickets;
-    @FXML
-    private Button BarRemoveTickets;
     @FXML
     private Button BarViewTickets;
     @FXML
     private Button BarHomeTik;
-    @FXML
-    private ComboBox<String> cbx_status;
-    @FXML
-    private TableView<?> tbl_tiquetes;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     cbx_status.getItems().add(0, "Mild");
+        // TODO
+         cbx_status.getItems().add(0, "Mild");
      cbx_status.getItems().add(1, "Severe");
      cbx_status.getItems().add(2, "Critic");
     }    
- private void TiquetesMenu(String Vista, String Titulo) {
 
-        try {
+    
+      private void TiquetesMenu(String Vista, String Titulo) {
+
+       try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
-            Stage act = (Stage) BarHomeTik.getScene().getWindow();
+            Stage act = (Stage)  BarRegisTickets.getScene().getWindow();
             act.close();
         } catch (Exception e) {
             System.out.println("Error");
         }
     }
-
-    private void c_back(MouseEvent event) {
-        TiquetesMenu("Menu", "Menu");
+      
+    @FXML
+    private void c_add(MouseEvent event) {
     }
 
-   
+    @FXML
+    private void Tik_BarRegist(ActionEvent event) {
+         TiquetesMenu("CrearTiquete", "Ticket");
+    }
 
     @FXML
     private void Tik_BarEdit(ActionEvent event) {
-        TiquetesMenu("ModificarTiquete", "Ticket");
+         TiquetesMenu("ModificarTiqueteCliente", "Ticket");
     }
 
-    @FXML
-    private void Tik_BarRemove(ActionEvent event) {
-        TiquetesMenu("EliminarTiquete", "Ticket");
-    }
 
     @FXML
     private void Tik_BarView(ActionEvent event) {
-        TiquetesMenu("VerTiquetes", "Ticket");
+           TiquetesMenu("VerEliminarTiqueteCliente", "Ticket");
     }
 
     @FXML
     private void Tik_Home(ActionEvent event) {
-        TiquetesMenu("Menu", "Menu");
-    }
-
-   @FXML
-    private void c_add(MouseEvent event) {
+          TiquetesMenu("MenuCliente", "Menu");
     }
     
 }
