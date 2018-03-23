@@ -165,7 +165,7 @@ public class RegistroClienteController implements Initializable {
 //        }
 //
 //        if (flag) {
-        h.registrar(cliente);
+        h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
         //agrega a nivel de base de datos pero no a tabla
         txtCName.setText("");
         txtCLastNmae.setText("");
