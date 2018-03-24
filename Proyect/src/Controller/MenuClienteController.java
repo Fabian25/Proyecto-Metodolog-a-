@@ -20,16 +20,24 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author ALONSITO
+ * @author jose
  */
 public class MenuClienteController implements Initializable {
 
     @FXML
-    private Button btn_Tiquete;
+    private Button btnExit;
     @FXML
     private Button btn_Perfil;
     @FXML
-    private Button btnExit;
+    private Button btn_Tiquete;
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }
 
     private void CargarVistas(String Vista, String Titulo) {
         try {
@@ -46,27 +54,19 @@ public class MenuClienteController implements Initializable {
         }
     }
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
-
     @FXML
-    private void Tiquetes(ActionEvent event) {
-        CargarVistas("CrearTiquete", "Tickets");
-    }
-
-    @FXML
-    private void B_Salir(ActionEvent event) {
+    private void B_Salir(MouseEvent event) {
         CargarVistas("Login", "Log In");
     }
 
     @FXML
     private void Profile(ActionEvent event) {
-         CargarVistas("VerPerfilCliente", "Profile");
+        CargarVistas("VerPerfilCliente", "Profile");
+    }
+
+    @FXML
+    private void Tiquetes(ActionEvent event) {
+        CargarVistas("CrearTiquete", "Tickets");
     }
 
 }

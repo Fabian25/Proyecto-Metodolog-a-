@@ -15,7 +15,7 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="txt_Usuario" layoutX="154.0" layoutY="311.0" onKeyTyped="#L_User" prefHeight="44.0" prefWidth="312.0" promptText="Username">
+      <TextField fx:id="txt_Usuario" layoutX="154.0" layoutY="311.0" prefHeight="44.0" prefWidth="312.0" promptText="Username">
          <font>
             <Font size="20.0" />
          </font></TextField>
