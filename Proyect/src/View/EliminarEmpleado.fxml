@@ -24,11 +24,11 @@
       </Label>
       <TableView fx:id="tblRemoveEmplo" layoutX="202.0" layoutY="165.0" prefHeight="334.0" prefWidth="862.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="Code" />
-            <TableColumn prefWidth="75.0" text="Name" />
-            <TableColumn prefWidth="75.0" text="Acronym" />
-            <TableColumn prefWidth="105.0" text="Phone Number" />
-            <TableColumn prefWidth="142.0" text="Remove" />
+            <TableColumn fx:id="tblCodeEnt" prefWidth="75.0" text="Code" />
+            <TableColumn fx:id="tblNameEnt" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="tblAcronymEnt" prefWidth="75.0" text="Acronym" />
+            <TableColumn fx:id="tblPhoneEnt" prefWidth="105.0" text="Phone Number" />
+            <TableColumn fx:id="tblRemoveEnt" prefWidth="142.0" text="Remove" />
          </columns>
       </TableView>
       <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="1264.0">

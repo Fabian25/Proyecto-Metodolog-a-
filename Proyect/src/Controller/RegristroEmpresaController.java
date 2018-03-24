@@ -6,6 +6,7 @@
 package Controller;
 
 import DAO.EmpresaDAOImplements;
+import Model.Clientes;
 import Model.Empresa;
 import java.io.File;
 import java.io.FileInputStream;
@@ -49,6 +50,7 @@ public class RegristroEmpresaController implements Initializable {
     PreparedStatement pst = null;
     EmpresaDAOImplements h = new EmpresaDAOImplements();
     ResultSet rs = null;
+    Empresa empresa = new Empresa();
 
     Connection connection = BaseDatos.Conexion.getConnection();
     @FXML
@@ -99,6 +101,9 @@ public class RegristroEmpresaController implements Initializable {
     }
 
     private void CargarDatos() {
+//        Empresa.add(new Empresa(tblCodeEnt.getText(), tblNameEnt.getText(), tblAcronymEnt.getText(), Integer.parseInt(tblPhoneEnt.getText()), 1, btnADDEnterprice, btn_Import));
+//        table_Enterprice.setItems(empresa);
+        
         table_Enterprice.getItems().clear();
         table_Enterprice.setItems(h.Empresa());
 

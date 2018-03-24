@@ -16,13 +16,13 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <TableView layoutX="202.0" layoutY="169.0" prefHeight="334.0" prefWidth="862.0">
+      <TableView fx:id="tblEnterprices" layoutX="202.0" layoutY="169.0" prefHeight="334.0" prefWidth="862.0">
          <columns>
-            <TableColumn prefWidth="109.0" text="Code" />
-            <TableColumn prefWidth="67.0" text="Name" />
-            <TableColumn prefWidth="68.0" text="Acronym" />
-            <TableColumn prefWidth="96.0" text="Phone Number" />
-            <TableColumn prefWidth="83.0" text="Remove" />
+            <TableColumn fx:id="tblCodeEnt" prefWidth="109.0" text="Code" />
+            <TableColumn fx:id="tblNameEnt" prefWidth="67.0" text="Name" />
+            <TableColumn fx:id="tblAcronymEnt" prefWidth="68.0" text="Acronym" />
+            <TableColumn fx:id="tblPhoneEnt" prefWidth="96.0" text="Phone Number" />
+            <TableColumn fx:id="tblRemoveEnt" prefWidth="83.0" text="Remove" />
          </columns>
       </TableView>
       <ComboBox layoutX="370.0" layoutY="138.0" prefHeight="25.0" prefWidth="83.0" />

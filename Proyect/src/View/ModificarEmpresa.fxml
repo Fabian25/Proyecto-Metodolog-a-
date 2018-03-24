@@ -18,13 +18,13 @@
       </ImageView>
       <TextField fx:id="txt_Phone" layoutX="980.0" layoutY="343.0" prefHeight="35.0" prefWidth="194.0" />
       <Button layoutX="817.0" layoutY="338.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
-      <TableView layoutX="40.0" layoutY="204.0" prefHeight="313.0" prefWidth="761.0">
+      <TableView fx:id="tblEditEnterprices" layoutX="40.0" layoutY="204.0" prefHeight="313.0" prefWidth="761.0">
          <columns>
-            <TableColumn prefWidth="102.0" text="Code" />
-            <TableColumn prefWidth="211.0" text="Name" />
-            <TableColumn prefWidth="113.0" text="Acronym" />
-            <TableColumn prefWidth="252.0" text="Phone Number" />
-            <TableColumn prefWidth="82.0" text="Edit" />
+            <TableColumn fx:id="tblCodeEnt" prefWidth="102.0" text="Code" />
+            <TableColumn fx:id="tblNameEnt" prefWidth="211.0" text="Name" />
+            <TableColumn fx:id="tblAcronymEnt" prefWidth="113.0" text="Acronym" />
+            <TableColumn fx:id="tblPhoneEnt" prefWidth="252.0" text="Phone Number" />
+            <TableColumn fx:id="tblEditEnt" prefWidth="82.0" text="Edit" />
          </columns>
       </TableView>
       <Button layoutX="817.0" layoutY="205.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Enterprise Name" />

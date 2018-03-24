@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import DAO.EmpresaDAOImplements;
+import Model.Empresa;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -17,7 +19,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -47,15 +52,40 @@ public class ModificarEmpresaController implements Initializable {
     private TextField txt_Name;
     @FXML
     private TextField txt_Acronym;
+    @FXML
+    private TableView<Empresa> tblEditEnterprices;
+    @FXML
+    private TableColumn<Empresa, String> tblCodeEnt;
+    @FXML
+    private TableColumn<Empresa, String> tblNameEnt;
+    @FXML
+    private TableColumn<Empresa, String> tblAcronymEnt;
+    @FXML
+    private TableColumn<Empresa, Integer> tblPhoneEnt;
+    @FXML
+    private TableColumn<Empresa, Integer> tblEditEnt;
+    
+    EmpresaDAOImplements h = new EmpresaDAOImplements();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    } 
-    
+        tblCodeEnt.setCellValueFactory(new PropertyValueFactory<>("idEmpresa"));
+        tblNameEnt.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
+        tblAcronymEnt.setCellValueFactory(new PropertyValueFactory<>("Acronimo"));
+        tblPhoneEnt.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+        tblEditEnt.setCellValueFactory(new PropertyValueFactory<>("Codigo"));
+
+        CargarDatos();
+    }
+
+    private void CargarDatos() {
+        tblEditEnterprices.getItems().clear();
+        tblEditEnterprices.setItems(h.Empresa());
+    }
+
     private void EmpresasMenu(String Vista, String Titulo) {
 
         try {
@@ -73,18 +103,16 @@ public class ModificarEmpresaController implements Initializable {
     }
 
     private void c_add(ActionEvent event) {
-        if (validaNombreEmpresa()| validarSiglas()| validaTelefono()) {
-            
+        if (validaNombreEmpresa() | validarSiglas() | validaTelefono()) {
+
             //agrega a nivel de base de datos pero no a tabla
             txt_Name.setText("");
             txt_Phone.setText("");
             txt_Acronym.setText("");
-          //  ClientesMenu("Menu", "Menu");
+            //  ClientesMenu("Menu", "Menu");
         }
 
     }
-    
- 
 
     @FXML
     private void Ent_BarRegist(ActionEvent event) {
@@ -110,7 +138,8 @@ public class ModificarEmpresaController implements Initializable {
     private void Ent_Home(ActionEvent event) {
         EmpresasMenu("Menu", "Menu");
     }
-      private boolean validaNombreEmpresa() {
+
+    private boolean validaNombreEmpresa() {
         Pattern p = Pattern.compile("[a-zA-Z]+");
         Matcher m = p.matcher(txt_Name.getText());
         if (m.find() && m.group().equals(txt_Name.getText())) {
@@ -125,8 +154,8 @@ public class ModificarEmpresaController implements Initializable {
             return false;
         }
     }
-    
-     private boolean validarSiglas() {
+
+    private boolean validarSiglas() {
         Pattern p = Pattern.compile("[A-Z]+");
         Matcher m = p.matcher(txt_Acronym.getText());
         if (m.find() && m.group().equals(txt_Acronym.getText())) {
@@ -141,7 +170,7 @@ public class ModificarEmpresaController implements Initializable {
             return false;
         }
     }
-    
+
     private boolean validaTelefono() {
         Pattern p = Pattern.compile("(0|91)?[7-9][0-9]{7}");
         Matcher m = p.matcher(txt_Phone.getText());
@@ -157,5 +186,5 @@ public class ModificarEmpresaController implements Initializable {
             return false;
         }
     }
- 
+
 }

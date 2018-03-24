@@ -60,7 +60,7 @@ public class MenuClienteController implements Initializable {
     }
 
     @FXML
-    private void B_Salir(MouseEvent event) {
+    private void B_Salir(ActionEvent event) {
         CargarVistas("Login", "Log In");
     }
 

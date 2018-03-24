@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import DAO.EmpresaDAOImplements;
+import Model.Empresa;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,7 +17,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -28,8 +32,6 @@ import javafx.stage.StageStyle;
 public class VerEmpresaController implements Initializable {
 
     @FXML
-    private TableView<?> tblViewClient;
-    @FXML
     private Button BarRegisEntp;
     @FXML
     private Button BarEditEntp;
@@ -39,13 +41,35 @@ public class VerEmpresaController implements Initializable {
     private Button BarViewEntp;
     @FXML
     private Button BarHomeEnt;
+    @FXML
+    private TableView<Empresa> tblViewEnterprices;
+    @FXML
+    private TableColumn<Empresa, String> tblCodeEnt;
+    @FXML
+    private TableColumn<Empresa, String> tblNameEnt;
+    @FXML
+    private TableColumn<Empresa, String> tblAcronymEnt;
+    @FXML
+    private TableColumn<Empresa, Integer> tblPhoneEnt;
+    
+    EmpresaDAOImplements h = new EmpresaDAOImplements();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        tblCodeEnt.setCellValueFactory(new PropertyValueFactory<>("idEmpresa"));
+        tblNameEnt.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
+        tblAcronymEnt.setCellValueFactory(new PropertyValueFactory<>("Acronimo"));
+        tblPhoneEnt.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+
+        CargarDatos();
+    }
+    
+    private void CargarDatos() {
+        tblViewEnterprices.getItems().clear();
+        tblViewEnterprices.setItems(h.Empresa());
     }
 
     private void EmpresasMenu(String Vista, String Titulo) {

@@ -58,8 +58,8 @@ public class EliminarClienteController implements Initializable {
     private TableColumn<Clientes, String> columId;
     @FXML
     private TableColumn<Clientes, String> columPhoneNumber;
-    @FXML
     private TableColumn<Clientes, String> columEmail;
+   
 
     /**
      * Initializes the controller class.
