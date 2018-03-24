@@ -64,4 +64,9 @@ public class MenuClienteController implements Initializable {
         CargarVistas("Login", "Log In");
     }
 
+    @FXML
+    private void Profile(ActionEvent event) {
+         CargarVistas("VerPerfilCliente", "Profile");
+    }
+
 }

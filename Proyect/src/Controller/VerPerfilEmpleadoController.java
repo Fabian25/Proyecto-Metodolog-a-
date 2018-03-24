@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -22,19 +22,33 @@ import javafx.stage.Stage;
  *
  * @author ALONSITO
  */
-public class MenuEmpleadoController implements Initializable {
+public class VerPerfilEmpleadoController implements Initializable {
 
     @FXML
-    private Button btn_Tiquete;
+    private Button BarMyProfile;
     @FXML
-    private Button btn_Perfil;
+    private Button BarEditProfile;
     @FXML
-    private Button btnExit;
+    private Button BarHomeC;
+    @FXML
+    private TextField txtCEmail;
+    @FXML
+    private TextField txtCPhoneNum;
+    @FXML
+    private TextField txtCIDnum;
+    @FXML
+    private TextField txtCLastNmae;
+    @FXML
+    private TextField txtCName;
 
     /**
      * Initializes the controller class.
      */
-      private void CargarVistas(String Vista, String Titulo) {
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+    private void CargarVistas(String Vista, String Titulo) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -42,31 +56,26 @@ public class MenuEmpleadoController implements Initializable {
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
-            Stage act = (Stage) btnExit.getScene().getWindow();
+            Stage act = (Stage) BarMyProfile.getScene().getWindow();
             act.close();
         } catch (Exception e) {
             System.out.println("Error");
         }
     }
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-
+    
     @FXML
-    private void Tiquetes(ActionEvent event) {
-        CargarVistas("VerTiqueteEmpleado", "Tickets");
-    }
-
-
-    @FXML
-    private void B_Salir(MouseEvent event) {
-        CargarVistas("Login", "Log In");
-    }
-
-    @FXML
-    private void Profile(ActionEvent event) {
+    private void C_BarMyProfile(ActionEvent event) {
         CargarVistas("VerPerfilEmpleado", "Profile");
+    }
+
+    @FXML
+    private void C_BarEditProfile(ActionEvent event) {
+        CargarVistas("EditarPerfilEmpleado", "Profile");
+    }
+
+    @FXML
+    private void C_Home(ActionEvent event) {
+        CargarVistas("MenuEmpleado", "Home");
     }
     
 }

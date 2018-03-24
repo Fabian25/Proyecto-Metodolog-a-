@@ -25,12 +25,16 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btn_Perfil" layoutX="206.0" layoutY="398.0" mnemonicParsing="false" onAction="#Tiquetes" prefHeight="96.0" prefWidth="198.0" text="Profile">
+      <Button fx:id="btn_Perfil" layoutX="206.0" layoutY="398.0" mnemonicParsing="false" onAction="#Profile" prefHeight="96.0" prefWidth="198.0" text="Profile">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
+<<<<<<< HEAD
       <Button fx:id="btnExit" layoutX="1109.0" layoutY="34.0" mnemonicParsing="false" onAction="#B_Salir" prefHeight="66.0" prefWidth="140.0" text="Log out">
+=======
+      <Button fx:id="btnExit" layoutX="1109.0" layoutY="34.0" mnemonicParsing="false" onMouseClicked="#B_Salir" prefHeight="66.0" prefWidth="140.0" text="Log out">
+>>>>>>> 0ccfc9a0673a92fcfa71f5408a3b15d980636543
          <font>
             <Font size="20.0" />
          </font>
