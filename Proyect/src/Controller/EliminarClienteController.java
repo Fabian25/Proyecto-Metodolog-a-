@@ -77,7 +77,7 @@ public class EliminarClienteController implements Initializable {
 
     private void CargarDatos() {
         tblRemoveClient.getItems().clear();
-        tblRemoveClient.setItems(h.Clientes());
+        tblRemoveClient.setItems(h.Clientes(""));
 
     }
 

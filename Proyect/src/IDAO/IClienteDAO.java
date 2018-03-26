@@ -28,7 +28,7 @@ public interface IClienteDAO {
 
     public void eliminar(Clientes h);
 
-    public ObservableList<Clientes> Clientes();
+    public ObservableList<Clientes> Clientes(String busqueda);
 
     public void registrar(Clientes h);
 

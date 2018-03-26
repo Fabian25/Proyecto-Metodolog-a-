@@ -100,7 +100,7 @@ public class ModificarClienteController implements Initializable {
     }
      private void CargarDatos() {
         tblEditClient.getItems().clear();
-        tblEditClient.setItems(h.Clientes());
+        tblEditClient.setItems(h.Clientes(""));
 
     }
 

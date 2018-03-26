@@ -20,7 +20,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -55,6 +57,8 @@ public class VerClienteController implements Initializable {
     private TableColumn<Clientes, String> columPhoneNumber;
     @FXML
     private TableColumn<Clientes, String> columEmail;
+    @FXML
+    private TextField txtBusqueda;
 
     /**
      * Initializes the controller class.
@@ -83,13 +87,12 @@ public class VerClienteController implements Initializable {
         columId.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         columPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
-        CargarDatos();
+        CargarDatos("");
     }
 
-    private void CargarDatos() {
+    private void CargarDatos(String busqueda) {
         tblViewClient.getItems().clear();
-        tblViewClient.setItems(h.Clientes());
-
+        tblViewClient.setItems(h.Clientes(busqueda));
     }
 
     private void c_back(MouseEvent event) {
@@ -120,6 +123,11 @@ public class VerClienteController implements Initializable {
     @FXML
     private void C_Home(ActionEvent event) {
         ClientesMenu("Menu", "Menu");
+    }
+
+    @FXML
+    private void Busqueda(KeyEvent event) {
+        CargarDatos(txtBusqueda.getText());
     }
 
 }

@@ -277,12 +277,11 @@ public class ClienteDAOImplements implements IClienteDAO {
             //        }
 
 
-    public ObservableList<Clientes> Clientes() {
+    public ObservableList<Clientes> Clientes(String busqueda) {
         ObservableList<Clientes> Clientes = FXCollections.observableArrayList();
-
         try {
             Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery("Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1");
+            ResultSet rs = st.executeQuery(SQLClientes(busqueda));
             while (rs.next()) {
                 Clientes.add(new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X")) {
                     @Override
@@ -295,6 +294,15 @@ public class ClienteDAOImplements implements IClienteDAO {
             JOptionPane.showMessageDialog(null, "Error Cargar Cliente \n" + ex);
         }
         return Clientes;
+    }
+    
+    private String SQLClientes(String busqueda){
+        if(busqueda.equals("")){
+            return "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1";
+        }
+        return "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1 And (Codigo Like '%" + busqueda + "%' Or Empresa_idEmpresa Like '%"
+                + busqueda + "%' Or Cedula Like '%" + busqueda + "%' Or Nombre Like '%" + busqueda + "%' Or Apellido Like '%" + busqueda + "%' Or Telefono Like '%" + busqueda + "%' Or Correo "
+                + "Like '%" + busqueda + "%')";
     }
 
     @Override
