@@ -16,22 +16,20 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="tblEnterprices" layoutX="202.0" layoutY="169.0" prefHeight="334.0" prefWidth="862.0">
+      <TableView fx:id="tblEnterprices" layoutX="74.0" layoutY="169.0" onMouseClicked="#Seleccionar" prefHeight="480.0" prefWidth="1106.0">
          <columns>
-            <TableColumn fx:id="tblCodeEnt" prefWidth="109.0" text="Code" />
-            <TableColumn fx:id="tblNameEnt" prefWidth="67.0" text="Name" />
-            <TableColumn fx:id="tblAcronymEnt" prefWidth="68.0" text="Acronym" />
-            <TableColumn fx:id="tblPhoneEnt" prefWidth="96.0" text="Phone Number" />
-            <TableColumn fx:id="tblRemoveEnt" prefWidth="83.0" text="Remove" />
+            <TableColumn fx:id="tblCodeEnt" prefWidth="299.0" text="Code" />
+            <TableColumn fx:id="tblNameEnt" prefWidth="287.0" text="Name" />
+            <TableColumn fx:id="tblAcronymEnt" prefWidth="244.0" text="Acronym" />
+            <TableColumn fx:id="tblPhoneEnt" prefWidth="275.0" text="Phone Number" />
          </columns>
       </TableView>
-      <ComboBox layoutX="370.0" layoutY="138.0" prefHeight="25.0" prefWidth="83.0" />
       <Label layoutX="568.0" layoutY="40.0" text="Remove" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <TextField layoutX="202.0" layoutY="138.0" />
+      <TextField fx:id="txtBuscar" layoutX="74.0" layoutY="138.0" onKeyReleased="#busqueda" prefHeight="25.0" prefWidth="336.0" />
       <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="1264.0">
          <menus>
             <Menu mnemonicParsing="false">
@@ -65,5 +63,6 @@
             </Menu>
          </menus>
       </MenuBar>
+      <Button fx:id="btnEliminar" layoutX="1041.0" layoutY="118.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="40.0" prefWidth="126.0" text="Eliminar" />
    </children>
 </AnchorPane>

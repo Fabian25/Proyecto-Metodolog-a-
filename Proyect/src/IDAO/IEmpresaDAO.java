@@ -17,7 +17,11 @@ public interface IEmpresaDAO {
 
     public void registrarEmp(String txt_EntrepriceName, String txt_Acronym, String txt_Phone);
 
+    public void registrarStorage(String txt_EntrepriceName, String txt_Acronym, String txt_Phone);
+    
     public void Modificar(String txt_EntrepriceName, String txt_Acronym, String txt_Phone, String idEmpresa);
 
-    public ObservableList<Empresa> Empresa();
+    public ObservableList<Empresa> Empresa(String busqueda);
+    
+     public void eliminar(String id);
 }

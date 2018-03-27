@@ -19,7 +19,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -53,6 +55,8 @@ public class VerEmpresaController implements Initializable {
     private TableColumn<Empresa, Integer> tblPhoneEnt;
     
     EmpresaDAOImplements h = new EmpresaDAOImplements();
+    @FXML
+    private TextField txtbusqueda;
 
     /**
      * Initializes the controller class.
@@ -64,12 +68,12 @@ public class VerEmpresaController implements Initializable {
         tblAcronymEnt.setCellValueFactory(new PropertyValueFactory<>("Acronimo"));
         tblPhoneEnt.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
 
-        CargarDatos();
+        CargarDatos("");
     }
     
-    private void CargarDatos() {
+    private void CargarDatos(String busqueda) {
         tblViewEnterprices.getItems().clear();
-        tblViewEnterprices.setItems(h.Empresa());
+        tblViewEnterprices.setItems(h.Empresa(busqueda));
     }
 
     private void EmpresasMenu(String Vista, String Titulo) {
@@ -115,6 +119,11 @@ public class VerEmpresaController implements Initializable {
     @FXML
     private void Ent_Home(ActionEvent event) {
         EmpresasMenu("Menu", "Menu");
+    }
+
+    @FXML
+    private void Buscar(KeyEvent event) {
+        CargarDatos(txtbusqueda.getText());
     }
 
 }

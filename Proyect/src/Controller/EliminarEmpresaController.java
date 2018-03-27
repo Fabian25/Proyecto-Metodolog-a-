@@ -18,7 +18,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -51,9 +53,11 @@ public class EliminarEmpresaController implements Initializable {
     @FXML
     private TableColumn<Empresa, Integer> tblPhoneEnt;
     @FXML
-    private TableColumn<Empresa, String> tblRemoveEnt;
-    @FXML
     private TableView<Empresa> tblEnterprices;
+    @FXML
+    private Button btnEliminar;
+    @FXML
+    private TextField txtBuscar;
 
     /**
      * Initializes the controller class.
@@ -64,14 +68,15 @@ public class EliminarEmpresaController implements Initializable {
         tblNameEnt.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         tblAcronymEnt.setCellValueFactory(new PropertyValueFactory<>("Acronimo"));
         tblPhoneEnt.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
-        tblRemoveEnt.setCellValueFactory(new PropertyValueFactory<>("button"));
-
-        CargarDatos();
+       
+        CargarDatos("");
+        btnEliminar.setVisible(false);
     }
 
-    private void CargarDatos() {
+    private void CargarDatos(String busqueda) {
         tblEnterprices.getItems().clear();
-        tblEnterprices.setItems(h.Empresa());
+        tblEnterprices.setItems(h.Empresa(busqueda));
+        btnEliminar.setVisible(false);
     }    
  private void EmpresasMenu(String Vista, String Titulo) {
 
@@ -116,6 +121,31 @@ public class EliminarEmpresaController implements Initializable {
     @FXML
     private void Ent_Home(ActionEvent event) {
         EmpresasMenu("Menu", "Menu");
+    }
+
+    @FXML
+    private void Seleccionar(MouseEvent event) {
+        Empresa cliente = tblEnterprices.getSelectionModel().getSelectedItem();
+        if(cliente != null){
+            btnEliminar.setVisible(true);
+        }else{
+            btnEliminar.setVisible(false);
+        }
+    }
+
+    @FXML
+    private void Eliminar(ActionEvent event) {
+         Empresa cliente = tblEnterprices.getSelectionModel().getSelectedItem();
+        if(cliente != null){
+            h.eliminar(cliente.getIdEmpresa());
+            CargarDatos("");
+        }
+        btnEliminar.setVisible(false);
+    }
+
+    @FXML
+    private void busqueda(KeyEvent event) {
+        CargarDatos(txtBuscar.getText());
     }
     
 }

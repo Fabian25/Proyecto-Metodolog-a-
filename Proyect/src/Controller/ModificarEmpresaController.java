@@ -23,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -62,10 +63,10 @@ public class ModificarEmpresaController implements Initializable {
     private TableColumn<Empresa, String> tblAcronymEnt;
     @FXML
     private TableColumn<Empresa, Integer> tblPhoneEnt;
-    @FXML
-    private TableColumn<Empresa, Integer> tblEditEnt;
     
     EmpresaDAOImplements h = new EmpresaDAOImplements();
+    @FXML
+    private TextField txtbusqueda;
 
     /**
      * Initializes the controller class.
@@ -76,14 +77,13 @@ public class ModificarEmpresaController implements Initializable {
         tblNameEnt.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         tblAcronymEnt.setCellValueFactory(new PropertyValueFactory<>("Acronimo"));
         tblPhoneEnt.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
-        tblEditEnt.setCellValueFactory(new PropertyValueFactory<>("Codigo"));
-
-        CargarDatos();
+    
+        CargarDatos("");
     }
 
-    private void CargarDatos() {
+    private void CargarDatos(String busqueda) {
         tblEditEnterprices.getItems().clear();
-        tblEditEnterprices.setItems(h.Empresa());
+        tblEditEnterprices.setItems(h.Empresa(busqueda));
         txt_Name.setText("");
         txt_Acronym.setText("");
         txt_Phone.setText("");
@@ -205,8 +205,13 @@ public class ModificarEmpresaController implements Initializable {
         Empresa empresa = tblEditEnterprices.getSelectionModel().getSelectedItem();
         if (empresa != null) {
             h.Modificar(txt_Name.getText(), txt_Acronym.getText(), txt_Phone.getText(), empresa.getIdEmpresa());
-            CargarDatos();
+            CargarDatos("");
         }
+    }
+
+    @FXML
+    private void Buscar(KeyEvent event) {
+        CargarDatos(txtbusqueda.getText());
     }
 
 }
