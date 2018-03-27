@@ -8,6 +8,7 @@ package IDAO;
 import Model.Empleados;
 import Model.Tiquetes;
 import java.util.List;
+import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -20,8 +21,9 @@ public interface ITiqueteDAO {
 
     public void registrarTiquetes(TextField txt_Series,ComboBox<?> txt_Status,TextArea txt_description);
 
-    public List<Tiquetes> VerTiquetes();
-    
+  
+    public ObservableList<Tiquetes> Tiquetes(String busqueda);
+    public List<Tiquetes> ver();
 
     public void EditarTiquetes(ComboBox<?> txt_Status,TextArea txt_description, Tiquetes t);
 

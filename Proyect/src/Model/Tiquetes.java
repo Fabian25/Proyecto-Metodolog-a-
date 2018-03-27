@@ -14,11 +14,11 @@ public class Tiquetes {
     public Tiquetes() {
     }
 
-    public Tiquetes(String ID_Tiquete, String prioridad, String estado) {
+    public Tiquetes(String ID_Tiquete, String prioridad, String estado, int Activo) {
         this.ID_Tiquete = ID_Tiquete;
         this.prioridad = prioridad;
         this.estado = estado;
-
+        this.Activo = Activo;
     }
 
     public String getID_Tiquete() {
@@ -66,6 +66,14 @@ public class Tiquetes {
     private String estado;
     private String solucion;
     private String descripcion;
-    
+
+    public int getActivo() {
+        return Activo;
+    }
+
+    public void setActivo(int Activo) {
+        this.Activo = Activo;
+    }
+    private int Activo;
 }
 

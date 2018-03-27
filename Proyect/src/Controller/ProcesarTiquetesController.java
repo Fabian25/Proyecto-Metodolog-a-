@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 
 public class ProcesarTiquetesController implements Initializable {
 
-    public final Tiquetes tiquete = new Tiquetes("1", "2", "Checked");
+    public final Tiquetes tiquete = new Tiquetes("1", "2", "Checked", 1);
 
     @FXML
     private ProgressBar ProgressBar;
