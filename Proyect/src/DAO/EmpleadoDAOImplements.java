@@ -152,7 +152,7 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
          String query = "{CALL ActualizarEmpleado(?, ?, ?, ?)}";
         try {
             CallableStatement stmt = connection.prepareCall(query);
-            stmt.setString(1, txtName);
+            stmt.setString(1, txtName); 
             stmt.setString(2, txtLastName);
             stmt.setInt(3, txtPhone);
             stmt.setInt(4, Cedula);
@@ -162,6 +162,18 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
         }
     }
 
+     @Override
+    public void eliminar(int id) {
+        String query = "{CALL EliminarEmpleado(?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setInt(1, id);
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     @Override
     public ObservableList<Empleados> Empleados(String busqueda) {
        ObservableList<Empleados> emp = FXCollections.observableArrayList();
@@ -169,7 +181,7 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(SQLEmpleado(busqueda));
             while (rs.next()) {
-                emp.add(new Empleados(rs.getString(1),rs.getInt(2) , rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), new Button("X")){
+                emp.add(new Empleados(rs.getString(1),rs.getInt(2) , rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), " ", new Button("X")){
                     @Override
                     public String verPersona() {
                         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -184,10 +196,10 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
     
      private String SQLEmpleado(String busqueda) {
         if (busqueda.equals("")) {
-            return "Select Cedula, Nombre, Apellido, Correo, Codigo, Telefono, TipoEmpleado_idTipoEmpleado from Employees where Activo = 1";
+            return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1";
         }
-        return "Select Cedula, Nombre, Apellido, Correo, Codigo, Telefono, TipoEmpleado_idTipoEmpleado  from Employees where Activo = 1 And (Cedula Like '%" + busqueda + "%' Or Nombre Like '%"
-                + busqueda + "%' Or Apellido Like '%" + busqueda + "%' Or Correo Like '%" + busqueda + "%' Or Codigo Like '%" + busqueda + "%' Or Telefono Like '%" + busqueda + "%' Or TipoEmpleado_idTipoEmpleado "
+        return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1 And (Codigo Like '%" + busqueda + "%' Or Cedula Like '%"
+                + busqueda + "%' Or Nombre Like '%" + busqueda + "%' Or Apellido Like '%" + busqueda + "%' Or Telefono Like '%" + busqueda  + "%' Or Correo "
                 + "Like '%" + busqueda + "%')";
     }
 }

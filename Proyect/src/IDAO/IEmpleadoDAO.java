@@ -20,7 +20,7 @@ public interface IEmpleadoDAO {
     public void registrar(String txt_Name,String txt_Phone, String txt_ID, String txt_LastName, String txt_Email);
 
     public List<Persona> ver();
-
+ public void eliminar(int id);
     public void actualizar(String txtName, String txtLastName, int txtPhone, int Cedula);
     public ObservableList<Empleados> Empleados(String busqueda);
 
