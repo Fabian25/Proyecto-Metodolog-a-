@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import DAO.TiquetesDAOImplements;
+import Model.Tiquetes;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,8 +17,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -28,9 +32,10 @@ import javafx.stage.StageStyle;
  */
 public class VerTiquetesController implements Initializable {
 
+        TiquetesDAOImplements h = new TiquetesDAOImplements();
    
     @FXML
-    private TableView<?> tblRemoveTiq;
+    private TableView<Tiquetes> tblRemoveTiq;
     @FXML
     private Button BarEditTickets;
     @FXML
@@ -41,14 +46,32 @@ public class VerTiquetesController implements Initializable {
     private Button BarHomeTik;
     @FXML
     private TextField txt_search;
+    @FXML
+    private TableColumn<Tiquetes, String> colunmSerie;
+    @FXML
+    private TableColumn<Tiquetes, Integer> colunmPriority;
+    @FXML
+    private TableColumn<Tiquetes, String> colunmDescription;
+    @FXML
+    private TableColumn<Tiquetes, Integer> colunmState;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        colunmSerie.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
+        colunmDescription.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        colunmState.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        colunmPriority.setCellValueFactory(new PropertyValueFactory<>("prioriedad"));
+        //colunmRemove.setCellValueFactory(new PropertyValueFactory<>("Eliminar"));
+        CargarDatos("");
     }    
+     private void CargarDatos(String busqueda) {
+        tblRemoveTiq.getItems().clear();
+        tblRemoveTiq.setItems(h.Tiquetes(busqueda));
+    }
+
     
     
     private void TiquetesMenu(String Vista, String Titulo) {

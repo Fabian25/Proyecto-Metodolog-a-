@@ -106,7 +106,6 @@ public class ProcesarTiquetesController implements Initializable {
     }
     
      private void TiquetesMenu(String Vista, String Titulo) {
-
        try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -120,9 +119,7 @@ public class ProcesarTiquetesController implements Initializable {
             System.out.println("Error");
         }
     }
-
    
-
     @FXML
     private void Tik_BarView(ActionEvent event) {
         TiquetesMenu("VerTiqueteEmpleado", "Tickets");
@@ -137,5 +134,5 @@ public class ProcesarTiquetesController implements Initializable {
     private void Tik_BarProcess(ActionEvent event) {
          TiquetesMenu("procesarTiquetes", "Tickets");
     }
-
 }
+
