@@ -5,8 +5,10 @@
  */
 package IDAO;
 
+import Model.Empleados;
 import java.util.List;
 import Model.Persona;
+import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
 
 /**
@@ -19,6 +21,10 @@ public interface IEmpleadoDAO {
 
     public List<Persona> ver();
 
+    public void actualizar(String txtName, String txtLastName, int txtPhone, int Cedula);
+    public ObservableList<Empleados> Empleados(String busqueda);
+
+    
     public void actualizar(TextField txt_Name, TextField txt_Phone, TextField txt_LastName, TextField txt_Email, Persona p);
 
     public void eliminar(TextField txt_ID);

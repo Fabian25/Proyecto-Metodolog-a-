@@ -23,10 +23,10 @@ public interface IClienteDAO {
 
     public List<Persona> ver();
 
-    public void actualizar(String txtCPhoneNum, String txtCName, int Cedula);
+  
 
     public void eliminar(int id);
-
+  public void actualizar(String txtCPhoneNum, String txtCName, int Cedula);
     public ObservableList<Clientes> Clientes(String busqueda);
 
     public void registrarStorage(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail);

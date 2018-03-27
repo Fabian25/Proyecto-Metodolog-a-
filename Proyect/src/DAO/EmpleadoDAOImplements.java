@@ -18,6 +18,9 @@ import IDAO.IEmpleadoDAO;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.util.Random;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 
@@ -142,5 +145,49 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
 //        }
 
         return listaCliente;
+    }
+
+    @Override
+    public void actualizar(String txtName, String txtLastName, int txtPhone, int Cedula) {
+         String query = "{CALL ActualizarEmpleado(?, ?, ?, ?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setString(1, txtName);
+            stmt.setString(2, txtLastName);
+            stmt.setInt(3, txtPhone);
+            stmt.setInt(4, Cedula);
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @Override
+    public ObservableList<Empleados> Empleados(String busqueda) {
+       ObservableList<Empleados> emp = FXCollections.observableArrayList();
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(SQLEmpleado(busqueda));
+            while (rs.next()) {
+                emp.add(new Empleados(rs.getString(1),rs.getInt(2) , rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), new Button("X")){
+                    @Override
+                    public String verPersona() {
+                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    }
+                });
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Cargar Empleados \n" + ex);
+        }
+        return emp;
+    }
+    
+     private String SQLEmpleado(String busqueda) {
+        if (busqueda.equals("")) {
+            return "Select Cedula, Nombre, Apellido, Correo, Codigo, Telefono, TipoEmpleado_idTipoEmpleado from Employees where Activo = 1";
+        }
+        return "Select Cedula, Nombre, Apellido, Correo, Codigo, Telefono, TipoEmpleado_idTipoEmpleado  from Employees where Activo = 1 And (Cedula Like '%" + busqueda + "%' Or Nombre Like '%"
+                + busqueda + "%' Or Apellido Like '%" + busqueda + "%' Or Correo Like '%" + busqueda + "%' Or Codigo Like '%" + busqueda + "%' Or Telefono Like '%" + busqueda + "%' Or TipoEmpleado_idTipoEmpleado "
+                + "Like '%" + busqueda + "%')";
     }
 }
