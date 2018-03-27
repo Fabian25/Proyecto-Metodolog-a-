@@ -49,11 +49,11 @@ public class VerTiquetesController implements Initializable {
     @FXML
     private TableColumn<Tiquetes, String> colunmSerie;
     @FXML
-    private TableColumn<Tiquetes, Integer> colunmPriority;
+    private TableColumn<Tiquetes, String> colunmPriority;
     @FXML
     private TableColumn<Tiquetes, String> colunmDescription;
     @FXML
-    private TableColumn<Tiquetes, Integer> colunmState;
+    private TableColumn<Tiquetes, String> colunmState;
 
     /**
      * Initializes the controller class.

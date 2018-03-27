@@ -13,8 +13,8 @@ import javafx.scene.control.Button;
  */
 public class Clientes extends Persona {
 
-    public Clientes(int Codigo, String EmpresaAsociar, int cedula, String nombre, String apellido, int Telefono, String Correo, String Contrasena,Button button) {
-        super(cedula, nombre, apellido, Telefono, Correo, Contrasena,button);
+    public Clientes(int Codigo, String EmpresaAsociar, int cedula, String nombre, String apellido, int Telefono, String Correo, String Contrasena, Button button) {
+        super(cedula, nombre, apellido, Telefono, Correo, Contrasena, button);
         this.Codigo = Codigo;
         this.EmpresaAsociar = EmpresaAsociar;
     }
@@ -37,12 +37,12 @@ public class Clientes extends Persona {
 
     public Clientes() {
     }
-private int Codigo;
-private String EmpresaAsociar;
+    private int Codigo;
+    private String EmpresaAsociar;
 
     @Override
     public String verPersona() {
-      return "CLIENTE: " + this.getCodigo() + " NUMERO DE CEDULA:" + this.getCedula()+" NOMBRE:" +this.getNombre();
+        return "CLIENTE: " + this.getCodigo() + " NUMERO DE CEDULA:" + this.getCedula() + " NOMBRE:" + this.getNombre();
     }
-    
+
 }
