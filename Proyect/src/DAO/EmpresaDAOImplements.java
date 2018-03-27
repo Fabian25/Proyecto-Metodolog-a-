@@ -8,6 +8,7 @@ package DAO;
 import IDAO.IEmpresaDAO;
 import Model.Clientes;
 import Model.Empresa;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,27 +38,22 @@ public class EmpresaDAOImplements implements IEmpresaDAO {
     @Override
     public void registrarEmp(String txt_EntrepriceName, String txt_Acronym, String txt_Phone) {
 
-        if (txt_EntrepriceName.length() == 0 || txt_Acronym.length() == 0
-                || txt_Phone.length() == 0) {
-            JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
-        } else {
-            try {
-                String sql = "Insert into Empresas values(?,?,?,?,?,?,?);";
+        String query = "{CALL RegistrarEmpresa(?,?,?,?,?,?,?)}";
 
-                preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, CrearCodigo());
-                preparedStatement.setString(2, txt_EntrepriceName);
-                preparedStatement.setString(3, txt_Acronym);
-                preparedStatement.setString(4, txt_Phone);
-                preparedStatement.setString(5, "Activo");
-                preparedStatement.setString(6, "123");
-                preparedStatement.setString(7, "3");
+        try (Connection conn = BaseDatos.Conexion.getConnection();
+                CallableStatement stmt = conn.prepareCall(query)) {
 
-                int executeUpdate = preparedStatement.executeUpdate();
+            stmt.setString(1, CrearCodigo());
+            stmt.setString(2, txt_EntrepriceName);
+            stmt.setString(3, txt_Acronym);
+            stmt.setString(4, txt_Phone);
+            stmt.setString(5, "Activo");
+            stmt.setString(6, "123");
+            stmt.setString(7, "3");
 
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex);
-            }
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 

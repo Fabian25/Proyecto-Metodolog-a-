@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package DAO;
+
 import Model.Persona;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,16 +15,20 @@ import java.util.List;
 import BaseDatos.Conexion;
 import Model.Empleados;
 import IDAO.IEmpleadoDAO;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.util.Random;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Fabian
  */
-public class EmpleadoDAOImplements implements IEmpleadoDAO{
+public class EmpleadoDAOImplements implements IEmpleadoDAO {
+
     Connection connection = BaseDatos.Conexion.getConnection();
+
     public boolean ExisteCedula(String ced, String cod) {
         String sql = "SELECT * FROM Persona p where p.IdPersona = " + ced + "and p.Codigo = " + cod + ";";
         String[] datos = new String[10];
@@ -44,23 +49,22 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO{
         }
         return false;
     }
- 
 
     @Override
     public void registrar(String txt_Name, String txt_Phone, String txt_ID, String txt_LastName, String txt_Email) {
-       String Cod = "";
+        String Cod = "";
         Random rand = new Random();
         int randomNum = rand.nextInt((999 - 100) + 1) + 100;
         Cod = "EMP-" + randomNum;
-        if (txt_Name.length() == 0 ||txt_LastName.length() == 0
-                ||txt_ID.length() == 0 || txt_Phone.length() == 0
-                ||  txt_Email.length() == 0) {
+        if (txt_Name.length() == 0 || txt_LastName.length() == 0
+                || txt_ID.length() == 0 || txt_Phone.length() == 0
+                || txt_Email.length() == 0) {
             JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
         } else {
             if (ExisteCedula(txt_ID, Cod) == false) {
-                
-                String sql = "Insert into Persona values(" +txt_ID + "," + txt_Name + ","
-                        + txt_Phone + "," +  txt_Email + "," + "Nuevo123*" + "," + Cod+ "," + txt_LastName + ");";
+
+                String sql = "Insert into Persona values(" + txt_ID + "," + txt_Name + ","
+                        + txt_Phone + "," + txt_Email + "," + "Nuevo123*" + "," + Cod + "," + txt_LastName + ");";
                 String[] datos = new String[10];
                 try {
                     Statement stmt = connection.createStatement();
@@ -75,13 +79,11 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO{
         }
     }
 
- 
-
     @Override
     public void eliminar(TextField txt_ID) {
         String Update = "UPDATE Personas\n"
                 + "SET Activo = " + "0"
-                + "WHERE IdPersona = " +txt_ID.getText() + ";";
+                + "WHERE IdPersona = " + txt_ID.getText() + ";";
         try {
             Statement stmt = connection.createStatement();
             PreparedStatement pst = connection.prepareStatement(Update);
@@ -93,18 +95,18 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO{
 
     @Override
     public void actualizar(TextField txt_Name, TextField txt_Phone, TextField txt_LastName, TextField txt_Email, Persona p) {
-        String Update = "UPDATE Personas\n"
-                + "SET Nombre = "+txt_Name.getText()
-                 + "SET Apellido = "+txt_LastName.getText()
-                 + "SET Telefono = "+txt_Phone.getText()
-                 + "SET Correo = "+txt_Email.getText()
-                + "WHERE IdPersona = " + Integer.toString(p.getCedula() )+ ";";
-        try {
-            Statement stmt = connection.createStatement();
-            PreparedStatement pst = connection.prepareStatement(Update);
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+
+        String query = "{CALL ActualizarEmpleado(?, ?, ?, ?, ?)}";
+        try (Connection conn = BaseDatos.Conexion.getConnection();
+                CallableStatement stmt = conn.prepareCall(query)) {
+            stmt.setString(1, txt_Name.getText());
+            stmt.setString(2, txt_LastName.getText());
+            stmt.setInt(3, Integer.parseInt(txt_Phone.getText()));
+            stmt.setString(4, txt_Email.getText());
+            stmt.setInt(4, p.getCedula());
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -114,11 +116,10 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO{
 //  Statement stm = null;
 //        ResultSet rs = null;
 //        String sql = "SELECT * FROM Persona where TipoPersona_ID_TipoPersona= "+"2"  +";";
-
-    Statement stm = null;
+        Statement stm = null;
         ResultSet rs = null;
-        
-        String sql = "SELECT * FROM Persona where TipoPersona_ID_TipoPersona= "+"2"  +";";
+
+        String sql = "SELECT * FROM Persona where TipoPersona_ID_TipoPersona= " + "2" + ";";
 
         List<Persona> listaCliente = new ArrayList<Persona>();
 //        try {

@@ -21,7 +21,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <TableView fx:id="tblEditClient" layoutX="10.0" layoutY="174.0" prefHeight="313.0" prefWidth="749.0">
+      <TableView fx:id="tblEditClient" layoutX="10.0" layoutY="174.0" onMouseClicked="#CargarCliente" prefHeight="313.0" prefWidth="749.0">
         <columns>
           <TableColumn fx:id="columCode" prefWidth="66.0" text="Code" />
           <TableColumn fx:id="columName" prefWidth="73.0" text="Name" />
@@ -32,11 +32,11 @@
             <TableColumn fx:id="columEdit" prefWidth="79.0" text="Edit" />
         </columns>
       </TableView>
-      <Button layoutX="787.0" layoutY="192.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
-      <Button layoutX="787.0" layoutY="308.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Email" />
-      <TextField fx:id="txt_Phone" layoutX="956.0" layoutY="197.0" prefHeight="35.0" prefWidth="194.0" />
-      <TextField fx:id="txt_Email" layoutX="950.0" layoutY="313.0" prefHeight="35.0" prefWidth="194.0" />
-      <Button fx:id="btnADD" layoutX="950.0" layoutY="404.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="184.0" text="SAVE">
+      <Button layoutX="785.0" layoutY="308.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
+      <Button layoutX="785.0" layoutY="192.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Name" />
+      <TextField fx:id="txt_Phone" layoutX="945.0" layoutY="313.0" prefHeight="35.0" prefWidth="194.0" />
+      <TextField fx:id="txtCName" layoutX="945.0" layoutY="197.0" prefHeight="35.0" prefWidth="194.0" />
+      <Button fx:id="btnADD" layoutX="950.0" layoutY="404.0" mnemonicParsing="false" onAction="#btnActualizar" prefHeight="45.0" prefWidth="184.0" text="SAVE">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
                <light>

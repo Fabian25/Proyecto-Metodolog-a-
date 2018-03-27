@@ -17,20 +17,19 @@ import javafx.scene.control.TextField;
  */
 public interface IClienteDAO {
 
-
     public Clientes obtenerCliente(Clientes h);
 
     public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail);
 
     public List<Persona> ver();
 
-    public void actualizar(Clientes h);
+    public void actualizar(String txtCPhoneNum, String txtCName, int Cedula);
 
-    public void eliminar(Clientes h);
+    public void eliminar(int id);
 
     public ObservableList<Clientes> Clientes(String busqueda);
 
-    public void registrar(Clientes h);
+    public void registrarStorage(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail);
 
 
 }

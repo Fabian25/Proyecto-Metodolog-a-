@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 import IDAO.*;
 import Model.Clientes;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -169,8 +170,6 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     }
 
- 
-
 //    @Override
 //    public void eliminar(TextField txtCIDnum) {
 ////        Connection cn = cc.conexion();
@@ -237,46 +236,43 @@ public class ClienteDAOImplements implements IClienteDAO {
         return null;
     }
 
- 
-            //
-            //    public void registrar(Clientes h) {
-            //        int Cod = 0;
-            //        GenerarCodigo(Cod);
-            //
-            //        while (ExisteCodigo(Cod)) {
-            //            GenerarCodigo(Cod);
-            //        }
-            //        if (ExisteCedula(Integer.toString(h.getCedula()))) {
-            //            JOptionPane.showMessageDialog(null, "There is already a client with this id");
-            //        } else {
-            //
-            //            if (h.getNombre().length() == 0 || h.getApellido().length() == 0
-            //                    || Integer.toString(h.getCedula()).length() == 0 || Integer.toString(h.getTelefono()).length() == 0
-            //                    || h.getCorreo().length() == 0) {
-            //                JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
-            //            } else {
-            //                try {
-            //                    String sql = "Insert into Clientes values(?,?,?,?,?,?,?,?,?);";
-            //
-            //                    preparedStatement = connection.prepareStatement(sql);
-            //                    preparedStatement.setString(1, Integer.toString(h.getCedula()));
-            //                    preparedStatement.setString(2, h.getNombre());
-            //                    preparedStatement.setString(3, h.getApellido());
-            //                    preparedStatement.setString(4, h.getCorreo());
-            //                    preparedStatement.setString(5, "Nuevo123$");
-            //                    preparedStatement.setInt(6, Cod);
-            //                    preparedStatement.setString(7, Integer.toString(h.getTelefono()));
-            //                    preparedStatement.setInt(8, 1);
-            //
-            //                    int executeUpdate = preparedStatement.executeUpdate();
-            //
-            //                } catch (SQLException ex) {
-            //                    JOptionPane.showMessageDialog(null, ex);
-            //                }
-            //            }
-            //        }
-
-
+    //
+    //    public void registrar(Clientes h) {
+    //        int Cod = 0;
+    //        GenerarCodigo(Cod);
+    //
+    //        while (ExisteCodigo(Cod)) {
+    //            GenerarCodigo(Cod);
+    //        }
+    //        if (ExisteCedula(Integer.toString(h.getCedula()))) {
+    //            JOptionPane.showMessageDialog(null, "There is already a client with this id");
+    //        } else {
+    //
+    //            if (h.getNombre().length() == 0 || h.getApellido().length() == 0
+    //                    || Integer.toString(h.getCedula()).length() == 0 || Integer.toString(h.getTelefono()).length() == 0
+    //                    || h.getCorreo().length() == 0) {
+    //                JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
+    //            } else {
+    //                try {
+    //                    String sql = "Insert into Clientes values(?,?,?,?,?,?,?,?,?);";
+    //
+    //                    preparedStatement = connection.prepareStatement(sql);
+    //                    preparedStatement.setString(1, Integer.toString(h.getCedula()));
+    //                    preparedStatement.setString(2, h.getNombre());
+    //                    preparedStatement.setString(3, h.getApellido());
+    //                    preparedStatement.setString(4, h.getCorreo());
+    //                    preparedStatement.setString(5, "Nuevo123$");
+    //                    preparedStatement.setInt(6, Cod);
+    //                    preparedStatement.setString(7, Integer.toString(h.getTelefono()));
+    //                    preparedStatement.setInt(8, 1);
+    //
+    //                    int executeUpdate = preparedStatement.executeUpdate();
+    //
+    //                } catch (SQLException ex) {
+    //                    JOptionPane.showMessageDialog(null, ex);
+    //                }
+    //            }
+    //        }
     public ObservableList<Clientes> Clientes(String busqueda) {
         ObservableList<Clientes> Clientes = FXCollections.observableArrayList();
         try {
@@ -295,9 +291,9 @@ public class ClienteDAOImplements implements IClienteDAO {
         }
         return Clientes;
     }
-    
-    private String SQLClientes(String busqueda){
-        if(busqueda.equals("")){
+
+    private String SQLClientes(String busqueda) {
+        if (busqueda.equals("")) {
             return "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1";
         }
         return "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1 And (Codigo Like '%" + busqueda + "%' Or Empresa_idEmpresa Like '%"
@@ -312,19 +308,65 @@ public class ClienteDAOImplements implements IClienteDAO {
     }
 
     @Override
-    public void actualizar(Clientes h) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void actualizar(String txtCPhoneNum, String txtCName, int Cedula) {
+        String query = "{CALL ActualizarCliente(?, ?, ?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setInt(1, Integer.parseInt(txtCPhoneNum));
+            stmt.setString(2, txtCName);
+            stmt.setInt(3, Cedula);
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
-    public void eliminar(Clientes h) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void eliminar(int id) {
+          String query = "{CALL EliminarClientes(?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setInt(1, id);
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
-    public void registrar(Clientes h) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
- 
+    public void registrarStorage(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
 
+        int Cod = GenerarCodigo();
+
+        while (ExisteCodigo(Cod)) {
+            Cod = GenerarCodigo();
+
+        }
+        if (ExisteCedula(txtCIDnum)) {
+            JOptionPane.showMessageDialog(null, "There is already a client with this id");
+        } else {
+
+            String query = "{CALL RegistrarCliente(?,?,?,?,?,?,?,?,?)}";
+
+            try (Connection conn = BaseDatos.Conexion.getConnection();
+                    CallableStatement stmt = conn.prepareCall(query)) {
+
+//            stmt.setInt(1, candidateId);
+                stmt.setString(1, txtCIDnum);
+                stmt.setString(2, txtCName);
+                stmt.setString(3, txtCLastNmae);
+                stmt.setString(4, txtCEmail);
+                stmt.setString(5, "Nuevo123$");
+                stmt.setInt(6, Cod);
+                stmt.setString(7, txtCPhoneNum);
+                stmt.setInt(8, 1);
+                stmt.setString(9, "ENT-001");
+
+                stmt.executeQuery();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+
+    }
 }

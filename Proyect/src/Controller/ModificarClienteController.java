@@ -27,6 +27,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -34,7 +35,8 @@ import javafx.stage.StageStyle;
  * @author Fabian
  */
 public class ModificarClienteController implements Initializable {
-  ClienteDAOImplements h = new ClienteDAOImplements();
+
+    ClienteDAOImplements h = new ClienteDAOImplements();
     @FXML
     private Button btnADD;
     @FXML
@@ -49,8 +51,7 @@ public class ModificarClienteController implements Initializable {
     private Button BarHomeC;
     @FXML
     private TextField txt_Phone;
-    @FXML
-    private TextField txt_Email;
+
     @FXML
     private TableColumn<Clientes, String> columCode;
     @FXML
@@ -67,6 +68,8 @@ public class ModificarClienteController implements Initializable {
     private TableColumn<Clientes, String> columEdit;
     @FXML
     private TableView<Clientes> tblEditClient;
+    @FXML
+    private TextField txtCName;
 
     /**
      * Initializes the controller class.
@@ -89,7 +92,7 @@ public class ModificarClienteController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        columName.setCellValueFactory(new PropertyValueFactory<>("Codigo"));
+        columCode.setCellValueFactory(new PropertyValueFactory<>("Codigo"));
         columName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         columLastName.setCellValueFactory(new PropertyValueFactory<>("apellido"));
         columId.setCellValueFactory(new PropertyValueFactory<>("cedula"));
@@ -98,15 +101,12 @@ public class ModificarClienteController implements Initializable {
         columEdit.setCellValueFactory(new PropertyValueFactory<>("button"));
         CargarDatos();
     }
-     private void CargarDatos() {
+
+    private void CargarDatos() {
         tblEditClient.getItems().clear();
         tblEditClient.setItems(h.Clientes(""));
-
-    }
-
-    @FXML
-    private void c_add(MouseEvent event) {
-        ClientesMenu("RegistroCliente", "Clients");
+        txtCName.setText("");
+        txt_Phone.setText("");
     }
 
     @FXML
@@ -135,22 +135,21 @@ public class ModificarClienteController implements Initializable {
         ClientesMenu("Menu", "Menu");
     }
 
-    private boolean validateEmaill() {
-        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
-        Matcher m = p.matcher(txt_Email.getText());
-        if (m.find() && m.group().equals(txt_Email.getText())) {
-            return true;
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Validate Email");
-            alert.setHeaderText(null);
-            alert.setContentText("Por favor digire un email valido");
-            alert.showAndWait();
-
-            return false;
-        }
-    }
-
+//    private boolean validateEmaill() {
+//        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+//        Matcher m = p.matcher(txt_Email.getText());
+//        if (m.find() && m.group().equals(txt_Email.getText())) {
+//            return true;
+//        } else {
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("Validate Email");
+//            alert.setHeaderText(null);
+//            alert.setContentText("Por favor digire un email valido");
+//            alert.showAndWait();
+//
+//            return false;
+//        }
+//    }
     private boolean validaTelefono() {
         Pattern p = Pattern.compile("(0|91)?[7-9][0-9]{7}");
         Matcher m = p.matcher(txt_Phone.getText());
@@ -167,4 +166,21 @@ public class ModificarClienteController implements Initializable {
         }
     }
 
+    @FXML
+    private void CargarCliente(MouseEvent event) {
+        Clientes cliente = tblEditClient.getSelectionModel().getSelectedItem();
+        if (cliente != null) {
+            txtCName.setText(cliente.getNombre());
+            txt_Phone.setText(Integer.toString(cliente.getTelefono()));
+        }
+    }
+
+    @FXML
+    private void btnActualizar(ActionEvent event) {
+        Clientes cliente = tblEditClient.getSelectionModel().getSelectedItem();
+        if (cliente != null) {
+            h.actualizar(txt_Phone.getText(), txtCName.getText(), cliente.getCedula());
+            CargarDatos();
+        }
+    }
 }

@@ -39,7 +39,6 @@ public class EliminarClienteController implements Initializable {
     private TableView<Clientes> tblRemoveClient;
     @FXML
     private Button BarRegisClient;
-    private MenuItem BarRegisClientItem;
     @FXML
     private Button BarEditClient;
     @FXML
@@ -58,7 +57,8 @@ public class EliminarClienteController implements Initializable {
     private TableColumn<Clientes, String> columId;
     @FXML
     private TableColumn<Clientes, String> columPhoneNumber;
-    private TableColumn<Clientes, String> columEmail;
+    @FXML
+    private Button btnEliminar;
    
 
     /**
@@ -70,15 +70,16 @@ public class EliminarClienteController implements Initializable {
         columLastName.setCellValueFactory(new PropertyValueFactory<>("apellido"));
         columId.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         columPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
-        columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+        
         columRemove.setCellValueFactory(new PropertyValueFactory<>("button"));
         CargarDatos();
+        btnEliminar.setVisible(false);
     }
 
     private void CargarDatos() {
         tblRemoveClient.getItems().clear();
         tblRemoveClient.setItems(h.Clientes(""));
-
+         btnEliminar.setVisible(false);
     }
 
     private void ClientesMenu(String Vista, String Titulo) {
@@ -127,4 +128,23 @@ public class EliminarClienteController implements Initializable {
         ClientesMenu("Menu", "Menu");
     }
 
+    @FXML
+    private void Eliminar(ActionEvent event) {
+        Clientes cliente = tblRemoveClient.getSelectionModel().getSelectedItem();
+        if(cliente != null){
+            h.eliminar(cliente.getCedula());
+            CargarDatos();
+        }
+        btnEliminar.setVisible(false);
+    }
+
+    @FXML
+    private void Seleccionar(MouseEvent event) {
+        Clientes cliente = tblRemoveClient.getSelectionModel().getSelectedItem();
+        if(cliente != null){
+            btnEliminar.setVisible(true);
+        }else{
+            btnEliminar.setVisible(false);
+        }
+    }
 }
