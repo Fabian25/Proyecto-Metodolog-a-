@@ -56,7 +56,7 @@ public class Tiquetes {
     }
 
     public Tiquetes(String ID_Tiquete, String prioridad, String descripcion, int estado, String solucion) {
-        super();
+       super();
         this.ID_Tiquete = ID_Tiquete;
         this.prioridad = prioridad;
         this.descripcion = descripcion;

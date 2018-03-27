@@ -63,7 +63,7 @@ public class VerTiquetesController implements Initializable {
         colunmSerie.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
         colunmDescription.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         colunmState.setCellValueFactory(new PropertyValueFactory<>("estado"));
-        colunmPriority.setCellValueFactory(new PropertyValueFactory<>("prioriedad"));
+        colunmPriority.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
     
         CargarDatos("");
     }    
