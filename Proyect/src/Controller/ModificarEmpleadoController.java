@@ -218,7 +218,7 @@ public class ModificarEmpleadoController implements Initializable {
 
     @FXML
     private void btnActualizar(ActionEvent event) {
-          Empleados emp = tblEmpleado.getSelectionModel().getSelectedItem();
+        Empleados emp = tblEmpleado.getSelectionModel().getSelectedItem();
         if (emp != null) {
            h.actualizar(txt_Name.getText(), txt_Lastname.getText(), Integer.parseInt(txt_Phone.getText()) ,emp.getCedula());
             CargarDatos("");
@@ -234,6 +234,4 @@ public class ModificarEmpleadoController implements Initializable {
             txt_Phone.setText(Integer.toString(emp.getTelefono()));
         }
     }
-
-
 }

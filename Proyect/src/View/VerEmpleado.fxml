@@ -54,15 +54,15 @@
             </Menu>
          </menus>
       </MenuBar>
-      <TextField fx:id="txtBusuqeda" layoutX="201.0" layoutY="128.0" onKeyReleased="#Busqueda" />
-      <TableView fx:id="tblEmpleado" layoutX="201.0" layoutY="169.0" prefHeight="313.0" prefWidth="669.0">
+      <TextField fx:id="txtBusuqeda" layoutX="89.0" layoutY="131.0" onKeyReleased="#Busqueda" prefHeight="25.0" prefWidth="183.0" />
+      <TableView fx:id="tblEmpleado" layoutX="89.0" layoutY="172.0" prefHeight="496.0" prefWidth="1103.0">
          <columns>
-            <TableColumn fx:id="colunmCode" prefWidth="66.0" text="Code" />
-            <TableColumn fx:id="ColunmName" prefWidth="73.0" text="Name" />
-            <TableColumn fx:id="ColunmLastName" prefWidth="86.0" text="Last Name" />
-            <TableColumn fx:id="ColunmIDNumber" prefWidth="87.0" text="ID Number" />
-            <TableColumn fx:id="ColunmPhoneNumber" prefWidth="94.0" text="Phone Number" />
-            <TableColumn fx:id="ColunmEmail" prefWidth="262.0" text="Email" />
+            <TableColumn fx:id="colunmCode" prefWidth="142.0" text="Code" />
+            <TableColumn fx:id="ColunmName" prefWidth="123.0" text="Name" />
+            <TableColumn fx:id="ColunmLastName" prefWidth="186.0" text="Last Name" />
+            <TableColumn fx:id="ColunmIDNumber" prefWidth="163.0" text="ID Number" />
+            <TableColumn fx:id="ColunmPhoneNumber" prefWidth="204.0" text="Phone Number" />
+            <TableColumn fx:id="ColunmEmail" prefWidth="284.0" text="Email" />
          </columns>
       </TableView>
    </children>

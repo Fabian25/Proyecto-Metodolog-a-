@@ -64,9 +64,10 @@ public class VerTiquetesController implements Initializable {
         colunmDescription.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         colunmState.setCellValueFactory(new PropertyValueFactory<>("estado"));
         colunmPriority.setCellValueFactory(new PropertyValueFactory<>("prioriedad"));
-        //colunmRemove.setCellValueFactory(new PropertyValueFactory<>("Eliminar"));
+    
         CargarDatos("");
     }    
+    
      private void CargarDatos(String busqueda) {
         tblRemoveTiq.getItems().clear();
         tblRemoveTiq.setItems(h.Tiquetes(busqueda));

@@ -97,7 +97,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 
      private String SQLTiquetes(String busqueda) {
         if (busqueda.equals("")) {
-            return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado from where Activo = 1";
+            return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado from Tiquetes where Activo = 1";
         }
         return  "Select * from Tiquetes where idTiquete = busqueda";
     }
