@@ -84,6 +84,9 @@ public class ModificarEmpresaController implements Initializable {
     private void CargarDatos() {
         tblEditEnterprices.getItems().clear();
         tblEditEnterprices.setItems(h.Empresa());
+        txt_Name.setText("");
+        txt_Acronym.setText("");
+        txt_Phone.setText("");
     }
 
     private void EmpresasMenu(String Vista, String Titulo) {
@@ -184,6 +187,25 @@ public class ModificarEmpresaController implements Initializable {
             alert.showAndWait();
 
             return false;
+        }
+    }
+
+    @FXML
+    private void CargarEmpresa(MouseEvent event) {
+         Empresa empresa = tblEditEnterprices.getSelectionModel().getSelectedItem();
+        if (empresa != null) {
+            txt_Name.setText(empresa.getNombre());
+            txt_Acronym.setText(empresa.getAcronimo());
+            txt_Phone.setText(Integer.toString(empresa.getTelefono()));
+        }
+    }
+
+    @FXML
+    private void btnActualizar(ActionEvent event) {
+        Empresa empresa = tblEditEnterprices.getSelectionModel().getSelectedItem();
+        if (empresa != null) {
+            h.Modificar(txt_Name.getText(), txt_Acronym.getText(), txt_Phone.getText(), empresa.getIdEmpresa());
+            CargarDatos();
         }
     }
 

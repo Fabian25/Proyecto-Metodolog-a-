@@ -16,13 +16,13 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="tblRemoveClient" layoutX="9.0" layoutY="261.0" onMouseClicked="#Seleccionar" prefHeight="334.0" prefWidth="1232.0">
+      <TableView fx:id="tblRemoveClient" layoutX="16.0" layoutY="261.0" onMouseClicked="#Seleccionar" prefHeight="334.0" prefWidth="1232.0">
          <columns>
             <TableColumn fx:id="columName" prefWidth="231.0" text="Code" />
-            <TableColumn fx:id="columLastName" prefWidth="179.0" text="Name" />
-            <TableColumn fx:id="columId" prefWidth="240.0" text="Last Name" />
-            <TableColumn fx:id="columPhoneNumber" prefWidth="201.0" text="Phone" />
-            <TableColumn fx:id="columRemove" prefWidth="151.0" text="Remove" />
+            <TableColumn fx:id="columLastName" prefWidth="214.0" text="Name" />
+            <TableColumn fx:id="columId" prefWidth="242.0" text="Last Name" />
+            <TableColumn fx:id="columPhoneNumber" prefWidth="279.0" text="Phone" />
+            <TableColumn fx:id="columRemove" prefWidth="265.0" text="Remove" />
          </columns>
       </TableView>
       <Label layoutX="514.0" layoutY="52.0" text="Remove" textFill="WHITE">
@@ -30,7 +30,6 @@
             <Font size="70.0" />
          </font>
       </Label>
-      <ComboBox layoutX="380.0" layoutY="204.0" prefHeight="31.0" prefWidth="171.0" />
       <MenuBar layoutY="-2.0" prefHeight="31.0" prefWidth="1264.0">
          <menus>
             <Menu mnemonicParsing="false">
@@ -63,7 +62,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <TextField layoutX="131.0" layoutY="207.0" prefHeight="25.0" prefWidth="210.0" />
-      <Button fx:id="btnEliminar" layoutX="1034.0" layoutY="205.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="40.0" prefWidth="126.0" text="Button" />
+      <TextField fx:id="txtBuscar" layoutX="131.0" layoutY="207.0" onKeyReleased="#Buscar" prefHeight="33.0" prefWidth="223.0" />
+      <Button fx:id="btnEliminar" layoutX="1034.0" layoutY="205.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="40.0" prefWidth="126.0" text="Eliminar" />
    </children>
 </AnchorPane>

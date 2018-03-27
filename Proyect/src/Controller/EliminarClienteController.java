@@ -22,7 +22,9 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -59,6 +61,8 @@ public class EliminarClienteController implements Initializable {
     private TableColumn<Clientes, String> columPhoneNumber;
     @FXML
     private Button btnEliminar;
+    @FXML
+    private TextField txtBuscar;
    
 
     /**
@@ -72,13 +76,13 @@ public class EliminarClienteController implements Initializable {
         columPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         
         columRemove.setCellValueFactory(new PropertyValueFactory<>("button"));
-        CargarDatos();
+        CargarDatos("");
         btnEliminar.setVisible(false);
     }
 
-    private void CargarDatos() {
+    private void CargarDatos(String busqueda) {
         tblRemoveClient.getItems().clear();
-        tblRemoveClient.setItems(h.Clientes(""));
+        tblRemoveClient.setItems(h.Clientes(busqueda));
          btnEliminar.setVisible(false);
     }
 
@@ -133,7 +137,7 @@ public class EliminarClienteController implements Initializable {
         Clientes cliente = tblRemoveClient.getSelectionModel().getSelectedItem();
         if(cliente != null){
             h.eliminar(cliente.getCedula());
-            CargarDatos();
+            CargarDatos("");
         }
         btnEliminar.setVisible(false);
     }
@@ -146,5 +150,10 @@ public class EliminarClienteController implements Initializable {
         }else{
             btnEliminar.setVisible(false);
         }
+    }
+
+    @FXML
+    private void Buscar(KeyEvent event) {
+        CargarDatos(txtBuscar.getText());
     }
 }

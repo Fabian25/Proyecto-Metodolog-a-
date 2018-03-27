@@ -14,7 +14,10 @@ import javafx.collections.ObservableList;
  * @author erick
  */
 public interface IEmpresaDAO {
-    
+
     public void registrarEmp(String txt_EntrepriceName, String txt_Acronym, String txt_Phone);
-     public ObservableList<Empresa> Empresa();
+
+    public void Modificar(String txt_EntrepriceName, String txt_Acronym, String txt_Phone, String idEmpresa);
+
+    public ObservableList<Empresa> Empresa();
 }

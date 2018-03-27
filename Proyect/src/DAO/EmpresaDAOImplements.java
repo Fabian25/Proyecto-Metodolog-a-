@@ -30,7 +30,7 @@ public class EmpresaDAOImplements implements IEmpresaDAO {
     Connection connection = BaseDatos.Conexion.getConnection();
 
     private String CrearCodigo() {
-        String codigo = "EMP-" + Integer.toString((int) (Math.random() * 9) + 1) + Integer.toString((int) (Math.random() * 9) + 1)
+        String codigo = "ENT-" + Integer.toString((int) (Math.random() * 9) + 1) + Integer.toString((int) (Math.random() * 9) + 1)
                 + Integer.toString((int) (Math.random() * 9) + 1);
         return codigo;
     }
@@ -38,18 +38,15 @@ public class EmpresaDAOImplements implements IEmpresaDAO {
     @Override
     public void registrarEmp(String txt_EntrepriceName, String txt_Acronym, String txt_Phone) {
 
-        String query = "{CALL RegistrarEmpresa(?,?,?,?,?,?,?)}";
-
-        try (Connection conn = BaseDatos.Conexion.getConnection();
-                CallableStatement stmt = conn.prepareCall(query)) {
+        String query = "{CALL RegistrarEmpresa(?,?,?,?,?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
 
             stmt.setString(1, CrearCodigo());
             stmt.setString(2, txt_EntrepriceName);
             stmt.setString(3, txt_Acronym);
             stmt.setString(4, txt_Phone);
-            stmt.setString(5, "Activo");
-            stmt.setString(6, "123");
-            stmt.setString(7, "3");
+            stmt.setInt(5, 1);
 
             stmt.executeQuery();
         } catch (SQLException ex) {
@@ -72,6 +69,21 @@ public class EmpresaDAOImplements implements IEmpresaDAO {
             JOptionPane.showMessageDialog(null, "Error Cargar Empresa \n" + ex);
         }
         return Empresa;
+    }
+    
+    @Override
+    public void Modificar(String txt_EntrepriceName, String txt_Acronym, String txt_Phone, String idEmpresa) {
+        String query = "{CALL ActualizarEmpresa(?, ?, ?, ?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setString(1, txt_EntrepriceName);
+            stmt.setString(2, txt_Acronym);
+            stmt.setString(3, txt_Phone);
+            stmt.setString(4, idEmpresa);
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
 }

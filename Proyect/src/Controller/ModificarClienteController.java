@@ -24,6 +24,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -70,6 +71,8 @@ public class ModificarClienteController implements Initializable {
     private TableView<Clientes> tblEditClient;
     @FXML
     private TextField txtCName;
+    @FXML
+    private TextField txtBuscar;
 
     /**
      * Initializes the controller class.
@@ -99,12 +102,12 @@ public class ModificarClienteController implements Initializable {
         columPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
         columEdit.setCellValueFactory(new PropertyValueFactory<>("button"));
-        CargarDatos();
+        CargarDatos("");
     }
 
-    private void CargarDatos() {
+    private void CargarDatos(String busqueda) {
         tblEditClient.getItems().clear();
-        tblEditClient.setItems(h.Clientes(""));
+        tblEditClient.setItems(h.Clientes(busqueda));
         txtCName.setText("");
         txt_Phone.setText("");
     }
@@ -180,7 +183,12 @@ public class ModificarClienteController implements Initializable {
         Clientes cliente = tblEditClient.getSelectionModel().getSelectedItem();
         if (cliente != null) {
             h.actualizar(txt_Phone.getText(), txtCName.getText(), cliente.getCedula());
-            CargarDatos();
+            CargarDatos("");
         }
+    }
+
+    @FXML
+    private void Busqueda(KeyEvent event) {
+        CargarDatos(txtBuscar.getText());
     }
 }

@@ -323,7 +323,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     @Override
     public void eliminar(int id) {
-          String query = "{CALL EliminarClientes(?)}";
+        String query = "{CALL EliminarClientes(?)}";
         try {
             CallableStatement stmt = connection.prepareCall(query);
             stmt.setInt(1, id);
@@ -351,7 +351,6 @@ public class ClienteDAOImplements implements IClienteDAO {
             try (Connection conn = BaseDatos.Conexion.getConnection();
                     CallableStatement stmt = conn.prepareCall(query)) {
 
-//            stmt.setInt(1, candidateId);
                 stmt.setString(1, txtCIDnum);
                 stmt.setString(2, txtCName);
                 stmt.setString(3, txtCLastNmae);

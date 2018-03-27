@@ -103,7 +103,7 @@ public class RegristroEmpresaController implements Initializable {
     private void CargarDatos() {
 //        Empresa.add(new Empresa(tblCodeEnt.getText(), tblNameEnt.getText(), tblAcronymEnt.getText(), Integer.parseInt(tblPhoneEnt.getText()), 1, btnADDEnterprice, btn_Import));
 //        table_Enterprice.setItems(empresa);
-        
+
         table_Enterprice.getItems().clear();
         table_Enterprice.setItems(h.Empresa());
 
@@ -219,11 +219,12 @@ public class RegristroEmpresaController implements Initializable {
             }
             if (flag) {
 
-                h.registrarEmp(txt_EntrepriceName.getText(), txt_Phone.getText(), txt_Acronym.getText());
+                h.registrarEmp(txt_EntrepriceName.getText(), txt_Acronym.getText(), txt_Phone.getText());
                 //agrega a nivel de base de datos pero no a tabla
                 txt_EntrepriceName.setText("");
-                txt_Phone.setText("");
                 txt_Acronym.setText("");
+                txt_Phone.setText("");
+
                 CargarDatos();
                 //  ClientesMenu("Menu", "Menu");
             }
@@ -232,7 +233,7 @@ public class RegristroEmpresaController implements Initializable {
 
     @FXML
     private void ImportClients(ActionEvent event) {
-         try {
+        try {
             String query = "Insert IGNORE into Empresa(idEmpresa, Nombre, Acronimo, Telefono, Activo) values (?,?,?,?,?)";
 
             pst = connection.prepareStatement(query);

@@ -54,8 +54,7 @@ public class ModificarEmpleadoController implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
+    public void initialize(URL url, ResourceBundle rb) {   
     } 
     
     private void EmpleadosMenu(String Vista, String Titulo) {
