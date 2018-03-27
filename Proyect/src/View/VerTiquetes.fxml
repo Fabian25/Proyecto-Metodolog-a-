@@ -20,8 +20,8 @@
          <columns>
             <TableColumn fx:id="colunmSerie" prefWidth="103.0" text="Serie" />
             <TableColumn fx:id="colunmPriority" prefWidth="115.0" text="Priority" />
-            <TableColumn fx:id="colunmDescription" prefWidth="213.0" text="Description" />
-            <TableColumn fx:id="colunmState" prefWidth="163.0" text="State" />
+            <TableColumn fx:id="colunmDescription" prefWidth="525.0" text="Description" />
+            <TableColumn fx:id="colunmState" prefWidth="118.0" text="State" />
          </columns>
       </TableView>
       <ComboBox layoutX="361.0" layoutY="172.0" prefHeight="25.0" prefWidth="83.0" />
@@ -59,6 +59,6 @@
             </Menu>
          </menus>
       </MenuBar>
-      <TextField fx:id="txt_search" layoutX="201.0" layoutY="172.0" />
+      <TextField fx:id="txt_search" layoutX="201.0" layoutY="172.0" onKeyReleased="#busqueda" />
    </children>
 </AnchorPane>
