@@ -16,7 +16,7 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="tblRemoveTiq" layoutX="201.0" layoutY="166.0" prefHeight="334.0" prefWidth="862.0">
+      <TableView fx:id="tblRemoveTiq" layoutX="201.0" layoutY="166.0" onMouseClicked="#Seleccionar" prefHeight="334.0" prefWidth="862.0">
          <columns>
             <TableColumn fx:id="columnSerie" prefWidth="100.0" text="Serie" />
             <TableColumn fx:id="columnPriority" prefWidth="91.0" text="Priority" />
@@ -59,5 +59,6 @@
          </menus>
       </MenuBar>
       <TextField fx:id="txt_Search" layoutX="201.0" layoutY="123.0" onKeyReleased="#busqueda" />
+      <Button fx:id="btnEliminar" layoutX="937.0" layoutY="116.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="40.0" prefWidth="126.0" text="Delete" />
    </children>
 </AnchorPane>

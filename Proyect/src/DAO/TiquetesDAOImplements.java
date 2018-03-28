@@ -88,7 +88,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(SQLTiquetes(busqueda));
             while (rs.next()) {
-                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), ""));
+                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), "", 0, 0));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Tiquetes \n" + ex);
@@ -147,18 +147,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         }
     }
 
-    @Override
-    public void eliminarTiquetes(Tiquetes tiquete) {
-        String query = "{CALL EliminarTiquetes(?)}";
-        try {
-            CallableStatement stmt = connection.prepareCall(query);
-            stmt.setString(1, tiquete.getID_Tiquete());
-            stmt.executeQuery();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
+ 
     @Override
     public List<Tiquetes> obtenerporEmpleado(Empleados emp) {
         Statement stm = null;
@@ -197,7 +186,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(SQLTiquetesEdit(busqueda));
             while (rs.next()) {
-                Tiquetes.add(new Tiquetes(rs.getString(1), "","", rs.getInt(2), ""));
+                Tiquetes.add(new Tiquetes(rs.getString(1), "","", rs.getInt(2), "" , 0, 0));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Tiquetes \n" + ex);
@@ -211,4 +200,32 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         return "Select idTiquetes, Estado from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or  Estado Like '%" + busqueda + "%')";
 
     }
+
+    @Override
+    public void eliminar(String id) {
+       String query = "{CALL EliminarTiqutes(?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setString(1, id);
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } }
+
+    @Override
+    public void actualizar(String txtSerie, int txtstatus, String txtdescripcion, Tiquetes tiquete) {
+            String query = "{CALL ActualizarTiquete(?, ?, ?, ?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setString(1, txtSerie);
+            stmt.setInt(2, txtstatus);
+            stmt.setString(3, txtdescripcion);
+            stmt.setInt(4, tiquete.getIdCliente());
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+  
 }

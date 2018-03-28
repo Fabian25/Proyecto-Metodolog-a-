@@ -55,6 +55,8 @@ public class EliminarTiqueteController implements Initializable {
     private TextField txt_Search;
     @FXML
     private TableColumn<?, ?> columnState;
+    @FXML
+    private Button btnEliminar;
 
     /**
      * Initializes the controller class.
@@ -67,10 +69,12 @@ public class EliminarTiqueteController implements Initializable {
         columnPriority.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
     
         CargarDatos("");
+        btnEliminar.setVisible(false);
     }
       private void CargarDatos(String busqueda) {
         tblRemoveTiq.getItems().clear();
         tblRemoveTiq.setItems(h.Tiquetes(busqueda));
+        btnEliminar.setVisible(false);
     }
     
     private void TiquetesMenu(String Vista, String Titulo) {
@@ -118,6 +122,26 @@ public class EliminarTiqueteController implements Initializable {
     @FXML
     private void busqueda(KeyEvent event) {
           CargarDatos(txt_Search.getText());
+    }
+
+    @FXML
+    private void Seleccionar(MouseEvent event) {
+            Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
+          if(cliente != null){
+            btnEliminar.setVisible(true);
+        }else{
+            btnEliminar.setVisible(false);
+        }
+    }
+
+    @FXML
+    private void Eliminar(ActionEvent event) {
+         Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
+        if(cliente != null){
+            h.eliminar(cliente.getID_Tiquete());
+            CargarDatos("");
+        }
+        btnEliminar.setVisible(false);
     }
 
 }
