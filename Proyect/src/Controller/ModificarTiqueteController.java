@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import DAO.TiquetesDAOImplements;
+import Model.Tiquetes;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,8 +17,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -28,13 +33,14 @@ import javafx.stage.StageStyle;
  */
 public class ModificarTiqueteController implements Initializable {
 
+    TiquetesDAOImplements h = new TiquetesDAOImplements();
     @FXML
     private Button btnADD;
     @FXML
     private TextField txtCName11;
     @FXML
     private TextField txtCName111;
-  
+
     @FXML
     private Button BarEditTickets;
     @FXML
@@ -46,18 +52,37 @@ public class ModificarTiqueteController implements Initializable {
     @FXML
     private ComboBox<String> cbx_status;
     @FXML
-    private TableView<?> tbl_tiquetes;
+    private TableView<Tiquetes> tbl_tiquetes;
+    @FXML
+    private TableColumn<Tiquetes, String> columnSeries;
+    @FXML
+    private TableColumn<Tiquetes, String> columnStatus;
+    @FXML
+    private TextField txtSearch;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     cbx_status.getItems().add(0, "Mild");
-     cbx_status.getItems().add(1, "Severe");
-     cbx_status.getItems().add(2, "Critic");
-    }    
- private void TiquetesMenu(String Vista, String Titulo) {
+        cbx_status.getItems().add(0, "Mild");
+        cbx_status.getItems().add(1, "Severe");
+        cbx_status.getItems().add(2, "Critic");
+        columnSeries.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
+        columnStatus.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        CargarDatos("");
+    }
+
+    private void CargarDatos(String busqueda) {
+        tbl_tiquetes.getItems().clear();
+        tbl_tiquetes.setItems(h.Tiquetes(busqueda));
+    }
+     private void CargarDatosEdit(String busqueda) {
+        tbl_tiquetes.getItems().clear();
+        tbl_tiquetes.setItems(h.TiquetesEdit(busqueda));
+    }
+
+    private void TiquetesMenu(String Vista, String Titulo) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
@@ -76,8 +101,6 @@ public class ModificarTiqueteController implements Initializable {
     private void c_back(MouseEvent event) {
         TiquetesMenu("Menu", "Menu");
     }
-
-   
 
     @FXML
     private void Tik_BarEdit(ActionEvent event) {
@@ -99,8 +122,13 @@ public class ModificarTiqueteController implements Initializable {
         TiquetesMenu("Menu", "Menu");
     }
 
-   @FXML
+    @FXML
     private void c_add(MouseEvent event) {
     }
-    
+
+    @FXML
+    private void busqueda(KeyEvent event) {
+        CargarDatosEdit(txtSearch.getText());
+    }
+
 }
