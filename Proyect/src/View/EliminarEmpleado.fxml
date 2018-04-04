@@ -11,26 +11,16 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EliminarEmpleadoController">
    <children>
-      <ImageView fitHeight="711.0" fitWidth="1512.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="711.0" fitWidth="1274.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <ComboBox fx:id="cbxRemEmploy" layoutX="439.0" layoutY="132.0" prefHeight="25.0" prefWidth="83.0" />
       <Label layoutX="568.0" layoutY="45.0" text="Remove" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <TableView fx:id="tblRemoveEmplo" layoutX="202.0" layoutY="165.0" prefHeight="334.0" prefWidth="862.0">
-         <columns>
-            <TableColumn fx:id="tblCodeEnt" prefWidth="75.0" text="Code" />
-            <TableColumn fx:id="tblNameEnt" prefWidth="75.0" text="Name" />
-            <TableColumn fx:id="tblAcronymEnt" prefWidth="75.0" text="Acronym" />
-            <TableColumn fx:id="tblPhoneEnt" prefWidth="105.0" text="Phone Number" />
-            <TableColumn fx:id="tblRemoveEnt" prefWidth="142.0" text="Remove" />
-         </columns>
-      </TableView>
       <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="1264.0">
          <menus>
             <Menu mnemonicParsing="false">
@@ -64,6 +54,17 @@
             </Menu>
          </menus>
       </MenuBar>
-      <TextField layoutX="202.0" layoutY="132.0" prefHeight="25.0" prefWidth="208.0" />
+      <Button fx:id="btnEliminar" layoutX="1000.0" layoutY="120.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="40.0" prefWidth="126.0" text="Eliminar" />
+      <TextField fx:id="txtBuscar" layoutX="131.0" layoutY="123.0" onKeyReleased="#Buscar" prefHeight="33.0" prefWidth="223.0" />
+      <TableView fx:id="tblEmpleado" layoutX="123.0" layoutY="179.0" onMouseClicked="#Seleccionar" prefHeight="477.0" prefWidth="1013.0">
+         <columns>
+            <TableColumn fx:id="colunmCode" prefWidth="128.0" text="Code" />
+            <TableColumn fx:id="ColunmName" prefWidth="107.0" text="Name" />
+            <TableColumn fx:id="ColunmLastName" prefWidth="142.0" text="Last Name" />
+            <TableColumn fx:id="ColunmIDNumber" prefWidth="135.0" text="ID Number" />
+            <TableColumn fx:id="ColunmPhoneNumber" prefWidth="174.0" text="Phone Number" />
+            <TableColumn fx:id="ColunmEmail" prefWidth="322.0" text="Email" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

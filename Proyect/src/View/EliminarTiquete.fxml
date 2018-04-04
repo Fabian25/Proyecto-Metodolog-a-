@@ -16,14 +16,12 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <ComboBox layoutX="361.0" layoutY="123.0" prefHeight="25.0" prefWidth="83.0" />
-      <TableView fx:id="tblRemoveTiq" layoutX="201.0" layoutY="166.0" prefHeight="334.0" prefWidth="862.0">
+      <TableView fx:id="tblRemoveTiq" layoutX="201.0" layoutY="166.0" onMouseClicked="#Seleccionar" prefHeight="334.0" prefWidth="862.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="Serie" />
-            <TableColumn prefWidth="75.0" text="Priority" />
-            <TableColumn prefWidth="155.0" text="Description" />
-            <TableColumn prefWidth="111.0" text="State" />
-            <TableColumn minWidth="0.0" prefWidth="122.0" text="Remove" />
+            <TableColumn fx:id="columnSerie" prefWidth="100.0" text="Serie" />
+            <TableColumn fx:id="columnPriority" prefWidth="91.0" text="Priority" />
+            <TableColumn fx:id="columnDescription" prefWidth="594.0" text="Description" />
+            <TableColumn fx:id="columnState" prefWidth="76.0" text="State" />
          </columns>
       </TableView>
       <Label layoutX="568.0" layoutY="43.0" text="Remove" textFill="WHITE">
@@ -60,6 +58,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <TextField layoutX="201.0" layoutY="123.0" />
+      <TextField fx:id="txt_Search" layoutX="201.0" layoutY="123.0" onKeyReleased="#busqueda" />
+      <Button fx:id="btnEliminar" layoutX="937.0" layoutY="116.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="40.0" prefWidth="126.0" text="Delete" />
    </children>
 </AnchorPane>

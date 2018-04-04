@@ -348,8 +348,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 
             String query = "{CALL RegistrarCliente(?,?,?,?,?,?,?,?,?)}";
 
-            try (Connection conn = BaseDatos.Conexion.getConnection();
-                    CallableStatement stmt = conn.prepareCall(query)) {
+            try (CallableStatement stmt = connection.prepareCall(query)) {
 
                 stmt.setString(1, txtCIDnum);
                 stmt.setString(2, txtCName);

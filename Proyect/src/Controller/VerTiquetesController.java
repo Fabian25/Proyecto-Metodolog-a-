@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -63,10 +64,11 @@ public class VerTiquetesController implements Initializable {
         colunmSerie.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
         colunmDescription.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         colunmState.setCellValueFactory(new PropertyValueFactory<>("estado"));
-        colunmPriority.setCellValueFactory(new PropertyValueFactory<>("prioriedad"));
-        //colunmRemove.setCellValueFactory(new PropertyValueFactory<>("Eliminar"));
+        colunmPriority.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
+    
         CargarDatos("");
     }    
+    
      private void CargarDatos(String busqueda) {
         tblRemoveTiq.getItems().clear();
         tblRemoveTiq.setItems(h.Tiquetes(busqueda));
@@ -114,6 +116,11 @@ public class VerTiquetesController implements Initializable {
     @FXML
     private void Tik_Home(ActionEvent event) {
         TiquetesMenu("Menu", "Menu");
+    }
+
+    @FXML
+    private void busqueda(KeyEvent event) {
+        CargarDatos(txt_search.getText());
     }
 
     

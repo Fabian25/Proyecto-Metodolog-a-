@@ -26,7 +26,7 @@
       <Button layoutX="226.0" layoutY="314.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="ID Number" />
       <Button layoutX="226.0" layoutY="373.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
       <Button layoutX="226.0" layoutY="432.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Email" />
-      <Button fx:id="btnADD" layoutX="446.0" layoutY="498.0" mnemonicParsing="false" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="99.0" text="ADD">
+      <Button fx:id="btnADD" layoutX="446.0" layoutY="498.0" mnemonicParsing="false" onAction="#agregar" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="99.0" text="ADD">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
                <light>
@@ -42,11 +42,11 @@
       <TextField fx:id="txt_Email" layoutX="391.0" layoutY="437.0" prefHeight="35.0" prefWidth="184.0" />
       <TableView fx:id="table_Empleado" layoutX="640.0" layoutY="205.0" prefHeight="298.0" prefWidth="398.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="Name" />
-            <TableColumn prefWidth="75.0" text="Last Name" />
-            <TableColumn prefWidth="96.0" text="Phone Number" />
-            <TableColumn prefWidth="75.0" text="ID Number" />
-            <TableColumn prefWidth="77.0" text="Email" />
+            <TableColumn fx:id="colunmName" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="colunmLastName" prefWidth="75.0" text="Last Name" />
+            <TableColumn fx:id="colunmPhone" prefWidth="96.0" text="Phone Number" />
+            <TableColumn fx:id="colunmID" prefWidth="75.0" text="ID Number" />
+            <TableColumn fx:id="colunmEmail" prefWidth="77.0" text="Email" />
          </columns>
       </TableView>
       <ScrollBar layoutX="1038.0" layoutY="205.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="12.0" />
@@ -84,6 +84,6 @@
             </Menu>
          </menus>
       </MenuBar>
-      <TextField layoutX="640.0" layoutY="169.0" />
+      <TextField fx:id="txtbusqueda" layoutX="640.0" layoutY="169.0" onKeyReleased="#Busqueda" />
    </children>
 </AnchorPane>

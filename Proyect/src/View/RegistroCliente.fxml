@@ -16,7 +16,7 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <TextField layoutX="660.0" layoutY="176.0" />
+      <TextField fx:id="txtBuscar" layoutX="660.0" layoutY="176.0" />
       <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="1264.0">
          <menus>
             <Menu mnemonicParsing="false">
@@ -83,6 +83,5 @@
             </Lighting>
          </effect>
       </Button>
-      <ComboBox layoutX="818.0" layoutY="176.0" prefHeight="25.0" prefWidth="81.0" />
    </children>
 </AnchorPane>

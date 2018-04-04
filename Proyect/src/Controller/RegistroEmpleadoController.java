@@ -6,10 +6,13 @@
 package Controller;
 
 import DAO.EmpleadoDAOImplements;
+import Model.Empleados;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,8 +21,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -44,8 +50,9 @@ public class RegistroEmpleadoController implements Initializable {
     @FXML
     private TextField txt_Email;
     @FXML
-    private TableView<?> table_Empleado;
-EmpleadoDAOImplements h = new EmpleadoDAOImplements();
+    private TableView<Empleados> table_Empleado;
+    EmpleadoDAOImplements h = new EmpleadoDAOImplements();
+    ObservableList<Empleados> Empleados = FXCollections.observableArrayList();
     @FXML
     private Button BarRegisEmp;
     @FXML
@@ -56,13 +63,36 @@ EmpleadoDAOImplements h = new EmpleadoDAOImplements();
     private Button BarViewEmp;
     @FXML
     private Button BarHomeE;
+    @FXML
+    private TableColumn<Empleados, String> colunmName;
+    @FXML
+    private TableColumn<Empleados, String> colunmLastName;
+    @FXML
+    private TableColumn<Empleados, Integer> colunmPhone;
+    @FXML
+    private TableColumn<Empleados, Integer> colunmID;
+    @FXML
+    private TableColumn<Empleados, String> colunmEmail;
+    @FXML
+    private TextField txtbusqueda;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        colunmName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        colunmLastName.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        colunmID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+        colunmPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+        colunmEmail.setCellValueFactory(new PropertyValueFactory<>("correo"));
+       
     }  
+    
+    public void CargarDatos(){
+        Empleados.add(new Empleados(" ", Integer.parseInt(txt_ID.getText()), txt_Name.getText(), txt_LastName.getText(), Integer.parseInt(txt_Phone.getText()), txt_Email.getText(), "Nuevo123$", btnADD));
+        table_Empleado.setItems(Empleados);
+    }
+    
     
     private void EmpleadosMenu(String Vista, String Titulo) {
 
@@ -84,7 +114,6 @@ EmpleadoDAOImplements h = new EmpleadoDAOImplements();
         EmpleadosMenu("Menu", "Menu");        
     }
 
-      @FXML
     private void c_add(ActionEvent event) {
         boolean flag = true;
         if (!validaNombre()) {
@@ -224,6 +253,22 @@ EmpleadoDAOImplements h = new EmpleadoDAOImplements();
 
             return false;
         }
+    }
+
+    @FXML
+    private void agregar(ActionEvent event) {
+        h.registrarStorage(txt_Name.getText(), txt_LastName.getText(), txt_ID.getText(), txt_Phone.getText(), txt_Email.getText());
+        CargarDatos();
+        //agrega a nivel de base de datos pero no a tabla
+        txt_Name.setText("");
+        txt_LastName.setText("");
+        txt_ID.setText("");
+        txt_Phone.setText("");
+        txt_Email.setText("");
+    }
+
+    @FXML
+    private void Busqueda(KeyEvent event) {
     }
 
 

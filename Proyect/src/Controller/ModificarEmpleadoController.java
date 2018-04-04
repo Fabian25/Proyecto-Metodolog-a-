@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import DAO.EmpleadoDAOImplements;
+import Model.Empleados;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -17,7 +19,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -29,6 +35,8 @@ import javafx.stage.StageStyle;
  */
 public class ModificarEmpleadoController implements Initializable {
 
+    EmpleadoDAOImplements h = new EmpleadoDAOImplements();
+    
     @FXML
     private Button btnADD;
     @FXML
@@ -47,15 +55,49 @@ public class ModificarEmpleadoController implements Initializable {
     private TextField txt_Name;
     @FXML
     private TextField txt_Phone;
-    @FXML
     private TextField txt_Email;
+    @FXML
+    private TableView<Empleados> tblEmpleado;
+    @FXML
+    private TableColumn<Empleados, String> colunmCode;
+    @FXML
+    private TableColumn<Empleados, String> ColunmName;
+    @FXML
+    private TableColumn<Empleados, String> ColunmLastName;
+    @FXML
+    private TableColumn<Empleados, Integer> ColunmIDNumber;
+    @FXML
+    private TableColumn<Empleados, Integer> ColunmPhoneNumber;
+    @FXML
+    private TableColumn<Empleados, String> ColunmEmail;
+    @FXML
+    private TextField txtBusqueda;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {   
+        colunmCode.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        ColunmName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        ColunmLastName.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        ColunmIDNumber.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+        ColunmPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+        ColunmEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+        CargarDatos("");
     } 
+    
+    
+     private void CargarDatos(String busqueda) {
+        tblEmpleado.getItems().clear();
+       tblEmpleado.setItems(h.Empleados(busqueda));
+        txt_Name.setText("");
+        txt_Lastname.setText("");
+        txt_Phone.setText("");
+    }
+    
+    
+    
     
     private void EmpleadosMenu(String Vista, String Titulo) {
 
@@ -73,9 +115,6 @@ public class ModificarEmpleadoController implements Initializable {
         }
     }
 
-    @FXML
-    private void c_add(MouseEvent event) {
-    }
 
     @FXML
     private void E_BarRegist(ActionEvent event) {
@@ -172,5 +211,27 @@ public class ModificarEmpleadoController implements Initializable {
         }
     }
 
+    @FXML
+    private void Busqueda(KeyEvent event) {
+        CargarDatos(txtBusqueda.getText());
+    }
 
+    @FXML
+    private void btnActualizar(ActionEvent event) {
+        Empleados emp = tblEmpleado.getSelectionModel().getSelectedItem();
+        if (emp != null) {
+           h.actualizar(txt_Name.getText(), txt_Lastname.getText(), Integer.parseInt(txt_Phone.getText()) ,emp.getCedula());
+            CargarDatos("");
+        }
+    }
+
+    @FXML
+    private void CargarEmpleados(MouseEvent event) {
+        Empleados emp = tblEmpleado.getSelectionModel().getSelectedItem();
+        if (emp != null) {
+            txt_Name.setText(emp.getNombre());
+            txt_Lastname.setText(emp.getApellido());
+            txt_Phone.setText(Integer.toString(emp.getTelefono()));
+        }
+    }
 }

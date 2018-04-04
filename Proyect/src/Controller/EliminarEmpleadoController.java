@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import DAO.EmpleadoDAOImplements;
+import Model.Empleados;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,7 +18,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -28,10 +34,7 @@ import javafx.stage.StageStyle;
  */
 public class EliminarEmpleadoController implements Initializable {
 
-    @FXML
-    private ComboBox<?> cbxRemEmploy;
-    @FXML
-    private TableView<?> tblRemoveEmplo;
+    EmpleadoDAOImplements h = new EmpleadoDAOImplements();
     @FXML
     private Button BarRegisEmp;
     @FXML
@@ -42,6 +45,24 @@ public class EliminarEmpleadoController implements Initializable {
     private Button BarViewEmp;
     @FXML
     private Button BarHomeE;
+    @FXML
+    private Button btnEliminar;
+    @FXML
+    private TextField txtBuscar;
+    @FXML
+    private TableView<Empleados> tblEmpleado;
+    @FXML
+    private TableColumn<Empleados, ?> colunmCode;
+    @FXML
+    private TableColumn<Empleados, ?> ColunmName;
+    @FXML
+    private TableColumn<Empleados, ?> ColunmLastName;
+    @FXML
+    private TableColumn<Empleados, ?> ColunmIDNumber;
+    @FXML
+    private TableColumn<Empleados, ?> ColunmPhoneNumber;
+    @FXML
+    private TableColumn<Empleados, ?> ColunmEmail;
 
     /**
      * Initializes the controller class.
@@ -49,7 +70,22 @@ public class EliminarEmpleadoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        colunmCode.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        ColunmName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        ColunmLastName.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        ColunmIDNumber.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+        ColunmPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+        ColunmEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+       
+        CargarDatos("");
+        btnEliminar.setVisible(false);
     } 
+    
+      private void CargarDatos(String busqueda) {
+        tblEmpleado.getItems().clear();
+        tblEmpleado.setItems(h.Empleados(busqueda));
+        btnEliminar.setVisible(false);
+    }
     
     private void EmpleadosMenu(String Vista, String Titulo) {
 
@@ -94,6 +130,32 @@ public class EliminarEmpleadoController implements Initializable {
     @FXML
     private void E_Home(ActionEvent event) {
         EmpleadosMenu("Menu", "Menu");
+    }
+
+    @FXML
+    private void Eliminar(ActionEvent event) {
+        Empleados emp = tblEmpleado.getSelectionModel().getSelectedItem();
+        if(emp != null){
+            h.eliminar(emp.getCedula());
+            CargarDatos("");
+        }
+        btnEliminar.setVisible(false);
+    }
+
+    @FXML
+    private void Buscar(KeyEvent event) { 
+        CargarDatos(txtBuscar.getText());
+    }
+    
+
+    @FXML
+    private void Seleccionar(MouseEvent event) {
+        Empleados emp = tblEmpleado.getSelectionModel().getSelectedItem();
+        if(emp != null){
+            btnEliminar.setVisible(true);
+        }else{
+            btnEliminar.setVisible(false);
+        }
     }
     
 }

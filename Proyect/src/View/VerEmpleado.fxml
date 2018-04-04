@@ -16,15 +16,6 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="tblViewEmploy" layoutX="201.0" layoutY="160.0" prefHeight="334.0" prefWidth="862.0">
-         <columns>
-            <TableColumn prefWidth="75.0" text="Code" />
-            <TableColumn prefWidth="75.0" text="Name" />
-            <TableColumn prefWidth="75.0" text="Acronym" />
-            <TableColumn prefWidth="105.0" text="Phone Number" />
-            <TableColumn prefWidth="142.0" text="Remove" />
-         </columns>
-      </TableView>
       <Label layoutX="594.0" layoutY="48.0" text="View" textFill="WHITE">
          <font>
             <Font size="36.0" />
@@ -63,7 +54,16 @@
             </Menu>
          </menus>
       </MenuBar>
-      <ComboBox layoutX="358.0" layoutY="128.0" prefWidth="150.0" />
-      <TextField layoutX="201.0" layoutY="128.0" />
+      <TextField fx:id="txtBusuqeda" layoutX="89.0" layoutY="131.0" onKeyReleased="#Busqueda" prefHeight="25.0" prefWidth="183.0" />
+      <TableView fx:id="tblEmpleado" layoutX="89.0" layoutY="172.0" prefHeight="496.0" prefWidth="1103.0">
+         <columns>
+            <TableColumn fx:id="colunmCode" prefWidth="142.0" text="Code" />
+            <TableColumn fx:id="ColunmName" prefWidth="123.0" text="Name" />
+            <TableColumn fx:id="ColunmLastName" prefWidth="186.0" text="Last Name" />
+            <TableColumn fx:id="ColunmIDNumber" prefWidth="163.0" text="ID Number" />
+            <TableColumn fx:id="ColunmPhoneNumber" prefWidth="204.0" text="Phone Number" />
+            <TableColumn fx:id="ColunmEmail" prefWidth="284.0" text="Email" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

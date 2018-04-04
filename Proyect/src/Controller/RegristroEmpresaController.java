@@ -23,6 +23,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,6 +48,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author erick
  */
 public class RegristroEmpresaController implements Initializable {
+
+    ObservableList<Empresa> Empresas = FXCollections.observableArrayList();
 
     PreparedStatement pst = null;
     EmpresaDAOImplements h = new EmpresaDAOImplements();
@@ -96,16 +100,16 @@ public class RegristroEmpresaController implements Initializable {
         tblAcronymEnt.setCellValueFactory(new PropertyValueFactory<>("Acronimo"));
         tblPhoneEnt.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
 
-        CargarDatos();
+       // CargarDatos("");
 
     }
 
-    private void CargarDatos() {
-//        Empresa.add(new Empresa(tblCodeEnt.getText(), tblNameEnt.getText(), tblAcronymEnt.getText(), Integer.parseInt(tblPhoneEnt.getText()), 1, btnADDEnterprice, btn_Import));
-//        table_Enterprice.setItems(empresa);
+    private void CargarDatos(String busqueda) {
+        Empresas.add(new Empresa("EMP", txt_EntrepriceName.getText(), txt_Acronym.getText(), Integer.parseInt(txt_Phone.getText()), 1));
+        table_Enterprice.setItems(Empresas);
 
-        table_Enterprice.getItems().clear();
-        table_Enterprice.setItems(h.Empresa());
+       /// table_Enterprice.getItems().clear();
+      //  table_Enterprice.setItems(h.Empresa(busqueda));
 
     }
 
@@ -205,30 +209,18 @@ public class RegristroEmpresaController implements Initializable {
 
     @FXML
     private void E_Enterprice(ActionEvent event) {
-        if (validaNombreEmpresa() | validarSiglas() | validaTelefono()) {
+        
 
-            boolean flag = true;
-            if (!validaNombreEmpresa()) {
-                flag = false;
-            }
-            if (!validaTelefono()) {
-                flag = false;
-            }
-            if (!validarSiglas()) {
-                flag = false;
-            }
-            if (flag) {
-
-                h.registrarEmp(txt_EntrepriceName.getText(), txt_Acronym.getText(), txt_Phone.getText());
+                h.registrarStorage(txt_EntrepriceName.getText(), txt_Acronym.getText(), txt_Phone.getText());
                 //agrega a nivel de base de datos pero no a tabla
                 txt_EntrepriceName.setText("");
                 txt_Acronym.setText("");
                 txt_Phone.setText("");
 
-                CargarDatos();
+                CargarDatos("");
                 //  ClientesMenu("Menu", "Menu");
-            }
-        }
+            
+        
     }
 
     @FXML

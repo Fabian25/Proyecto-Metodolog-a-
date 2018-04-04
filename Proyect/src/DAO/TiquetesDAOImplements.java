@@ -30,15 +30,16 @@ import javax.swing.JOptionPane;
  * @author jose
  */
 public class TiquetesDAOImplements implements ITiqueteDAO {
- Connection connection = BaseDatos.Conexion.getConnection();
- 
-    private String GenerarCodigoTiquete(String Cod){
+
+    Connection connection = BaseDatos.Conexion.getConnection();
+
+    private String GenerarCodigoTiquete(String Cod) {
         Random rand = new Random();
         int randomNum = rand.nextInt((999 - 100) + 1) + 100;
         Cod = "T-" + randomNum;
         return Cod;
     }
- 
+
     private boolean ExisteCodigoTiquete(String cod) {
         String sql = "SELECT * FROM Tiquetes t where t.idTiquete = " + cod + ";";
         String[] datos = new String[10];
@@ -58,8 +59,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         }
         return false;
     }
-    
-    
+
     @Override
     public void registrarTiquetes(TextField txt_Series, ComboBox<?> txt_Status, TextArea txt_description) {
         String Cod = " ";
@@ -67,27 +67,32 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         while (ExisteCodigoTiquete(Cod)) {
             Cod = GenerarCodigoTiquete(Cod);
         }
-            String query = "{CALL RegistrarTiquete(?,?,?,?,?)}";
-            try (Connection conn = BaseDatos.Conexion.getConnection();
-                    CallableStatement stmt = conn.prepareCall(query)) {
-                stmt.setString(1, Cod);
-                stmt.setString(2, txt_Series.getText());
-                stmt.setString(3, (String) txt_Status.getValue());
-                stmt.setString(4, txt_description.getText());
-                stmt.setInt(5, 1);
-                stmt.executeQuery();
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
+        String query = "{CALL RegistrarTiquete(?,?,?,?,?)}";
+        try (Connection conn = BaseDatos.Conexion.getConnection();
+                CallableStatement stmt = conn.prepareCall(query)) {
+            stmt.setString(1, Cod);
+            stmt.setString(2, txt_Series.getText());
+            stmt.setString(3, (String) txt_Status.getValue());
+            stmt.setString(4, txt_description.getText());
+            stmt.setInt(5, 1);
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
-    
+
+    @Override
     public ObservableList<Tiquetes> Tiquetes(String busqueda) {
         ObservableList<Tiquetes> Tiquetes = FXCollections.observableArrayList();
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(SQLTiquetes(busqueda));
             while (rs.next()) {
+<<<<<<< HEAD
 //                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
+=======
+                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), "", 0, 0));
+>>>>>>> 98a467c5e6f52fc642448b8781c2643beeb98605
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Tiquetes \n" + ex);
@@ -95,33 +100,38 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         return Tiquetes;
     }
 
-     private String SQLTiquetes(String busqueda) {
+    private String SQLTiquetes(String busqueda) {
         if (busqueda.equals("")) {
+<<<<<<< HEAD
             return "Select * where Activo = 1";
+=======
+            return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado from Tiquetes where Activo = 1;";
+>>>>>>> 98a467c5e6f52fc642448b8781c2643beeb98605
         }
-        return  "Select * from Tiquetes where idTiquete = busqueda";
+        return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
+                + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%')";
+
     }
 
-  
     @Override
     public void EditarTiquetes(ComboBox<?> txt_Status, TextArea txt_description, Tiquetes t) {
         String query = "{CALL EditarTiquete(?, ?, ?)}";
         try {
-            CallableStatement stmt = connection.prepareCall(query);   
+            CallableStatement stmt = connection.prepareCall(query);
             stmt.setString(1, t.getID_Tiquete());
             stmt.setString(2, (String) txt_Status.getValue());
             stmt.setString(3, txt_description.getText());
             stmt.executeQuery();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }    
+        }
     }
 
     @Override
-    public void procesarTiquete(ComboBox<?> txt_Status, TextArea txt_description, TextArea txt_solution,Tiquetes tiquete) {
+    public void procesarTiquete(ComboBox<?> txt_Status, TextArea txt_description, TextArea txt_solution, Tiquetes tiquete) {
         String query = "{CALL ProcesoTiquete(?, ?, ?, ?)}";
         try {
-            CallableStatement stmt = connection.prepareCall(query); 
+            CallableStatement stmt = connection.prepareCall(query);
             stmt.setString(1, tiquete.getID_Tiquete());
             stmt.setString(2, (String) txt_Status.getValue());
             stmt.setString(3, (String) txt_description.getText());
@@ -129,14 +139,14 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             stmt.executeQuery();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }  
+        }
     }
 
     @Override
     public void asignarTiquete(Tiquetes tiquete, Empleados empleado) {
-       String query = "{CALL TiqueteAsginar(?, ?, 0)}";
+        String query = "{CALL TiqueteAsginar(?, ?, 0)}";
         try {
-            CallableStatement stmt = connection.prepareCall(query);   
+            CallableStatement stmt = connection.prepareCall(query);
             stmt.setInt(1, empleado.getCedula());
             stmt.setString(2, tiquete.getID_Tiquete());
             stmt.executeQuery();
@@ -145,26 +155,14 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         }
     }
 
-    @Override
-    public void eliminarTiquetes(Tiquetes tiquete) {
-      String query = "{CALL EliminarTiquetes(?)}";
-        try {
-            CallableStatement stmt = connection.prepareCall(query);
-            stmt.setString(1, tiquete.getID_Tiquete());
-            stmt.executeQuery();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }  
-
  
     @Override
     public List<Tiquetes> obtenerporEmpleado(Empleados emp) {
-     Statement stm = null;
+        Statement stm = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM Tiquetes WHERE Empleado_LaborandoID =" + emp.getCodigo() + ";";
         List<Tiquetes> listaTiquete = new ArrayList<Tiquetes>();
-        try {   
+        try {
             stm = connection.createStatement();
             rs = stm.executeQuery(sql);
             while (rs.next()) {
@@ -182,12 +180,60 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             e.printStackTrace();
         }
         return listaTiquete;
- }
+    }
 
     @Override
     public List<Tiquetes> ver() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public ObservableList<Tiquetes> TiquetesEdit(String busqueda) {
+        ObservableList<Tiquetes> Tiquetes = FXCollections.observableArrayList();
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(SQLTiquetesEdit(busqueda));
+            while (rs.next()) {
+                Tiquetes.add(new Tiquetes(rs.getString(1), "","", rs.getInt(2), "" , 0, 0));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Cargar Tiquetes \n" + ex);
+        }
+        return Tiquetes;
+    }
+ private String SQLTiquetesEdit(String busqueda) {
+        if (busqueda.equals("")) {
+            return "Select idTiquetes, Estado from Tiquetes where Activo = 1;";
+        }
+        return "Select idTiquetes, Estado from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or  Estado Like '%" + busqueda + "%')";
 
+    }
+
+    @Override
+    public void eliminar(String id) {
+       String query = "{CALL EliminarTiqutes(?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setString(1, id);
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } }
+
+    @Override
+    public void actualizar(String txtSerie, int txtstatus, String txtdescripcion, Tiquetes tiquete) {
+            String query = "{CALL ActualizarTiquete(?, ?, ?, ?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setString(1, txtSerie);
+            stmt.setInt(2, txtstatus);
+            stmt.setString(3, txtdescripcion);
+            stmt.setInt(4, tiquete.getIdCliente());
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+  
 }
