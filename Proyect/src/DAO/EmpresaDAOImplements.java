@@ -36,7 +36,7 @@ public class EmpresaDAOImplements implements IEmpresaDAO {
         return codigo;
     }
 
-     private boolean ExisteCodigo(int cod) {
+     private boolean ExisteCodigo(String cod) {
 
         String sql = "SELECT * FROM Empresa p where p.idEmpresa = " + cod + ";";
 
@@ -50,7 +50,7 @@ public class EmpresaDAOImplements implements IEmpresaDAO {
                 }
             }
 
-            if (datos[0] == cod) {
+            if (datos.equals(cod)) {
                 return true;
             }
             return false;
@@ -138,7 +138,7 @@ public class EmpresaDAOImplements implements IEmpresaDAO {
     public void registrarStorage(String txt_EntrepriceName, String txt_Acronym, String txt_Phone) {
         String Cod =  CrearCodigo();
 
-        while (ExisteCodigo(Integer.parseInt(Cod))) {
+        while (ExisteCodigo(Cod)) {
             Cod = CrearCodigo();
         }
             String query = "{CALL RegistrarEmpresa(?,?,?,?)}";
