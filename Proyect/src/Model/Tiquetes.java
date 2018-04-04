@@ -14,23 +14,7 @@ public class Tiquetes {
     public Tiquetes() {
     }
 
-<<<<<<< HEAD
-    public Tiquetes(String ID_Tiquete, String prioridad, String estado, int Activo) {
-        this.ID_Tiquete = ID_Tiquete;
-        this.prioridad = prioridad;
-        this.estado = estado;
-        this.Activo = Activo;
-=======
-    public Tiquetes(String ID_Tiquete, String prioridad, String descripcion, int estado, String solucion, int IdCliente, int IdEmpleado) {
-        this.ID_Tiquete = ID_Tiquete;
-        this.prioridad = prioridad;
-        this.descripcion = descripcion;
-        this.estado = estado;
-        this.solucion = solucion;
-        this.IdCliente = IdCliente;
-        this.IdEmpleado = IdEmpleado;
->>>>>>> 98a467c5e6f52fc642448b8781c2643beeb98605
-    }
+
 
     public String getID_Tiquete() {
         return ID_Tiquete;
@@ -63,7 +47,7 @@ public class Tiquetes {
     public void setSolucion(String estado) {
         this.solucion = estado;
     }
-<<<<<<< HEAD
+
     
      public String getDescripcion() {
         return descripcion;
@@ -73,7 +57,6 @@ public class Tiquetes {
         this.descripcion = estado;
     }
     
-=======
 
     public int getIdCliente() {
         return IdCliente;
@@ -91,21 +74,32 @@ public class Tiquetes {
         this.IdEmpleado = IdEmpleado;
     }
 
+    public Tiquetes(String ID_Tiquete, String prioridad, String descripcion, String estado, String solucion, int IdCliente, int IdEmpleado, int Activo) {
+        this.ID_Tiquete = ID_Tiquete;
+        this.prioridad = prioridad;
+        this.descripcion = descripcion;
+        this.estado = estado;
+        this.solucion = solucion;
+        this.IdCliente = IdCliente;
+        this.IdEmpleado = IdEmpleado;
+        this.Activo = Activo;
+    }
+
     
 
->>>>>>> 98a467c5e6f52fc642448b8781c2643beeb98605
+
     private String ID_Tiquete;
     private String prioridad;
+    private String descripcion;
     private String estado;
     private String solucion;
-<<<<<<< HEAD
-    private String descripcion;
-=======
     private int IdCliente;
     private int IdEmpleado;
+    private int Activo;
+
+    
    
    
->>>>>>> 98a467c5e6f52fc642448b8781c2643beeb98605
 
     public int getActivo() {
         return Activo;
@@ -114,6 +108,6 @@ public class Tiquetes {
     public void setActivo(int Activo) {
         this.Activo = Activo;
     }
-    private int Activo;
+    
 }
 

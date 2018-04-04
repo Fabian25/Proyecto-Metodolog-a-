@@ -88,11 +88,9 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(SQLTiquetes(busqueda));
             while (rs.next()) {
-<<<<<<< HEAD
+
 //                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
-=======
-                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), "", 0, 0));
->>>>>>> 98a467c5e6f52fc642448b8781c2643beeb98605
+                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 0, 0, 0));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Tiquetes \n" + ex);
@@ -102,14 +100,11 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 
     private String SQLTiquetes(String busqueda) {
         if (busqueda.equals("")) {
-<<<<<<< HEAD
-            return "Select * where Activo = 1";
-=======
-            return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado from Tiquetes where Activo = 1;";
->>>>>>> 98a467c5e6f52fc642448b8781c2643beeb98605
+//            return "Select * where Activo = 1";
+            return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1;";
         }
-        return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
-                + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%')";
+        return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
+                + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%' Or Solucion Like '%" + busqueda + "%')";
 
     }
 
@@ -187,27 +182,27 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public ObservableList<Tiquetes> TiquetesEdit(String busqueda) {
-        ObservableList<Tiquetes> Tiquetes = FXCollections.observableArrayList();
-        try {
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(SQLTiquetesEdit(busqueda));
-            while (rs.next()) {
-                Tiquetes.add(new Tiquetes(rs.getString(1), "","", rs.getInt(2), "" , 0, 0));
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error Cargar Tiquetes \n" + ex);
-        }
-        return Tiquetes;
-    }
- private String SQLTiquetesEdit(String busqueda) {
-        if (busqueda.equals("")) {
-            return "Select idTiquetes, Estado from Tiquetes where Activo = 1;";
-        }
-        return "Select idTiquetes, Estado from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or  Estado Like '%" + busqueda + "%')";
-
-    }
+//    @Override
+//    public ObservableList<Tiquetes> TiquetesEdit(String busqueda) {
+//        ObservableList<Tiquetes> Tiquetes = FXCollections.observableArrayList();
+//        try {
+//            Statement st = connection.createStatement();
+//            ResultSet rs = st.executeQuery(SQLTiquetesEdit(busqueda));
+//            while (rs.next()) {
+//                Tiquetes.add(new Tiquetes(rs.getString(1), "","", rs.getInt(2), "" , 0, 0));
+//            }
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error Cargar Tiquetes \n" + ex);
+//        }
+//        return Tiquetes;
+//    }
+// private String SQLTiquetesEdit(String busqueda) {
+//        if (busqueda.equals("")) {
+//            return "Select idTiquetes, Estado from Tiquetes where Activo = 1;";
+//        }
+//        return "Select idTiquetes, Estado from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or  Estado Like '%" + busqueda + "%')";
+//
+//    }
 
     @Override
     public void eliminar(String id) {

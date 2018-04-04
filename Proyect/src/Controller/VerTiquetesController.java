@@ -33,7 +33,7 @@ import javafx.stage.StageStyle;
  */
 public class VerTiquetesController implements Initializable {
 
-        TiquetesDAOImplements h = new TiquetesDAOImplements();
+    TiquetesDAOImplements h = new TiquetesDAOImplements();
    
     @FXML
     private TableView<Tiquetes> tblRemoveTiq;

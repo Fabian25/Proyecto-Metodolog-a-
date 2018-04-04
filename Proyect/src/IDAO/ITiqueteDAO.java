@@ -23,7 +23,7 @@ public interface ITiqueteDAO {
 
   
     public ObservableList<Tiquetes> Tiquetes(String busqueda);
-    public ObservableList<Tiquetes> TiquetesEdit(String busqueda);
+//    public ObservableList<Tiquetes> TiquetesEdit(String busqueda);
     public List<Tiquetes> ver();
     public void eliminar(String id);
    
