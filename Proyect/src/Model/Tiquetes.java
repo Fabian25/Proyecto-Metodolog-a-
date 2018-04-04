@@ -11,6 +11,16 @@ package Model;
  */
 public class Tiquetes {
 
+    public Tiquetes() {
+    }
+
+    public Tiquetes(String ID_Tiquete, String prioridad, String estado, int Activo) {
+        this.ID_Tiquete = ID_Tiquete;
+        this.prioridad = prioridad;
+        this.estado = estado;
+        this.Activo = Activo;
+    }
+
     public String getID_Tiquete() {
         return ID_Tiquete;
     }
@@ -27,52 +37,43 @@ public class Tiquetes {
         this.prioridad = prioridad;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public int getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(int estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
-
-    public String getSolucion() {
+    
+     public String getSolucion() {
         return solucion;
     }
 
-    public void setSolucion(String solucion) {
-        this.solucion = solucion;
+    public void setSolucion(String estado) {
+        this.solucion = estado;
+    }
+    
+     public String getDescripcion() {
+        return descripcion;
     }
 
-
-    public Tiquetes() {
+    public void setDescripcion(String estado) {
+        this.descripcion = estado;
     }
-
-    public Tiquetes(String ID_Tiquete, String prioridad, String descripcion, int estado, String solucion) {
-        super();
-        this.ID_Tiquete = ID_Tiquete;
-        this.prioridad = prioridad;
-        this.descripcion = descripcion;
-        this.estado = estado;
-        this.solucion = solucion;
-        
-    }
-
+    
     private String ID_Tiquete;
     private String prioridad;
-    private String descripcion;
-    private int estado;
+    private String estado;
     private String solucion;
-   
-   
+    private String descripcion;
 
-    
+    public int getActivo() {
+        return Activo;
+    }
 
+    public void setActivo(int Activo) {
+        this.Activo = Activo;
+    }
+    private int Activo;
 }
+

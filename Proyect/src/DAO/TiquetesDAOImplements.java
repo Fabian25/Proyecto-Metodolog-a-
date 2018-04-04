@@ -87,7 +87,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(SQLTiquetes(busqueda));
             while (rs.next()) {
-                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(5), rs.getString(3), rs.getInt(2), rs.getString(4)));
+//                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Tiquetes \n" + ex);
@@ -97,7 +97,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 
      private String SQLTiquetes(String busqueda) {
         if (busqueda.equals("")) {
-            return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado from where Activo = 1";
+            return "Select * where Activo = 1";
         }
         return  "Select * from Tiquetes where idTiquete = busqueda";
     }
@@ -169,7 +169,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             rs = stm.executeQuery(sql);
             while (rs.next()) {
                 Tiquetes c = new Tiquetes();
-                c.setEstado(rs.getInt(3));
+                c.setEstado(rs.getString(3));
                 c.setID_Tiquete(rs.getString(1));
                 c.setPrioridad(rs.getString(6));
                 listaTiquete.add(c);
