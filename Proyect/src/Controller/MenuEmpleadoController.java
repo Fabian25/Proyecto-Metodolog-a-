@@ -6,6 +6,9 @@
 package Controller;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -62,7 +65,12 @@ public class MenuEmpleadoController implements Initializable {
 
 
     @FXML
-    private void B_Salir(MouseEvent event) {
+    private void B_Salir(MouseEvent event) throws SQLException {
+                  Connection connection = BaseDatos.Conexion.getConnection();
+           PreparedStatement preparedStatement;
+         String sql2 = "Delete from  UsuarioActual where CantidadUsuarios = 1;";
+                              preparedStatement = connection.prepareStatement(sql2);
+                              int resultSet2 = preparedStatement.executeUpdate();
         CargarVistas("Login", "Log In");
     }
 
