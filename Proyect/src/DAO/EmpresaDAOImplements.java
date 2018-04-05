@@ -100,7 +100,7 @@ public class EmpresaDAOImplements implements IEmpresaDAO {
     
      private String SQLEmpresa(String busqueda) {
         if (busqueda.equals("")) {
-            return "Select idEmpresa, Nombre, Acronimo, Telefono from Empresa where Activo =1;";
+            return "Select idEmpresa, Nombre, Acronimo, Telefono from Empresa where Activo = 1";
         }
         return "Select idEmpresa, Nombre, Acronimo, Telefono from Empresa where Activo =1 And (idEmpresa Like '%" + busqueda + "%' Or Nombre Like '%"
                 + busqueda + "%' Or Acronimo Like '%" + busqueda + "%' Or Telefono Like '%" + busqueda + "%')";

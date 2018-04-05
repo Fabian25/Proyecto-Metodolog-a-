@@ -104,7 +104,7 @@ public class RegristroEmpresaController implements Initializable {
 
     }
 
-    private void CargarDatos(String busqueda) {
+    private void CargarDatos() {
         Empresas.add(new Empresa("EMP", txt_EntrepriceName.getText(), txt_Acronym.getText(), Integer.parseInt(txt_Phone.getText()), 1));
         table_Enterprice.setItems(Empresas);
 
@@ -217,7 +217,7 @@ public class RegristroEmpresaController implements Initializable {
                 txt_Acronym.setText("");
                 txt_Phone.setText("");
 
-                CargarDatos("");
+                CargarDatos();
                 //  ClientesMenu("Menu", "Menu");
             
         
