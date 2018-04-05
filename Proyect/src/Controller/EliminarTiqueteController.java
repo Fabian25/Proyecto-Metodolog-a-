@@ -57,6 +57,8 @@ public class EliminarTiqueteController implements Initializable {
     private TableColumn<?, ?> columnState;
     @FXML
     private Button btnEliminar;
+    @FXML
+    private Button BarAssignTickets;
 
     /**
      * Initializes the controller class.
@@ -143,6 +145,12 @@ public class EliminarTiqueteController implements Initializable {
            CargarDatos("");
        }
        btnEliminar.setVisible(false);
+    }
+
+    @FXML
+    private void AsignarTickets(ActionEvent event) {
+             TiquetesMenu("AsignarTiquetes", "Ticket");
+ 
     }
 
 }
