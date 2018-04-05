@@ -6,7 +6,7 @@
 package Controller;
 
 import DAO.TiquetesDAOImplements;
-import Model.Clientes;
+
 import Model.Tiquetes;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,28 +56,29 @@ public class ModificarTiqueteController implements Initializable {
     private TableColumn<Tiquetes, String> columnStatus;
     @FXML
     private TextField txtSearch;
+
     @FXML
-    private TextField txt_Name;
+    private TextField txt_Serie;
     @FXML
-    private TextField txt_Descripcion;
+    private TextField txt_DescripcionEditT;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//       columnSeries.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
-//        columnStatus.setCellValueFactory(new PropertyValueFactory<>("estado"));
-//        CargarDatos("");
+       columnSeries.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
+        columnStatus.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        CargarDatos("");
        
     }
 
     private void CargarDatos(String busqueda) {
-//        tbl_tiquetes.getItems().clear();
-//        tbl_tiquetes.setItems(h.Tiquetes(busqueda));
-//        txt_Name.setText(""); 
-//        txt_Descripcion.setText("");
-//        cbx_status.getItems().clear();
+        tbl_tiquetes.getItems().clear();
+        tbl_tiquetes.setItems(h.Tiquetes(busqueda));
+        txt_Serie.setText(""); 
+        txt_DescripcionEditT.setText("");
+        cbx_status.getItems().clear();
     }
 //     private void CargarDatosEdit(String busqueda) {
 //        tbl_tiquetes.getItems().clear();
@@ -131,30 +132,30 @@ public class ModificarTiqueteController implements Initializable {
 
     @FXML
     private void busqueda(KeyEvent event) {
-////        CargarDatosEdit(txtSearch.getText());
-//        cbx_status.getItems().add(0, "Mild");
-//        cbx_status.getItems().add(1, "Severe");
-//        cbx_status.getItems().add(2, "Critic");
+//        CargarDatosEdit(txtSearch.getText());
+        cbx_status.getItems().add(0, "Mild");
+        cbx_status.getItems().add(1, "Severe");
+        cbx_status.getItems().add(2, "Critic");
        
     }
 
     @FXML
     private void SeleccionarInfo(MouseEvent event) {
-//         Tiquetes cliente = tbl_tiquetes.getSelectionModel().getSelectedItem();
-//        if (cliente != null) {
-//            txt_Name.setText(cliente.getID_Tiquete());
-////            cbx_status.getItems().add(0, Integer.toString(cliente.getEstado()));
-//            txt_Descripcion.setText(cliente.getDescripcion());
-//        }
+         Tiquetes cliente = tbl_tiquetes.getSelectionModel().getSelectedItem();
+        if (cliente != null) {
+            txt_Serie.setText(cliente.getID_Tiquete());
+//            cbx_status.getItems().add(0, Integer.toString(cliente.getEstado()));
+            txt_DescripcionEditT.setText(cliente.getDescripcion());
+        }
     }
 
     @FXML
     private void btnActualizar(ActionEvent event) {
-//          Tiquetes cliente = tbl_tiquetes.getSelectionModel().getSelectedItem(); 
-//           if (cliente != null) {
-////            h.actualizar(txt_Name.getText(),  Integer.parseInt(cbx_status.getValue()), txt_Descripcion.getText());
-//            CargarDatos("");
-//        }
+          Tiquetes cliente = tbl_tiquetes.getSelectionModel().getSelectedItem(); 
+           if (cliente != null) {
+            h.actualizar(txt_Serie.getText(), 0, txt_DescripcionEditT.getText(), cliente);
+            CargarDatos("");
+        }
     }
 
 }

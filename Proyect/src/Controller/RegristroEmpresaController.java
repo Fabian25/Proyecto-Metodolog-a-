@@ -38,6 +38,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -49,7 +50,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class RegristroEmpresaController implements Initializable {
 
-    ObservableList<Empresa> Empresas = FXCollections.observableArrayList();
+    ObservableList<Empresa> Empresa = FXCollections.observableArrayList();
 
     PreparedStatement pst = null;
     EmpresaDAOImplements h = new EmpresaDAOImplements();
@@ -101,15 +102,22 @@ public class RegristroEmpresaController implements Initializable {
         tblPhoneEnt.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
 
        // CargarDatos("");
+       
 
     }
 
     private void CargarDatos() {
-        Empresas.add(new Empresa("EMP", txt_EntrepriceName.getText(), txt_Acronym.getText(), Integer.parseInt(txt_Phone.getText()), 1));
-        table_Enterprice.setItems(Empresas);
+        try {
+            String a = txt_Phone.getText();
+            Empresa.add(new Empresa("EMP", txt_EntrepriceName.getText(), txt_Acronym.getText().toUpperCase(), Integer.parseInt(a), 0));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        table_Enterprice.setItems(Empresa);
 
        /// table_Enterprice.getItems().clear();
-      //  table_Enterprice.setItems(h.Empresa(busqueda));
+      //  table_Enterprice.setItems(h.Empresa(busqueda);
+      
 
     }
 
@@ -213,9 +221,9 @@ public class RegristroEmpresaController implements Initializable {
 
                 h.registrarStorage(txt_EntrepriceName.getText(), txt_Acronym.getText(), txt_Phone.getText());
                 //agrega a nivel de base de datos pero no a tabla
-                txt_EntrepriceName.setText("");
-                txt_Acronym.setText("");
-                txt_Phone.setText("");
+                //txt_EntrepriceName.setText("");
+                //txt_Acronym.setText("");
+                //txt_Phone.setText("");
 
                 CargarDatos();
                 //  ClientesMenu("Menu", "Menu");

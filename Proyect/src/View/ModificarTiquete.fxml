@@ -24,8 +24,8 @@
       <Button layoutX="601.0" layoutY="218.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Status" />
       <Button layoutX="601.0" layoutY="146.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Series" />
       <Button layoutX="601.0" layoutY="289.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Description" />
-      <TextField fx:id="txt_Name" disable="true" layoutX="787.0" layoutY="151.0" prefHeight="35.0" prefWidth="373.0" />
-      <TextField fx:id="txt_Descripcion" layoutX="787.0" layoutY="289.0" prefHeight="193.0" prefWidth="373.0" />
+      <TextField fx:id="txt_Serie" disable="true" layoutX="787.0" layoutY="151.0" prefHeight="35.0" prefWidth="373.0" />
+      <TextField fx:id="txt_DescripcionEditT" layoutX="787.0" layoutY="289.0" prefHeight="193.0" prefWidth="373.0" />
       <MenuBar prefHeight="33.0" prefWidth="1263.0">
          <menus>
             <Menu mnemonicParsing="false" />
