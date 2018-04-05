@@ -46,7 +46,8 @@ public class VerPerfilEmpleadoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+       
     }    
     private void CargarVistas(String Vista, String Titulo) {
         try {
