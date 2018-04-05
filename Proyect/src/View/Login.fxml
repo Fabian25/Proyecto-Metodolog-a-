@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -40,5 +41,14 @@
             <Font size="70.0" />
          </font>
       </Label>
+      <Button fx:id="btnExit" layoutX="1106.0" layoutY="41.0" mnemonicParsing="false" onAction="#Exit" prefHeight="45.0" prefWidth="99.0" text="Exit">
+         <effect>
+            <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
+               <light>
+                  <Light.Distant color="#d72929" />
+               </light>
+            </Lighting>
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

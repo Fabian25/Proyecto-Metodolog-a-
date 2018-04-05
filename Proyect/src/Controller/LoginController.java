@@ -17,6 +17,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -54,6 +55,8 @@ public class LoginController implements Initializable {
     private Button btn_Ingresar;
 
     Connection connection = BaseDatos.Conexion.getConnection();
+    @FXML
+    private Button btnExit;
 
     private void IngresarMenu(String Vista, String Titulo) {
 
@@ -271,6 +274,12 @@ public class LoginController implements Initializable {
 //
 //        return h.toString();
 //    }
+
+    @FXML
+    private void Exit(ActionEvent event) {
+        Platform.exit();
+        System.exit(0);
+    }
 
     
 
