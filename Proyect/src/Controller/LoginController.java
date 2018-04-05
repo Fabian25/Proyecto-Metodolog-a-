@@ -240,40 +240,95 @@ public class LoginController implements Initializable {
         }
     }
 
-//    public String encriptarMD5(String palabra) {
-//        String pe = "";
-//        try {
-//            pe = hash(palabra);
-//        } catch (Exception e) {
-//            throw new Error("Error: Al encriptar el password");
-//        }
-//        return pe;
-//    }
-//
-//    /**
-//     * Encripta un String con el algoritmo MD5. Reemplazar la palabara MENOR por
-//     * el simbolo de menor
-//     *
-//     * @return String
-//     * @throws Exception
-//     */
-//    private String hash(String clear) throws Exception {
-//        MessageDigest md = MessageDigest.getInstance("MD5");
-//        byte[] b = md.digest(clear.getBytes());
-//        int size = b.length;
-//        StringBuffer h = new StringBuffer(size);
-//        for (int i = 0; i < size; i++) {
-//            int u = b[i] & 255;
-//            if (u < 16) {
-//                h.append("0" + Integer.toHexString(u));
-//
-//            } else {
-//                h.append(Integer.toHexString(u));
-//            }
-//        }
-//
-//        return h.toString();
-//    }
+       public  String Encriptar(String pass) {
+        String Encripted = " ";
+        for (int i = 0; i < pass.length(); i++) {
+            char p = pass.charAt(i);
+            if (p == 'a' || p == 'A') {
+                Encripted += ":v";
+            }
+            if (p == 'b' || p == 'B') {
+                Encripted += ".0";
+            }
+            if (p == 'c' || p == 'C') {
+                Encripted += "/*";
+            }
+            if (p == 'd' || p == 'D') {
+                Encripted += "!^";
+            }
+            if (p == 'e' || p == 'E') {
+                Encripted += "%$";
+            }
+            if (p == 'f' || p == 'F') {
+                Encripted += "2s";
+            }
+            if (p == 'g' || p == 'G') {
+                Encripted += "76";
+            }
+            if (p == 'h' || p == 'H') {
+                Encripted += "6w";
+            }
+            if (p == 'i' || p == 'I') {
+                Encripted += "2e";
+            }
+            if (p == 'j' || p == 'J') {
+                Encripted += "1d";
+            }
+            if (p == 'k' || p == 'K') {
+                Encripted += "+*";
+            }
+            if (p == 'l' || p == 'L') {
+                Encripted += "d3";
+            }
+            if (p == 'm' || p == 'M') {
+                Encripted += "g7";
+            }
+            if (p == 'n' || p == 'N') {
+                Encripted += "q5";
+            }
+            if (p == 'ñ' || p == 'Ñ') {
+                Encripted += ";g";
+            }
+            if (p == 'o' || p == 'O') {
+                Encripted += "6W";
+            }
+            if (p == 'p' || p == 'P') {
+                Encripted += "{f";
+            }
+            if (p == 'q' || p == 'Q') {
+                Encripted += "2g";
+            }
+            if (p == 'r' || p == 'R') {
+                Encripted += "fQ";
+            }
+            if (p == 's' || p == 'S') {
+                Encripted += "*";
+            }
+            if (p == 't' || p == 'T') {
+                Encripted += "/";
+            }
+            if (p == 'u' || p == 'U') {
+                Encripted += "1";
+            }
+            if (p == 'v' || p == 'V') {
+                Encripted += "$";
+            }
+            if (p == 'w' || p == 'W') {
+                Encripted += "5";
+            }
+            if (p == 'x' || p == 'X') {
+                Encripted += "w1";
+            }
+            if (p == 'y' || p == 'Y') {
+                Encripted += "g1";
+            }
+            if (p == 'z' || p == 'Z') {
+                Encripted += "1*";
+            }
+            Encripted += "@";
+        }
+        return Encripted;
+    }
 
     @FXML
     private void Exit(ActionEvent event) {
