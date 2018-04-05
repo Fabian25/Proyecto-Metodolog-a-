@@ -17,6 +17,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -34,6 +35,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
 
 /**
@@ -53,6 +55,8 @@ public class LoginController implements Initializable {
     private Button btn_Ingresar;
 
     Connection connection = BaseDatos.Conexion.getConnection();
+    @FXML
+    private Button btnExit;
 
     private void IngresarMenu(String Vista, String Titulo) {
 
@@ -60,6 +64,7 @@ public class LoginController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
+             stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -161,12 +166,17 @@ public class LoginController implements Initializable {
                         alert.showAndWait();
                     } else {
                         if (resultSet.getInt(8) == 1) {
+                             String sql2 = "Insert into UsuarioActual values(?,?);";
+                              preparedStatement = connection.prepareStatement(sql2);
+                                preparedStatement.setInt(1, 1);
+                                preparedStatement.setString(2, email);
+                              int resultSet2 = preparedStatement.executeUpdate();
                             IngresarMenu("MenuCliente", "Menu Cliente");
                         } else {
                             Alert alert = new Alert(Alert.AlertType.WARNING);
                             alert.setTitle("Error");
                             alert.setHeaderText(null);
-                            alert.setContentText("User Inactivo");
+                            alert.setContentText("Invalid User ");
                             alert.showAndWait();
                         }
                     }
@@ -264,6 +274,12 @@ public class LoginController implements Initializable {
 //
 //        return h.toString();
 //    }
+
+    @FXML
+    private void Exit(ActionEvent event) {
+        Platform.exit();
+        System.exit(0);
+    }
 
     
 

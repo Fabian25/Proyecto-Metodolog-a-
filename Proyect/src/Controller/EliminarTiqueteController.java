@@ -63,18 +63,18 @@ public class EliminarTiqueteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        columnSerie.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
-//        columnDescription.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-//        columnState.setCellValueFactory(new PropertyValueFactory<>("estado"));
-//        columnPriority.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
-//    
-//        CargarDatos("");
-//        btnEliminar.setVisible(false);
+        columnSerie.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
+        columnDescription.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        columnState.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        columnPriority.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
+    
+        CargarDatos("");
+        btnEliminar.setVisible(false);
     }
       private void CargarDatos(String busqueda) {
-//        tblRemoveTiq.getItems().clear();
-//        tblRemoveTiq.setItems(h.Tiquetes(busqueda));
-//        btnEliminar.setVisible(false);
+          tblRemoveTiq.getItems().clear();
+        tblRemoveTiq.setItems(h.Tiquetes(busqueda));
+      btnEliminar.setVisible(false);
     }
     
     private void TiquetesMenu(String Vista, String Titulo) {
@@ -83,6 +83,7 @@ public class EliminarTiqueteController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
+             stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -126,22 +127,22 @@ public class EliminarTiqueteController implements Initializable {
 
     @FXML
     private void Seleccionar(MouseEvent event) {
-//            Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
-//          if(cliente != null){
-//            btnEliminar.setVisible(true);
-//        }else{
-//            btnEliminar.setVisible(false);
-//        }
+            Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
+          if(cliente != null){
+            btnEliminar.setVisible(true);
+        }else{
+            btnEliminar.setVisible(false);
+        }
     }
 
     @FXML
     private void Eliminar(ActionEvent event) {
-//         Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
-//        if(cliente != null){
-//            h.eliminar(cliente.getID_Tiquete());
-//            CargarDatos("");
-//        }
-//        btnEliminar.setVisible(false);
+         Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
+        if(cliente != null){
+            h.eliminar(cliente.getID_Tiquete());
+           CargarDatos("");
+       }
+       btnEliminar.setVisible(false);
     }
 
 }

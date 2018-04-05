@@ -14,6 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
 
 public class ProcesarTiquetesController implements Initializable {
@@ -110,6 +111,7 @@ public class ProcesarTiquetesController implements Initializable {
 //            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
 //            Parent root1 = (Parent) fxmlLoader.load();
 //            Stage stage = new Stage();
+        //stage.initStyle(StageStyle.UNDECORATED);
 //            stage.setTitle(Titulo);
 //            stage.setScene(new Scene(root1));
 //            stage.show();

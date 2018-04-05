@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -21,10 +22,11 @@ public class MainFX extends Application {
     public void start(Stage primaryStage) {
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Menu.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Login.fxml"));
 
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("Login");
             stage.setScene(new Scene(root1));
             stage.show();
