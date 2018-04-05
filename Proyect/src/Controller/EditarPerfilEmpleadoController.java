@@ -28,8 +28,6 @@ public class EditarPerfilEmpleadoController implements Initializable {
     @FXML
     private Button btnADD;
     @FXML
-    private TextField txtCEmail;
-    @FXML
     private TextField txtCPhoneNum;
     @FXML
     private TextField txtCLastNmae;

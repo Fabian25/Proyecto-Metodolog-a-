@@ -141,13 +141,14 @@ public class EmpresaDAOImplements implements IEmpresaDAO {
         while (ExisteCodigo(Cod)) {
             Cod = CrearCodigo();
         }
-            String query = "{CALL RegistrarEmpresa(?,?,?,?)}";
+            String query = "{CALL RegistrarEmpresa(?,?,?,?,?)}";
             try (CallableStatement stmt = connection.prepareCall(query)) {
                
                 stmt.setString(1, Cod);
                 stmt.setString(2, txt_EntrepriceName);
                 stmt.setString(3, txt_Acronym);
                 stmt.setString(4, txt_Phone);
+                stmt.setInt(5, 1);
                 stmt.executeQuery();
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
@@ -156,3 +157,4 @@ public class EmpresaDAOImplements implements IEmpresaDAO {
  
 
 }
+    
