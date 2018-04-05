@@ -161,12 +161,17 @@ public class LoginController implements Initializable {
                         alert.showAndWait();
                     } else {
                         if (resultSet.getInt(8) == 1) {
+                             String sql2 = "Insert into UsuarioActual values(?,?);";
+                              preparedStatement = connection.prepareStatement(sql2);
+                                preparedStatement.setInt(1, 1);
+                                preparedStatement.setString(2, email);
+                              int resultSet2 = preparedStatement.executeUpdate();
                             IngresarMenu("MenuCliente", "Menu Cliente");
                         } else {
                             Alert alert = new Alert(Alert.AlertType.WARNING);
                             alert.setTitle("Error");
                             alert.setHeaderText(null);
-                            alert.setContentText("User Inactivo");
+                            alert.setContentText("Invalid User ");
                             alert.showAndWait();
                         }
                     }
