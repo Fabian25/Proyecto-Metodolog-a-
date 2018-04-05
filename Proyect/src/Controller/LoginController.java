@@ -34,6 +34,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
 
 /**
@@ -60,6 +61,7 @@ public class LoginController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
+             stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
