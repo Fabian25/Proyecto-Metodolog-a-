@@ -8,8 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.VerPerfilClienteController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.VerPerfilClienteController">
    <children>
       <ImageView fitHeight="711.0" fitWidth="1512.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -46,7 +45,7 @@
             <Menu mnemonicParsing="false" />
             <Menu mnemonicParsing="false">
                <graphic>
-                  <Button fx:id="BarEditProfile" mnemonicParsing="false" onAction="#C_BarEditProfile" text="View Client" />
+                  <Button fx:id="BarEditProfile" mnemonicParsing="false" onAction="#C_BarEditProfile" text="Edit Profile" />
                </graphic>
             </Menu>
             <Menu mnemonicParsing="false">
