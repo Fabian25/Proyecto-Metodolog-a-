@@ -21,7 +21,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button layoutX="601.0" layoutY="218.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Status" />
+      <Button layoutX="601.0" layoutY="218.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Priority" />
       <Button layoutX="601.0" layoutY="146.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Series" />
       <Button layoutX="601.0" layoutY="289.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Description" />
       <TextField fx:id="txt_Serie" disable="true" layoutX="787.0" layoutY="151.0" prefHeight="35.0" prefWidth="373.0" />
@@ -55,11 +55,11 @@
             </Menu>
          </menus>
       </MenuBar>
-      <ComboBox fx:id="cbx_status" layoutX="787.0" layoutY="218.0" prefHeight="33.0" prefWidth="373.0" promptText="Status" />
+      <ComboBox fx:id="cbx_Priority" layoutX="787.0" layoutY="218.0" prefHeight="33.0" prefWidth="373.0" promptText="Priority" />
       <TableView fx:id="tbl_tiquetes" layoutX="166.0" layoutY="146.0" onMouseClicked="#SeleccionarInfo" prefHeight="502.0" prefWidth="299.0">
         <columns>
           <TableColumn fx:id="columnSeries" prefWidth="154.0" text="Series" />
-          <TableColumn fx:id="columnStatus" prefWidth="144.0" text="Status" />
+          <TableColumn fx:id="columnPriority" prefWidth="144.0" text="Priority" />
         </columns>
       </TableView>
       <TextField fx:id="txtSearch" layoutX="166.0" layoutY="92.0" onKeyReleased="#busqueda" prefHeight="35.0" prefWidth="177.0" />

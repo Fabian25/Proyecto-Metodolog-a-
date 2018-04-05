@@ -101,24 +101,17 @@ public class RegristroEmpresaController implements Initializable {
         tblAcronymEnt.setCellValueFactory(new PropertyValueFactory<>("Acronimo"));
         tblPhoneEnt.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
 
-       // CargarDatos("");
-       
-
+        // CargarDatos("");
     }
 
     private void CargarDatos() {
-        try {
-            String a = txt_Phone.getText();
-            Empresa.add(new Empresa("EMP", txt_EntrepriceName.getText(), txt_Acronym.getText().toUpperCase(), Integer.parseInt(a), 0));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
+        Empresa.add(new Empresa("EMP", txt_EntrepriceName.getText(), txt_Acronym.getText().toUpperCase(), Integer.parseInt(txt_Phone.getText()), 0));
         table_Enterprice.setItems(Empresa);
-
-       /// table_Enterprice.getItems().clear();
-      //  table_Enterprice.setItems(h.Empresa(busqueda);
-      
-
+        txt_EntrepriceName.setText("");
+        txt_Acronym.setText("");
+        txt_Phone.setText("");
+        /// table_Enterprice.getItems().clear();
+        //  table_Enterprice.setItems(h.Empresa(busqueda);
     }
 
     private void EmpresasMenu(String Vista, String Titulo) {
@@ -217,18 +210,16 @@ public class RegristroEmpresaController implements Initializable {
 
     @FXML
     private void E_Enterprice(ActionEvent event) {
-        
 
-                h.registrarStorage(txt_EntrepriceName.getText(), txt_Acronym.getText(), txt_Phone.getText());
-                //agrega a nivel de base de datos pero no a tabla
-                //txt_EntrepriceName.setText("");
-                //txt_Acronym.setText("");
-                //txt_Phone.setText("");
+        h.registrarStorage(txt_EntrepriceName.getText(), txt_Acronym.getText(), txt_Phone.getText());
+        //agrega a nivel de base de datos pero no a tabla
+////////////////////////////////////////                //txt_EntrepriceName.setText("");
+////////////////////////////////////////                //txt_Acronym.setText("");
+////////////////////////////////////////                //txt_Phone.setText("");
 
-                CargarDatos();
-                //  ClientesMenu("Menu", "Menu");
-            
-        
+        CargarDatos();
+        //  ClientesMenu("Menu", "Menu");
+
     }
 
     @FXML

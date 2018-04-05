@@ -10,6 +10,8 @@ import DAO.TiquetesDAOImplements;
 import Model.Tiquetes;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +37,8 @@ import javafx.stage.StageStyle;
 public class ModificarTiqueteController implements Initializable {
 
     TiquetesDAOImplements h = new TiquetesDAOImplements();
+    ObservableList<String> Priority = FXCollections.observableArrayList();
+
     @FXML
     private Button btnADD;
 
@@ -46,14 +50,12 @@ public class ModificarTiqueteController implements Initializable {
     private Button BarViewTickets;
     @FXML
     private Button BarHomeTik;
-    @FXML
     private ComboBox<String> cbx_status;
     @FXML
     private TableView<Tiquetes> tbl_tiquetes;
     @FXML
     private TableColumn<Tiquetes, String> columnSeries;
-    @FXML
-    private TableColumn<Tiquetes, String> columnStatus;
+
     @FXML
     private TextField txtSearch;
 
@@ -61,33 +63,32 @@ public class ModificarTiqueteController implements Initializable {
     private TextField txt_Serie;
     @FXML
     private TextField txt_DescripcionEditT;
+    @FXML
+    private ComboBox<String> cbx_Priority;
+    @FXML
+    private TableColumn<Tiquetes, String> columnPriority;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       columnSeries.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
-        columnStatus.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        columnSeries.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
+        columnPriority.setCellValueFactory(new PropertyValueFactory<>("Prioridad"));
         CargarDatos("");
-       
+        Priority.add("Mild");
+        Priority.add("Severe");
+        Priority.add("Critic");
+        cbx_Priority.setItems(Priority);
     }
 
     private void CargarDatos(String busqueda) {
         tbl_tiquetes.getItems().clear();
         tbl_tiquetes.setItems(h.Tiquetes(busqueda));
-        txt_Serie.setText(""); 
+        txt_Serie.setText("");
         txt_DescripcionEditT.setText("");
-        cbx_status.getItems().clear();
+        cbx_Priority.getItems().clear();
     }
-//     private void CargarDatosEdit(String busqueda) {
-//        tbl_tiquetes.getItems().clear();
-//        tbl_tiquetes.setItems(h.TiquetesEdit(busqueda));
-//        txt_Name.setText("");
-//        txt_Descripcion.setText("");
-//        cbx_status.getItems().clear();
-//   
-//    }
 
     private void TiquetesMenu(String Vista, String Titulo) {
 
@@ -129,31 +130,53 @@ public class ModificarTiqueteController implements Initializable {
         TiquetesMenu("Menu", "Menu");
     }
 
-
     @FXML
     private void busqueda(KeyEvent event) {
 //        CargarDatosEdit(txtSearch.getText());
         cbx_status.getItems().add(0, "Mild");
         cbx_status.getItems().add(1, "Severe");
         cbx_status.getItems().add(2, "Critic");
-       
+
     }
 
     @FXML
     private void SeleccionarInfo(MouseEvent event) {
-         Tiquetes cliente = tbl_tiquetes.getSelectionModel().getSelectedItem();
+        Tiquetes cliente = tbl_tiquetes.getSelectionModel().getSelectedItem();
         if (cliente != null) {
             txt_Serie.setText(cliente.getID_Tiquete());
 //            cbx_status.getItems().add(0, Integer.toString(cliente.getEstado()));
             txt_DescripcionEditT.setText(cliente.getDescripcion());
+            switch (Integer.parseInt(cliente.getPrioridad())) {
+                case 1:
+                    cbx_Priority.setValue("Mild");
+                    break;
+                case 2:
+                    cbx_Priority.setValue("Severe");
+                    break;
+                default:
+                    cbx_Priority.setValue("Critic");
+                    break;
+            }
         }
     }
 
     @FXML
     private void btnActualizar(ActionEvent event) {
-          Tiquetes cliente = tbl_tiquetes.getSelectionModel().getSelectedItem(); 
-           if (cliente != null) {
-            h.actualizar(txt_Serie.getText(), 0, txt_DescripcionEditT.getText(), cliente);
+        Tiquetes cliente = tbl_tiquetes.getSelectionModel().getSelectedItem();
+        if (cliente != null) {
+            int priority = 0;
+            switch (cbx_Priority.getSelectionModel().getSelectedItem()) {
+                case "Mild":
+                    priority = 1;
+                    break;
+                case "Severe":
+                    priority = 2;
+                    break;
+                default:
+                    priority = 3;
+                    break;
+            }
+            h.actualizar(txt_Serie.getText(), priority, txt_DescripcionEditT.getText(), cliente);
             CargarDatos("");
         }
     }
