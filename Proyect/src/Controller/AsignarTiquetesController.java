@@ -82,7 +82,7 @@ public class AsignarTiquetesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         columSerieT.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
         colum_PriorityT.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
-        colum_CodeE.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        colum_CodeE.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         colum_NameE.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         CargarDatos("");
         
@@ -164,7 +164,7 @@ public class AsignarTiquetesController implements Initializable {
     private void CargarEmpleado(MouseEvent event) {
            Empleados empleado = tbl_Employee.getSelectionModel().getSelectedItem();
          if (empleado != null){
-             txt_EmployeeCode.setText(empleado.getCodigo());
+             txt_EmployeeCode.setText(Integer.toString(empleado.getCedula()));
          }
     }
 

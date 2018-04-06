@@ -140,11 +140,12 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 
     @Override
     public void asignarTiquete(Tiquetes tiquete, Empleados empleado) {
-        String query = "{CALL TiqueteAsginar(?, ?, 0)}";
+        String query = "{CALL TiqueteAsginar(?, ?, ?)}";
         try {
             CallableStatement stmt = connection.prepareCall(query);
             stmt.setInt(1, empleado.getCedula());
             stmt.setString(2, tiquete.getID_Tiquete());
+            stmt.setInt(3, 0);
             stmt.executeQuery();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
