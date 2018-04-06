@@ -133,11 +133,8 @@ public class ModificarTiqueteController implements Initializable {
 
     @FXML
     private void busqueda(KeyEvent event) {
-//        CargarDatosEdit(txtSearch.getText());
-        cbx_status.getItems().add(0, "Mild");
-        cbx_status.getItems().add(1, "Severe");
-        cbx_status.getItems().add(2, "Critic");
-
+        CargarDatos(txtSearch.getText());
+      
     }
 
     @FXML

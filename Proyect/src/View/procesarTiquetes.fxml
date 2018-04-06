@@ -19,10 +19,10 @@
       <Button fx:id="btnAnalyzing" disable="true" layoutX="463.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Analyzing" />
       <Button fx:id="btnChecked" disable="true" layoutX="678.0" layoutY="128.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Checked" />
       <Button disable="true" layoutX="325.0" layoutY="274.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Ticket Series" />
-      <Button disable="true" layoutX="469.0" layoutY="274.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="150.0" text="...." />
+      <Button fx:id="txtSerie" disable="true" layoutX="469.0" layoutY="274.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="150.0" text="...." />
       <Button disable="true" layoutX="325.0" layoutY="347.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Status" />
       <ComboBox fx:id="cb_status" layoutX="469.0" layoutY="357.0" prefWidth="150.0" />
-      <TextArea layoutX="632.0" layoutY="269.0" prefHeight="146.0" prefWidth="297.0" promptText="Description" />
+      <TextArea fx:id="txaDescripcion" layoutX="632.0" layoutY="269.0" prefHeight="146.0" prefWidth="297.0" promptText="Description" />
       <Button layoutX="820.0" layoutY="538.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Back" />
       <ProgressBar fx:id="ProgressBar" layoutX="250.0" layoutY="191.0" prefHeight="18.0" prefWidth="752.0" progress="0.0" />
       <TextArea fx:id="txt_Solution" layoutX="321.0" layoutY="415.0" prefHeight="146.0" prefWidth="297.0" promptText="Solution" />
@@ -51,5 +51,6 @@
             </Menu>
          </menus>
       </MenuBar>
+      <Button fx:id="btnSave" layoutX="678.0" layoutY="538.0" mnemonicParsing="false" onAction="#SaveAll" prefHeight="45.0" prefWidth="125.0" text="Save" />
    </children>
 </AnchorPane>

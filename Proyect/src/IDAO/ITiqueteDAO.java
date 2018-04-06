@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
  */
 public interface ITiqueteDAO {
 
-    public void registrarTiquetes(TextField txt_Series,ComboBox<?> txt_Status,TextArea txt_description);
+    public String registrarTiquetes(int cbx_Priority,String txt_description);
 
   
     public ObservableList<Tiquetes> Tiquetes(String busqueda);

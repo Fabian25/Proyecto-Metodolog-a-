@@ -8,20 +8,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.VerTiqueteEmpleadoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.VerTiqueteEmpleadoController">
    <children>
       <ImageView fitHeight="711.0" fitWidth="1512.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="tblRemoveTiq" layoutX="211.0" layoutY="215.0" prefHeight="334.0" prefWidth="862.0">
+      <TableView fx:id="tblRemoveTiq" layoutX="211.0" layoutY="215.0" onMouseClicked="#tblVerTiqEmp" prefHeight="334.0" prefWidth="862.0">
          <columns>
-            <TableColumn prefWidth="146.0" text="Serie" />
-            <TableColumn prefWidth="154.0" text="Priority" />
-            <TableColumn prefWidth="300.0" text="Description" />
-            <TableColumn prefWidth="261.0" text="State" />
+            <TableColumn fx:id="ColSerie" prefWidth="146.0" text="Serie" />
+            <TableColumn fx:id="ColPrioridad" prefWidth="154.0" text="Priority" />
+            <TableColumn fx:id="ColDescripcion" prefWidth="300.0" text="Description" />
+            <TableColumn fx:id="ColEstado" prefWidth="261.0" text="State" />
          </columns>
       </TableView>
       <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="1264.0">
@@ -54,7 +53,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="txt_search" layoutX="211.0" layoutY="177.0" />
+      <TextField fx:id="txt_search" layoutX="211.0" layoutY="177.0" onKeyReleased="#Search" />
       <ComboBox layoutX="377.0" layoutY="177.0" prefHeight="25.0" prefWidth="83.0" />
    </children>
 </AnchorPane>

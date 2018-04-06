@@ -33,52 +33,52 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 
     Connection connection = BaseDatos.Conexion.getConnection();
 
-    private String GenerarCodigoTiquete(String Cod) {
+    private String GenerarCodigoTiquete() {
         Random rand = new Random();
         int randomNum = rand.nextInt((999 - 100) + 1) + 100;
-        Cod = "T-" + randomNum;
-        return Cod;
+        return "T-" + randomNum;
     }
 
     private boolean ExisteCodigoTiquete(String cod) {
-        String sql = "SELECT * FROM Tiquetes t where t.idTiquete = " + cod + ";";
-        String[] datos = new String[10];
+        String sql = "SELECT * FROM Tiquetes t where t.idTiquetes = '" + cod + "'";
+        String datos = "";
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                datos[0] = rs.getString(9);
+                datos = rs.getString(9);
             }
-            if (datos[0] != null) {
-                if (datos[0].equals(cod)) {
+            if (!datos.equals("")) {
+                if (datos.equals(cod)) {
                     return true;
                 }
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, ex);
         }
         return false;
     }
 
     @Override
-    public void registrarTiquetes(TextField txt_Series, ComboBox<?> txt_Status, TextArea txt_description) {
-        String Cod = " ";
-        GenerarCodigoTiquete(Cod);
+    public String registrarTiquetes(int cbx_Priority, String txt_description) {
+        String Cod = GenerarCodigoTiquete();
         while (ExisteCodigoTiquete(Cod)) {
-            Cod = GenerarCodigoTiquete(Cod);
+            Cod = GenerarCodigoTiquete();
         }
         String query = "{CALL RegistrarTiquete(?,?,?,?,?)}";
-        try (Connection conn = BaseDatos.Conexion.getConnection();
-                CallableStatement stmt = conn.prepareCall(query)) {
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
             stmt.setString(1, Cod);
-            stmt.setString(2, txt_Series.getText());
-            stmt.setString(3, (String) txt_Status.getValue());
-            stmt.setString(4, txt_description.getText());
-            stmt.setInt(5, 1);
+            stmt.setInt(2, 1);
+            stmt.setString(3, txt_description);
+            stmt.setInt(4, cbx_Priority);
+            stmt.setInt(5, 0);
             stmt.executeQuery();
+            return Cod;
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println(ex);
         }
+        return null;
     }
 
     @Override
@@ -150,7 +150,6 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         }
     }
 
- 
     @Override
     public List<Tiquetes> obtenerporEmpleado(Empleados emp) {
         Statement stm = null;
@@ -203,21 +202,21 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 //        return "Select idTiquetes, Estado from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or  Estado Like '%" + busqueda + "%')";
 //
 //    }
-
     @Override
     public void eliminar(String id) {
-       String query = "{CALL EliminarTiqutes(?)}";
+        String query = "{CALL EliminarTiqutes(?)}";
         try {
             CallableStatement stmt = connection.prepareCall(query);
             stmt.setString(1, id);
             stmt.executeQuery();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        } }
+        }
+    }
 
     @Override
     public void actualizar(String txtSerie, int txtstatus, String txtdescripcion, Tiquetes tiquete) {
-            String query = "{CALL ActualizarTiquete(?, ?, ?, ?)}";
+        String query = "{CALL ActualizarTiquete(?, ?, ?, ?)}";
         try {
             CallableStatement stmt = connection.prepareCall(query);
             stmt.setString(1, txtSerie);
@@ -230,5 +229,4 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         }
     }
 
-  
 }

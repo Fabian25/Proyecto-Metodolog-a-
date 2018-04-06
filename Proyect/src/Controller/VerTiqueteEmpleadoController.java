@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import DAO.EmpleadoDAOImplements;
+import Model.Tiquetes;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -14,8 +16,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -26,8 +32,10 @@ import javafx.stage.StageStyle;
  */
 public class VerTiqueteEmpleadoController implements Initializable {
 
+    EmpleadoDAOImplements h = new EmpleadoDAOImplements();
+    
     @FXML
-    private TableView<?> tblRemoveTiq;
+    private TableView<Tiquetes> tblRemoveTiq;
     @FXML
     private Button BarViewTickets;
     @FXML
@@ -36,25 +44,43 @@ public class VerTiqueteEmpleadoController implements Initializable {
     private Button BarHomeTik;
     @FXML
     private TextField txt_search;
+    @FXML
+    private TableColumn<Tiquetes, String> ColSerie;
+    @FXML
+    private TableColumn<Tiquetes, String> ColPrioridad;
+    @FXML
+    private TableColumn<Tiquetes, String> ColDescripcion;
+    @FXML
+    private TableColumn<Tiquetes, String> ColEstado;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        ColSerie.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
+        ColDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        ColEstado.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        ColPrioridad.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
+        CargarDatos("");
+    }
+
+    private void CargarDatos(String busqueda) {
+        tblRemoveTiq.getItems().clear();
+        tblRemoveTiq.setItems(h.Tiquetes(busqueda));
+    }
+
     private void TiquetesMenu(String Vista, String Titulo) {
 
-       try {
+        try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
-            Stage act = (Stage)  BarHomeTik.getScene().getWindow();
+            Stage act = (Stage) BarHomeTik.getScene().getWindow();
             act.close();
         } catch (Exception e) {
             System.out.println("Error");
@@ -68,12 +94,25 @@ public class VerTiqueteEmpleadoController implements Initializable {
 
     @FXML
     private void Tik_BarProcess(ActionEvent event) {
-          TiquetesMenu("procesarTiquetes", "Tickets");
+        TiquetesMenu("procesarTiquetes", "Tickets");
     }
 
     @FXML
     private void Tik_Home(ActionEvent event) {
-         TiquetesMenu("MenuEmpleado", "Home");
+        TiquetesMenu("MenuEmpleado", "Home");
     }
-    
+
+    @FXML
+    private void tblVerTiqEmp(MouseEvent event) {
+        Tiquetes tiquete = tblRemoveTiq.getSelectionModel().getSelectedItem();
+        if(tiquete != null){
+            ProcesarTiquetesController.tiquete = tiquete;
+            TiquetesMenu("procesarTiquetes", "Tickets");
+        }
+    }
+
+    @FXML
+    private void Search(KeyEvent event) {
+    }
+
 }

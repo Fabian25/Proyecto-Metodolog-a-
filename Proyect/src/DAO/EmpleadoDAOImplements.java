@@ -15,6 +15,7 @@ import java.util.List;
 import BaseDatos.Conexion;
 import Model.Empleados;
 import IDAO.IEmpleadoDAO;
+import Model.Tiquetes;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.util.Random;
@@ -88,7 +89,7 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
         Cod = randomNum;
         return Cod;
     }
-    
+
     public boolean ExisteCedula(String ced, String cod) {
         String sql = "SELECT * FROM Persona p where p.IdPersona = " + ced + "and p.Codigo = " + cod + ";";
         String[] datos = new String[10];
@@ -206,10 +207,10 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
 
     @Override
     public void actualizar(String txtName, String txtLastName, int txtPhone, int Cedula) {
-         String query = "{CALL ActualizarEmpleado(?, ?, ?, ?)}";
+        String query = "{CALL ActualizarEmpleado(?, ?, ?, ?)}";
         try {
             CallableStatement stmt = connection.prepareCall(query);
-            stmt.setString(1, txtName); 
+            stmt.setString(1, txtName);
             stmt.setString(2, txtLastName);
             stmt.setInt(3, txtPhone);
             stmt.setInt(4, Cedula);
@@ -219,7 +220,7 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
         }
     }
 
-     @Override
+    @Override
     public void eliminar(int id) {
         String query = "{CALL EliminarEmpleado(?)}";
         try {
@@ -230,15 +231,15 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     @Override
     public ObservableList<Empleados> Empleados(String busqueda) {
-       ObservableList<Empleados> emp = FXCollections.observableArrayList();
+        ObservableList<Empleados> emp = FXCollections.observableArrayList();
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(SQLEmpleado(busqueda));
             while (rs.next()) {
-                emp.add(new Empleados(rs.getString(1),rs.getInt(2) , rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), " ", new Button("X")){
+                emp.add(new Empleados(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), " ", new Button("X")) {
                     @Override
                     public String verPersona() {
                         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -250,19 +251,19 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
         }
         return emp;
     }
-    
-     private String SQLEmpleado(String busqueda) {
+
+    private String SQLEmpleado(String busqueda) {
         if (busqueda.equals("")) {
             return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1";
         }
         return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1 And (Codigo Like '%" + busqueda + "%' Or Cedula Like '%"
-                + busqueda + "%' Or Nombre Like '%" + busqueda + "%' Or Apellido Like '%" + busqueda + "%' Or Telefono Like '%" + busqueda  + "%' Or Correo "
+                + busqueda + "%' Or Nombre Like '%" + busqueda + "%' Or Apellido Like '%" + busqueda + "%' Or Telefono Like '%" + busqueda + "%' Or Correo "
                 + "Like '%" + busqueda + "%')";
     }
 
     @Override
     public void registrarStorage(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
-       int Cod = GenerarCodigo();
+        int Cod = GenerarCodigo();
 
         while (ExisteCodigo(Cod)) {
             Cod = GenerarCodigo();
@@ -292,5 +293,42 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
             }
         }
 
+    }
+
+    @Override
+    public ObservableList<Tiquetes> Tiquetes(String busqueda) {
+        ObservableList<Tiquetes> tiquetes = FXCollections.observableArrayList();
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(SQLTiquetes(busqueda));
+            while (rs.next()) {
+                tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(5), rs.getString(3),
+                        rs.getString(2), rs.getString(4), rs.getInt(6), 0, rs.getInt(7)));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return tiquetes;
+    }
+
+    private String SQLTiquetes(String busqueda) {
+        if (busqueda.equals("")) {
+            return "select * from Tiquetes";
+        }
+        return "";
+    }
+
+    @Override
+    public void procesarTiquete(int cb_status, String txt_Solution, Tiquetes tiquete) {
+        String query = "{CALL ProcesarTiquete(?, ?, ?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setInt(1, cb_status);
+            stmt.setString(2, txt_Solution);
+            stmt.setString(3, tiquete.getID_Tiquete());
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }
