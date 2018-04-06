@@ -28,7 +28,7 @@
          </font>
       </Label>
       <Button layoutX="526.0" layoutY="145.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Series" />
-      <Button layoutX="526.0" layoutY="227.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Status" />
+      <Button layoutX="526.0" layoutY="227.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Priority" />
       <Button layoutX="526.0" layoutY="303.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Description" />
       <TextField fx:id="txtCName11" layoutX="678.0" layoutY="150.0" prefHeight="35.0" prefWidth="373.0" />
       <ComboBox fx:id="cbx_status" layoutX="678.0" layoutY="233.0" prefHeight="33.0" prefWidth="373.0" promptText="Status" />
