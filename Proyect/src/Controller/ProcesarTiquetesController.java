@@ -54,6 +54,7 @@ public class ProcesarTiquetesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         txaDescripcion.setText(tiquete.getDescripcion());
         txtSerie.setText(tiquete.getID_Tiquete());
+        txaDescripcion.setEditable(false);
         txt_Solution.setText(tiquete.getSolucion());
         cb_status.getItems().add(0, "Send");
         cb_status.getItems().add(1, "Analyzing");
