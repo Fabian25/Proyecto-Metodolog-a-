@@ -182,27 +182,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-//    @Override
-//    public ObservableList<Tiquetes> TiquetesEdit(String busqueda) {
-//        ObservableList<Tiquetes> Tiquetes = FXCollections.observableArrayList();
-//        try {
-//            Statement st = connection.createStatement();
-//            ResultSet rs = st.executeQuery(SQLTiquetesEdit(busqueda));
-//            while (rs.next()) {
-//                Tiquetes.add(new Tiquetes(rs.getString(1), "","", rs.getInt(2), "" , 0, 0));
-//            }
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error Cargar Tiquetes \n" + ex);
-//        }
-//        return Tiquetes;
-//    }
-// private String SQLTiquetesEdit(String busqueda) {
-//        if (busqueda.equals("")) {
-//            return "Select idTiquetes, Estado from Tiquetes where Activo = 1;";
-//        }
-//        return "Select idTiquetes, Estado from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or  Estado Like '%" + busqueda + "%')";
-//
-//    }
+
     @Override
     public void eliminar(String id) {
         String query = "{CALL EliminarTiqutes(?)}";
@@ -223,7 +203,6 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             stmt.setString(1, txtSerie);
             stmt.setInt(3, txtstatus);
             stmt.setString(2, txtdescripcion);
-//            stmt.setInt(4, tiquete.getIdCliente());
             stmt.executeQuery();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
