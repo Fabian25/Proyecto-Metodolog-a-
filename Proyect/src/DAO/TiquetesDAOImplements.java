@@ -72,7 +72,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             stmt.setInt(2, 1);
             stmt.setString(3, txt_description);
             stmt.setInt(4, cbx_Priority);
-//            stmt.setInt(5, 0);
+
             stmt.executeQuery();
             return Cod;
         } catch (SQLException ex) {
