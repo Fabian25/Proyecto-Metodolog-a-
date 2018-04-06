@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -31,10 +32,9 @@ import javafx.stage.StageStyle;
  */
 public class AsignarTiquetesController implements Initializable {
 
-     TiquetesDAOImplements h = new TiquetesDAOImplements();
-     EmpleadoDAOImplements hE = new EmpleadoDAOImplements();
-    
-    
+    TiquetesDAOImplements h = new TiquetesDAOImplements();
+    EmpleadoDAOImplements hE = new EmpleadoDAOImplements();
+
     @FXML
     private TableView<Tiquetes> tbl_ticket;
     @FXML
@@ -58,34 +58,47 @@ public class AsignarTiquetesController implements Initializable {
     @FXML
     private TableColumn<Tiquetes, String> columSerieT;
     @FXML
-    private TableColumn<Tiquetes, Integer> colum_PriorityT;
-    @FXML
-    private TableColumn<Tiquetes, String> colum_AssignedT;
+    private TableColumn<Tiquetes, String> colum_PriorityT;
+    
     @FXML
     private TextField txt_searchT;
     @FXML
     private TableColumn<Empleados, Integer> colum_CodeE;
     @FXML
-    private TableColumn<Empleados, String> colum_AvailableE;
-    @FXML
-    private TableColumn<Empleados, String> colum_SerieE;
+    private TableColumn<Empleados, String> colum_NameE;
     @FXML
     private TextField txtbuscarE;
+    
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-      private void TiquetesMenu(String Vista, String Titulo) {
+        columSerieT.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
+        colum_PriorityT.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
+        colum_CodeE.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        colum_NameE.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        CargarDatos("");
+        
+    }
+     private void CargarDatos(String busqueda) {
+        tbl_ticket.getItems().clear();
+        tbl_ticket.setItems(h.Tiquetes(busqueda));
+        
+        tbl_Employee.getItems().clear();
+        tbl_Employee.setItems(hE.Empleados(busqueda));
+    }
+
+
+    private void TiquetesMenu(String Vista, String Titulo) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -96,35 +109,33 @@ public class AsignarTiquetesController implements Initializable {
         }
     }
 
-
     @FXML
     private void c_add(ActionEvent event) {
     }
 
     @FXML
     private void AsignarTickets(ActionEvent event) {
-               TiquetesMenu("AsignarTiquetes", "Ticket");
+        TiquetesMenu("AsignarTiquetes", "Ticket");
     }
 
     @FXML
     private void Tik_BarEdit(ActionEvent event) {
-              TiquetesMenu("ModificarTiquete", "Ticket");
+        TiquetesMenu("ModificarTiquete", "Ticket");
     }
 
     @FXML
     private void Tik_BarRemove(ActionEvent event) {
-               TiquetesMenu("EliminarTiquete", "Ticket");
+        TiquetesMenu("EliminarTiquete", "Ticket");
     }
 
     @FXML
     private void Tik_BarView(ActionEvent event) {
-               TiquetesMenu("VerTiquetes", "Ticket");
+        TiquetesMenu("VerTiquetes", "Ticket");
     }
-    
 
     @FXML
     private void Tik_Home(ActionEvent event) {
-               TiquetesMenu("Menu", "Menu");
+        TiquetesMenu("Menu", "Menu");
     }
-    
+
 }
