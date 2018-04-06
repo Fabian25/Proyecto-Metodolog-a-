@@ -48,7 +48,11 @@ public class VerPerfilClienteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+//      
+//        if (cliente != null) {
+//            txtCName.setText(cliente.getNombre());
+//            txt_Phone.setText(Integer.toString(cliente.getTelefono()));
+//        }
     }    
 
       private void CargarVistas(String Vista, String Titulo) {

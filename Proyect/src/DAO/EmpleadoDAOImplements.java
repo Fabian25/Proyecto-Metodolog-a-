@@ -254,7 +254,7 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
 
     private String SQLEmpleado(String busqueda) {
         if (busqueda.equals("")) {
-            return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1";
+            return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1 and TipoEmpleado_idTipoEmpleado = 2";
         }
         return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1 And (Codigo Like '%" + busqueda + "%' Or Cedula Like '%"
                 + busqueda + "%' Or Nombre Like '%" + busqueda + "%' Or Apellido Like '%" + busqueda + "%' Or Telefono Like '%" + busqueda + "%' Or Correo "
