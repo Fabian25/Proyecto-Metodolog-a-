@@ -10,6 +10,9 @@ import DAO.TiquetesDAOImplements;
 import Model.Empleados;
 import Model.Tiquetes;
 import java.net.URL;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,7 +37,7 @@ public class AsignarTiquetesController implements Initializable {
 
     TiquetesDAOImplements h = new TiquetesDAOImplements();
     EmpleadoDAOImplements hE = new EmpleadoDAOImplements();
-
+ Connection connection = BaseDatos.Conexion.getConnection();
     @FXML
     private TableView<Tiquetes> tbl_ticket;
     @FXML
@@ -111,6 +114,16 @@ public class AsignarTiquetesController implements Initializable {
 
     @FXML
     private void c_add(ActionEvent event) {
+            String query = "{CALL TiquetesAsignar(?, ?, ?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setInt(1, Integer.parseInt(txt_EmployeeCode.getText()));
+            stmt.setString(2, txt_SeriesTicket.getText());
+            stmt.setInt(3, 0);
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @FXML

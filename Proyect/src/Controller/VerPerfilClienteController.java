@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import DAO.ClienteDAOImplements;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -24,7 +25,7 @@ import javafx.stage.StageStyle;
  * @author ALONSITO
  */
 public class VerPerfilClienteController implements Initializable {
-
+    ClienteDAOImplements h = new ClienteDAOImplements();
     @FXML
     private TextField txtCName;
     @FXML
