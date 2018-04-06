@@ -89,7 +89,7 @@ public class ModificarTiqueteController implements Initializable {
         tbl_tiquetes.setItems(h.Tiquetes(busqueda));
         txt_Serie.setText("");
         txt_DescripcionEditT.setText("");
-        cbx_Priority.getItems().clear();
+//        cbx_Priority.getItems().clear();
     }
 
     private void TiquetesMenu(String Vista, String Titulo) {

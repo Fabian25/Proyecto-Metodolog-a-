@@ -110,12 +110,13 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 
     @Override
     public void EditarTiquetes(ComboBox<?> txt_Status, TextArea txt_description, Tiquetes t) {
-        String query = "{CALL EditarTiquete(?, ?, ?)}";
+        String query = "{CALL ActualizarTiqueteAdmin(?, ?, ?)}";
         try {
             CallableStatement stmt = connection.prepareCall(query);
             stmt.setString(1, t.getID_Tiquete());
-            stmt.setString(2, (String) txt_Status.getValue());
-            stmt.setString(3, txt_description.getText());
+              stmt.setString(2, txt_description.getText());
+            stmt.setString(3, (String) txt_Status.getValue());
+          
             stmt.executeQuery();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -216,13 +217,13 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 
     @Override
     public void actualizar(String txtSerie, int txtstatus, String txtdescripcion, Tiquetes tiquete) {
-        String query = "{CALL ActualizarTiquete(?, ?, ?, ?)}";
+        String query = "{CALL ActualizarTiqueteAdmin(?, ?, ?)}";
         try {
             CallableStatement stmt = connection.prepareCall(query);
             stmt.setString(1, txtSerie);
-            stmt.setInt(2, txtstatus);
-            stmt.setString(3, txtdescripcion);
-            stmt.setInt(4, tiquete.getIdCliente());
+            stmt.setInt(3, txtstatus);
+            stmt.setString(2, txtdescripcion);
+//            stmt.setInt(4, tiquete.getIdCliente());
             stmt.executeQuery();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
