@@ -21,12 +21,12 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button layoutX="226.0" layoutY="194.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Name" />
-      <Button layoutX="226.0" layoutY="257.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Last Name" />
-      <Button layoutX="226.0" layoutY="314.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="ID Number" />
-      <Button layoutX="226.0" layoutY="373.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
-      <Button layoutX="226.0" layoutY="432.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Email" />
-      <Button fx:id="btnADD" layoutX="446.0" layoutY="498.0" mnemonicParsing="false" onAction="#agregar" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="99.0" text="ADD">
+      <Button layoutX="117.0" layoutY="199.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Name" />
+      <Button layoutX="117.0" layoutY="262.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Last Name" />
+      <Button layoutX="117.0" layoutY="319.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="ID Number" />
+      <Button layoutX="117.0" layoutY="378.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
+      <Button layoutX="117.0" layoutY="437.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Email" />
+      <Button fx:id="btnADD" layoutX="282.0" layoutY="504.0" mnemonicParsing="false" onAction="#agregar" onMouseClicked="#c_add" prefHeight="45.0" prefWidth="99.0" text="ADD">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
                <light>
@@ -35,22 +35,20 @@
             </Lighting>
          </effect>
       </Button>
-      <TextField fx:id="txt_Name" layoutX="391.0" layoutY="199.0" prefHeight="35.0" prefWidth="184.0" />
-      <TextField fx:id="txt_Phone" layoutX="391.0" layoutY="378.0" prefHeight="35.0" prefWidth="184.0" />
-      <TextField fx:id="txt_ID" layoutX="391.0" layoutY="319.0" prefHeight="35.0" prefWidth="184.0" />
-      <TextField fx:id="txt_LastName" layoutX="391.0" layoutY="262.0" prefHeight="35.0" prefWidth="184.0" />
-      <TextField fx:id="txt_Email" layoutX="391.0" layoutY="437.0" prefHeight="35.0" prefWidth="184.0" />
-      <TableView fx:id="table_Empleado" layoutX="640.0" layoutY="205.0" prefHeight="298.0" prefWidth="398.0">
+      <TextField fx:id="txt_Name" layoutX="282.0" layoutY="204.0" prefHeight="35.0" prefWidth="184.0" />
+      <TextField fx:id="txt_Phone" layoutX="282.0" layoutY="383.0" prefHeight="35.0" prefWidth="184.0" />
+      <TextField fx:id="txt_ID" layoutX="282.0" layoutY="324.0" prefHeight="35.0" prefWidth="184.0" />
+      <TextField fx:id="txt_LastName" layoutX="282.0" layoutY="267.0" prefHeight="35.0" prefWidth="184.0" />
+      <TextField fx:id="txt_Email" layoutX="282.0" layoutY="442.0" prefHeight="35.0" prefWidth="184.0" />
+      <TableView fx:id="table_Empleado" layoutX="608.0" layoutY="206.0" prefHeight="336.0" prefWidth="536.0">
          <columns>
             <TableColumn fx:id="colunmName" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="colunmLastName" prefWidth="75.0" text="Last Name" />
             <TableColumn fx:id="colunmPhone" prefWidth="96.0" text="Phone Number" />
             <TableColumn fx:id="colunmID" prefWidth="75.0" text="ID Number" />
-            <TableColumn fx:id="colunmEmail" prefWidth="77.0" text="Email" />
+            <TableColumn fx:id="colunmEmail" prefWidth="214.0" text="Email" />
          </columns>
       </TableView>
-      <ScrollBar layoutX="1038.0" layoutY="205.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="12.0" />
-      <ComboBox layoutX="807.0" layoutY="169.0" prefHeight="25.0" prefWidth="81.0" />
       <MenuBar prefHeight="33.0" prefWidth="1264.0">
          <menus>
             <Menu mnemonicParsing="false">
@@ -84,6 +82,6 @@
             </Menu>
          </menus>
       </MenuBar>
-      <TextField fx:id="txtbusqueda" layoutX="640.0" layoutY="169.0" onKeyReleased="#Busqueda" />
+      <TextField fx:id="txtbusqueda" layoutX="608.0" layoutY="170.0" onKeyReleased="#Busqueda" />
    </children>
 </AnchorPane>

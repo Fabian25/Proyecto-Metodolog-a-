@@ -40,20 +40,20 @@
             </Menu>
          </menus>
       </MenuBar>
-      <Label layoutX="561.0" layoutY="81.0" text="My Profile" textFill="WHITE">
+      <Label layoutX="553.0" layoutY="82.0" text="My Profile" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCEmail" disable="true" layoutX="479.0" layoutY="490.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
-      <TextField fx:id="txtCPhoneNum" disable="true" layoutX="479.0" layoutY="430.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
-      <TextField fx:id="txtCIDnum" disable="true" layoutX="479.0" layoutY="367.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
-      <TextField fx:id="txtCLastNmae" disable="true" layoutX="479.0" layoutY="300.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
-      <TextField fx:id="txtCName" disable="true" layoutX="478.0" layoutY="236.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
-      <Button layoutX="301.0" layoutY="485.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Email" />
-      <Button layoutX="301.0" layoutY="425.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
-      <Button layoutX="301.0" layoutY="362.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="ID Number" />
-      <Button layoutX="301.0" layoutY="295.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Last Name" />
-      <Button layoutX="301.0" layoutY="231.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Name" />
+      <TextField fx:id="txtCEmail" disable="true" layoutX="561.0" layoutY="487.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
+      <TextField fx:id="txtCPhoneNum" disable="true" layoutX="561.0" layoutY="427.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
+      <TextField fx:id="txtCIDnum" disable="true" layoutX="561.0" layoutY="364.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
+      <TextField fx:id="txtCLastNmae" disable="true" layoutX="561.0" layoutY="297.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
+      <TextField fx:id="txtCName" disable="true" layoutX="560.0" layoutY="233.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
+      <Button layoutX="383.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Email" />
+      <Button layoutX="383.0" layoutY="422.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
+      <Button layoutX="383.0" layoutY="359.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="ID Number" />
+      <Button layoutX="383.0" layoutY="292.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Last Name" />
+      <Button layoutX="383.0" layoutY="228.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Name" />
    </children>
 </AnchorPane>

@@ -16,11 +16,6 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="594.0" layoutY="48.0" text="View" textFill="WHITE">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
       <MenuBar prefHeight="33.0" prefWidth="1264.0">
          <menus>
             <Menu mnemonicParsing="false">
@@ -54,16 +49,21 @@
             </Menu>
          </menus>
       </MenuBar>
-      <TextField fx:id="txtBusuqeda" layoutX="89.0" layoutY="131.0" onKeyReleased="#Busqueda" prefHeight="25.0" prefWidth="183.0" />
-      <TableView fx:id="tblEmpleado" layoutX="89.0" layoutY="172.0" prefHeight="496.0" prefWidth="1103.0">
+      <TextField fx:id="txtBusuqeda" layoutX="75.0" layoutY="140.0" onKeyReleased="#Busqueda" prefHeight="25.0" prefWidth="326.0" />
+      <TableView fx:id="tblEmpleado" layoutX="75.0" layoutY="172.0" prefHeight="461.0" prefWidth="1116.0">
          <columns>
             <TableColumn fx:id="colunmCode" prefWidth="142.0" text="Code" />
             <TableColumn fx:id="ColunmName" prefWidth="123.0" text="Name" />
             <TableColumn fx:id="ColunmLastName" prefWidth="186.0" text="Last Name" />
             <TableColumn fx:id="ColunmIDNumber" prefWidth="163.0" text="ID Number" />
             <TableColumn fx:id="ColunmPhoneNumber" prefWidth="204.0" text="Phone Number" />
-            <TableColumn fx:id="ColunmEmail" prefWidth="284.0" text="Email" />
+            <TableColumn fx:id="ColunmEmail" prefWidth="297.0" text="Email" />
          </columns>
       </TableView>
+      <Label layoutX="583.0" layoutY="63.0" prefHeight="68.0" prefWidth="99.0" text="View" textFill="WHITE">
+         <font>
+            <Font size="46.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

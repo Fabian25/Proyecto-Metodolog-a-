@@ -54,6 +54,5 @@
          </font>
       </Label>
       <TextField fx:id="txt_search" layoutX="211.0" layoutY="177.0" onKeyReleased="#Search" />
-      <ComboBox layoutX="377.0" layoutY="177.0" prefHeight="25.0" prefWidth="83.0" />
    </children>
 </AnchorPane>

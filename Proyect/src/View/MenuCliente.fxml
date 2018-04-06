@@ -8,8 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.MenuClienteController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuClienteController">
    <children>
       <ImageView fitHeight="711.0" fitWidth="1512.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,7 +20,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btn_Perfil" layoutX="236.0" layoutY="436.0" mnemonicParsing="false" onAction="#Profile" prefHeight="96.0" prefWidth="198.0" text="Profile">
+      <Button fx:id="btn_Perfil" layoutX="236.0" layoutY="434.0" mnemonicParsing="false" onAction="#Profile" prefHeight="96.0" prefWidth="198.0" text="Profile">
          <font>
             <Font size="20.0" />
          </font>
