@@ -23,6 +23,7 @@ public class MainFX extends Application {
 
         try {
 
+
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/AsignarTiquetes.fxml"));
 
             Parent root1 = (Parent) fxmlLoader.load();

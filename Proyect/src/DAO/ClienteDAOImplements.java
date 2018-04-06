@@ -367,4 +367,9 @@ public class ClienteDAOImplements implements IClienteDAO {
         }
 
     }
+
+    @Override
+    public void VerInfCliente(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
+       
+    }
 }
