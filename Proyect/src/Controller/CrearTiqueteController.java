@@ -114,7 +114,7 @@ public class CrearTiqueteController implements Initializable {
 
     @FXML
     private void AddTiquete(ActionEvent event) {
-        txt_description.setText(" ");
+ 
         
         int priority = 0;
         switch (cbx_Priority.getSelectionModel().getSelectedItem()) {
@@ -129,5 +129,6 @@ public class CrearTiqueteController implements Initializable {
                 break;
         }
         txt_series.setText(h.registrarTiquetes(priority, txt_description.getText()));
+               txt_description.setText(" ");
     }
 }
