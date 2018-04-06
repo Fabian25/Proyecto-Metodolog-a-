@@ -16,14 +16,14 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="tbl_ticket" layoutX="71.0" layoutY="199.0" prefHeight="334.0" prefWidth="312.0">
+      <TableView fx:id="tbl_ticket" layoutX="71.0" layoutY="199.0" onMouseClicked="#CargarTiquete" prefHeight="334.0" prefWidth="312.0">
          <columns>
             <TableColumn fx:id="columSerieT" prefWidth="149.0" text="Serie" />
             <TableColumn fx:id="colum_PriorityT" prefWidth="162.0" text="Priority" />
          </columns>
       </TableView>
       <TextField fx:id="txt_searchT" layoutX="79.0" layoutY="162.0" />
-      <TableView fx:id="tbl_Employee" layoutX="814.0" layoutY="199.0" prefHeight="334.0" prefWidth="333.0">
+      <TableView fx:id="tbl_Employee" layoutX="814.0" layoutY="199.0" onMouseClicked="#CargarEmpleado" prefHeight="334.0" prefWidth="333.0">
          <columns>
             <TableColumn fx:id="colum_CodeE" prefWidth="173.0" text="Code" />
             <TableColumn fx:id="colum_NameE" prefWidth="159.0" text="Name" />
@@ -32,8 +32,8 @@
       <TextField fx:id="txtbuscarE" layoutX="814.0" layoutY="162.0" />
       <Button layoutX="429.0" layoutY="224.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="320.0" text="Ticket Series" />
       <Button layoutX="427.0" layoutY="373.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="320.0" text="Employee Code" />
-      <TextField fx:id="txt_SeriesTicket" layoutX="427.0" layoutY="297.0" prefHeight="33.0" prefWidth="320.0" />
-      <TextField fx:id="txt_EmployeeCode" layoutX="427.0" layoutY="442.0" prefHeight="33.0" prefWidth="320.0" />
+      <TextField fx:id="txt_SeriesTicket" disable="true" layoutX="427.0" layoutY="297.0" opacity="0.99" prefHeight="33.0" prefWidth="320.0" />
+      <TextField fx:id="txt_EmployeeCode" disable="true" layoutX="427.0" layoutY="442.0" opacity="0.95" prefHeight="33.0" prefWidth="320.0" />
       <Button fx:id="btn_assign" layoutX="538.0" layoutY="511.0" mnemonicParsing="false" onAction="#c_add" prefHeight="45.0" prefWidth="99.0" text="Assign">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
