@@ -55,6 +55,8 @@ public class VerTiquetesController implements Initializable {
     private TableColumn<Tiquetes, String> colunmDescription;
     @FXML
     private TableColumn<Tiquetes, String> colunmState;
+    @FXML
+    private Button BarAssignTickets;
 
     /**
      * Initializes the controller class.
@@ -122,6 +124,12 @@ public class VerTiquetesController implements Initializable {
     @FXML
     private void busqueda(KeyEvent event) {
         CargarDatos(txt_search.getText());
+    }
+
+    @FXML
+    private void AsignarTickets(ActionEvent event) {
+             TiquetesMenu("AsignarTiquetes", "Ticket");
+   
     }
 
     

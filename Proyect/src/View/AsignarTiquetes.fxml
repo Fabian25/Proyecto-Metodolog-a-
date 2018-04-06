@@ -52,5 +52,38 @@
             <Font size="36.0" />
          </font>
       </Label>
+      <MenuBar layoutX="-4.0" layoutY="-2.0" prefHeight="33.0" prefWidth="1264.0">
+         <menus>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarAssignTickets" mnemonicParsing="false" onAction="#AsignarTickets" text="Assign Tickets" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarEditTickets" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#Tik_BarEdit" scaleShape="false" text="Edit Tickets">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarRemoveTickets" mnemonicParsing="false" onAction="#Tik_BarRemove" text="Remove Tickets" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarViewTickets" mnemonicParsing="false" onAction="#Tik_BarView" text="View Tickets" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="BarHomeTik" mnemonicParsing="false" onAction="#Tik_Home" text="Home" />
+               </graphic>
+            </Menu>
+         </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

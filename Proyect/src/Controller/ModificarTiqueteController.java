@@ -67,6 +67,8 @@ public class ModificarTiqueteController implements Initializable {
     private ComboBox<String> cbx_Priority;
     @FXML
     private TableColumn<Tiquetes, String> columnPriority;
+    @FXML
+    private Button BarAssignTickets;
 
     /**
      * Initializes the controller class.
@@ -177,6 +179,12 @@ public class ModificarTiqueteController implements Initializable {
             h.actualizar(txt_Serie.getText(), priority, txt_DescripcionEditT.getText(), cliente);
             CargarDatos("");
         }
+    }
+
+    @FXML
+    private void AsignarTickets(ActionEvent event) {
+           TiquetesMenu("AsignarTiquetes", "Ticket");
+  
     }
 
 }
