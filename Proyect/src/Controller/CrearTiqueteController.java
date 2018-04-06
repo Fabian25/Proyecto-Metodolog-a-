@@ -114,6 +114,8 @@ public class CrearTiqueteController implements Initializable {
 
     @FXML
     private void AddTiquete(ActionEvent event) {
+        txt_description.setText(" ");
+        
         int priority = 0;
         switch (cbx_Priority.getSelectionModel().getSelectedItem()) {
             case "Mild":

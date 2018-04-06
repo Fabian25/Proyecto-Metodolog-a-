@@ -16,9 +16,9 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="txt_Phone" layoutX="980.0" layoutY="399.0" prefHeight="35.0" prefWidth="194.0" />
-      <Button layoutX="815.0" layoutY="394.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
-      <TableView fx:id="tblEditEnterprices" layoutX="40.0" layoutY="204.0" onMouseClicked="#CargarEmpresa" prefHeight="313.0" prefWidth="761.0">
+      <TextField fx:id="txt_Phone" layoutX="1020.0" layoutY="398.0" prefHeight="35.0" prefWidth="194.0" />
+      <Button layoutX="855.0" layoutY="393.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
+      <TableView fx:id="tblEditEnterprices" layoutX="40.0" layoutY="211.0" onMouseClicked="#CargarEmpresa" prefHeight="313.0" prefWidth="761.0">
          <columns>
             <TableColumn fx:id="tblCodeEnt" prefWidth="171.0" text="Code" />
             <TableColumn fx:id="tblNameEnt" prefWidth="208.0" text="Name" />
@@ -26,11 +26,11 @@
             <TableColumn fx:id="tblPhoneEnt" prefWidth="239.0" text="Phone Number" />
          </columns>
       </TableView>
-      <Button layoutX="815.0" layoutY="255.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Enterprise Name" />
-      <Button layoutX="815.0" layoutY="323.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Acronym" />
-      <TextField fx:id="txt_Name" layoutX="980.0" layoutY="260.0" prefHeight="35.0" prefWidth="194.0" />
-      <TextField fx:id="txt_Acronym" layoutX="980.0" layoutY="328.0" prefHeight="35.0" prefWidth="194.0" />
-      <Button fx:id="btnADD" layoutX="893.0" layoutY="517.0" mnemonicParsing="false" onAction="#btnActualizar" prefHeight="45.0" prefWidth="184.0" text="SAVE">
+      <Button layoutX="855.0" layoutY="254.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Enterprise Name" />
+      <Button layoutX="855.0" layoutY="322.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Acronym" />
+      <TextField fx:id="txt_Name" layoutX="1020.0" layoutY="259.0" prefHeight="35.0" prefWidth="194.0" />
+      <TextField fx:id="txt_Acronym" layoutX="1020.0" layoutY="327.0" prefHeight="35.0" prefWidth="194.0" />
+      <Button fx:id="btnADD" layoutX="933.0" layoutY="516.0" mnemonicParsing="false" onAction="#btnActualizar" prefHeight="45.0" prefWidth="184.0" text="SAVE">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
                <light>

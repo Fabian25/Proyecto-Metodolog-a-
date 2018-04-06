@@ -21,13 +21,13 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button layoutX="232.0" layoutY="207.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Enterprice Name" />
-      <Button layoutX="232.0" layoutY="270.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Acronym" />
-      <Button layoutX="232.0" layoutY="332.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
-      <TextField fx:id="txt_EntrepriceName" layoutX="394.0" layoutY="212.0" prefHeight="35.0" prefWidth="184.0" />
-      <TextField fx:id="txt_Phone" layoutX="394.0" layoutY="332.0" prefHeight="35.0" prefWidth="184.0" />
-      <TextField fx:id="txt_Acronym" layoutX="394.0" layoutY="275.0" prefHeight="35.0" prefWidth="184.0" />
-      <Button fx:id="btnADDEnterprice" layoutX="437.0" layoutY="410.0" mnemonicParsing="false" onAction="#E_Enterprice" prefHeight="45.0" prefWidth="99.0" text="ADD">
+      <Button layoutX="202.0" layoutY="292.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Enterprice Name" />
+      <Button layoutX="202.0" layoutY="355.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Acronym" />
+      <Button layoutX="202.0" layoutY="412.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
+      <TextField fx:id="txt_EntrepriceName" layoutX="364.0" layoutY="297.0" prefHeight="35.0" prefWidth="184.0" />
+      <TextField fx:id="txt_Phone" layoutX="364.0" layoutY="417.0" prefHeight="35.0" prefWidth="184.0" />
+      <TextField fx:id="txt_Acronym" layoutX="364.0" layoutY="360.0" prefHeight="35.0" prefWidth="184.0" />
+      <Button fx:id="btnADDEnterprice" layoutX="364.0" layoutY="482.0" mnemonicParsing="false" onAction="#E_Enterprice" prefHeight="45.0" prefWidth="99.0" text="ADD">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
                <light>
@@ -45,15 +45,14 @@
             </Lighting>
          </effect>
       </Button>
-      <TableView fx:id="table_Enterprice" layoutX="666.0" layoutY="232.0" prefHeight="200.0" prefWidth="344.0">
+      <TableView fx:id="table_Enterprice" layoutX="666.0" layoutY="232.0" prefHeight="365.0" prefWidth="344.0">
         <columns>
           <TableColumn fx:id="tblCodeEnt" prefWidth="75.0" text="Code" />
           <TableColumn fx:id="tblNameEnt" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="tblAcronymEnt" prefWidth="75.0" text="Acronym" />
-            <TableColumn fx:id="tblPhoneEnt" prefWidth="101.0" text="Phone Number" />
+            <TableColumn fx:id="tblPhoneEnt" prefWidth="118.0" text="Phone Number" />
         </columns>
       </TableView>
-      <ComboBox layoutX="818.0" layoutY="201.0" prefHeight="25.0" prefWidth="83.0" />
       <MenuBar prefHeight="33.0" prefWidth="1264.0">
          <menus>
             <Menu mnemonicParsing="false">
