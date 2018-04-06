@@ -5,6 +5,10 @@
  */
 package Controller;
 
+import DAO.EmpleadoDAOImplements;
+import DAO.TiquetesDAOImplements;
+import Model.Empleados;
+import Model.Tiquetes;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -14,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -26,12 +31,14 @@ import javafx.stage.StageStyle;
  */
 public class AsignarTiquetesController implements Initializable {
 
+     TiquetesDAOImplements h = new TiquetesDAOImplements();
+     EmpleadoDAOImplements hE = new EmpleadoDAOImplements();
+    
+    
     @FXML
-    private TableView<?> tbl_ticket;
+    private TableView<Tiquetes> tbl_ticket;
     @FXML
-    private TextField txt_search;
-    @FXML
-    private TableView<?> tbl_Employee;
+    private TableView<Empleados> tbl_Employee;
     @FXML
     private TextField txt_SeriesTicket;
     @FXML
@@ -48,6 +55,22 @@ public class AsignarTiquetesController implements Initializable {
     private Button BarViewTickets;
     @FXML
     private Button BarHomeTik;
+    @FXML
+    private TableColumn<Tiquetes, String> columSerieT;
+    @FXML
+    private TableColumn<Tiquetes, Integer> colum_PriorityT;
+    @FXML
+    private TableColumn<Tiquetes, String> colum_AssignedT;
+    @FXML
+    private TextField txt_searchT;
+    @FXML
+    private TableColumn<Empleados, Integer> colum_CodeE;
+    @FXML
+    private TableColumn<Empleados, String> colum_AvailableE;
+    @FXML
+    private TableColumn<Empleados, String> colum_SerieE;
+    @FXML
+    private TextField txtbuscarE;
 
     /**
      * Initializes the controller class.
@@ -81,32 +104,27 @@ public class AsignarTiquetesController implements Initializable {
     @FXML
     private void AsignarTickets(ActionEvent event) {
                TiquetesMenu("AsignarTiquetes", "Ticket");
- 
     }
 
     @FXML
     private void Tik_BarEdit(ActionEvent event) {
               TiquetesMenu("ModificarTiquete", "Ticket");
-  
     }
 
     @FXML
     private void Tik_BarRemove(ActionEvent event) {
                TiquetesMenu("EliminarTiquete", "Ticket");
- 
     }
 
     @FXML
     private void Tik_BarView(ActionEvent event) {
                TiquetesMenu("VerTiquetes", "Ticket");
- 
     }
     
 
     @FXML
     private void Tik_Home(ActionEvent event) {
                TiquetesMenu("Menu", "Menu");
- 
     }
     
 }

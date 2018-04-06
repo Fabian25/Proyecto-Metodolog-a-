@@ -18,22 +18,20 @@
       </ImageView>
       <TableView fx:id="tbl_ticket" layoutX="71.0" layoutY="199.0" prefHeight="334.0" prefWidth="312.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="Serie" />
-            <TableColumn prefWidth="75.0" text="Priority" />
-            <TableColumn prefWidth="155.0" text="Assigned" />
+            <TableColumn fx:id="columSerieT" prefWidth="75.0" text="Serie" />
+            <TableColumn fx:id="colum_PriorityT" prefWidth="75.0" text="Priority" />
+            <TableColumn fx:id="colum_AssignedT" prefWidth="155.0" text="Assigned" />
          </columns>
       </TableView>
-      <TextField fx:id="txt_search" layoutX="79.0" layoutY="162.0" />
-      <ComboBox layoutX="272.0" layoutY="168.0" prefHeight="25.0" prefWidth="83.0" />
+      <TextField fx:id="txt_searchT" layoutX="79.0" layoutY="162.0" />
       <TableView fx:id="tbl_Employee" layoutX="814.0" layoutY="199.0" prefHeight="334.0" prefWidth="333.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="Code" />
-            <TableColumn prefWidth="85.6666259765625" text="Available" />
-            <TableColumn prefWidth="101.3333740234375" text="Serie" />
+            <TableColumn fx:id="colum_CodeE" prefWidth="109.0" text="Code" />
+            <TableColumn fx:id="colum_AvailableE" prefWidth="78.0" text="Available" />
+            <TableColumn fx:id="colum_SerieE" prefWidth="145.0" text="Serie" />
          </columns>
       </TableView>
-      <TextField layoutX="814.0" layoutY="168.0" />
-      <ComboBox layoutX="1014.0" layoutY="168.0" prefHeight="25.0" prefWidth="91.0" />
+      <TextField fx:id="txtbuscarE" layoutX="814.0" layoutY="168.0" />
       <Button layoutX="429.0" layoutY="224.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="320.0" text="Ticket Series" />
       <Button layoutX="427.0" layoutY="373.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="320.0" text="Employee Code" />
       <TextField fx:id="txt_SeriesTicket" layoutX="427.0" layoutY="297.0" prefHeight="33.0" prefWidth="320.0" />

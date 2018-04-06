@@ -76,7 +76,7 @@ public class EliminarTiqueteController implements Initializable {
       private void CargarDatos(String busqueda) {
           tblRemoveTiq.getItems().clear();
         tblRemoveTiq.setItems(h.Tiquetes(busqueda));
-      btnEliminar.setVisible(false);
+        btnEliminar.setVisible(false);
     }
     
     private void TiquetesMenu(String Vista, String Titulo) {
@@ -129,8 +129,8 @@ public class EliminarTiqueteController implements Initializable {
 
     @FXML
     private void Seleccionar(MouseEvent event) {
-            Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
-          if(cliente != null){
+        Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
+        if(cliente != null){
             btnEliminar.setVisible(true);
         }else{
             btnEliminar.setVisible(false);
