@@ -6,7 +6,6 @@
 package Controller;
 
 import DAO.EmpresaDAOImplements;
-import Model.Clientes;
 import Model.Empresa;
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,7 +38,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javax.swing.JOptionPane;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;

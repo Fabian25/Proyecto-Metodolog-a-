@@ -7,7 +7,6 @@ package Controller;
 
 import DAO.ClienteDAOImplements;
 import Model.Clientes;
-import Model.Persona;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -28,7 +27,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
