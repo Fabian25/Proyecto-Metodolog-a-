@@ -8,6 +8,7 @@ package Controller;
 import java.net.URL;
 import java.security.SecureRandom;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,9 +51,13 @@ public class RecuperarContraseñaController implements Initializable {
     /**
      * Initializes the controller class.
      */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         txtCaptcha.setText(randomString(6));
+//        cbxPregunta.setItems(FXCollections.observableArrayList(
+//    "How old are you?", "What is your favorite band?", "Who is the best player in the world?")
+//);
     }
 
     private String randomString(int len) {
@@ -64,9 +69,12 @@ public class RecuperarContraseñaController implements Initializable {
         }
         return sb.toString();
     }
-
+ 
+      
     @FXML
     private void Cpregunta(MouseEvent event) {
+        
+        
     }
 
 

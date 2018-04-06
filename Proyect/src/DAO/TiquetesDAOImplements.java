@@ -65,14 +65,14 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         while (ExisteCodigoTiquete(Cod)) {
             Cod = GenerarCodigoTiquete();
         }
-        String query = "{CALL RegistrarTiquete(?,?,?,?,?)}";
+        String query = "{CALL RegistrarTiquete(?,?,?,?)}";
         try {
             CallableStatement stmt = connection.prepareCall(query);
             stmt.setString(1, Cod);
             stmt.setInt(2, 1);
             stmt.setString(3, txt_description);
             stmt.setInt(4, cbx_Priority);
-            stmt.setInt(5, 0);
+
             stmt.executeQuery();
             return Cod;
         } catch (SQLException ex) {
