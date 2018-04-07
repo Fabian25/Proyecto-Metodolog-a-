@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.Preguntas;
 import java.net.URL;
 import java.security.SecureRandom;
 import java.util.ResourceBundle;
@@ -30,9 +31,9 @@ import javax.swing.JOptionPane;
  * @author erick
  */
 public class RecuperarContraseñaController implements Initializable {
-
+Preguntas pregunta = new Preguntas();
     @FXML
-    private ChoiceBox<?> cbxPregunta;
+    private ChoiceBox<String> cbxPregunta;
     @FXML
     private TextField txtRespuesta;
     @FXML
@@ -51,13 +52,23 @@ public class RecuperarContraseñaController implements Initializable {
     /**
      * Initializes the controller class.
      */
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         txtCaptcha.setText(randomString(6));
-//        cbxPregunta.setItems(FXCollections.observableArrayList(
-//    "How old are you?", "What is your favorite band?", "Who is the best player in the world?")
-//);
+//        cbxPregunta.getItems().add(1, "How old are you?");
+//        cbxPregunta.getItems().add(2,"What is your favorite band?");
+//        cbxPregunta.getItems().add(3, "Who is the best player in the world?");
+//          switch(Integer.parseInt(pregunta.getPregunta())){
+//            case 1:
+//              cbxPregunta.setValue("How old are you?");
+//                break;
+//            case 2:
+//                cbxPregunta.setValue("What is your favorite band?");
+//                break;
+//          default:
+//                  cbxPregunta.setValue("Who is the best player in the world?");
+//                break;
+//        }
     }
 
     private String randomString(int len) {
@@ -69,19 +80,14 @@ public class RecuperarContraseñaController implements Initializable {
         }
         return sb.toString();
     }
- 
-      
+
     @FXML
     private void Cpregunta(MouseEvent event) {
-        
-        
+
     }
-
-
 
     @FXML
     private void P_Captcha(ActionEvent event) {
-        
 
     }
 
@@ -101,7 +107,7 @@ public class RecuperarContraseñaController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + "Login" + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("Login");
             stage.setScene(new Scene(root1));
             stage.show();
@@ -110,7 +116,7 @@ public class RecuperarContraseñaController implements Initializable {
         } catch (Exception e) {
             System.out.println("Error");
         }
-        
+
     }
 
 }

@@ -81,8 +81,12 @@ public class VerPerfilClienteController implements Initializable {
     }
 
     private int Data() {
+<<<<<<< HEAD
 
         String sql = "SELECT Correo FROM sql10218899.UsuarioActual";
+=======
+        String sql = "SELECT Correo FROM sql10218899.UsuarioActual;";
+>>>>>>> 8eb9b9d20913802fc903ff874c5cb5b7fd12290c
         String datos = " ";
         int ce = 0;
         try {
@@ -92,6 +96,7 @@ public class VerPerfilClienteController implements Initializable {
                 while (rs.next()) {
                     datos = rs.getString(2);
                 }
+<<<<<<< HEAD
 
                 String query = "{UsuarioActualClientes ActualizarCliente(" + datos + ")}";
                 Statement st2 = connection.createStatement();
@@ -102,6 +107,17 @@ public class VerPerfilClienteController implements Initializable {
 
             } else {
 
+=======
+ String query = "{UsuarioActualClientes ActualizarCliente("+datos+")}";
+     Statement st2 = connection.createStatement();
+            ResultSet rs2 = st.executeQuery(sql);
+           if (rs != null) {
+             ce=Integer.parseInt(query);
+            }   
+            
+            }else{
+            
+>>>>>>> 8eb9b9d20913802fc903ff874c5cb5b7fd12290c
             }
 
         } catch (SQLException ex) {

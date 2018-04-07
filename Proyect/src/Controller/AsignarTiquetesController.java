@@ -25,6 +25,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -81,7 +82,7 @@ public class AsignarTiquetesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         columSerieT.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
         colum_PriorityT.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
-        colum_CodeE.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        colum_CodeE.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         colum_NameE.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         CargarDatos("");
         
@@ -149,6 +150,22 @@ public class AsignarTiquetesController implements Initializable {
     @FXML
     private void Tik_Home(ActionEvent event) {
         TiquetesMenu("Menu", "Menu");
+    }
+
+    @FXML
+    private void CargarTiquete(MouseEvent event) {
+         Tiquetes cliente = tbl_ticket.getSelectionModel().getSelectedItem();
+        if (cliente != null) {
+            txt_SeriesTicket.setText(cliente.getID_Tiquete());
+        }
+    }
+
+    @FXML
+    private void CargarEmpleado(MouseEvent event) {
+           Empleados empleado = tbl_Employee.getSelectionModel().getSelectedItem();
+         if (empleado != null){
+             txt_EmployeeCode.setText(Integer.toString(empleado.getCedula()));
+         }
     }
 
 }
