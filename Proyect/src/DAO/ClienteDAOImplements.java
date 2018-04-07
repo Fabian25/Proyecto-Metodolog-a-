@@ -369,7 +369,21 @@ public class ClienteDAOImplements implements IClienteDAO {
     }
 
     @Override
-    public void VerInfCliente(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
-       
+    public Clientes VerInfCliente(String txt_Usuario, String txt_Contrasena) {
+        Clientes Cliente = null;
+        
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(SQLClientes("Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, "
+                + "Telefono, Correo from Clientes where Correo = '" + txt_Usuario + "' And Contraseña = '"
+                + txt_Contrasena + "'"));
+            while (rs.next()) {
+             Cliente = new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X"));
+            }
+        } catch (SQLException ex) {
+
+        }
+        return Cliente;
+
     }
 }

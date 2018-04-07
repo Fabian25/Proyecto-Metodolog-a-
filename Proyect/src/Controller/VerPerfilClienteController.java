@@ -6,6 +6,7 @@
 package Controller;
 
 import DAO.ClienteDAOImplements;
+import Model.Clientes;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,7 +31,7 @@ import javafx.stage.StageStyle;
  * @author ALONSITO
  */
 public class VerPerfilClienteController implements Initializable {
-
+    public static Clientes cliente = new Clientes();
     PreparedStatement preparedStatement = null;
     Connection connection = BaseDatos.Conexion.getConnection();
     ClienteDAOImplements h = new ClienteDAOImplements();
@@ -56,18 +57,13 @@ public class VerPerfilClienteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        // TODO
+          txtCName.setText(cliente.getNombre());
+          txtCLastNmae.setText(cliente.getApellido());
+          txtCIDnum.setText(Integer.toString(cliente.getCedula()));
+          txtCPhoneNum.setText(Integer.toString(cliente.getTelefono()));
+          txtCEmail.setText(cliente.getCorreo());
     }
-
-//      
-//        if (cliente != null) {
-//            txtCName.setText(cliente.getNombre());
-//            txt_Phone.setText(Integer.toString(cliente.getTelefono()));
-//        }
-    
-
-
+       
     private void CargarVistas(String Vista, String Titulo) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
@@ -86,9 +82,9 @@ public class VerPerfilClienteController implements Initializable {
 
     private int Data() {
 
-        String sql = "SELECT Correo FROM sql10218899.UsuarioActual;";
+        String sql = "SELECT Correo FROM sql10218899.UsuarioActual";
         String datos = " ";
-        int ce =0;
+        int ce = 0;
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -96,16 +92,16 @@ public class VerPerfilClienteController implements Initializable {
                 while (rs.next()) {
                     datos = rs.getString(2);
                 }
-            
- String query = "{UsuarioActualClientes ActualizarCliente("+datos+")}";
-     Statement st2 = connection.createStatement();
-            ResultSet rs2 = st.executeQuery(sql);
-           if (rs != null) {
-             ce=Integer.parseInt(query);
-            }   
-            
-            }else{
-            
+
+                String query = "{UsuarioActualClientes ActualizarCliente(" + datos + ")}";
+                Statement st2 = connection.createStatement();
+                ResultSet rs2 = st.executeQuery(sql);
+                if (rs != null) {
+                    ce = Integer.parseInt(query);
+                }
+
+            } else {
+
             }
 
         } catch (SQLException ex) {

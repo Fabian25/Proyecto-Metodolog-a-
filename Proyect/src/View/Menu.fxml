@@ -31,7 +31,7 @@
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Label layoutX="106.0" layoutY="151.0" text="Choose an option" textFill="#111111">
+      <Label layoutX="106.0" layoutY="151.0" text="Escoja una Opcion" textFill="#111111">
          <font>
             <Font size="48.0" />
          </font>

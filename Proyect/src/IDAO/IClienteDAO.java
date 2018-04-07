@@ -20,7 +20,7 @@ public interface IClienteDAO {
     public Clientes obtenerCliente(Clientes h);
 
     public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail);
-    public void VerInfCliente(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail);
+    public Clientes VerInfCliente(String txt_Usuario, String txt_Contrasena);
 
     public List<Persona> ver();
 

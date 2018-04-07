@@ -24,7 +24,7 @@ public class MainFX extends Application {
         try {
 
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/AsignarTiquetes.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Menu.fxml"));
 
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();

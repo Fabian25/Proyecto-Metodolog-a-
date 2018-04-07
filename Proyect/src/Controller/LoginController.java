@@ -60,7 +60,7 @@ public class LoginController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -142,6 +142,9 @@ public class LoginController implements Initializable {
                     JOptionPane.showMessageDialog(null, e);
                 }
             } else {
+//                if (VerInfCliente() != null) {
+//                    
+//                }
                 PreparedStatement preparedStatement;
                 String email = txt_Usuario.getText();
                 String password = txt_Contra.getText();
@@ -162,11 +165,11 @@ public class LoginController implements Initializable {
                         alert.showAndWait();
                     } else {
                         if (resultSet.getInt(8) == 1) {
-                             String sql2 = "Insert into UsuarioActual values(?,?);";
-                              preparedStatement = connection.prepareStatement(sql2);
-                                preparedStatement.setInt(1, 1);
-                                preparedStatement.setString(2, email);
-                              int resultSet2 = preparedStatement.executeUpdate();
+                            String sql2 = "Insert into UsuarioActual values(?,?);";
+                            preparedStatement = connection.prepareStatement(sql2);
+                            preparedStatement.setInt(1, 1);
+                            preparedStatement.setString(2, email);
+                            int resultSet2 = preparedStatement.executeUpdate();
                             IngresarMenu("MenuCliente", "Menu Cliente");
                         } else {
                             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -236,7 +239,7 @@ public class LoginController implements Initializable {
         }
     }
 
-       public  String Encriptar(String pass) {
+    public String Encriptar(String pass) {
         String Encripted = " ";
         for (int i = 0; i < pass.length(); i++) {
             char p = pass.charAt(i);
@@ -331,7 +334,5 @@ public class LoginController implements Initializable {
         Platform.exit();
         System.exit(0);
     }
-
-    
 
 }
