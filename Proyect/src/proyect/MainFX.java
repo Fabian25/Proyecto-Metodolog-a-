@@ -22,10 +22,7 @@ public class MainFX extends Application {
     public void start(Stage primaryStage) {
 
         try {
-
-
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/AsignarTiquetes.fxml"));
-
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Login.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);

@@ -85,7 +85,6 @@ public class VerPerfilClienteController implements Initializable {
     }
 
     private int Data() {
-
         String sql = "SELECT Correo FROM sql10218899.UsuarioActual;";
         String datos = " ";
         int ce =0;
@@ -96,7 +95,6 @@ public class VerPerfilClienteController implements Initializable {
                 while (rs.next()) {
                     datos = rs.getString(2);
                 }
-            
  String query = "{UsuarioActualClientes ActualizarCliente("+datos+")}";
      Statement st2 = connection.createStatement();
             ResultSet rs2 = st.executeQuery(sql);
