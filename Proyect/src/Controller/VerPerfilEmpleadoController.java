@@ -47,7 +47,11 @@ public class VerPerfilEmpleadoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        txtCName.setText(LoginController.infEmpleado.getNombre());
+        txtCLastNmae.setText(LoginController.infEmpleado.getApellido());
+        txtCIDnum.setText(Integer.toString(LoginController.infEmpleado.getCedula()));
+        txtCPhoneNum.setText(Integer.toString(LoginController.infEmpleado.getTelefono()));
+        txtCEmail.setText(LoginController.infEmpleado.getCorreo());
        
     }    
     private void CargarVistas(String Vista, String Titulo) {

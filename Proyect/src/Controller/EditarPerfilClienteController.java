@@ -5,6 +5,9 @@
  */
 package Controller;
 
+import static Controller.LoginController.infClient;
+import DAO.ClienteDAOImplements;
+import Model.Clientes;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -25,6 +28,8 @@ import javafx.stage.StageStyle;
  * @author ALONSITO
  */
 public class EditarPerfilClienteController implements Initializable {
+
+    ClienteDAOImplements h = new ClienteDAOImplements();
 
     @FXML
     private Button BarMyProfile;
@@ -49,13 +54,14 @@ public class EditarPerfilClienteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-     private void CargarVistas(String Vista, String Titulo) {
+    }
+
+    private void CargarVistas(String Vista, String Titulo) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -68,12 +74,12 @@ public class EditarPerfilClienteController implements Initializable {
 
     @FXML
     private void C_BarMyProfile(ActionEvent event) {
-         CargarVistas("VerPerfilCliente", "Profile");
+        CargarVistas("VerPerfilCliente", "Profile");
     }
 
     @FXML
     private void C_BarEditProfile(ActionEvent event) {
-         CargarVistas("EditarPerfilCliente", "Profile");
+        CargarVistas("EditarPerfilCliente", "Profile");
     }
 
     @FXML
@@ -82,8 +88,11 @@ public class EditarPerfilClienteController implements Initializable {
     }
 
     @FXML
-    private void c_add(MouseEvent event) {
+    private void Editar(ActionEvent event) {
+
+        infClient = h.actualizar(txtCName.getText(), txtCLastNmae.getText(), Integer.parseInt(txtCPhoneNum.getText()));
+        CargarDatos("");
+
     }
-      
-    
+
 }

@@ -331,4 +331,20 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
             System.out.println(ex.getMessage());
         }
     }
+
+    @Override
+    public Empleados VerInfEmpleado(String txt_Usuario, String txt_Contrasena) {
+       Empleados Empleado = null;
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("select Cedula, Nombre, Apellido, Correo, Codigo, Telefono, Contraseña, Activo, TipoEmpleado_idTipoEmpleado from Employees where "
+                + "Correo = '" + txt_Usuario + "' And Contraseña = '" + txt_Contrasena + "'");
+            while (rs.next()) {
+             Empleado = new Empleados(rs.getString(5), rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(6), rs.getString(4), rs.getString(7), new Button("X"));
+            }
+        } catch (SQLException ex) {
+
+        }
+        return Empleado;
+    }
 }

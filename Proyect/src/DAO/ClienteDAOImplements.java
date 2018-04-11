@@ -28,6 +28,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     PreparedStatement preparedStatement = null;
     Connection connection = BaseDatos.Conexion.getConnection();
+   
 
     private boolean ExisteCedula(String ced) {
 
@@ -88,46 +89,6 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     }
 
-//    @Override
-//    public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
-//
-//        int Cod = 0;
-//        GenerarCodigo(Cod);
-//
-//        while (ExisteCodigo(Cod)) {
-//            GenerarCodigo(Cod);
-//        }
-//        if (ExisteCedula(txtCIDnum)) {
-//            JOptionPane.showMessageDialog(null, "There is already a client with this id");
-//        } else {
-//
-//            if (txtCName.length() == 0 || txtCLastNmae.length() == 0
-//                    || txtCIDnum.length() == 0 || txtCPhoneNum.length() == 0
-//                    || txtCEmail.length() == 0) {
-//                JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
-//            } else {
-//                try {
-//                    String sql = "Insert into Clientes values(?,?,?,?,?,?,?,?,?);";
-//
-//                    preparedStatement = connection.prepareStatement(sql);
-//                    preparedStatement.setString(1, txtCIDnum);
-//                    preparedStatement.setString(2, txtCName);
-//                    preparedStatement.setString(3, txtCLastNmae);
-//                    preparedStatement.setString(4, txtCEmail);
-//                    preparedStatement.setString(5, "Nuevo123$");
-//                    preparedStatement.setInt(6, Cod);
-//                    preparedStatement.setString(7, txtCPhoneNum);
-//                    preparedStatement.setInt(8, 1);
-//
-//                    int executeUpdate = preparedStatement.executeUpdate();
-//
-//                } catch (SQLException ex) {
-//                    JOptionPane.showMessageDialog(null, ex);
-//                }
-//            }
-//        }
-//
-//    }
     @Override
     public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
 
@@ -371,12 +332,11 @@ public class ClienteDAOImplements implements IClienteDAO {
     @Override
     public Clientes VerInfCliente(String txt_Usuario, String txt_Contrasena) {
         Clientes Cliente = null;
-        
         try {
             Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(SQLClientes("Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, "
+            ResultSet rs = st.executeQuery("Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, "
                 + "Telefono, Correo from Clientes where Correo = '" + txt_Usuario + "' And Contraseña = '"
-                + txt_Contrasena + "'"));
+                + txt_Contrasena + "'");
             while (rs.next()) {
              Cliente = new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X"));
             }
@@ -384,6 +344,5 @@ public class ClienteDAOImplements implements IClienteDAO {
 
         }
         return Cliente;
-
     }
 }

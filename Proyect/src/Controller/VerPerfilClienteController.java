@@ -31,7 +31,7 @@ import javafx.stage.StageStyle;
  * @author ALONSITO
  */
 public class VerPerfilClienteController implements Initializable {
-    public static Clientes cliente = new Clientes();
+
     PreparedStatement preparedStatement = null;
     Connection connection = BaseDatos.Conexion.getConnection();
     ClienteDAOImplements h = new ClienteDAOImplements();
@@ -57,13 +57,13 @@ public class VerPerfilClienteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-          txtCName.setText(cliente.getNombre());
-          txtCLastNmae.setText(cliente.getApellido());
-          txtCIDnum.setText(Integer.toString(cliente.getCedula()));
-          txtCPhoneNum.setText(Integer.toString(cliente.getTelefono()));
-          txtCEmail.setText(cliente.getCorreo());
+        txtCName.setText(LoginController.infClient.getNombre());
+        txtCLastNmae.setText(LoginController.infClient.getApellido());
+        txtCIDnum.setText(Integer.toString(LoginController.infClient.getCedula()));
+        txtCPhoneNum.setText(Integer.toString(LoginController.infClient.getTelefono()));
+        txtCEmail.setText(LoginController.infClient.getCorreo());
     }
-       
+
     private void CargarVistas(String Vista, String Titulo) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
@@ -81,12 +81,9 @@ public class VerPerfilClienteController implements Initializable {
     }
 
     private int Data() {
-<<<<<<< HEAD
 
         String sql = "SELECT Correo FROM sql10218899.UsuarioActual";
-=======
-        String sql = "SELECT Correo FROM sql10218899.UsuarioActual;";
->>>>>>> 8eb9b9d20913802fc903ff874c5cb5b7fd12290c
+
         String datos = " ";
         int ce = 0;
         try {
@@ -96,7 +93,6 @@ public class VerPerfilClienteController implements Initializable {
                 while (rs.next()) {
                     datos = rs.getString(2);
                 }
-<<<<<<< HEAD
 
                 String query = "{UsuarioActualClientes ActualizarCliente(" + datos + ")}";
                 Statement st2 = connection.createStatement();
@@ -107,17 +103,6 @@ public class VerPerfilClienteController implements Initializable {
 
             } else {
 
-=======
- String query = "{UsuarioActualClientes ActualizarCliente("+datos+")}";
-     Statement st2 = connection.createStatement();
-            ResultSet rs2 = st.executeQuery(sql);
-           if (rs != null) {
-             ce=Integer.parseInt(query);
-            }   
-            
-            }else{
-            
->>>>>>> 8eb9b9d20913802fc903ff874c5cb5b7fd12290c
             }
 
         } catch (SQLException ex) {
