@@ -259,8 +259,12 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         } catch (SQLException ex) {
 
         }
+<<<<<<< HEAD
 
 //        try {
+=======
+//  try {
+>>>>>>> d81880b179882a862f4d9600154382c2088b0b11
 //            Statement st = connection.createStatement();
 //            ResultSet rs = st.executeQuery("Select Codigo from Clientes where Correo = '" + txt_Usuario);
 //            while (rs.next()) {
@@ -270,8 +274,12 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 //        } catch (SQLException ex) {
 //
 //        }
+<<<<<<< HEAD
 
         return Cliente;
+=======
+       return Cliente;
+>>>>>>> d81880b179882a862f4d9600154382c2088b0b11
     }
 
 }

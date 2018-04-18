@@ -96,6 +96,14 @@ public class EditarPerfilClienteController implements Initializable {
          infClient.setCorreo(txtCEmail.getText());
 
 
+<<<<<<< HEAD
+=======
+
+
+//        infClient = h.actualizar(txtCName.getText(), txtCLastNmae.getText(), Integer.parseInt(txtCPhoneNum.getText()));
+//        CargarDatos("");
+
+>>>>>>> d81880b179882a862f4d9600154382c2088b0b11
     }
 
 }
