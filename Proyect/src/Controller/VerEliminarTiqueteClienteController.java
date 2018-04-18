@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import DAO.TiquetesDAOImplements;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -24,7 +25,7 @@ import javafx.stage.StageStyle;
  * @author ALONSITO
  */
 public class VerEliminarTiqueteClienteController implements Initializable {
-
+ 
     @FXML
     private TableView<?> tblRemoveTiq;
     @FXML
@@ -42,7 +43,9 @@ public class VerEliminarTiqueteClienteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }  
+  
+
 
       private void TiquetesMenu(String Vista, String Titulo) {
 
