@@ -12,7 +12,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import BaseDatos.Conexion;
+import static Controller.LoginController.infClient;
 import IDAO.*;
+import Model.Clientes;
 import Model.Empleados;
 import Model.Tiquetes;
 import java.sql.CallableStatement;
@@ -97,6 +99,39 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         }
         return Tiquetes;
     }
+    
+    
+      @Override
+    public ObservableList<Tiquetes> TiquetesClientes(String busqueda) {
+        ObservableList<Tiquetes> Tiquetes = FXCollections.observableArrayList();
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(SQLTiquetesCliente(busqueda,infClient));
+            while (rs.next()) {
+
+//                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
+                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 0, 0, 0));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Cargar Tiquetes \n" + ex);
+        }
+        return Tiquetes;
+    }
+    
+    private String SQLTiquetesCliente(String busqueda,Clientes info) {
+        if (busqueda.equals("")) {
+//            return "Select * where Activo = 1";
+            return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Clientes_Cedula = "+info.getCodigo()+";";
+        }
+        return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
+                + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%' Or Solucion Like '%" + busqueda + "%') And Clientes_Cedula = "+info.getCodigo()+";";
+
+    }
+    
+    
+    
+    
+    
 
     private String SQLTiquetes(String busqueda) {
         if (busqueda.equals("")) {
@@ -208,6 +243,22 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @Override
+    public Tiquetes VerTiquetesCliente(String txt_Usuario) {
+     Tiquetes Cliente = null;
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("Select Codigo from Clientes where Correo = '" + txt_Usuario);
+            while (rs.next()) {
+               Cliente = new Tiq
+            // Cliente = new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X"));
+            }
+        } catch (SQLException ex) {
+
+        }
+        return Cliente;
     }
 
 }

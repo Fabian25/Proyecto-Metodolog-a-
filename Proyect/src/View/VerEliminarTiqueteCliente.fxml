@@ -22,13 +22,13 @@
       </Label>
       <TableView fx:id="tblRemoveTiq" layoutX="211.0" layoutY="176.0" prefHeight="334.0" prefWidth="862.0">
          <columns>
-            <TableColumn prefWidth="113.0" text="Serie" />
-            <TableColumn prefWidth="127.0" text="Priority" />
-            <TableColumn prefWidth="511.0" text="Description" />
-            <TableColumn minWidth="2.0" prefWidth="110.0" text="State" />
+            <TableColumn fx:id="columSerie" prefWidth="177.0" text="Serie" />
+            <TableColumn fx:id="columPriority" prefWidth="145.0" text="Priority" />
+            <TableColumn fx:id="columDescription" prefWidth="366.0" text="Description" />
+            <TableColumn fx:id="columStatee" minWidth="2.0" prefWidth="173.0" text="State" />
          </columns>
       </TableView>
-      <TextField layoutX="211.0" layoutY="144.0" prefHeight="25.0" prefWidth="201.0" />
+      <TextField fx:id="txtBuscar" layoutX="211.0" layoutY="144.0" prefHeight="25.0" prefWidth="201.0" />
       <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="1264.0">
          <menus>
             <Menu mnemonicParsing="false">
