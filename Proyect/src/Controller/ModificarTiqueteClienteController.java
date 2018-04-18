@@ -75,7 +75,7 @@ public class ModificarTiqueteClienteController implements Initializable {
 
     private void CargarDatos(String busqueda) {
         tbl_tiquetes.getItems().clear();
-        tbl_tiquetes.setItems(h.Tiquetes(busqueda));
+        tbl_tiquetes.setItems(h.TiquetesClientes(busqueda));
         txt_Serie.setText("");
         txt_DescripcionEditT.setText("");
 //        cbx_Priority.getItems().clear();

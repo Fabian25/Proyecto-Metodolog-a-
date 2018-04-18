@@ -96,6 +96,7 @@ public class EditarPerfilClienteController implements Initializable {
          infClient.setCorreo(txtCEmail.getText());
 
 
+<<<<<<< HEAD
 
 
 
@@ -103,6 +104,9 @@ public class EditarPerfilClienteController implements Initializable {
 //        CargarDatos("");
 
 
+=======
+
+>>>>>>> 64c8b7a20c23f279b50dcfc766f4f40a4981217d
     }
 
 }
