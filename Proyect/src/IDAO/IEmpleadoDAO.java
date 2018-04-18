@@ -24,12 +24,13 @@ public interface IEmpleadoDAO {
     
     public void eliminar(int id);
     public void actualizar(String txtName, String txtLastName, int txtPhone, int Cedula);
+    public void ActualizarInfEmp(String txt_Name, String txt_LastName, int txt_Phone, int Cedula);
     public ObservableList<Empleados> Empleados(String busqueda);
     public void registrarStorage(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail);
     public void procesarTiquete(int cb_status,String txt_Solution, Tiquetes tiquete);
     
     public void actualizar(TextField txt_Name, TextField txt_Phone, TextField txt_LastName, TextField txt_Email, Persona p);
-
+    
     public void eliminar(TextField txt_ID);
     public ObservableList<Tiquetes> Tiquetes(String busqueda);
 }

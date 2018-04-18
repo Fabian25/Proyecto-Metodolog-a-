@@ -64,8 +64,7 @@ public class ModificarTiqueteClienteController implements Initializable {
     @FXML
     private Button BarHomeTik;
 
-
-       @Override
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         columnSeries.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
         columnPriority.setCellValueFactory(new PropertyValueFactory<>("Prioridad"));
@@ -90,7 +89,7 @@ public class ModificarTiqueteClienteController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -128,7 +127,7 @@ public class ModificarTiqueteClienteController implements Initializable {
     @FXML
     private void busqueda(KeyEvent event) {
         CargarDatos(txtSearch.getText());
-      
+
     }
 
     @FXML
@@ -175,8 +174,8 @@ public class ModificarTiqueteClienteController implements Initializable {
 
     @FXML
     private void AsignarTickets(ActionEvent event) {
-           TiquetesMenu("CrearTiquetes", "Ticket");
-  
+        TiquetesMenu("CrearTiquetes", "Ticket");
+
     }
-    
+
 }

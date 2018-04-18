@@ -347,4 +347,9 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
         }
         return Empleado;
     }
+
+    @Override
+    public void ActualizarInfEmp(String txtCName, String txtCLastNmae, String txtCPhoneNum, int Cedula) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

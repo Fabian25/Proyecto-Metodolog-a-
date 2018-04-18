@@ -89,9 +89,11 @@ public class EditarPerfilClienteController implements Initializable {
 
     @FXML
     private void Editar(ActionEvent event) {
-
-        infClient = h.actualizar(txtCName.getText(), txtCLastNmae.getText(), Integer.parseInt(txtCPhoneNum.getText()));
-        CargarDatos("");
+         h.ActualizarInfClient(txtCName.getText(), txtCLastNmae.getText(), txtCPhoneNum.getText(), txtCEmail.getText(), infClient.getCedula());
+         infClient.setNombre(txtCName.getText());
+         infClient.setApellido(txtCLastNmae.getText());
+         infClient.setTelefono(Integer.parseInt(txtCPhoneNum.getText()));
+         infClient.setCorreo(txtCEmail.getText());
 
     }
 
