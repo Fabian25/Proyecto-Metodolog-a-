@@ -121,10 +121,10 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
     private String SQLTiquetesCliente(String busqueda,Clientes info) {
         if (busqueda.equals("")) {
 //            return "Select * where Activo = 1";
-            return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Clientes_Cedula = "+info.getCodigo()+";";
+            return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Clientes_Cedula = "+info.getCedula()+" And Activo = 1;";
         }
         return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
-                + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%' Or Solucion Like '%" + busqueda + "%') And Clientes_Cedula = "+info.getCodigo()+";";
+                + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%' Or Solucion Like '%" + busqueda + "%') And Clientes_Cedula = "+info.getCedula()+";";
 
     }
     
@@ -252,7 +252,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("Select Codigo from Clientes where Correo = '" + txt_Usuario);
             while (rs.next()) {
-               Cliente = new Tiq
+               Cliente = new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6),  rs.getInt(7),  rs.getInt(8));
             // Cliente = new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X"));
             }
         } catch (SQLException ex) {
