@@ -27,6 +27,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -60,7 +62,9 @@ public class VerEliminarTiqueteClienteController implements Initializable {
     @FXML
     private TableColumn<Tiquetes, String> columStatee;
     @FXML
-    private TextField txtBuscar;
+    private TextField txt_Search;
+    @FXML
+    private Button btnEliminar;
 
     /**
      * Initializes the controller class.
@@ -73,11 +77,15 @@ public class VerEliminarTiqueteClienteController implements Initializable {
         columPriority.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
         // TODO
           CargarDatos("");
+           btnEliminar.setVisible(false);
+    
     }
      private void CargarDatos(String busqueda) {
          
         tblRemoveTiq.getItems().clear();
         tblRemoveTiq.setItems(h.TiquetesClientes(busqueda));
+         btnEliminar.setVisible(false);
+    
     }
 
     private void TiquetesMenu(String Vista, String Titulo) {
@@ -146,6 +154,32 @@ public class VerEliminarTiqueteClienteController implements Initializable {
     @FXML
     private void Tik_Home(ActionEvent event) {
         TiquetesMenu("MenuCliente", "Menu");
+    }
+
+    @FXML
+    private void Seleccionar(MouseEvent event) {
+        Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
+        if(cliente != null){
+            btnEliminar.setVisible(true);
+        }else{
+            btnEliminar.setVisible(false);
+        }
+    }
+
+    @FXML
+    private void busqueda(KeyEvent event) {
+        CargarDatos(txt_Search.getText());
+    }
+
+    @FXML
+    private void Eliminar(ActionEvent event) {
+         Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
+        if(cliente != null){
+            h.eliminar(cliente.getID_Tiquete());
+           CargarDatos("");
+       }
+       btnEliminar.setVisible(false);
+   
     }
 
 }
