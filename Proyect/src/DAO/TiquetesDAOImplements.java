@@ -248,7 +248,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
     @Override
     public Tiquetes VerTiquetesCliente(String txt_Usuario) {
      Tiquetes Cliente = null;
-<<<<<<< HEAD
+
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("Select Codigo from Clientes where Correo = '" + txt_Usuario);
@@ -259,7 +259,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         } catch (SQLException ex) {
 
         }
-=======
+
 //        try {
 //            Statement st = connection.createStatement();
 //            ResultSet rs = st.executeQuery("Select Codigo from Clientes where Correo = '" + txt_Usuario);
@@ -270,7 +270,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 //        } catch (SQLException ex) {
 //
 //        }
->>>>>>> 30ff311982be8466758656d0c6344dcefd775a38
+
         return Cliente;
     }
 
