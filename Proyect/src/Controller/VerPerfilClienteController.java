@@ -35,6 +35,7 @@ public class VerPerfilClienteController implements Initializable {
     PreparedStatement preparedStatement = null;
     Connection connection = BaseDatos.Conexion.getConnection();
     ClienteDAOImplements h = new ClienteDAOImplements();
+    
     @FXML
     private TextField txtCName;
     @FXML
@@ -61,6 +62,7 @@ public class VerPerfilClienteController implements Initializable {
         txtCLastNmae.setText(LoginController.infClient.getApellido());
         txtCIDnum.setText(Integer.toString(LoginController.infClient.getCedula()));
         txtCPhoneNum.setText(Integer.toString(LoginController.infClient.getTelefono()));
+        
         txtCEmail.setText(LoginController.infClient.getCorreo());
     }
 

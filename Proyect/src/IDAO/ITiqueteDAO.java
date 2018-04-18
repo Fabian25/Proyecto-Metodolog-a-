@@ -34,7 +34,8 @@ public interface ITiqueteDAO {
     public void asignarTiquete(Tiquetes tiquete, Empleados empleado);
     public void actualizar(String txtSerie, int txtstatus, String txtdescripcion, Tiquetes tiquete);
    
-    
+     public Tiquetes VerTiquetesCliente(String txt_Usuario);
+ 
    
     public List<Tiquetes> obtenerporEmpleado(Empleados empleado);
     
