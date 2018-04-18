@@ -194,7 +194,7 @@ public class LoginController implements Initializable {
 //            }
 //
 //        }
-        if (validaEmail()) {
+        if (validaEmail() && validaPassword()) {
             infClient = h.VerInfCliente(txt_Usuario.getText(), txt_Contra.getText());
             if (infClient != null) {
                 IngresarMenu("MenuCliente", "Menu Cliente");
@@ -251,7 +251,8 @@ public class LoginController implements Initializable {
 
     private boolean validaPassword() {
 
-        Pattern p = Pattern.compile("((?=.\\d)(?=.[a-z])(?=.*[A-Z]).{6,15})");
+       String password_pattern= "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,15})";
+       Pattern p = Pattern.compile(password_pattern);
         Matcher m = p.matcher(txt_Contra.getText());
         if (m.matches()) {
             return true;
