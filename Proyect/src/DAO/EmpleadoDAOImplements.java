@@ -349,7 +349,17 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
     }
 
     @Override
-    public void ActualizarInfEmp(String txtCName, String txtCLastNmae, String txtCPhoneNum, int Cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void ActualizarInfEmp(String txt_Name, String txt_LastName, int txt_Phone, int Cedula) {
+       String query = "{CALL ActualizarEmpleado(?, ?, ?, ?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setString(1, txt_Name);
+            stmt.setString(2, txt_LastName);
+            stmt.setInt(3, txt_Phone);
+            stmt.setInt(4, Cedula);
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

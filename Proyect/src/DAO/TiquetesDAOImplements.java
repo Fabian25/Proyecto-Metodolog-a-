@@ -248,16 +248,16 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
     @Override
     public Tiquetes VerTiquetesCliente(String txt_Usuario) {
      Tiquetes Cliente = null;
-        try {
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery("Select Codigo from Clientes where Correo = '" + txt_Usuario);
-            while (rs.next()) {
-               Cliente = new Tiq
-            // Cliente = new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X"));
-            }
-        } catch (SQLException ex) {
-
-        }
+//        try {
+//            Statement st = connection.createStatement();
+//            ResultSet rs = st.executeQuery("Select Codigo from Clientes where Correo = '" + txt_Usuario);
+//            while (rs.next()) {
+//               Cliente = new Tiquetes
+//            // Cliente = new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X"));
+//            }
+//        } catch (SQLException ex) {
+//
+//        }
         return Cliente;
     }
 

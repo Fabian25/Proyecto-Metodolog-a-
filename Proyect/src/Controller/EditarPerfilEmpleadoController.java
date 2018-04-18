@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import static Controller.LoginController.infEmpleado;
 import DAO.EmpleadoDAOImplements;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -85,7 +86,10 @@ public class EditarPerfilEmpleadoController implements Initializable {
 
     @FXML
     private void Save(ActionEvent event) {
-        h1.ActualizarInfEmp(txt_Name.getText(), txt_LastName, 0, 0);
+        h1.ActualizarInfEmp(txt_Name.getText(), txt_LastName.getText(), Integer.parseInt(txt_Phone.getText()), infEmpleado.getCedula());
+        infEmpleado.setNombre(txt_Name.getText());
+        infEmpleado.setApellido(txt_LastName.getText());
+        infEmpleado.setTelefono(Integer.parseInt(txt_Phone.getText()));
     }
 
 }
