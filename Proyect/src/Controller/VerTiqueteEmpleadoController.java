@@ -6,6 +6,7 @@
 package Controller;
 
 import DAO.EmpleadoDAOImplements;
+import DAO.TiquetesDAOImplements;
 import Model.Tiquetes;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,7 +33,7 @@ import javafx.stage.StageStyle;
  */
 public class VerTiqueteEmpleadoController implements Initializable {
 
-    EmpleadoDAOImplements h = new EmpleadoDAOImplements();
+    TiquetesDAOImplements h = new TiquetesDAOImplements();
     
     @FXML
     private TableView<Tiquetes> tblRemoveTiq;
@@ -67,7 +68,7 @@ public class VerTiqueteEmpleadoController implements Initializable {
 
     private void CargarDatos(String busqueda) {
         tblRemoveTiq.getItems().clear();
-        tblRemoveTiq.setItems(h.Tiquetes(busqueda));
+        tblRemoveTiq.setItems(h.TiquetesEmpleado(busqueda));
     }
 
     private void TiquetesMenu(String Vista, String Titulo) {

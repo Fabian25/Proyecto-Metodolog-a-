@@ -201,7 +201,27 @@ public class LoginController implements Initializable {
             } else {
                 infEmpleado = h1.VerInfEmpleado(txt_Usuario.getText(), txt_Contra.getText());
                 if (infEmpleado != null) {
-                    IngresarMenu("MenuEmpleado", "Menu");
+                    PreparedStatement preparedStatement;
+                    String sql = "SELECT TipoEmpleado_idTipoEmpleado FROM Employees WHERE Cedula =" + infEmpleado.getCedula()+ ";";
+                    try {
+                        preparedStatement = connection.prepareStatement(sql);
+                        ResultSet resultSet = preparedStatement.executeQuery();
+
+                        while (resultSet.next()) {                            
+                             if (resultSet.getInt(1) ==1) {
+                                IngresarMenu("Menu", "Menu");
+                            } else {
+                                IngresarMenu("MenuEmpleado", "Menu");
+                            }
+                        }
+                           
+
+                       
+
+                    } catch (SQLException e) {
+                        System.out.println(e);
+                    }
+
                 } else {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Error");
@@ -251,8 +271,8 @@ public class LoginController implements Initializable {
 
     private boolean validaPassword() {
 
-       String password_pattern= "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,15})";
-       Pattern p = Pattern.compile(password_pattern);
+        String password_pattern = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%*]).{6,15})";
+        Pattern p = Pattern.compile(password_pattern);
         Matcher m = p.matcher(txt_Contra.getText());
         if (m.matches()) {
             return true;
