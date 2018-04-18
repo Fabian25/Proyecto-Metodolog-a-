@@ -20,17 +20,19 @@ public interface IClienteDAO {
     public Clientes obtenerCliente(Clientes h);
 
     public void registrar(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail);
+
     public Clientes VerInfCliente(String txt_Usuario, String txt_Contrasena);
 
     public List<Persona> ver();
 
-  
-
     public void eliminar(int id);
+
     public void actualizar(String txtCPhoneNum, String txtCName, int Cedula);
+
+    public void ActualizarInfClient(String txtCName, String txtCLastNmae, String txtCPhoneNum, String txtCEmail, int Cedula);
+
     public ObservableList<Clientes> Clientes(String busqueda);
 
     public void registrarStorage(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail);
-
 
 }

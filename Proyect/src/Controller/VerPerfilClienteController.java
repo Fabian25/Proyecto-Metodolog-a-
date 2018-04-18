@@ -64,6 +64,8 @@ public class VerPerfilClienteController implements Initializable {
         txtCPhoneNum.setText(Integer.toString(LoginController.infClient.getTelefono()));
         
         txtCEmail.setText(LoginController.infClient.getCorreo());
+        
+        
     }
 
     private void CargarVistas(String Vista, String Titulo) {

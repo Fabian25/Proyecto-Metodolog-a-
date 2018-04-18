@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import static Controller.LoginController.infEmpleado;
+import DAO.EmpleadoDAOImplements;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -26,20 +28,22 @@ import javafx.stage.StageStyle;
  */
 public class EditarPerfilEmpleadoController implements Initializable {
 
-    @FXML
-    private Button btnADD;
-    @FXML
-    private TextField txtCPhoneNum;
-    @FXML
-    private TextField txtCLastNmae;
-    @FXML
-    private TextField txtCName;
+    EmpleadoDAOImplements h1 = new EmpleadoDAOImplements();
+
     @FXML
     private Button BarMyProfile;
     @FXML
     private Button BarEditProfile;
     @FXML
     private Button BarHomeC;
+    @FXML
+    private Button BtnSave;
+    @FXML
+    private TextField txt_Phone;
+    @FXML
+    private TextField txt_Name;
+    @FXML
+    private TextField txt_LastName;
 
     /**
      * Initializes the controller class.
@@ -47,13 +51,14 @@ public class EditarPerfilEmpleadoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-     private void CargarVistas(String Vista, String Titulo) {
+    }
+
+    private void CargarVistas(String Vista, String Titulo) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -65,23 +70,26 @@ public class EditarPerfilEmpleadoController implements Initializable {
     }
 
     @FXML
-    private void c_add(MouseEvent event) {
-    }
-
-    @FXML
     private void C_BarMyProfile(ActionEvent event) {
-         CargarVistas("VerPerfilEmpleado", "Profile");
+        CargarVistas("VerPerfilEmpleado", "Profile");
     }
 
     @FXML
     private void C_BarEditProfile(ActionEvent event) {
-          CargarVistas("EditarPerfilEmpleado", "Profile");
+        CargarVistas("EditarPerfilEmpleado", "Profile");
     }
 
     @FXML
     private void C_Home(ActionEvent event) {
-         CargarVistas("MenuEmpleado", "Home");
+        CargarVistas("MenuEmpleado", "Home");
     }
-    
-    
+
+    @FXML
+    private void Save(ActionEvent event) {
+        h1.ActualizarInfEmp(txt_Name.getText(), txt_LastName.getText(), Integer.parseInt(txt_Phone.getText()), infEmpleado.getCedula());
+        infEmpleado.setNombre(txt_Name.getText());
+        infEmpleado.setApellido(txt_LastName.getText());
+        infEmpleado.setTelefono(Integer.parseInt(txt_Phone.getText()));
+    }
+
 }

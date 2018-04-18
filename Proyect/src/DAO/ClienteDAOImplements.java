@@ -345,4 +345,20 @@ public class ClienteDAOImplements implements IClienteDAO {
         }
         return Cliente;
     }
+
+    @Override
+    public void ActualizarInfClient(String txtCName, String txtCLastNmae, String txtCPhoneNum, String txtCEmail, int Cedula) {
+         String query = "{CALL ActualizarInfCl(?, ?, ?, ?, ?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setString(1, txtCName);
+            stmt.setString(2, txtCLastNmae);
+            stmt.setInt(3, Integer.parseInt(txtCPhoneNum));
+            stmt.setString(4, txtCEmail);
+            stmt.setInt(5, Cedula);
+            stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }
