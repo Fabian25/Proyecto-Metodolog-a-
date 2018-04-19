@@ -23,12 +23,10 @@
       <Button disable="true" layoutX="325.0" layoutY="347.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Status" />
       <ComboBox fx:id="cb_status" layoutX="469.0" layoutY="357.0" prefWidth="150.0" />
       <TextArea fx:id="txaDescripcion" layoutX="632.0" layoutY="269.0" prefHeight="146.0" prefWidth="297.0" promptText="Description" />
-      <Button layoutX="820.0" layoutY="538.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Back" />
       <ProgressBar fx:id="ProgressBar" layoutX="250.0" layoutY="191.0" prefHeight="18.0" prefWidth="752.0" progress="0.0" />
       <TextArea fx:id="txt_Solution" layoutX="321.0" layoutY="415.0" prefHeight="146.0" prefWidth="297.0" promptText="Solution" />
       <MenuBar prefHeight="33.0" prefWidth="1264.0">
          <menus>
-            <Menu mnemonicParsing="false" />
             <Menu mnemonicParsing="false">
                <graphic>
                   <Button fx:id="BarViewTickets" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#Tik_BarView" scaleShape="false" text="View Tickets">
@@ -38,12 +36,6 @@
                   </Button>
                </graphic>
             </Menu>
-            <Menu mnemonicParsing="false" />
-            <Menu mnemonicParsing="false">
-               <graphic>
-                  <Button fx:id="BarProcessTickets" mnemonicParsing="false" onAction="#Tik_BarProcess" text="Process Tickets" />
-               </graphic>
-            </Menu>
             <Menu mnemonicParsing="false">
                <graphic>
                   <Button fx:id="BarHomeTik" mnemonicParsing="false" onAction="#Tik_Home" text="Home" />
@@ -51,6 +43,6 @@
             </Menu>
          </menus>
       </MenuBar>
-      <Button fx:id="btnSave" layoutX="678.0" layoutY="538.0" mnemonicParsing="false" onAction="#SaveAll" prefHeight="45.0" prefWidth="125.0" text="Save" />
+      <Button fx:id="btnSave" layoutX="678.0" layoutY="538.0" mnemonicParsing="false" onAction="#SaveAll" prefHeight="45.0" prefWidth="194.0" text="Save" />
    </children>
 </AnchorPane>

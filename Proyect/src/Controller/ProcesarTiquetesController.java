@@ -40,8 +40,6 @@ public class ProcesarTiquetesController implements Initializable {
     @FXML
     private Button BarViewTickets;
     @FXML
-    private Button BarProcessTickets;
-    @FXML
     private Button BarHomeTik;
     @FXML
     private Button txtSerie;
@@ -107,7 +105,6 @@ public class ProcesarTiquetesController implements Initializable {
          TiquetesMenu("MenuEmpleado", "Home");
     }
 
-    @FXML
     private void Tik_BarProcess(ActionEvent event) {
          TiquetesMenu("procesarTiquetes", "Tickets");
     }

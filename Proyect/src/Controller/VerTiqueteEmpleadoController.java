@@ -40,8 +40,6 @@ public class VerTiqueteEmpleadoController implements Initializable {
     @FXML
     private Button BarViewTickets;
     @FXML
-    private Button BarProcessTickets;
-    @FXML
     private Button BarHomeTik;
     @FXML
     private TextField txt_search;
@@ -93,7 +91,6 @@ public class VerTiqueteEmpleadoController implements Initializable {
         TiquetesMenu("VerTiqueteEmpleado", "Tickets");
     }
 
-    @FXML
     private void Tik_BarProcess(ActionEvent event) {
         TiquetesMenu("procesarTiquetes", "Tickets");
     }
