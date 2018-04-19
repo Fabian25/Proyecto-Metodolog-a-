@@ -97,6 +97,7 @@ public class EditarPerfilClienteController implements Initializable {
          infClient.setNombre(txtCName.getText());
          infClient.setApellido(txtCLastNmae.getText());
          infClient.setTelefono(Integer.parseInt(txtCPhoneNum.getText()));
+<<<<<<< HEAD
       
          Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Confirmation");
@@ -104,6 +105,22 @@ public class EditarPerfilClienteController implements Initializable {
                             alert.setContentText("The data has been updated");
                             alert.showAndWait();
           
+=======
+         infClient.setCorreo(txtCEmail.getText());
+
+
+<<<<<<< HEAD
+
+
+
+//        infClient = h.actualizar(txtCName.getText(), txtCLastNmae.getText(), Integer.parseInt(txtCPhoneNum.getText()));
+//        CargarDatos("");
+
+
+=======
+
+>>>>>>> 64c8b7a20c23f279b50dcfc766f4f40a4981217d
+>>>>>>> b404efb803ac33fc7f1bc46c547aaf603f6169b4
     }
 
 }

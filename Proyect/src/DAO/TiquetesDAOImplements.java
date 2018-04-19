@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import BaseDatos.Conexion;
 import static Controller.LoginController.infClient;
+import static Controller.LoginController.infEmpleado;
 import IDAO.*;
 import Model.Clientes;
 import Model.Empleados;
@@ -117,6 +118,22 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         }
         return Tiquetes;
     }
+    @Override
+     public ObservableList<Tiquetes> TiquetesEmpleado(String busqueda) {
+        ObservableList<Tiquetes> Tiquetes = FXCollections.observableArrayList();
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(SQLTiquetesEmpleado(busqueda,infEmpleado));
+            while (rs.next()) {
+
+//                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
+                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 0, 0, 0));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Cargar Tiquetes \n" + ex);
+        }
+        return Tiquetes;
+    }
     
     private String SQLTiquetesCliente(String busqueda,Clientes info) {
         if (busqueda.equals("")) {
@@ -128,11 +145,6 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 
     }
     
-    
-    
-    
-    
-
     private String SQLTiquetes(String busqueda) {
         if (busqueda.equals("")) {
 //            return "Select * where Activo = 1";
@@ -142,6 +154,19 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
                 + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%' Or Solucion Like '%" + busqueda + "%')";
 
     }
+    
+      private String SQLTiquetesEmpleado(String busqueda,Empleados info) {
+        if (busqueda.equals("")) {
+//            return "Select * where Activo = 1";
+//            return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1;";
+        return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = "+info.getCedula()+";";
+        }
+        return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = "+info.getCedula()+ "And Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
+                + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%' Or Solucion Like '%" + busqueda + "%')";
+
+    }
+    
+    
 
     @Override
     public void EditarTiquetes(ComboBox<?> txt_Status, TextArea txt_description, Tiquetes t) {
@@ -259,16 +284,37 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         } catch (SQLException ex) {
 
         }
+<<<<<<< HEAD
 
+
+//        try {
+
+//  try {
+
+=======
+
+>>>>>>> 64c8b7a20c23f279b50dcfc766f4f40a4981217d
 //            Statement st = connection.createStatement();
 //            ResultSet rs = st.executeQuery("Select Codigo from Clientes where Correo = '" + txt_Usuario);
 //            while (rs.next()) {
 //               Cliente = new Tiquetes
 //            // Cliente = new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X"));
 //            }
+<<<<<<< HEAD
+//        } catch (SQLException ex) {
+//
+//        }
+
 
         return Cliente;
 
+    
+
+=======
+
+        return Cliente;
+
+>>>>>>> 64c8b7a20c23f279b50dcfc766f4f40a4981217d
     }
 
 }

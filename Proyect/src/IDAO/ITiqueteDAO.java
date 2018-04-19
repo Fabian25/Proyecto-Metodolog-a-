@@ -24,6 +24,9 @@ public interface ITiqueteDAO {
   
     public ObservableList<Tiquetes> Tiquetes(String busqueda);
     public ObservableList<Tiquetes> TiquetesClientes(String busqueda);
+     public ObservableList<Tiquetes> TiquetesEmpleado(String busqueda);
+    
+    
 //    public ObservableList<Tiquetes> TiquetesEdit(String busqueda);
     public List<Tiquetes> ver();
     public void eliminar(String id);
