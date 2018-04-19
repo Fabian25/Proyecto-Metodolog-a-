@@ -84,15 +84,15 @@ public class AsignarTiquetesController implements Initializable {
         colum_PriorityT.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
         colum_CodeE.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         colum_NameE.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        CargarDatos("");
+        CargarDatos("", 0);
         
     }
-     private void CargarDatos(String busqueda) {
+     private void CargarDatos(String busqueda, int Cond) {
         tbl_ticket.getItems().clear();
         tbl_ticket.setItems(h.Tiquetes(busqueda));
         
         tbl_Employee.getItems().clear();
-        tbl_Employee.setItems(hE.Empleados(busqueda));
+        tbl_Employee.setItems(hE.Empleados(busqueda, Cond));
     }
 
 

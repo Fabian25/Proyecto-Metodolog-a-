@@ -36,7 +36,7 @@ import javafx.stage.StageStyle;
 public class ModificarEmpleadoController implements Initializable {
 
     EmpleadoDAOImplements h = new EmpleadoDAOImplements();
-    
+
     @FXML
     private Button btnADD;
     @FXML
@@ -72,40 +72,48 @@ public class ModificarEmpleadoController implements Initializable {
     private TableColumn<Empleados, String> ColunmEmail;
     @FXML
     private TextField txtBusqueda;
+    @FXML
+    private TextField BusquedaECod;
+    @FXML
+    private TextField BusquedaEName;
+    @FXML
+    private TextField BusquedaEApellido;
+    @FXML
+    private TextField BusquedaEID;
+    @FXML
+    private TextField BusquedaETel;
+    @FXML
+    private TextField BusquedaECorreo;
 
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {   
+    public void initialize(URL url, ResourceBundle rb) {
         colunmCode.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         ColunmName.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         ColunmLastName.setCellValueFactory(new PropertyValueFactory<>("apellido"));
         ColunmIDNumber.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         ColunmPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         ColunmEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
-        CargarDatos("");
-    } 
-    
-    
-     private void CargarDatos(String busqueda) {
+        CargarDatos("", 0);
+    }
+
+    private void CargarDatos(String busqueda, int Cond) {
         tblEmpleado.getItems().clear();
-       tblEmpleado.setItems(h.Empleados(busqueda));
+        tblEmpleado.setItems(h.Empleados(busqueda, Cond));
         txt_Name.setText("");
         txt_Lastname.setText("");
         txt_Phone.setText("");
     }
-    
-    
-    
-    
+
     private void EmpleadosMenu(String Vista, String Titulo) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -115,7 +123,6 @@ public class ModificarEmpleadoController implements Initializable {
             System.out.println("Error");
         }
     }
-
 
     @FXML
     private void E_BarRegist(ActionEvent event) {
@@ -146,7 +153,7 @@ public class ModificarEmpleadoController implements Initializable {
         EmpleadosMenu("RegistroEmpleado", "Employee");
     }
 
-      private boolean validaNombre() {
+    private boolean validaNombre() {
         Pattern p = Pattern.compile("[a-zA-Z]+");
         Matcher m = p.matcher(txt_Name.getText());
         if (m.find() && m.group().equals(txt_Name.getText())) {
@@ -161,8 +168,8 @@ public class ModificarEmpleadoController implements Initializable {
             return false;
         }
     }
-    
-     private boolean validaApellido() {
+
+    private boolean validaApellido() {
         Pattern p = Pattern.compile("[a-zA-Z]+");
         Matcher m = p.matcher(txt_Lastname.getText());
         if (m.find() && m.group().equals(txt_Lastname.getText())) {
@@ -177,8 +184,6 @@ public class ModificarEmpleadoController implements Initializable {
             return false;
         }
     }
-     
-     
 
     private boolean validateEmaill() {
         Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
@@ -214,15 +219,15 @@ public class ModificarEmpleadoController implements Initializable {
 
     @FXML
     private void Busqueda(KeyEvent event) {
-        CargarDatos(txtBusqueda.getText());
+        CargarDatos(txtBusqueda.getText(), 0);
     }
 
     @FXML
     private void btnActualizar(ActionEvent event) {
         Empleados emp = tblEmpleado.getSelectionModel().getSelectedItem();
         if (emp != null) {
-           h.actualizar(txt_Name.getText(), txt_Lastname.getText(), Integer.parseInt(txt_Phone.getText()) ,emp.getCedula());
-            CargarDatos("");
+            h.actualizar(txt_Name.getText(), txt_Lastname.getText(), Integer.parseInt(txt_Phone.getText()), emp.getCedula());
+            CargarDatos("", 0);
         }
     }
 
@@ -234,5 +239,51 @@ public class ModificarEmpleadoController implements Initializable {
             txt_Lastname.setText(emp.getApellido());
             txt_Phone.setText(Integer.toString(emp.getTelefono()));
         }
+    }
+
+    @FXML
+    private void BusquedaCode(KeyEvent event) {
+        if (BusquedaECod.getText().equals("")) {
+            txtBusqueda.setDisable(false);
+        } else {
+            txtBusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaECod.getText(), 1);
+        txtBusqueda.setText("");
+    }
+
+    @FXML
+    private void BusquedaName(KeyEvent event) {
+        CargarDatos(BusquedaEName.getText(), 2);
+        txtBusqueda.setText("");
+        txtBusqueda.setDisable(true);
+    }
+
+    @FXML
+    private void BusquedaApellido(KeyEvent event) {
+        CargarDatos(BusquedaEApellido.getText(), 3);
+        txtBusqueda.setText("");
+        txtBusqueda.setDisable(true);
+    }
+
+    @FXML
+    private void BusquedaID(KeyEvent event) {
+        CargarDatos(BusquedaEID.getText(), 4);
+        txtBusqueda.setText("");
+        txtBusqueda.setDisable(true);
+    }
+
+    @FXML
+    private void BusquedaTelefono(KeyEvent event) {
+        CargarDatos(BusquedaETel.getText(), 5);
+        txtBusqueda.setText("");
+        txtBusqueda.setDisable(true);
+    }
+
+    @FXML
+    private void BusquedaCorreo(KeyEvent event) {
+        CargarDatos(BusquedaECorreo.getText(), 6);
+        txtBusqueda.setText("");
+        txtBusqueda.setDisable(true);
     }
 }

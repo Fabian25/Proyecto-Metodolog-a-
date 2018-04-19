@@ -32,7 +32,6 @@ import javafx.stage.StageStyle;
  */
 public class VerEmpleadoController implements Initializable {
 
-    
     EmpleadoDAOImplements h = new EmpleadoDAOImplements();
     @FXML
     private Button BarRegisEmp;
@@ -60,6 +59,24 @@ public class VerEmpleadoController implements Initializable {
     private TableColumn<Empleados, Integer> ColunmPhoneNumber;
     @FXML
     private TableColumn<Empleados, String> ColunmEmail;
+    private TextField BusquedaCCod;
+    private TextField BusquedaCName;
+    private TextField BusquedaCApellido;
+    private TextField BusquedaCID;
+    private TextField BusquedaCTel;
+    private TextField BusquedaCCorreo;
+    @FXML
+    private TextField BusquedaECod;
+    @FXML
+    private TextField BusquedaEName;
+    @FXML
+    private TextField BusquedaEApellido;
+    @FXML
+    private TextField BusquedaEID;
+    @FXML
+    private TextField BusquedaETel;
+    @FXML
+    private TextField BusquedaECorreo;
 
     /**
      * Initializes the controller class.
@@ -72,21 +89,21 @@ public class VerEmpleadoController implements Initializable {
         ColunmIDNumber.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         ColunmPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         ColunmEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
-        CargarDatos("");
-    }  
-      private void CargarDatos(String busqueda) {
-        tblEmpleado.getItems().clear();
-        tblEmpleado.setItems(h.Empleados(busqueda));
+        CargarDatos("", 0);
     }
 
-    
+    private void CargarDatos(String busqueda, int Cond) {
+        tblEmpleado.getItems().clear();
+        tblEmpleado.setItems(h.Empleados(busqueda, Cond));
+    }
+
     private void EmpleadosMenu(String Vista, String Titulo) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -128,7 +145,73 @@ public class VerEmpleadoController implements Initializable {
 
     @FXML
     private void Busqueda(KeyEvent event) {
-        CargarDatos(txtBusuqeda.getText());
+        CargarDatos(txtBusuqeda.getText(), 0);
     }
-    
+
+    @FXML
+    private void BusquedaCodigo(KeyEvent event) {
+        if (BusquedaCCod.getText().equals("")) {
+            txtBusuqeda.setDisable(false);
+        } else {
+            txtBusuqeda.setDisable(true);
+        }
+        CargarDatos(BusquedaCCod.getText(), 1);
+        txtBusuqeda.setText("");
+    }
+
+    @FXML
+    private void BusquedaNombre(KeyEvent event) {
+        if (BusquedaCName.getText().equals("")) {
+            txtBusuqeda.setDisable(false);
+        } else {
+            txtBusuqeda.setDisable(true);
+        }
+        CargarDatos(BusquedaCName.getText(), 1);
+        txtBusuqeda.setText("");
+    }
+
+    @FXML
+    private void BusquedaApellido(KeyEvent event) {
+        if (BusquedaCApellido.getText().equals("")) {
+            txtBusuqeda.setDisable(false);
+        } else {
+            txtBusuqeda.setDisable(true);
+        }
+        CargarDatos(BusquedaCApellido.getText(), 1);
+        txtBusuqeda.setText("");
+    }
+
+    @FXML
+    private void BusquedaID(KeyEvent event) {
+        if (BusquedaCID.getText().equals("")) {
+            txtBusuqeda.setDisable(false);
+        } else {
+            txtBusuqeda.setDisable(true);
+        }
+        CargarDatos(BusquedaCCod.getText(), 1);
+        txtBusuqeda.setText("");
+    }
+
+    @FXML
+    private void BusquedaTelefono(KeyEvent event) {
+        if (BusquedaCTel.getText().equals("")) {
+            txtBusuqeda.setDisable(false);
+        } else {
+            txtBusuqeda.setDisable(true);
+        }
+        CargarDatos(BusquedaCTel.getText(), 1);
+        txtBusuqeda.setText("");
+    }
+
+    @FXML
+    private void BusquedaCorreo(KeyEvent event) {
+        if (BusquedaCCorreo.getText().equals("")) {
+            txtBusuqeda.setDisable(false);
+        } else {
+            txtBusuqeda.setDisable(true);
+        }
+        CargarDatos(BusquedaCCorreo.getText(), 1);
+        txtBusuqeda.setText("");
+    }
+
 }

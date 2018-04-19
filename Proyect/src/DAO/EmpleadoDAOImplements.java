@@ -233,11 +233,11 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
     }
 
     @Override
-    public ObservableList<Empleados> Empleados(String busqueda) {
+    public ObservableList<Empleados> Empleados(String busqueda, int Cond) {
         ObservableList<Empleados> emp = FXCollections.observableArrayList();
         try {
             Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(SQLEmpleado(busqueda));
+            ResultSet rs = st.executeQuery(SQLEmpleado(busqueda, Cond));
             while (rs.next()) {
                 emp.add(new Empleados(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), " ", new Button("X")) {
                     @Override
@@ -252,13 +252,29 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
         return emp;
     }
 
-    private String SQLEmpleado(String busqueda) {
+    private String SQLEmpleado(String busqueda, int Cond) {
         if (busqueda.equals("")) {
             return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1 and TipoEmpleado_idTipoEmpleado = 2";
+        } else {
+            switch (Cond) {
+                case 1:
+                    return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1 And (Codigo Like '%" + busqueda + "%')";
+                case 2:
+                    return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1 And (Cedula Like '%" + busqueda + "%')";
+                case 3:
+                    return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1 And (Nombre Like '%" + busqueda + "%')";
+                case 4:
+                    return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1 And (Apellido Like '%" + busqueda + "%')";
+                case 5:
+                    return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1 And (Telefono Like '%" + busqueda + "%')";
+                case 6:
+                    return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1 And (Correo Like '%" + busqueda + "%')";
+                default:
+                    return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1 And (Codigo Like '%" + busqueda + "%' Or Cedula Like '%"
+                            + busqueda + "%' Or Nombre Like '%" + busqueda + "%' Or Apellido Like '%" + busqueda + "%' Or Telefono Like '%" + busqueda + "%' Or Correo "
+                            + "Like '%" + busqueda + "%')";
+            }
         }
-        return "Select Codigo, Cedula, Nombre, Apellido, Telefono, Correo  from Employees where Activo = 1 And (Codigo Like '%" + busqueda + "%' Or Cedula Like '%"
-                + busqueda + "%' Or Nombre Like '%" + busqueda + "%' Or Apellido Like '%" + busqueda + "%' Or Telefono Like '%" + busqueda + "%' Or Correo "
-                + "Like '%" + busqueda + "%')";
     }
 
     @Override
@@ -334,13 +350,13 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
 
     @Override
     public Empleados VerInfEmpleado(String txt_Usuario, String txt_Contrasena) {
-       Empleados Empleado = null;
+        Empleados Empleado = null;
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("select Cedula, Nombre, Apellido, Correo, Codigo, Telefono, Contraseña, Activo, TipoEmpleado_idTipoEmpleado from Employees where "
-                + "Correo = '" + txt_Usuario + "' And Contraseña = '" + txt_Contrasena + "'");
+                    + "Correo = '" + txt_Usuario + "' And Contraseña = '" + txt_Contrasena + "'");
             while (rs.next()) {
-             Empleado = new Empleados(rs.getString(5), rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(6), rs.getString(4), rs.getString(7), new Button("X"));
+                Empleado = new Empleados(rs.getString(5), rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(6), rs.getString(4), rs.getString(7), new Button("X"));
             }
         } catch (SQLException ex) {
 
@@ -350,7 +366,7 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
 
     @Override
     public void ActualizarInfEmp(String txt_Name, String txt_LastName, int txt_Phone, int Cedula) {
-       String query = "{CALL ActualizarEmpleado(?, ?, ?, ?)}";
+        String query = "{CALL ActualizarEmpleado(?, ?, ?, ?)}";
         try {
             CallableStatement stmt = connection.prepareCall(query);
             stmt.setString(1, txt_Name);

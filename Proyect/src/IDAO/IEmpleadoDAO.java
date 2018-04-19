@@ -25,7 +25,7 @@ public interface IEmpleadoDAO {
     public void eliminar(int id);
     public void actualizar(String txtName, String txtLastName, int txtPhone, int Cedula);
     public void ActualizarInfEmp(String txt_Name, String txt_LastName, int txt_Phone, int Cedula);
-    public ObservableList<Empleados> Empleados(String busqueda);
+    public ObservableList<Empleados> Empleados(String busqueda, int Cond);
     public void registrarStorage(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail);
     public void procesarTiquete(int cb_status,String txt_Solution, Tiquetes tiquete);
     

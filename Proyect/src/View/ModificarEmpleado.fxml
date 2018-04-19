@@ -10,78 +10,145 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="336.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModificarEmpleadoController">
-   <children>
-      <ImageView fitHeight="705.0" fitWidth="1264.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Imagen/fondoPro.jpg" />
-         </image>
-      </ImageView>
-      <Label layoutX="596.0" layoutY="44.0" text="Edit" textFill="WHITE">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnADD" layoutX="917.0" layoutY="451.0" mnemonicParsing="false" onAction="#btnActualizar" prefHeight="45.0" prefWidth="184.0" text="SAVE">
-         <effect>
-            <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
-               <light>
-                  <Light.Distant color="#18d718" />
-               </light>
-            </Lighting>
-         </effect>
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <TextField fx:id="txt_Lastname" layoutX="998.0" layoutY="302.0" prefHeight="35.0" prefWidth="194.0" />
-      <TextField fx:id="txt_Name" layoutX="998.0" layoutY="241.0" prefHeight="35.0" prefWidth="194.0" />
-      <Button layoutX="835.0" layoutY="297.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Last Name" />
-      <Button layoutX="835.0" layoutY="236.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Name" />
-      <TableView fx:id="tblEmpleado" layoutX="49.0" layoutY="194.0" onMouseClicked="#CargarEmpleados" prefHeight="313.0" prefWidth="669.0">
-         <columns>
-            <TableColumn fx:id="colunmCode" prefWidth="66.0" text="Code" />
-            <TableColumn fx:id="ColunmName" prefWidth="73.0" text="Name" />
-            <TableColumn fx:id="ColunmLastName" prefWidth="86.0" text="Last Name" />
-            <TableColumn fx:id="ColunmIDNumber" prefWidth="87.0" text="ID Number" />
-            <TableColumn fx:id="ColunmPhoneNumber" prefWidth="94.0" text="Phone Number" />
-            <TableColumn fx:id="ColunmEmail" prefWidth="262.0" text="Email" />
-         </columns>
-      </TableView>
-      <Button layoutX="835.0" layoutY="359.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
-      <TextField fx:id="txt_Phone" layoutX="998.0" layoutY="364.0" prefHeight="35.0" prefWidth="194.0" />
-      <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="1253.0">
-         <menus>
-            <Menu mnemonicParsing="false">
-               <graphic>
-                  <Button fx:id="BarRegisEmp" mnemonicParsing="false" onAction="#E_BarRegist" text="Register Employee" />
-               </graphic>
-            </Menu>
-            <Menu mnemonicParsing="false">
-               <graphic>
-                  <Button fx:id="BarEditEmp" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#E_BarEdit" scaleShape="false" text="Edit Employee">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </graphic>
-            </Menu>
-            <Menu mnemonicParsing="false">
-               <graphic>
-                  <Button fx:id="BarRemoveEmp" mnemonicParsing="false" onAction="#E_BarRemove" text="Remove Employee" />
-               </graphic>
-            </Menu>
-            <Menu mnemonicParsing="false">
-               <graphic>
-                  <Button fx:id="BarViewEmp" mnemonicParsing="false" onAction="#E_BarView" text="View Employee" />
-               </graphic>
-            </Menu>
-            <Menu mnemonicParsing="false">
-               <graphic>
-                  <Button fx:id="BarHomeE" mnemonicParsing="false" onAction="#E_Home" text="Home" />
-               </graphic>
-            </Menu>
-         </menus>
-      </MenuBar>
-      <TextField fx:id="txtBusqueda" layoutX="49.0" layoutY="151.0" onKeyReleased="#Busqueda" />
-   </children>
+    <children>
+        <ImageView fitHeight="705.0" fitWidth="1264.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../Imagen/fondoPro.jpg" />
+            </image>
+        </ImageView>
+        <Label layoutX="596.0" layoutY="44.0" textFill="WHITE">
+            <font>
+                <Font size="36.0" />
+            </font>
+        </Label>
+        <Button fx:id="btnADD" layoutX="917.0" layoutY="451.0" mnemonicParsing="false" onAction="#btnActualizar" prefHeight="45.0" prefWidth="184.0" text="SAVE">
+            <effect>
+                <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
+                    <light>
+                        <Light.Distant color="#18d718" />
+                    </light>
+                </Lighting>
+            </effect>
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <TextField fx:id="txt_Lastname" layoutX="998.0" layoutY="302.0" prefHeight="35.0" prefWidth="194.0" />
+        <TextField fx:id="txt_Name" layoutX="998.0" layoutY="241.0" prefHeight="35.0" prefWidth="194.0" />
+        <Button layoutX="835.0" layoutY="297.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Last Name" />
+        <Button layoutX="835.0" layoutY="236.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Name" />
+        <TableView fx:id="tblEmpleado" layoutX="49.0" layoutY="194.0" onMouseClicked="#CargarEmpleados" prefHeight="313.0" prefWidth="669.0">
+            <columns>
+                <TableColumn fx:id="colunmCode" prefWidth="66.0" text="Code">
+                    <contextMenu>
+                        <ContextMenu>
+                            <items>
+                                <MenuItem mnemonicParsing="false">
+                                    <graphic>
+                                        <TextField fx:id="BusquedaECod" onKeyReleased="#BusquedaCode" />
+                                    </graphic>
+                                </MenuItem>
+                            </items>
+                        </ContextMenu>
+                    </contextMenu>
+                </TableColumn>
+                <TableColumn fx:id="ColunmName" prefWidth="73.0" text="Name">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaEName" onKeyReleased="#BusquedaName" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+                <TableColumn fx:id="ColunmLastName" prefWidth="86.0" text="Last Name">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaEApellido" onKeyReleased="#BusquedaApellido" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+                <TableColumn fx:id="ColunmIDNumber" prefWidth="87.0" text="ID Number">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaEID" onKeyReleased="#BusquedaID" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+                <TableColumn fx:id="ColunmPhoneNumber" prefWidth="94.0" text="Phone Number">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaETel" onKeyReleased="#BusquedaTelefono" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+                <TableColumn fx:id="ColunmEmail" prefWidth="262.0" text="Email">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Unspecified Action">
+                           <graphic>
+                              <TextField fx:id="BusquedaECorreo" onKeyReleased="#BusquedaCorreo" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            </columns>
+        </TableView>
+        <Button layoutX="835.0" layoutY="359.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
+        <TextField fx:id="txt_Phone" layoutX="998.0" layoutY="364.0" prefHeight="35.0" prefWidth="194.0" />
+        <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="1253.0">
+            <menus>
+                <Menu mnemonicParsing="false">
+                    <graphic>
+                        <Button fx:id="BarRegisEmp" mnemonicParsing="false" onAction="#E_BarRegist" text="Register Employee" />
+                    </graphic>
+                </Menu>
+                <Menu mnemonicParsing="false">
+                    <graphic>
+                        <Button fx:id="BarEditEmp" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#E_BarEdit" scaleShape="false" text="Edit Employee">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                    </graphic>
+                </Menu>
+                <Menu mnemonicParsing="false">
+                    <graphic>
+                        <Button fx:id="BarRemoveEmp" mnemonicParsing="false" onAction="#E_BarRemove" text="Remove Employee" />
+                    </graphic>
+                </Menu>
+                <Menu mnemonicParsing="false">
+                    <graphic>
+                        <Button fx:id="BarViewEmp" mnemonicParsing="false" onAction="#E_BarView" text="View Employee" />
+                    </graphic>
+                </Menu>
+                <Menu mnemonicParsing="false">
+                    <graphic>
+                        <Button fx:id="BarHomeE" mnemonicParsing="false" onAction="#E_Home" text="Home" />
+                    </graphic>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <TextField fx:id="txtBusqueda" layoutX="49.0" layoutY="151.0" onKeyReleased="#Busqueda" />
+    </children>
 </AnchorPane>

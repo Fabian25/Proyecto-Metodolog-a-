@@ -58,12 +58,78 @@
       <TextField fx:id="txtBuscar" layoutX="131.0" layoutY="123.0" onKeyReleased="#Buscar" prefHeight="33.0" prefWidth="223.0" />
       <TableView fx:id="tblEmpleado" layoutX="123.0" layoutY="179.0" onMouseClicked="#Seleccionar" prefHeight="477.0" prefWidth="1013.0">
          <columns>
-            <TableColumn fx:id="colunmCode" prefWidth="128.0" text="Code" />
-            <TableColumn fx:id="ColunmName" prefWidth="107.0" text="Name" />
-            <TableColumn fx:id="ColunmLastName" prefWidth="142.0" text="Last Name" />
-            <TableColumn fx:id="ColunmIDNumber" prefWidth="135.0" text="ID Number" />
-            <TableColumn fx:id="ColunmPhoneNumber" prefWidth="174.0" text="Phone Number" />
-            <TableColumn fx:id="ColunmEmail" prefWidth="322.0" text="Email" />
+            <TableColumn fx:id="colunmCode" prefWidth="128.0" text="Code">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaCCorreo" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="ColunmName" prefWidth="107.0" text="Name">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Unspecified Action">
+                           <graphic>
+                              <TextField />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="ColunmLastName" prefWidth="142.0" text="Last Name">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Unspecified Action">
+                           <graphic>
+                              <TextField />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="ColunmIDNumber" prefWidth="135.0" text="ID Number">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Unspecified Action">
+                           <graphic>
+                              <TextField />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="ColunmPhoneNumber" prefWidth="174.0" text="Phone Number">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Unspecified Action">
+                           <graphic>
+                              <TextField />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="ColunmEmail" prefWidth="322.0" text="Email">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Unspecified Action">
+                           <graphic>
+                              <TextField />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
          </columns>
       </TableView>
    </children>

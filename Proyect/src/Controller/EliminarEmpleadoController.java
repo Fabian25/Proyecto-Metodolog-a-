@@ -61,6 +61,8 @@ public class EliminarEmpleadoController implements Initializable {
     private TableColumn<Empleados, ?> ColunmPhoneNumber;
     @FXML
     private TableColumn<Empleados, ?> ColunmEmail;
+    @FXML
+    private TextField BusquedaCCorreo;
 
     /**
      * Initializes the controller class.
@@ -75,13 +77,13 @@ public class EliminarEmpleadoController implements Initializable {
         ColunmPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         ColunmEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
        
-        CargarDatos("");
+        CargarDatos("", 0);
         btnEliminar.setVisible(false);
     } 
     
-      private void CargarDatos(String busqueda) {
+      private void CargarDatos(String busqueda, int Cond) {
         tblEmpleado.getItems().clear();
-        tblEmpleado.setItems(h.Empleados(busqueda));
+        tblEmpleado.setItems(h.Empleados(busqueda, Cond));
         btnEliminar.setVisible(false);
     }
     
@@ -136,14 +138,14 @@ public class EliminarEmpleadoController implements Initializable {
         Empleados emp = tblEmpleado.getSelectionModel().getSelectedItem();
         if(emp != null){
             h.eliminar(emp.getCedula());
-            CargarDatos("");
+            CargarDatos("", 0);
         }
         btnEliminar.setVisible(false);
     }
 
     @FXML
     private void Buscar(KeyEvent event) { 
-        CargarDatos(txtBuscar.getText());
+        CargarDatos(txtBuscar.getText(), 0);
     }
     
 
