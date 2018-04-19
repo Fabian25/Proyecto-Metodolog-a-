@@ -58,8 +58,6 @@ public class ModificarTiqueteClienteController implements Initializable {
     @FXML
     private Button BarEditTickets;
     @FXML
-    private Button BarRemoveTickets;
-    @FXML
     private Button BarViewTickets;
     @FXML
     private Button BarHomeTik;
@@ -77,7 +75,7 @@ public class ModificarTiqueteClienteController implements Initializable {
 
     private void CargarDatos(String busqueda) {
         tbl_tiquetes.getItems().clear();
-        tbl_tiquetes.setItems(h.Tiquetes(busqueda));
+        tbl_tiquetes.setItems(h.TiquetesClientes(busqueda));
         txt_Serie.setText("");
         txt_DescripcionEditT.setText("");
 //        cbx_Priority.getItems().clear();
@@ -109,10 +107,7 @@ public class ModificarTiqueteClienteController implements Initializable {
         TiquetesMenu("ModificarTiqueteCliente", "Ticket");
     }
 
-    @FXML
-    private void Tik_BarRemove(ActionEvent event) {
-        TiquetesMenu("VerEliminarTiqueteCliente", "Ticket");
-    }
+  
 
     @FXML
     private void Tik_BarView(ActionEvent event) {
@@ -174,7 +169,7 @@ public class ModificarTiqueteClienteController implements Initializable {
 
     @FXML
     private void AsignarTickets(ActionEvent event) {
-        TiquetesMenu("CrearTiquetes", "Ticket");
+        TiquetesMenu("CrearTiquete", "Ticket");
 
     }
 

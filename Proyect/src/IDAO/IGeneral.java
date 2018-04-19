@@ -13,8 +13,8 @@ import javafx.scene.control.TextField;
  * @author jose
  */
 public interface IGeneral {
-    public void LogIn(TextField txtuser, PasswordField txtpass);
-public void RecuperarContrasena(TextField txtuser) ;
+
+public void RecuperarContrasena(String txtuser) ;
     public void ActualizarContrasena(String correo) ;
 
 }

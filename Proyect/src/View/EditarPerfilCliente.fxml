@@ -49,12 +49,10 @@
       <Button layoutX="291.0" layoutY="221.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Name" />
       <Button layoutX="291.0" layoutY="286.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Last Name" />
       <Button layoutX="291.0" layoutY="356.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
-      <Button layoutX="291.0" layoutY="425.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Email" />
       <TextField fx:id="txtCName" layoutX="447.0" layoutY="226.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
       <TextField fx:id="txtCLastNmae" layoutX="447.0" layoutY="291.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
       <TextField fx:id="txtCPhoneNum" layoutX="447.0" layoutY="361.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
-      <TextField fx:id="txtCEmail" layoutX="447.0" layoutY="430.0" opacity="0.83" prefHeight="35.0" prefWidth="339.0" />
-      <Button fx:id="btnADD" layoutX="516.0" layoutY="492.0" mnemonicParsing="false" onAction="#Editar" prefHeight="45.0" prefWidth="184.0" text="SAVE">
+      <Button fx:id="btnADD" layoutX="508.0" layoutY="435.0" mnemonicParsing="false" onAction="#Editar" prefHeight="45.0" prefWidth="184.0" text="SAVE">
          <effect>
             <Lighting bumpInput="$null" diffuseConstant="1.42" specularConstant="1.07" specularExponent="14.88" surfaceScale="0.0">
                <light>

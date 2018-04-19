@@ -6,6 +6,7 @@
 package Controller;
 
 import DAO.EmpleadoDAOImplements;
+import DAO.TiquetesDAOImplements;
 import Model.Tiquetes;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,14 +33,12 @@ import javafx.stage.StageStyle;
  */
 public class VerTiqueteEmpleadoController implements Initializable {
 
-    EmpleadoDAOImplements h = new EmpleadoDAOImplements();
+    TiquetesDAOImplements h = new TiquetesDAOImplements();
     
     @FXML
     private TableView<Tiquetes> tblRemoveTiq;
     @FXML
     private Button BarViewTickets;
-    @FXML
-    private Button BarProcessTickets;
     @FXML
     private Button BarHomeTik;
     @FXML
@@ -67,7 +66,7 @@ public class VerTiqueteEmpleadoController implements Initializable {
 
     private void CargarDatos(String busqueda) {
         tblRemoveTiq.getItems().clear();
-        tblRemoveTiq.setItems(h.Tiquetes(busqueda));
+        tblRemoveTiq.setItems(h.TiquetesEmpleado(busqueda));
     }
 
     private void TiquetesMenu(String Vista, String Titulo) {
@@ -92,7 +91,6 @@ public class VerTiqueteEmpleadoController implements Initializable {
         TiquetesMenu("VerTiqueteEmpleado", "Tickets");
     }
 
-    @FXML
     private void Tik_BarProcess(ActionEvent event) {
         TiquetesMenu("procesarTiquetes", "Tickets");
     }

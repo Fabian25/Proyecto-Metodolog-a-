@@ -27,6 +27,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -40,6 +42,10 @@ public class VerEliminarTiqueteClienteController implements Initializable {
     PreparedStatement preparedStatement = null;
     Connection connection = BaseDatos.Conexion.getConnection();
     TiquetesDAOImplements h = new TiquetesDAOImplements();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1fbd831a0e8abe952df35ae620e97d2f32771dc0
     @FXML
     private TableView<Tiquetes> tblRemoveTiq;
     @FXML
@@ -59,7 +65,9 @@ public class VerEliminarTiqueteClienteController implements Initializable {
     @FXML
     private TableColumn<Tiquetes, String> columStatee;
     @FXML
-    private TextField txtBuscar;
+    private TextField txt_Search;
+    @FXML
+    private Button btnEliminar;
 
     /**
      * Initializes the controller class.
@@ -70,7 +78,21 @@ public class VerEliminarTiqueteClienteController implements Initializable {
         columDescription.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         columStatee.setCellValueFactory(new PropertyValueFactory<>("estado"));
         columPriority.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
+<<<<<<< HEAD
 
+=======
+        // TODO
+          CargarDatos("");
+           btnEliminar.setVisible(false);
+    
+    }
+     private void CargarDatos(String busqueda) {
+         
+        tblRemoveTiq.getItems().clear();
+        tblRemoveTiq.setItems(h.TiquetesClientes(busqueda));
+         btnEliminar.setVisible(false);
+    
+>>>>>>> 1fbd831a0e8abe952df35ae620e97d2f32771dc0
     }
 
     private void TiquetesMenu(String Vista, String Titulo) {
@@ -89,11 +111,44 @@ public class VerEliminarTiqueteClienteController implements Initializable {
             System.out.println("Error");
         }
     }
+<<<<<<< HEAD
 
     private int Data() {
+=======
+>>>>>>> 1fbd831a0e8abe952df35ae620e97d2f32771dc0
 
-        String sql = "SELECT Correo FROM sql10218899.UsuarioActual";
+//    private int Data() {
+//
+//        String sql = "SELECT Correo FROM sql10218899.UsuarioActual";
+//
+//        String datos = " ";
+//        int ce = 0;
+//        try {
+//            Statement st = connection.createStatement();
+//            ResultSet rs = st.executeQuery(sql);
+//            if (rs != null) {
+//                while (rs.next()) {
+//                    datos = rs.getString(2);
+//                }
+//
+//                String query = "{UsuarioActualClientes ActualizarCliente(" + datos + ")}";
+//                Statement st2 = connection.createStatement();
+//                ResultSet rs2 = st.executeQuery(sql);
+//                if (rs != null) {
+//                    ce = Integer.parseInt(query);
+//                }
+//
+//            } else {
+//
+//            }
+//
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//        return ce;
+//    }
 
+<<<<<<< HEAD
         String datos = " ";
         int ce = 0;
         try {
@@ -121,6 +176,8 @@ public class VerEliminarTiqueteClienteController implements Initializable {
         return ce;
     }
 
+=======
+>>>>>>> 1fbd831a0e8abe952df35ae620e97d2f32771dc0
     @FXML
     private void Tik_BarRegist(ActionEvent event) {
         TiquetesMenu("CrearTiquete", "Ticket");
@@ -141,4 +198,33 @@ public class VerEliminarTiqueteClienteController implements Initializable {
         TiquetesMenu("MenuCliente", "Menu");
     }
 
+<<<<<<< HEAD
+=======
+    @FXML
+    private void Seleccionar(MouseEvent event) {
+        Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
+        if(cliente != null){
+            btnEliminar.setVisible(true);
+        }else{
+            btnEliminar.setVisible(false);
+        }
+    }
+
+    @FXML
+    private void busqueda(KeyEvent event) {
+        CargarDatos(txt_Search.getText());
+    }
+
+    @FXML
+    private void Eliminar(ActionEvent event) {
+         Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
+        if(cliente != null){
+            h.eliminar(cliente.getID_Tiquete());
+           CargarDatos("");
+       }
+       btnEliminar.setVisible(false);
+   
+    }
+
+>>>>>>> 1fbd831a0e8abe952df35ae620e97d2f32771dc0
 }

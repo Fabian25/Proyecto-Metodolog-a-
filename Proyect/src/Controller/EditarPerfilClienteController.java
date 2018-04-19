@@ -95,8 +95,6 @@ public class EditarPerfilClienteController implements Initializable {
          infClient.setTelefono(Integer.parseInt(txtCPhoneNum.getText()));
          infClient.setCorreo(txtCEmail.getText());
 
-
-
     }
 
 }

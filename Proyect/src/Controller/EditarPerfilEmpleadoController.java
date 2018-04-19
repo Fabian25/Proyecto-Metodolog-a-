@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -51,6 +52,10 @@ public class EditarPerfilEmpleadoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        txt_Name.setText(LoginController.infEmpleado.getNombre());
+        txt_LastName.setText(LoginController.infEmpleado.getApellido());
+        txt_Phone.setText(Integer.toString(LoginController.infEmpleado.getTelefono()));
+      
     }
 
     private void CargarVistas(String Vista, String Titulo) {
@@ -90,6 +95,13 @@ public class EditarPerfilEmpleadoController implements Initializable {
         infEmpleado.setNombre(txt_Name.getText());
         infEmpleado.setApellido(txt_LastName.getText());
         infEmpleado.setTelefono(Integer.parseInt(txt_Phone.getText()));
+        
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Confirmation");
+                            alert.setHeaderText(null);
+                            alert.setContentText("The data has been updated");
+                            alert.showAndWait();
+      
     }
 
 }
