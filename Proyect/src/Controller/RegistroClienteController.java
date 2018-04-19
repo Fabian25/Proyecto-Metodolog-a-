@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -73,6 +74,10 @@ public class RegistroClienteController implements Initializable {
     private TableColumn<Clientes, String> columEmail;
     @FXML
     private Button btnADD;
+    @FXML
+    private TextField txtBuscar;
+    @FXML
+    private ComboBox<String> SelectEmp;
 
     /**
      * Initializes the controller class.
@@ -84,6 +89,7 @@ public class RegistroClienteController implements Initializable {
         columID.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         columPhone.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+        CargarDatosCombo();
 
 //        CargarDatos();
     }
@@ -92,8 +98,14 @@ public class RegistroClienteController implements Initializable {
 
 //        tbClientes.getItems().clear();
 //        tbClientes.setItems(h.Clientes());     
-        Clientes.add(new Clientes(0, "EMP-001", Integer.parseInt(txtCIDnum.getText()), txtCName.getText(), txtCLastNmae.getText(), 0, txtCEmail.getText(), "0000", btnADD));
+        Clientes.add(new Clientes(0, SelectEmp.getSelectionModel().getSelectedItem(), Integer.parseInt(txtCIDnum.getText()), txtCName.getText(), txtCLastNmae.getText(),
+                Integer.parseInt(txtCPhoneNum.getText()), txtCEmail.getText(), "", btnADD));
         tbClientes.setItems(Clientes);
+    }
+
+    private void CargarDatosCombo() {
+        SelectEmp.getItems().clear();
+        SelectEmp.setItems(h.AsigEmpresas());
     }
 
     private void ClientesMenu(String Vista, String Titulo) {
@@ -102,7 +114,7 @@ public class RegistroClienteController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -280,7 +292,7 @@ public class RegistroClienteController implements Initializable {
 //        }
 //        if (flag) {
 //        }
-        h.registrarStorage(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
+        h.registrarStorage(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText(), SelectEmp.getSelectionModel().getSelectedItem());
         CargarDatos();
         //agrega a nivel de base de datos pero no a tabla
         txtCName.setText("");
@@ -288,7 +300,7 @@ public class RegistroClienteController implements Initializable {
         txtCIDnum.setText("");
         txtCPhoneNum.setText("");
         txtCEmail.setText("");
-
+        SelectEmp.getSelectionModel().select(null);
     }
 
 }

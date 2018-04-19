@@ -32,7 +32,9 @@ public interface IClienteDAO {
     public void ActualizarInfClient(String txtCName, String txtCLastNmae, String txtCPhoneNum, String txtCEmail, int Cedula);
 
     public ObservableList<Clientes> Clientes(String busqueda);
+    
+    public ObservableList<String> AsigEmpresas();
 
-    public void registrarStorage(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail);
+    public void registrarStorage(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail, String EmpresaAsociar);
 
 }

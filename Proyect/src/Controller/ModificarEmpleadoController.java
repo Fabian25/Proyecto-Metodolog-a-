@@ -254,36 +254,58 @@ public class ModificarEmpleadoController implements Initializable {
 
     @FXML
     private void BusquedaName(KeyEvent event) {
-        CargarDatos(BusquedaEName.getText(), 2);
+        if (BusquedaEName.getText().equals("")) {
+            txtBusqueda.setDisable(false);
+        } else {
+            txtBusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaEName.getText(), 3);
         txtBusqueda.setText("");
-        txtBusqueda.setDisable(true);
+
     }
 
     @FXML
     private void BusquedaApellido(KeyEvent event) {
-        CargarDatos(BusquedaEApellido.getText(), 3);
+        if (BusquedaEApellido.getText().equals("")) {
+            txtBusqueda.setDisable(false);
+        } else {
+            txtBusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaEApellido.getText(), 4);
         txtBusqueda.setText("");
-        txtBusqueda.setDisable(true);
+
     }
 
     @FXML
     private void BusquedaID(KeyEvent event) {
-        CargarDatos(BusquedaEID.getText(), 4);
+        if (BusquedaEID.getText().equals("")) {
+            txtBusqueda.setDisable(false);
+        } else {
+            txtBusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaEID.getText(), 2);
         txtBusqueda.setText("");
-        txtBusqueda.setDisable(true);
     }
 
     @FXML
     private void BusquedaTelefono(KeyEvent event) {
+        if (BusquedaETel.getText().equals("")) {
+            txtBusqueda.setDisable(false);
+        } else {
+            txtBusqueda.setDisable(true);
+        }
         CargarDatos(BusquedaETel.getText(), 5);
         txtBusqueda.setText("");
-        txtBusqueda.setDisable(true);
     }
 
     @FXML
     private void BusquedaCorreo(KeyEvent event) {
+        if (BusquedaECorreo.getText().equals("")) {
+            txtBusqueda.setDisable(false);
+        } else {
+            txtBusqueda.setDisable(true);
+        }
         CargarDatos(BusquedaECorreo.getText(), 6);
         txtBusqueda.setText("");
-        txtBusqueda.setDisable(true);
     }
 }

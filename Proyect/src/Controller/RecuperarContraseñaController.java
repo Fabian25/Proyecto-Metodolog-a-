@@ -36,7 +36,8 @@ import javax.swing.JOptionPane;
  * @author erick
  */
 public class RecuperarContraseñaController implements Initializable {
-Preguntas pregunta = new Preguntas();
+
+    Preguntas pregunta = new Preguntas();
 
     @FXML
     private ChoiceBox<String> cbxPregunta;
@@ -45,22 +46,18 @@ Preguntas pregunta = new Preguntas();
     @FXML
     private Button btnConfirmP;
     @FXML
-    private Label txtCaptcha;
+    private TextField txtCaptcha;
     @FXML
-    private TextField lblCaptcha;
+    private Label lblCaptcha;
     @FXML
     private Button btn_Back;
-    @FXML
-    private TextField NewPassword;
-    @FXML
-    private TextField NewPasswordl;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        txtCaptcha.setText(randomString(6));
+        lblCaptcha.setText(randomString(6));
 //        cbxPregunta.getItems().add(1, "How old are you?");
 //        cbxPregunta.getItems().add(2,"What is your favorite band?");
 //        cbxPregunta.getItems().add(3, "Who is the best player in the world?");
@@ -102,7 +99,7 @@ Preguntas pregunta = new Preguntas();
         GeneralDAOImplements h = new GeneralDAOImplements();
         if (txtCaptcha.getText().equals(lblCaptcha.getText())) {
             JOptionPane.showMessageDialog(null, "Correcto");
-           h.RecuperarContrasena(correo);
+            h.RecuperarContrasena(correo);
         } else {
             lblCaptcha.setText(randomString(6));
             txtCaptcha.setText("");

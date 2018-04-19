@@ -28,7 +28,6 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     PreparedStatement preparedStatement = null;
     Connection connection = BaseDatos.Conexion.getConnection();
-   
 
     private boolean ExisteCedula(String ced) {
 
@@ -295,7 +294,7 @@ public class ClienteDAOImplements implements IClienteDAO {
     }
 
     @Override
-    public void registrarStorage(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail) {
+    public void registrarStorage(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail, String EmpresaAsociar) {
 
         int Cod = GenerarCodigo();
 
@@ -319,7 +318,7 @@ public class ClienteDAOImplements implements IClienteDAO {
                 stmt.setInt(6, Cod);
                 stmt.setString(7, txtCPhoneNum);
                 stmt.setInt(8, 1);
-                stmt.setString(9, "ENT-001");
+                stmt.setString(9, EmpresaAsociar);
 
                 stmt.executeQuery();
             } catch (SQLException ex) {
@@ -335,10 +334,10 @@ public class ClienteDAOImplements implements IClienteDAO {
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, "
-                + "Telefono, Correo from Clientes where Correo = '" + txt_Usuario + "' And Contraseña = '"
-                + txt_Contrasena + "'");
+                    + "Telefono, Correo from Clientes where Correo = '" + txt_Usuario + "' And Contraseña = '"
+                    + txt_Contrasena + "'");
             while (rs.next()) {
-             Cliente = new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X"));
+                Cliente = new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X"));
             }
         } catch (SQLException ex) {
 
@@ -348,7 +347,7 @@ public class ClienteDAOImplements implements IClienteDAO {
 
     @Override
     public void ActualizarInfClient(String txtCName, String txtCLastNmae, String txtCPhoneNum, String txtCEmail, int Cedula) {
-         String query = "{CALL ActualizarInfCl(?, ?, ?, ?, ?)}";
+        String query = "{CALL ActualizarInfCl(?, ?, ?, ?, ?)}";
         try {
             CallableStatement stmt = connection.prepareCall(query);
             stmt.setString(1, txtCName);
@@ -360,5 +359,20 @@ public class ClienteDAOImplements implements IClienteDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @Override
+    public ObservableList<String> AsigEmpresas() {
+        ObservableList<String> Empresa = FXCollections.observableArrayList();
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("Select idEmpresa from Empresa where Activo = 1");
+            while (rs.next()) {
+                Empresa.add(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return Empresa;
     }
 }

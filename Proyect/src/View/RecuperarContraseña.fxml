@@ -28,7 +28,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label fx:id="txtCaptcha" layoutX="745.0" layoutY="120.0" prefHeight="53.0" prefWidth="184.0" textFill="WHITE">
+      <Label fx:id="lblCaptcha" layoutX="736.0" layoutY="203.0" prefHeight="53.0" prefWidth="184.0" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
@@ -43,7 +43,7 @@
             </Lighting>
          </effect>
       </Label>
-      <TextField fx:id="lblCaptcha" layoutX="715.0" layoutY="212.0" onAction="#P_Captcha" prefHeight="34.0" prefWidth="258.0" />
+      <TextField fx:id="txtCaptcha" layoutX="708.0" layoutY="301.0" onAction="#P_Captcha" prefHeight="34.0" prefWidth="258.0" />
       <Button fx:id="btn_Back" layoutX="40.0" layoutY="473.0" mnemonicParsing="false" onMouseClicked="#c_back" prefHeight="45.0" prefWidth="99.0" text="Back">
          <effect>
             <Blend />

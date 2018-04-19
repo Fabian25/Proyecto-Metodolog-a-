@@ -42,10 +42,7 @@ public class VerEliminarTiqueteClienteController implements Initializable {
     PreparedStatement preparedStatement = null;
     Connection connection = BaseDatos.Conexion.getConnection();
     TiquetesDAOImplements h = new TiquetesDAOImplements();
-<<<<<<< HEAD
-=======
 
->>>>>>> 1fbd831a0e8abe952df35ae620e97d2f32771dc0
     @FXML
     private TableView<Tiquetes> tblRemoveTiq;
     @FXML
@@ -78,21 +75,17 @@ public class VerEliminarTiqueteClienteController implements Initializable {
         columDescription.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         columStatee.setCellValueFactory(new PropertyValueFactory<>("estado"));
         columPriority.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
-<<<<<<< HEAD
-
-=======
         // TODO
-          CargarDatos("");
-           btnEliminar.setVisible(false);
-    
+        CargarDatos("");
+        btnEliminar.setVisible(false);
+
     }
-     private void CargarDatos(String busqueda) {
-         
+
+    private void CargarDatos(String busqueda) {
+
         tblRemoveTiq.getItems().clear();
         tblRemoveTiq.setItems(h.TiquetesClientes(busqueda));
-         btnEliminar.setVisible(false);
-    
->>>>>>> 1fbd831a0e8abe952df35ae620e97d2f32771dc0
+        btnEliminar.setVisible(false);
     }
 
     private void TiquetesMenu(String Vista, String Titulo) {
@@ -111,15 +104,12 @@ public class VerEliminarTiqueteClienteController implements Initializable {
             System.out.println("Error");
         }
     }
-<<<<<<< HEAD
 
     private int Data() {
-=======
->>>>>>> 1fbd831a0e8abe952df35ae620e97d2f32771dc0
 
 //    private int Data() {
 //
-//        String sql = "SELECT Correo FROM sql10218899.UsuarioActual";
+        String sql = "SELECT Correo FROM sql10218899.UsuarioActual";
 //
 //        String datos = " ";
 //        int ce = 0;
@@ -148,7 +138,6 @@ public class VerEliminarTiqueteClienteController implements Initializable {
 //        return ce;
 //    }
 
-<<<<<<< HEAD
         String datos = " ";
         int ce = 0;
         try {
@@ -176,8 +165,6 @@ public class VerEliminarTiqueteClienteController implements Initializable {
         return ce;
     }
 
-=======
->>>>>>> 1fbd831a0e8abe952df35ae620e97d2f32771dc0
     @FXML
     private void Tik_BarRegist(ActionEvent event) {
         TiquetesMenu("CrearTiquete", "Ticket");
@@ -198,14 +185,12 @@ public class VerEliminarTiqueteClienteController implements Initializable {
         TiquetesMenu("MenuCliente", "Menu");
     }
 
-<<<<<<< HEAD
-=======
     @FXML
     private void Seleccionar(MouseEvent event) {
         Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
-        if(cliente != null){
+        if (cliente != null) {
             btnEliminar.setVisible(true);
-        }else{
+        } else {
             btnEliminar.setVisible(false);
         }
     }
@@ -217,14 +202,13 @@ public class VerEliminarTiqueteClienteController implements Initializable {
 
     @FXML
     private void Eliminar(ActionEvent event) {
-         Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
-        if(cliente != null){
+        Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
+        if (cliente != null) {
             h.eliminar(cliente.getID_Tiquete());
-           CargarDatos("");
-       }
-       btnEliminar.setVisible(false);
-   
+            CargarDatos("");
+        }
+        btnEliminar.setVisible(false);
+
     }
 
->>>>>>> 1fbd831a0e8abe952df35ae620e97d2f32771dc0
 }
