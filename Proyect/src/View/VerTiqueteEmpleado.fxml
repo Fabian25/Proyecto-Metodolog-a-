@@ -25,7 +25,6 @@
       </TableView>
       <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="1264.0">
          <menus>
-            <Menu mnemonicParsing="false" />
             <Menu mnemonicParsing="false">
                <graphic>
                   <Button fx:id="BarViewTickets" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#Tik_BarView" scaleShape="false" text="View Tickets">
@@ -33,12 +32,6 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-               </graphic>
-            </Menu>
-            <Menu mnemonicParsing="false" />
-            <Menu mnemonicParsing="false">
-               <graphic>
-                  <Button fx:id="BarProcessTickets" mnemonicParsing="false" onAction="#Tik_BarProcess" text="Process Tickets" />
                </graphic>
             </Menu>
             <Menu mnemonicParsing="false">
