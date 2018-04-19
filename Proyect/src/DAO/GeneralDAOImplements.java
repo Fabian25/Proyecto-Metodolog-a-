@@ -5,13 +5,14 @@
  */
 package DAO;
 
-
 import IDAO.IGeneral;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
@@ -20,93 +21,79 @@ import javax.swing.JOptionPane;
  *
  * @author jose
  */
-public class GeneralDAOImplements implements IGeneral{
- Connection connection = BaseDatos.Conexion.getConnection();
-    
+public class GeneralDAOImplements implements IGeneral {
+
+    Connection connection = BaseDatos.Conexion.getConnection();
+
     @Override
-    public void LogIn(TextField txtuser, PasswordField txtpass) {
-        int Type = 0;
-        if (txtuser.getText().length() == 0 || txtpass.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
-        } else {
-            
-            String pass = new String(txtpass.getText());
-            String sql = "SELECT * FROM Persona p where p.Correo = " + txtuser.getText() + " and p.Contraseña = '" + pass + "';";
-            String[] datos = new String[10];
-            try {
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    datos[0] = rs.getString(4);//correo
-                    datos[1] = rs.getString(6);//contraseña
-                    datos[2] = rs.getString(10);//tipoPersona
+    public void RecuperarContrasena(String txtuser) {
+        PreparedStatement preparedStatement;
+        boolean x = false;
+        String sql = "SELECT Employees.Cedula FROM Employees WHERE Employees.Correo =? ;" ;
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+             preparedStatement.setString(1,txtuser);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                x = true;
+                String query = "{CALL RecuperarContraseñaEmp(?)}";
+                try {
+                    CallableStatement stmt = connection.prepareCall(query);
+                    stmt.setInt(1, resultSet.getInt(1));
+
+                    stmt.executeQuery();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
                 }
-                if (datos[0] != null) {
-                    if (datos[0].equals(txtuser.getText()) && datos[1].equals(pass)) {
-                        Type = Integer.parseInt(datos[2]);
-                        switch (Type) {
-                            case 1: {
-                                //View.MenuAdmin admin= new View.MenuAdmin();
-                                // admin.setLocationRelativeTo(null);
-                                // admin.setVisible(true);
-                                //Login.dispose();
-                                break;
-                            }
-                            case 2: {
-                                //View.MenuClient  client= new View.MenuClient ();
-                                //client.setLocationRelativeTo(null);
-                                //client.setVisible(true);
-                                //Login.dispose();
-                                break;
-                            }
-                            case 3: {
-                                //View.MenuEmployee employee= new View.MenuEmployee  ();
-                                //employee.setLocationRelativeTo(null);
-                                //employee.setVisible(true);
-                                //Login.dispose();
-                                break;
-                            }
-                        }
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Wrong User or password");
-                }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
             }
+
+        } catch (SQLException e) {
+            System.out.println(e);
         }
-    }
-    @Override
-    public void RecuperarContrasena(TextField txtuser) {
-        if (txtuser.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Please do not left empty textfields");
-        } else {
-           
-            String sql = "SELECT * FROM Persona p where p.Correo = " + txtuser.getText() + "';";
-            String[] datos = new String[10];
+
+        if (x == false) {
+            sql = "SELECT Cedula FROM Clientes WHERE Correo =?;";
             try {
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    datos[0] = rs.getString(4);//correo
-                    datos[2] = rs.getString(10);//tipoPersona
+                preparedStatement = connection.prepareStatement(sql);
+                  preparedStatement.setString(1,txtuser);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                  while (resultSet.next()) {
+                x = true;
+                String query = "{CALL RecuperarContraseñaClientes(?)}";
+                try {
+                    CallableStatement stmt = connection.prepareCall(query);
+                    stmt.setInt(1,  resultSet.getInt(1));
+
+                    stmt.executeQuery();
+
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
                 }
-                if (datos[0] != null) {
-                    if (datos[0].equals(txtuser.getText())) {
-                        ActualizarContrasena(txtuser.getText());
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Wrong Username");
-                }
+            }
             } catch (SQLException ex) {
-                ex.printStackTrace();
+
+            }
+            if (x==false) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                            alert.setTitle("Error");
+                            alert.setHeaderText(null);
+                            alert.setContentText("EMAIL NOT EXIST");
+                            alert.showAndWait();
+            }else{
+              Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("New Password");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Your new password is: Nuevo123*");
+                            alert.showAndWait();
             }
         }
 
     }
+
     @Override
     public void ActualizarContrasena(String correo) {
-        
+
         String Update = "UPDATE Personas\n"
                 + "SET Contraseña = nuevo123*\n"
                 + "WHERE Correo = " + correo + ";";

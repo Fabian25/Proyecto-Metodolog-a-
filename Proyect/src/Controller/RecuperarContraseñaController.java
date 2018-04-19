@@ -5,9 +5,14 @@
  */
 package Controller;
 
+import static Controller.LoginController.correo;
+import DAO.GeneralDAOImplements;
 import Model.Preguntas;
 import java.net.URL;
 import java.security.SecureRandom;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -32,6 +37,7 @@ import javax.swing.JOptionPane;
  */
 public class RecuperarContraseñaController implements Initializable {
 Preguntas pregunta = new Preguntas();
+
     @FXML
     private ChoiceBox<String> cbxPregunta;
     @FXML
@@ -54,7 +60,7 @@ Preguntas pregunta = new Preguntas();
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        txtCaptcha.setText(randomString(6));
+//        txtCaptcha.setText(randomString(6));
 //        cbxPregunta.getItems().add(1, "How old are you?");
 //        cbxPregunta.getItems().add(2,"What is your favorite band?");
 //        cbxPregunta.getItems().add(3, "Who is the best player in the world?");
@@ -93,8 +99,10 @@ Preguntas pregunta = new Preguntas();
 
     @FXML
     private void P_Confirm(ActionEvent event) {
+        GeneralDAOImplements h = new GeneralDAOImplements();
         if (txtCaptcha.getText().equals(lblCaptcha.getText())) {
             JOptionPane.showMessageDialog(null, "Correcto");
+           h.RecuperarContrasena(correo);
         } else {
             lblCaptcha.setText(randomString(6));
             txtCaptcha.setText("");

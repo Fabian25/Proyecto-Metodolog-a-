@@ -279,42 +279,10 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             ResultSet rs = st.executeQuery("Select Codigo from Clientes where Correo = '" + txt_Usuario);
             while (rs.next()) {
                Cliente = new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6),  rs.getInt(7),  rs.getInt(8));
-            // Cliente = new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X"));
             }
         } catch (SQLException ex) {
-
         }
-<<<<<<< HEAD
-
-
-//        try {
-
-//  try {
-
-=======
-
->>>>>>> 64c8b7a20c23f279b50dcfc766f4f40a4981217d
-//            Statement st = connection.createStatement();
-//            ResultSet rs = st.executeQuery("Select Codigo from Clientes where Correo = '" + txt_Usuario);
-//            while (rs.next()) {
-//               Cliente = new Tiquetes
-//            // Cliente = new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X"));
-//            }
-<<<<<<< HEAD
-//        } catch (SQLException ex) {
-//
-//        }
-
-
         return Cliente;
-
-    
-
-=======
-
-        return Cliente;
-
->>>>>>> 64c8b7a20c23f279b50dcfc766f4f40a4981217d
     }
 
 }

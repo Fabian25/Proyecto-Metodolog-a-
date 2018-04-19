@@ -16,8 +16,8 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <ChoiceBox fx:id="cbxPregunta" layoutX="46.0" layoutY="129.0" onMouseClicked="#Cpregunta" prefHeight="34.0" prefWidth="342.0" />
-      <TextField fx:id="txtRespuesta" layoutX="46.0" layoutY="212.0" prefHeight="34.0" prefWidth="342.0" promptText="Answer" />
+      <ChoiceBox fx:id="cbxPregunta" layoutX="46.0" layoutY="212.0" onMouseClicked="#Cpregunta" prefHeight="34.0" prefWidth="342.0" />
+      <TextField fx:id="txtRespuesta" layoutX="46.0" layoutY="301.0" prefHeight="34.0" prefWidth="342.0" promptText="Answer" />
       <Button fx:id="btnConfirmP" layoutX="217.0" layoutY="473.0" mnemonicParsing="false" onAction="#P_Confirm" prefHeight="45.0" prefWidth="144.0" text="Confirm">
          <effect>
             <Blend />
@@ -49,7 +49,5 @@
             <Blend />
          </effect>
       </Button>
-      <TextField id="Contra" fx:id="NewPassword" layoutX="46.0" layoutY="294.0" prefHeight="31.0" prefWidth="342.0" promptText="New Password" />
-      <TextField id="ContraAgain" fx:id="NewPasswordl" layoutX="46.0" layoutY="354.0" prefHeight="31.0" prefWidth="342.0" promptText="New Password" />
    </children>
 </AnchorPane>
