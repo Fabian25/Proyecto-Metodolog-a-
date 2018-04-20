@@ -114,7 +114,7 @@ public class ClienteDAOImplements implements IClienteDAO {
                     preparedStatement.setString(2, txtCName);
                     preparedStatement.setString(3, txtCLastNmae);
                     preparedStatement.setString(4, txtCEmail);
-                    preparedStatement.setString(5, "Nuevo123$");
+                    preparedStatement.setString(5, "e5759cf1f053647a18c87a211b3e4750");
                     preparedStatement.setInt(6, Cod);
                     preparedStatement.setString(7, txtCPhoneNum);
                     preparedStatement.setInt(8, 1);
@@ -333,7 +333,7 @@ public class ClienteDAOImplements implements IClienteDAO {
                 stmt.setString(2, txtCName);
                 stmt.setString(3, txtCLastNmae);
                 stmt.setString(4, txtCEmail);
-                stmt.setString(5, "Nuevo123$");
+                stmt.setString(5, "e5759cf1f053647a18c87a211b3e4750");
                 stmt.setInt(6, Cod);
                 stmt.setString(7, txtCPhoneNum);
                 stmt.setInt(8, 1);
