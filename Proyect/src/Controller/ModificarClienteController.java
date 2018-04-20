@@ -63,7 +63,6 @@ public class ModificarClienteController implements Initializable {
     private TableColumn<Clientes, String> columPhoneNumber;
     @FXML
     private TableColumn<Clientes, String> columEmail;
-    private TableColumn<Clientes, String> columEdit;
     @FXML
     private TableView<Clientes> tblEditClient;
     @FXML
@@ -111,7 +110,6 @@ public class ModificarClienteController implements Initializable {
         columId.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         columPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
-        columEdit.setCellValueFactory(new PropertyValueFactory<>("button"));
         CargarDatos("", 0);
     }
 

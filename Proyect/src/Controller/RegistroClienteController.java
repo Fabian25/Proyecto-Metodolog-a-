@@ -5,9 +5,14 @@
  */
 package Controller;
 
+import static Controller.LoginController.infEmpleado;
 import DAO.ClienteDAOImplements;
 import Model.Clientes;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,6 +42,7 @@ import javafx.stage.StageStyle;
  */
 public class RegistroClienteController implements Initializable {
 
+    Connection connection = BaseDatos.Conexion.getConnection();
     Clientes cliente = new Clientes();
     ClienteDAOImplements h = new ClienteDAOImplements();
     ObservableList<Clientes> Clientes = FXCollections.observableArrayList();
@@ -193,7 +199,9 @@ public class RegistroClienteController implements Initializable {
     }
 
     private boolean validaID() {
-
+        if (ExisteID()==true) {
+            return false;
+        }
         Pattern p = Pattern.compile("[0-9]{7}");
         Matcher m = p.matcher(txtCIDnum.getText());
         if (m.find() && m.group().equals(txtCIDnum.getText())) {
@@ -210,6 +218,9 @@ public class RegistroClienteController implements Initializable {
     }
 
     private boolean validateEmaill() {
+        if (ExisteCorreo()==true) {
+            return false;
+        }
         Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
         Matcher m = p.matcher(txtCEmail.getText());
         if (m.find() && m.group().equals(txtCEmail.getText())) {
@@ -244,7 +255,7 @@ public class RegistroClienteController implements Initializable {
     @FXML
     private void C_addCl(ActionEvent event) {
         boolean todoBien = false;
-        if (validaNombre() == true && validaApellido() == true && validateEmaill() == true && validaTelefono() == true) {
+        if (validaNombre() == true && validaApellido() == true && validateEmaill() == true && validaTelefono() == true && validaID() == true) {
             todoBien = true;
         }
         if (todoBien) {
@@ -256,6 +267,11 @@ public class RegistroClienteController implements Initializable {
             txtCPhoneNum.setText("");
             txtCEmail.setText("");
             SelectEmp.getSelectionModel().select(null);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Completed!");
+            alert.showAndWait();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Error");
@@ -273,6 +289,48 @@ public class RegistroClienteController implements Initializable {
 
     }
 
+    public boolean ExisteID() {
+        PreparedStatement preparedStatement;
+        boolean yeah=false;
+        String sql = "SELECT Cedula FROM Clientes WHERE Cedula =" + txtCIDnum.getText() + ";";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                if (resultSet.getInt(1) == 1) {
+                   yeah= true;
+                } else {
+                    return false;
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return yeah;
+    }
+   public boolean ExisteCorreo() {
+        PreparedStatement preparedStatement;
+        boolean yeah=false;
+        String sql = "SELECT Correo FROM Clientes WHERE Correo =" + txtCEmail.getText() + ";";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                if (resultSet.getInt(1) == 1) {
+                   yeah= true;
+                } else {
+                    return false;
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return yeah;
+    }
     @FXML
     private void Buscar(KeyEvent event) {
     }

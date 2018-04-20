@@ -8,6 +8,10 @@ package Controller;
 import DAO.EmpleadoDAOImplements;
 import Model.Empleados;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,7 +40,7 @@ import javafx.stage.StageStyle;
  * @author ALONSITO
  */
 public class RegistroEmpleadoController implements Initializable {
-
+Connection connection = BaseDatos.Conexion.getConnection();
     @FXML
     private Button btnADD;
     @FXML
@@ -174,6 +178,9 @@ public class RegistroEmpleadoController implements Initializable {
      
      
     private boolean validaID() {
+        if (ExisteID()==true){
+            return false;
+        }
         Pattern p = Pattern.compile("[0-9]{9}");
         Matcher m = p.matcher(txt_ID.getText());
         if (m.find() && m.group().equals(txt_ID.getText())) {
@@ -190,6 +197,9 @@ public class RegistroEmpleadoController implements Initializable {
     }
 
     private boolean validateEmaill() {
+        if (ExisteCorreo()==true){
+            return false;
+        }
         Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
         Matcher m = p.matcher(txt_Email.getText());
         if (m.find() && m.group().equals(txt_Email.getText())) {
@@ -267,7 +277,52 @@ public class RegistroEmpleadoController implements Initializable {
     private void Busqueda(KeyEvent event) {
     }
 
+    @FXML
+    private void c_add(MouseEvent event) {
+    }
 
+    public boolean ExisteID() {
+        PreparedStatement preparedStatement;
+        boolean yeah=false;
+        String sql = "SELECT Cedula FROM Employees WHERE Cedula =" +txt_ID.getText() + ";";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                if (resultSet.getInt(1) == 1) {
+                   yeah= true;
+                } else {
+                    return false;
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return yeah;
+    }
+   public boolean ExisteCorreo() {
+        PreparedStatement preparedStatement;
+        boolean yeah=false;
+        String sql = "SELECT Correo FROM Clientes WHERE Correo =" + txt_Email.getText() + ";";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                if (resultSet.getInt(1) == 1) {
+                   yeah= true;
+                } else {
+                    return false;
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return yeah;
+    }
     
     
 }
