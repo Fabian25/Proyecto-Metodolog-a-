@@ -204,7 +204,7 @@ public class AsignarTiquetesController implements Initializable {
         } else {
             txt_BuscarT.setDisable(true);
         }
-        CargarDatos(BusquedaTPrio.getText(), 1);
+        CargarDatos(BusquedaTPrio.getText(), 2);
         txt_BuscarT.setText("");
     }
 
@@ -226,7 +226,7 @@ public class AsignarTiquetesController implements Initializable {
         } else {
             txtbuscarE.setDisable(true);
         }
-        CargarDatos(BusquedaENombre.getText(), 1);
+        CargarDatos(BusquedaENombre.getText(), 4);
         txtbuscarE.setText("");
     }
 

@@ -65,6 +65,14 @@ public class VerEliminarTiqueteClienteController implements Initializable {
     private TextField txt_Search;
     @FXML
     private Button btnEliminar;
+    @FXML
+    private TextField BusquedaTSerie;
+    @FXML
+    private TextField BusquedaTPrio;
+    @FXML
+    private TextField BusquedaTDesc;
+    @FXML
+    private TextField BusquedaTEstado;
 
     /**
      * Initializes the controller class.
@@ -76,15 +84,15 @@ public class VerEliminarTiqueteClienteController implements Initializable {
         columStatee.setCellValueFactory(new PropertyValueFactory<>("estado"));
         columPriority.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
         // TODO
-        CargarDatos("");
+        CargarDatos("", 0);
         btnEliminar.setVisible(false);
 
     }
 
-    private void CargarDatos(String busqueda) {
+    private void CargarDatos(String busqueda, int Cond) {
 
         tblRemoveTiq.getItems().clear();
-        tblRemoveTiq.setItems(h.TiquetesClientes(busqueda));
+        tblRemoveTiq.setItems(h.TiquetesClientes(busqueda, Cond));
         btnEliminar.setVisible(false);
     }
 
@@ -197,7 +205,7 @@ public class VerEliminarTiqueteClienteController implements Initializable {
 
     @FXML
     private void busqueda(KeyEvent event) {
-        CargarDatos(txt_Search.getText());
+        CargarDatos(txt_Search.getText(), 0);
     }
 
     @FXML
@@ -205,10 +213,54 @@ public class VerEliminarTiqueteClienteController implements Initializable {
         Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
         if (cliente != null) {
             h.eliminar(cliente.getID_Tiquete());
-            CargarDatos("");
+            CargarDatos("", 0);
         }
         btnEliminar.setVisible(false);
 
+    }
+
+    @FXML
+    private void BusquedaSerie(KeyEvent event) {
+        if (BusquedaTSerie.getText().equals("")) {
+            txt_Search.setDisable(false);
+        } else {
+            txt_Search.setDisable(true);
+        }
+        CargarDatos(BusquedaTSerie.getText(), 1);
+        txt_Search.setText("");
+    }
+
+    @FXML
+    private void BusquedaPrioridad(KeyEvent event) {
+        if (BusquedaTPrio.getText().equals("")) {
+            txt_Search.setDisable(false);
+        } else {
+            txt_Search.setDisable(true);
+        }
+        CargarDatos(BusquedaTPrio.getText(), 2);
+        txt_Search.setText("");
+    }
+
+    @FXML
+    private void BusquedaDescripcion(KeyEvent event) {
+        if (BusquedaTDesc.getText().equals("")) {
+            txt_Search.setDisable(false);
+        } else {
+            txt_Search.setDisable(true);
+        }
+        CargarDatos(BusquedaTDesc.getText(), 3);
+        txt_Search.setText("");
+    }
+
+    @FXML
+    private void BusquedaEstado(KeyEvent event) {
+        if (BusquedaTEstado.getText().equals("")) {
+            txt_Search.setDisable(false);
+        } else {
+            txt_Search.setDisable(true);
+        }
+        CargarDatos(BusquedaTEstado.getText(), 4);
+        txt_Search.setText("");
     }
 
 }

@@ -20,10 +20,54 @@
       <Button layoutX="855.0" layoutY="393.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
       <TableView fx:id="tblEditEnterprices" layoutX="40.0" layoutY="211.0" onMouseClicked="#CargarEmpresa" prefHeight="313.0" prefWidth="761.0">
          <columns>
-            <TableColumn fx:id="tblCodeEnt" prefWidth="171.0" text="Code" />
-            <TableColumn fx:id="tblNameEnt" prefWidth="208.0" text="Name" />
-            <TableColumn fx:id="tblAcronymEnt" prefWidth="142.0" text="Acronym" />
-            <TableColumn fx:id="tblPhoneEnt" prefWidth="239.0" text="Phone Number" />
+            <TableColumn fx:id="tblCodeEnt" prefWidth="171.0" text="Code">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaEmCod" onKeyReleased="#BusquedaCodigo" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="tblNameEnt" prefWidth="208.0" text="Name">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaNombre" onKeyReleased="#BusquedaNombre" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="tblAcronymEnt" prefWidth="142.0" text="Acronym">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaEmAcr" onKeyReleased="#BusquedaAcronimo" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="tblPhoneEnt" prefWidth="239.0" text="Phone Number">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaEmTel" onKeyReleased="#BusquedaTelefono" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
          </columns>
       </TableView>
       <Button layoutX="855.0" layoutY="254.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Enterprise Name" />

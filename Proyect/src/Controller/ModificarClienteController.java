@@ -230,7 +230,7 @@ public class ModificarClienteController implements Initializable {
         } else {
             txtBuscar.setDisable(true);
         }
-        CargarDatos(BusquedaCNombre.getText(), 1);
+        CargarDatos(BusquedaCNombre.getText(), 4);
         txtBuscar.setText("");
     }
 
@@ -241,7 +241,7 @@ public class ModificarClienteController implements Initializable {
         } else {
             txtBuscar.setDisable(true);
         }
-        CargarDatos(BusquedaCAp.getText(), 1);
+        CargarDatos(BusquedaCAp.getText(), 5);
         txtBuscar.setText("");
     }
 
@@ -252,7 +252,7 @@ public class ModificarClienteController implements Initializable {
         } else {
             txtBuscar.setDisable(true);
         }
-        CargarDatos(BusquedaCCedula.getText(), 1);
+        CargarDatos(BusquedaCCedula.getText(), 3);
         txtBuscar.setText("");
     }
 
@@ -263,7 +263,7 @@ public class ModificarClienteController implements Initializable {
         } else {
             txtBuscar.setDisable(true);
         }
-        CargarDatos(BusquedaCTel.getText(), 1);
+        CargarDatos(BusquedaCTel.getText(), 6);
         txtBuscar.setText("");
     }
 
@@ -274,7 +274,7 @@ public class ModificarClienteController implements Initializable {
         } else {
             txtBuscar.setDisable(true);
         }
-        CargarDatos(BusquedaCCorreo.getText(), 1);
+        CargarDatos(BusquedaCCorreo.getText(), 7);
         txtBuscar.setText("");
     }
 }

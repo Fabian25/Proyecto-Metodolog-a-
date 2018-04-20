@@ -21,7 +21,7 @@ public interface IEmpresaDAO {
     
     public void Modificar(String txt_EntrepriceName, String txt_Acronym, String txt_Phone, String idEmpresa);
 
-    public ObservableList<Empresa> Empresa(String busqueda);
+    public ObservableList<Empresa> Empresa(String busqueda, int Cond);
     
      public void eliminar(String id);
 }

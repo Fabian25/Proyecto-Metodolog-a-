@@ -97,29 +97,13 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         }
         return Tiquetes;
     }
-    
-    
-      @Override
-    public ObservableList<Tiquetes> TiquetesClientes(String busqueda) {
-        ObservableList<Tiquetes> Tiquetes = FXCollections.observableArrayList();
-        try {
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(SQLTiquetesCliente(busqueda,infClient));
-            while (rs.next()) {
-               
-                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 0, 0, 0));
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error Cargar Tiquetes \n" + ex);
-        }
-        return Tiquetes;
-    }
+
     @Override
-     public ObservableList<Tiquetes> TiquetesEmpleado(String busqueda) {
+    public ObservableList<Tiquetes> TiquetesClientes(String busqueda, int Cond) {
         ObservableList<Tiquetes> Tiquetes = FXCollections.observableArrayList();
         try {
             Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(SQLTiquetesEmpleado(busqueda,infEmpleado));
+            ResultSet rs = st.executeQuery(SQLTiquetesCliente(busqueda, infClient, Cond));
             while (rs.next()) {
 
                 Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 0, 0, 0));
@@ -129,35 +113,89 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         }
         return Tiquetes;
     }
-    
-    private String SQLTiquetesCliente(String busqueda,Clientes info) {
-        if (busqueda.equals("")) {          
-            return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Clientes_Cedula = "+info.getCedula()+" And Activo = 1;";
-        }
-        return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And Clientes_Cedula = "+info.getCedula()+" And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
-                + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%' Or Solucion Like '%" + busqueda + "%');";
 
+    @Override
+    public ObservableList<Tiquetes> TiquetesEmpleado(String busqueda, int Cond) {
+        ObservableList<Tiquetes> Tiquetes = FXCollections.observableArrayList();
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(SQLTiquetesEmpleado(busqueda, infEmpleado, Cond));
+            while (rs.next()) {
+
+                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 0, 0, 0));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Cargar Tiquetes \n" + ex);
+        }
+        return Tiquetes;
     }
-    
+
+    private String SQLTiquetesCliente(String busqueda, Clientes info, int Cond) {
+        if (busqueda.equals("")) {
+            return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Clientes_Cedula = " + info.getCedula() + " And Activo = 1;";
+        } else {
+            switch (Cond) {
+                case 1:
+                    return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And Clientes_Cedula = " + info.getCedula() + " And (idTiquetes Like '%" + busqueda + "%')";
+                case 2:
+                    return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And Clientes_Cedula = " + info.getCedula() + " And (Prioridad_idPrioridad Like '%" + busqueda + "%')";
+                case 3:
+                    return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And Clientes_Cedula = " + info.getCedula() + " And (Descripcion Like '%" + busqueda + "%')";
+                case 4:
+                    return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And Clientes_Cedula = " + info.getCedula() + " And (Estado Like '%" + busqueda + "%')";
+                case 5:
+                    return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And Clientes_Cedula = " + info.getCedula() + " And (Solucion Like '%" + busqueda + "%')";
+                default:
+                    return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And Clientes_Cedula = " + info.getCedula() + " And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
+                            + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%' Or Solucion Like '%" + busqueda + "%');";
+            }
+        }
+    }
+
     private String SQLTiquetes(String busqueda, int Cond) {
-        if (busqueda.equals("")) {            
+        if (busqueda.equals("")) {
             return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1;";
-        }
-        return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
-                + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%' Or Solucion Like '%" + busqueda + "%')";
+        } else {
+            switch (Cond) {
+                case 1:
+                    return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%')";
+                case 2:
+                    return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And (Prioridad_idPrioridad Like '%" + busqueda + "%')";
+                case 3:
+                    return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And (Descripcion Like '%" + busqueda + "%')";
+                case 4:
+                    return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And (Estado Like '%" + busqueda + "%')";
+                case 5:
+                    return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And (Solucion Like '%" + busqueda + "%')";
+                default:
+                    return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
+                            + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%' Or Solucion Like '%" + busqueda + "%')";
+            }
 
-    }
-    
-      private String SQLTiquetesEmpleado(String busqueda,Empleados info) {
-        if (busqueda.equals("")) {        
-        return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = "+info.getCedula()+";";
         }
-        return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = "+info.getCedula()+ "And Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
-                + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%' Or Solucion Like '%" + busqueda + "%')";
-
     }
-    
-    
+
+    private String SQLTiquetesEmpleado(String busqueda, Empleados info, int Cond) {
+        if (busqueda.equals("")) {
+            return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = " + info.getCedula() + ";";
+        } else {
+            switch (Cond) {
+                case 1:
+                    return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = " + info.getCedula() + "And Activo = 1 And idTiquetes Like '%" + busqueda + "%')";
+                case 2:
+                    return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = " + info.getCedula() + "And Activo = 1 And (Prioridad_idPrioridad Like '%" + busqueda + "%')";
+                case 3:
+                    return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = " + info.getCedula() + "And Activo = 1 And (Descripcion Like '%" + busqueda + "%')";
+                case 4:
+                    return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = " + info.getCedula() + "And Activo = 1 And (Estado Like '%" + busqueda + "%')";
+                case 5:
+                    return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = " + info.getCedula() + "And Activo = 1 And (Solucion Like '%" + busqueda + "%')";
+                default:
+                    return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = " + info.getCedula() + "And Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
+                            + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%' Or Solucion Like '%" + busqueda + "%')";
+            }
+        }
+    }
 
     @Override
     public void EditarTiquetes(ComboBox<?> txt_Status, TextArea txt_description, Tiquetes t) {
@@ -165,9 +203,9 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         try {
             CallableStatement stmt = connection.prepareCall(query);
             stmt.setString(1, t.getID_Tiquete());
-              stmt.setString(2, txt_description.getText());
+            stmt.setString(2, txt_description.getText());
             stmt.setString(3, (String) txt_Status.getValue());
-          
+
             stmt.executeQuery();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -234,7 +272,6 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
     @Override
     public void eliminar(String id) {
         String query = "{CALL EliminarTiqutes(?)}";
@@ -263,13 +300,13 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 
     @Override
     public Tiquetes VerTiquetesCliente(String txt_Usuario) {
-     Tiquetes Cliente = null;
+        Tiquetes Cliente = null;
 
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("Select Codigo from Clientes where Correo = '" + txt_Usuario);
             while (rs.next()) {
-               Cliente = new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6),  rs.getInt(7),  rs.getInt(8));
+                Cliente = new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8));
             }
         } catch (SQLException ex) {
         }

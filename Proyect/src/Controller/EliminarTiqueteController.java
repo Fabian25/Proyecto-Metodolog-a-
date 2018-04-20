@@ -161,18 +161,46 @@ public class EliminarTiqueteController implements Initializable {
 
     @FXML
     private void BusquedaSerie(KeyEvent event) {
+        if (BusquedaTSerie.getText().equals("")) {
+            txt_Search.setDisable(false);
+        } else {
+            txt_Search.setDisable(true);
+        }
+        CargarDatos(BusquedaTSerie.getText(), 1);
+        txt_Search.setText("");
     }
 
     @FXML
     private void BusquedaPrioridad(KeyEvent event) {
+        if (BusquedaTPrio.getText().equals("")) {
+            txt_Search.setDisable(false);
+        } else {
+            txt_Search.setDisable(true);
+        }
+        CargarDatos(BusquedaTPrio.getText(), 2);
+        txt_Search.setText("");
     }
 
     @FXML
     private void BusquedaDescripcion(KeyEvent event) {
+        if (BusquedaTDesc.getText().equals("")) {
+            txt_Search.setDisable(false);
+        } else {
+            txt_Search.setDisable(true);
+        }
+        CargarDatos(BusquedaTDesc.getText(), 3);
+        txt_Search.setText("");
     }
 
     @FXML
     private void BusquedaEstado(KeyEvent event) {
+        if (BusquedaTEstado.getText().equals("")) {
+            txt_Search.setDisable(false);
+        } else {
+            txt_Search.setDisable(true);
+        }
+        CargarDatos(BusquedaTEstado.getText(), 4);
+        txt_Search.setText("");
     }
 
 }

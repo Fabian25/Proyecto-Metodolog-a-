@@ -52,10 +52,18 @@ public class VerEmpresaController implements Initializable {
     private TableColumn<Empresa, String> tblAcronymEnt;
     @FXML
     private TableColumn<Empresa, Integer> tblPhoneEnt;
-    
+
     EmpresaDAOImplements h = new EmpresaDAOImplements();
     @FXML
     private TextField txtbusqueda;
+    @FXML
+    private TextField BusquedaEmCod;
+    @FXML
+    private TextField BusquedaEmNom;
+    @FXML
+    private TextField BusquedaEmAcr;
+    @FXML
+    private TextField BusquedaEmTel;
 
     /**
      * Initializes the controller class.
@@ -67,12 +75,12 @@ public class VerEmpresaController implements Initializable {
         tblAcronymEnt.setCellValueFactory(new PropertyValueFactory<>("Acronimo"));
         tblPhoneEnt.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
 
-        CargarDatos("");
+        CargarDatos("", 0);
     }
-    
-    private void CargarDatos(String busqueda) {
+
+    private void CargarDatos(String busqueda, int Cond) {
         tblViewEnterprices.getItems().clear();
-        tblViewEnterprices.setItems(h.Empresa(busqueda));
+        tblViewEnterprices.setItems(h.Empresa(busqueda, Cond));
     }
 
     private void EmpresasMenu(String Vista, String Titulo) {
@@ -81,7 +89,7 @@ public class VerEmpresaController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -123,7 +131,51 @@ public class VerEmpresaController implements Initializable {
 
     @FXML
     private void Buscar(KeyEvent event) {
-        CargarDatos(txtbusqueda.getText());
+        CargarDatos(txtbusqueda.getText(), 0);
+    }
+
+    @FXML
+    private void BusquedaCodigo(KeyEvent event) {
+        if (BusquedaEmCod.getText().equals("")) {
+            txtbusqueda.setDisable(false);
+        } else {
+            txtbusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaEmCod.getText(), 1);
+        txtbusqueda.setText("");
+    }
+
+    @FXML
+    private void BusquedaNombre(KeyEvent event) {
+        if (BusquedaEmNom.getText().equals("")) {
+            txtbusqueda.setDisable(false);
+        } else {
+            txtbusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaEmNom.getText(), 1);
+        txtbusqueda.setText("");
+    }
+
+    @FXML
+    private void BusquedaAcronimo(KeyEvent event) {
+        if (BusquedaEmAcr.getText().equals("")) {
+            txtbusqueda.setDisable(false);
+        } else {
+            txtbusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaEmAcr.getText(), 1);
+        txtbusqueda.setText("");
+    }
+
+    @FXML
+    private void BusquedaTelefono(KeyEvent event) {
+        if (BusquedaEmTel.getText().equals("")) {
+            txtbusqueda.setDisable(false);
+        } else {
+            txtbusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaEmTel.getText(), 1);
+        txtbusqueda.setText("");
     }
 
 }

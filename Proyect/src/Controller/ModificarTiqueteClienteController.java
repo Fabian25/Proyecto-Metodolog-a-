@@ -61,21 +61,25 @@ public class ModificarTiqueteClienteController implements Initializable {
     private Button BarViewTickets;
     @FXML
     private Button BarHomeTik;
+    @FXML
+    private TextField BusquedaTSerie;
+    @FXML
+    private TextField BusquedaTPrio;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         columnSeries.setCellValueFactory(new PropertyValueFactory<>("ID_Tiquete"));
         columnPriority.setCellValueFactory(new PropertyValueFactory<>("Prioridad"));
-        CargarDatos("");
+        CargarDatos("", 0);
         Priority.add("Mild");
         Priority.add("Severe");
         Priority.add("Critic");
         cbx_Priority.setItems(Priority);
     }
 
-    private void CargarDatos(String busqueda) {
+    private void CargarDatos(String busqueda, int Cond) {
         tbl_tiquetes.getItems().clear();
-        tbl_tiquetes.setItems(h.TiquetesClientes(busqueda));
+        tbl_tiquetes.setItems(h.TiquetesClientes(busqueda, Cond));
         txt_Serie.setText("");
         txt_DescripcionEditT.setText("");
 //        cbx_Priority.getItems().clear();
@@ -107,8 +111,6 @@ public class ModificarTiqueteClienteController implements Initializable {
         TiquetesMenu("ModificarTiqueteCliente", "Ticket");
     }
 
-  
-
     @FXML
     private void Tik_BarView(ActionEvent event) {
         TiquetesMenu("VerEliminarTiqueteCliente", "Ticket");
@@ -121,7 +123,7 @@ public class ModificarTiqueteClienteController implements Initializable {
 
     @FXML
     private void busqueda(KeyEvent event) {
-        CargarDatos(txtSearch.getText());
+        CargarDatos(txtSearch.getText(), 0);
 
     }
 
@@ -163,7 +165,7 @@ public class ModificarTiqueteClienteController implements Initializable {
                     break;
             }
             h.actualizar(txt_Serie.getText(), priority, txt_DescripcionEditT.getText(), cliente);
-            CargarDatos("");
+            CargarDatos("", 0);
         }
     }
 
@@ -171,6 +173,28 @@ public class ModificarTiqueteClienteController implements Initializable {
     private void AsignarTickets(ActionEvent event) {
         TiquetesMenu("CrearTiquete", "Ticket");
 
+    }
+
+    @FXML
+    private void BusquedaSerie(KeyEvent event) {
+        if (BusquedaTSerie.getText().equals("")) {
+            txtSearch.setDisable(false);
+        } else {
+            txtSearch.setDisable(true);
+        }
+        CargarDatos(BusquedaTSerie.getText(), 1);
+        txtSearch.setText("");
+    }
+
+    @FXML
+    private void BusquedaPrioridad(KeyEvent event) {
+        if (BusquedaTPrio.getText().equals("")) {
+            txtSearch.setDisable(false);
+        } else {
+            txtSearch.setDisable(true);
+        }
+        CargarDatos(BusquedaTPrio.getText(), 2);
+        txtSearch.setText("");
     }
 
 }

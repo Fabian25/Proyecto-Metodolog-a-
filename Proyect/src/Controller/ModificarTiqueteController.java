@@ -209,7 +209,7 @@ public class ModificarTiqueteController implements Initializable {
         } else {
             txtSearch.setDisable(true);
         }
-        CargarDatos(BusquedaTPrio.getText(), 1);
+        CargarDatos(BusquedaTPrio.getText(), 2);
         txtSearch.setText("");
     }
 

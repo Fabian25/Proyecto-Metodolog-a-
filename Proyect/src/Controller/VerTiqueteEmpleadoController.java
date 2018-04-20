@@ -34,7 +34,7 @@ import javafx.stage.StageStyle;
 public class VerTiqueteEmpleadoController implements Initializable {
 
     TiquetesDAOImplements h = new TiquetesDAOImplements();
-    
+
     @FXML
     private TableView<Tiquetes> tblRemoveTiq;
     @FXML
@@ -51,6 +51,14 @@ public class VerTiqueteEmpleadoController implements Initializable {
     private TableColumn<Tiquetes, String> ColDescripcion;
     @FXML
     private TableColumn<Tiquetes, String> ColEstado;
+    @FXML
+    private TextField BusquedaTSerie;
+    @FXML
+    private TextField BusquedaTPrio;
+    @FXML
+    private TextField BusquedaTDesc;
+    @FXML
+    private TextField BusquedaEstado;
 
     /**
      * Initializes the controller class.
@@ -61,12 +69,12 @@ public class VerTiqueteEmpleadoController implements Initializable {
         ColDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         ColEstado.setCellValueFactory(new PropertyValueFactory<>("estado"));
         ColPrioridad.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
-        CargarDatos("");
+        CargarDatos("", 0);
     }
 
-    private void CargarDatos(String busqueda) {
+    private void CargarDatos(String busqueda, int Cond) {
         tblRemoveTiq.getItems().clear();
-        tblRemoveTiq.setItems(h.TiquetesEmpleado(busqueda));
+        tblRemoveTiq.setItems(h.TiquetesEmpleado(busqueda, Cond));
     }
 
     private void TiquetesMenu(String Vista, String Titulo) {
@@ -103,7 +111,7 @@ public class VerTiqueteEmpleadoController implements Initializable {
     @FXML
     private void tblVerTiqEmp(MouseEvent event) {
         Tiquetes tiquete = tblRemoveTiq.getSelectionModel().getSelectedItem();
-        if(tiquete != null){
+        if (tiquete != null) {
             ProcesarTiquetesController.tiquete = tiquete;
             TiquetesMenu("procesarTiquetes", "Tickets");
         }
@@ -111,6 +119,52 @@ public class VerTiqueteEmpleadoController implements Initializable {
 
     @FXML
     private void Search(KeyEvent event) {
+        CargarDatos(txt_search.getText(), 0);
+    }
+
+    @FXML
+    private void BusquedaSerie(KeyEvent event) {
+        if (BusquedaTSerie.getText().equals("")) {
+            txt_search.setDisable(false);
+        } else {
+            txt_search.setDisable(true);
+        }
+        CargarDatos(BusquedaTSerie.getText(), 1);
+        txt_search.setText("");
+
+    }
+
+    @FXML
+    private void BusquedaPrioridad(KeyEvent event) {
+        if (BusquedaTPrio.getText().equals("")) {
+            txt_search.setDisable(false);
+        } else {
+            txt_search.setDisable(true);
+        }
+        CargarDatos(BusquedaTPrio.getText(), 2);
+        txt_search.setText("");
+    }
+
+    @FXML
+    private void BusquedaDescripcion(KeyEvent event) {
+        if (BusquedaTDesc.getText().equals("")) {
+            txt_search.setDisable(false);
+        } else {
+            txt_search.setDisable(true);
+        }
+        CargarDatos(BusquedaTDesc.getText(), 3);
+        txt_search.setText("");
+    }
+
+    @FXML
+    private void BusquedaEstado(KeyEvent event) {
+        if (BusquedaEstado.getText().equals("")) {
+            txt_search.setDisable(false);
+        } else {
+            txt_search.setDisable(true);
+        }
+        CargarDatos(BusquedaEstado.getText(), 4);
+        txt_search.setText("");
     }
 
 }

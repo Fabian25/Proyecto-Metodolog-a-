@@ -63,10 +63,18 @@ public class ModificarEmpresaController implements Initializable {
     private TableColumn<Empresa, String> tblAcronymEnt;
     @FXML
     private TableColumn<Empresa, Integer> tblPhoneEnt;
-    
+
     EmpresaDAOImplements h = new EmpresaDAOImplements();
     @FXML
     private TextField txtbusqueda;
+    @FXML
+    private TextField BusquedaEmCod;
+    @FXML
+    private TextField BusquedaNombre;
+    @FXML
+    private TextField BusquedaEmAcr;
+    @FXML
+    private TextField BusquedaEmTel;
 
     /**
      * Initializes the controller class.
@@ -77,13 +85,13 @@ public class ModificarEmpresaController implements Initializable {
         tblNameEnt.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         tblAcronymEnt.setCellValueFactory(new PropertyValueFactory<>("Acronimo"));
         tblPhoneEnt.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
-    
-        CargarDatos("");
+
+        CargarDatos("", 0);
     }
 
-    private void CargarDatos(String busqueda) {
+    private void CargarDatos(String busqueda, int Cond) {
         tblEditEnterprices.getItems().clear();
-        tblEditEnterprices.setItems(h.Empresa(busqueda));
+        tblEditEnterprices.setItems(h.Empresa(busqueda, Cond));
         txt_Name.setText("");
         txt_Acronym.setText("");
         txt_Phone.setText("");
@@ -95,7 +103,7 @@ public class ModificarEmpresaController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -193,7 +201,7 @@ public class ModificarEmpresaController implements Initializable {
 
     @FXML
     private void CargarEmpresa(MouseEvent event) {
-         Empresa empresa = tblEditEnterprices.getSelectionModel().getSelectedItem();
+        Empresa empresa = tblEditEnterprices.getSelectionModel().getSelectedItem();
         if (empresa != null) {
             txt_Name.setText(empresa.getNombre());
             txt_Acronym.setText(empresa.getAcronimo());
@@ -206,13 +214,57 @@ public class ModificarEmpresaController implements Initializable {
         Empresa empresa = tblEditEnterprices.getSelectionModel().getSelectedItem();
         if (empresa != null) {
             h.Modificar(txt_Name.getText(), txt_Acronym.getText(), txt_Phone.getText(), empresa.getIdEmpresa());
-            CargarDatos("");
+            CargarDatos("", 0);
         }
     }
 
     @FXML
     private void Buscar(KeyEvent event) {
-        CargarDatos(txtbusqueda.getText());
+        CargarDatos(txtbusqueda.getText(), 0);
+    }
+
+    @FXML
+    private void BusquedaCodigo(KeyEvent event) {
+        if (BusquedaEmCod.getText().equals("")) {
+            txtbusqueda.setDisable(false);
+        } else {
+            txtbusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaEmCod.getText(), 1);
+        txtbusqueda.setText("");
+    }
+
+    @FXML
+    private void BusquedaNombre(KeyEvent event) {
+        if (BusquedaNombre.getText().equals("")) {
+            txtbusqueda.setDisable(false);
+        } else {
+            txtbusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaNombre.getText(), 2);
+        txtbusqueda.setText("");
+    }
+
+    @FXML
+    private void BusquedaAcronimo(KeyEvent event) {
+        if (BusquedaEmAcr.getText().equals("")) {
+            txtbusqueda.setDisable(false);
+        } else {
+            txtbusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaEmAcr.getText(), 3);
+        txtbusqueda.setText("");
+    }
+
+    @FXML
+    private void BusquedaTelefono(KeyEvent event) {
+        if (BusquedaEmTel.getText().equals("")) {
+            txtbusqueda.setDisable(false);
+        } else {
+            txtbusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaEmTel.getText(), 4);
+        txtbusqueda.setText("");
     }
 
 }

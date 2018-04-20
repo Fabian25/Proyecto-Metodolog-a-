@@ -160,7 +160,7 @@ public class VerEmpleadoController implements Initializable {
         } else {
             txtBusuqeda.setDisable(true);
         }
-        CargarDatos(BusquedaEName.getText(), 1);
+        CargarDatos(BusquedaEName.getText(), 3);
         txtBusuqeda.setText("");
     }
 
@@ -171,7 +171,7 @@ public class VerEmpleadoController implements Initializable {
         } else {
             txtBusuqeda.setDisable(true);
         }
-        CargarDatos(BusquedaEApellido.getText(), 1);
+        CargarDatos(BusquedaEApellido.getText(), 4);
         txtBusuqeda.setText("");
     }
 
@@ -182,7 +182,7 @@ public class VerEmpleadoController implements Initializable {
         } else {
             txtBusuqeda.setDisable(true);
         }
-        CargarDatos(BusquedaECod.getText(), 1);
+        CargarDatos(BusquedaECod.getText(), 2);
         txtBusuqeda.setText("");
     }
 
@@ -193,7 +193,7 @@ public class VerEmpleadoController implements Initializable {
         } else {
             txtBusuqeda.setDisable(true);
         }
-        CargarDatos(BusquedaETel.getText(), 1);
+        CargarDatos(BusquedaETel.getText(), 5);
         txtBusuqeda.setText("");
     }
 
@@ -204,7 +204,7 @@ public class VerEmpleadoController implements Initializable {
         } else {
             txtBusuqeda.setDisable(true);
         }
-        CargarDatos(BusquedaECorreo.getText(), 1);
+        CargarDatos(BusquedaECorreo.getText(), 6);
         txtBusuqeda.setText("");
     }
 

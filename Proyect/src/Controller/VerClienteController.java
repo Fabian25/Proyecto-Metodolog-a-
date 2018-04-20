@@ -146,7 +146,7 @@ public class VerClienteController implements Initializable {
         } else {
             txtBusqueda.setDisable(true);
         }
-        CargarDatos(BusquedaCNombre.getText(), 1);
+        CargarDatos(BusquedaCNombre.getText(), 4);
         txtBusqueda.setText("");
     }
 
@@ -157,7 +157,7 @@ public class VerClienteController implements Initializable {
         } else {
             txtBusqueda.setDisable(true);
         }
-        CargarDatos(BusquedaCAp.getText(), 1);
+        CargarDatos(BusquedaCAp.getText(), 5);
         txtBusqueda.setText("");
     }
 
@@ -168,7 +168,7 @@ public class VerClienteController implements Initializable {
         } else {
             txtBusqueda.setDisable(true);
         }
-        CargarDatos(BusquedaCID.getText(), 1);
+        CargarDatos(BusquedaCID.getText(), 3);
         txtBusqueda.setText("");
     }
 
@@ -179,7 +179,7 @@ public class VerClienteController implements Initializable {
         } else {
             txtBusqueda.setDisable(true);
         }
-        CargarDatos(BusquedaCTel.getText(), 1);
+        CargarDatos(BusquedaCTel.getText(), 6);
         txtBusqueda.setText("");
     }
 
@@ -190,7 +190,7 @@ public class VerClienteController implements Initializable {
         } else {
             txtBusqueda.setDisable(true);
         }
-        CargarDatos(BusquedaCCorreo.getText(), 1);
+        CargarDatos(BusquedaCCorreo.getText(), 7);
         txtBusqueda.setText("");
     }
 

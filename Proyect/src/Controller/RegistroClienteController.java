@@ -26,6 +26,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -78,6 +79,16 @@ public class RegistroClienteController implements Initializable {
     private TextField txtBuscar;
     @FXML
     private ComboBox<String> SelectEmp;
+    @FXML
+    private TextField BusquedaCNombre;
+    @FXML
+    private TextField BusquedaCApe;
+    @FXML
+    private TextField BusquedaCedula;
+    @FXML
+    private TextField BusquedaCTel;
+    @FXML
+    private TextField BusquedaCCorreo;
 
     /**
      * Initializes the controller class.
@@ -260,6 +271,30 @@ public class RegistroClienteController implements Initializable {
             SelectEmp.getSelectionModel().select(null);
         }
 
+    }
+
+    @FXML
+    private void Buscar(KeyEvent event) {
+    }
+
+    @FXML
+    private void BusquedaNombre(KeyEvent event) {
+    }
+
+    @FXML
+    private void BusquedaApellido(KeyEvent event) {
+    }
+
+    @FXML
+    private void BusquedaCedula(KeyEvent event) {
+    }
+
+    @FXML
+    private void BusquedaTelefono(KeyEvent event) {
+    }
+
+    @FXML
+    private void BusquedaCorreo(KeyEvent event) {
     }
 
 }
