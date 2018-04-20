@@ -45,7 +45,6 @@ public class EliminarClienteController implements Initializable {
     private Button BarViewClient;
     @FXML
     private Button BarHomeC;
-    private TableColumn<Clientes, String> columRemove;
     @FXML
     private TableColumn<Clientes, String> columName;
     @FXML
@@ -77,7 +76,6 @@ public class EliminarClienteController implements Initializable {
         columId.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         columPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
 
-        columRemove.setCellValueFactory(new PropertyValueFactory<>("button"));
         CargarDatos("", 0);
         btnEliminar.setVisible(false);
     }

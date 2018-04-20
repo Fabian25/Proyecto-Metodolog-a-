@@ -42,7 +42,7 @@
                     </items>
                   </ContextMenu>
                </contextMenu></TableColumn>
-            <TableColumn fx:id="columId" prefWidth="340.0" text="Last Name">
+            <TableColumn fx:id="columId" prefWidth="340.0" text="ID">
                <contextMenu>
                   <ContextMenu>
                     <items>
