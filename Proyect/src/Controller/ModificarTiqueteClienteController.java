@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -132,7 +133,6 @@ public class ModificarTiqueteClienteController implements Initializable {
         Tiquetes cliente = tbl_tiquetes.getSelectionModel().getSelectedItem();
         if (cliente != null) {
             txt_Serie.setText(cliente.getID_Tiquete());
-//            cbx_status.getItems().add(0, Integer.toString(cliente.getEstado()));
             txt_DescripcionEditT.setText(cliente.getDescripcion());
             switch (Integer.parseInt(cliente.getPrioridad())) {
                 case 1:
@@ -151,22 +151,37 @@ public class ModificarTiqueteClienteController implements Initializable {
     @FXML
     private void btnActualizar(ActionEvent event) {
         Tiquetes cliente = tbl_tiquetes.getSelectionModel().getSelectedItem();
-        if (cliente != null) {
-            int priority = 0;
-            switch (cbx_Priority.getSelectionModel().getSelectedItem()) {
-                case "Mild":
-                    priority = 1;
-                    break;
-                case "Severe":
-                    priority = 2;
-                    break;
-                default:
-                    priority = 3;
-                    break;
+        if (txt_DescripcionEditT.getText().trim().length() > 0 && cbx_Priority.getSelectionModel().getSelectedItem() != null) {
+            if (cliente != null) {
+                int priority = 0;
+                switch (cbx_Priority.getSelectionModel().getSelectedItem()) {
+                    case "Mild":
+                        priority = 1;
+                        break;
+                    case "Severe":
+                        priority = 2;
+                        break;
+                    default:
+                        priority = 3;
+                        break;
+                }
+                h.actualizar(txt_Serie.getText(), priority, txt_DescripcionEditT.getText(), cliente);
+                CargarDatos("", 0);
             }
-            h.actualizar(txt_Serie.getText(), priority, txt_DescripcionEditT.getText(), cliente);
-            CargarDatos("", 0);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Completed!");
+            alert.showAndWait();
+        } else {
+            txt_DescripcionEditT.setText(" ");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Ups some data is incorrect");
+            alert.showAndWait();
         }
+
     }
 
     @FXML
