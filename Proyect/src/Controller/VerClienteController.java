@@ -57,6 +57,16 @@ public class VerClienteController implements Initializable {
     private TableColumn<Clientes, String> columEmail;
     @FXML
     private TextField txtBusqueda;
+    @FXML
+    private TextField BusquedaCNombre;
+    @FXML
+    private TextField BusquedaCAp;
+    @FXML
+    private TextField BusquedaCID;
+    @FXML
+    private TextField BusquedaCCorreo;
+    @FXML
+    private TextField BusquedaCTel;
 
     /**
      * Initializes the controller class.
@@ -86,12 +96,12 @@ public class VerClienteController implements Initializable {
         columId.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         columPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
-        CargarDatos("");
+        CargarDatos("", 0);
     }
 
-    private void CargarDatos(String busqueda) {
+    private void CargarDatos(String busqueda, int Cond) {
         tblViewClient.getItems().clear();
-        tblViewClient.setItems(h.Clientes(busqueda));
+        tblViewClient.setItems(h.Clientes(busqueda, Cond));
     }
 
     private void c_back(MouseEvent event) {
@@ -126,7 +136,62 @@ public class VerClienteController implements Initializable {
 
     @FXML
     private void Busqueda(KeyEvent event) {
-        CargarDatos(txtBusqueda.getText());
+        CargarDatos(txtBusqueda.getText(),0);
+    }
+
+    @FXML
+    private void BusquedaNombre(KeyEvent event) {
+        if (BusquedaCNombre.getText().equals("")) {
+            txtBusqueda.setDisable(false);
+        } else {
+            txtBusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaCNombre.getText(), 1);
+        txtBusqueda.setText("");
+    }
+
+    @FXML
+    private void BusquedaApellido(KeyEvent event) {
+        if (BusquedaCAp.getText().equals("")) {
+            txtBusqueda.setDisable(false);
+        } else {
+            txtBusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaCAp.getText(), 1);
+        txtBusqueda.setText("");
+    }
+
+    @FXML
+    private void BusquedaCCedula(KeyEvent event) {
+        if (BusquedaCID.getText().equals("")) {
+            txtBusqueda.setDisable(false);
+        } else {
+            txtBusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaCID.getText(), 1);
+        txtBusqueda.setText("");
+    }
+
+    @FXML
+    private void BusquedaTelefono(KeyEvent event) {
+        if (BusquedaCTel.getText().equals("")) {
+            txtBusqueda.setDisable(false);
+        } else {
+            txtBusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaCTel.getText(), 1);
+        txtBusqueda.setText("");
+    }
+
+    @FXML
+    private void BusquedaCorreo(KeyEvent event) {
+        if (BusquedaCCorreo.getText().equals("")) {
+            txtBusqueda.setDisable(false);
+        } else {
+            txtBusqueda.setDisable(true);
+        }
+        CargarDatos(BusquedaCCorreo.getText(), 1);
+        txtBusqueda.setText("");
     }
 
 }

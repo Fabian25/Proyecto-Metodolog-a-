@@ -233,11 +233,11 @@ public class ClienteDAOImplements implements IClienteDAO {
     //                }
     //            }
     //        }
-    public ObservableList<Clientes> Clientes(String busqueda) {
+    public ObservableList<Clientes> Clientes(String busqueda, int Cond) {
         ObservableList<Clientes> Clientes = FXCollections.observableArrayList();
         try {
             Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(SQLClientes(busqueda));
+            ResultSet rs = st.executeQuery(SQLClientes(busqueda, Cond));
             while (rs.next()) {
                 Clientes.add(new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X")) {
                     @Override
@@ -252,13 +252,32 @@ public class ClienteDAOImplements implements IClienteDAO {
         return Clientes;
     }
 
-    private String SQLClientes(String busqueda) {
+    private String SQLClientes(String busqueda, int Cond) {
         if (busqueda.equals("")) {
             return "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1";
+        } else {
+            switch (Cond) {
+                case 1:
+                    return "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1 And (Codigo Like '%" + busqueda + "%')";
+                case 2:
+                    return "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1 And( Empresa_idEmpresa Like '%" + busqueda + "%')";
+                case 3:
+                    return "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1 And (Cedula Like '%" + busqueda + "%')";
+                case 4:
+                    return "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1 And (Nombre Like '%" + busqueda + "%')";
+                case 5:
+                    return "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1 And (Apellido Like '%" + busqueda + "%')";
+                case 6:
+                    return "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1 And (Telefono Like '%" + busqueda + "%')";
+                case 7:
+                    return "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1 And (Correo Like '%" + busqueda + "%')";
+                default:
+                    return "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1 And (Codigo Like '%" + busqueda + "%' Or Empresa_idEmpresa Like '%"
+                            + busqueda + "%' Or Cedula Like '%" + busqueda + "%' Or Nombre Like '%" + busqueda + "%' Or Apellido Like '%" + busqueda + "%' Or Telefono Like '%" + busqueda + "%' Or Correo "
+                            + "Like '%" + busqueda + "%')";
+            }
         }
-        return "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, Telefono, Correo from Clientes where Activo = 1 And (Codigo Like '%" + busqueda + "%' Or Empresa_idEmpresa Like '%"
-                + busqueda + "%' Or Cedula Like '%" + busqueda + "%' Or Nombre Like '%" + busqueda + "%' Or Apellido Like '%" + busqueda + "%' Or Telefono Like '%" + busqueda + "%' Or Correo "
-                + "Like '%" + busqueda + "%')";
+
     }
 
     @Override

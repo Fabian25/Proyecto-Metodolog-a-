@@ -45,7 +45,6 @@ public class EliminarClienteController implements Initializable {
     private Button BarViewClient;
     @FXML
     private Button BarHomeC;
-    @FXML
     private TableColumn<Clientes, String> columRemove;
     @FXML
     private TableColumn<Clientes, String> columName;
@@ -59,7 +58,14 @@ public class EliminarClienteController implements Initializable {
     private Button btnEliminar;
     @FXML
     private TextField txtBuscar;
-   
+    @FXML
+    private TextField BusquedaCCod;
+    @FXML
+    private TextField BusquedaCNombre;
+    @FXML
+    private TextField BusquedaCAp;
+    @FXML
+    private TextField BusquedaCTel;
 
     /**
      * Initializes the controller class.
@@ -70,16 +76,16 @@ public class EliminarClienteController implements Initializable {
         columLastName.setCellValueFactory(new PropertyValueFactory<>("apellido"));
         columId.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         columPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
-        
+
         columRemove.setCellValueFactory(new PropertyValueFactory<>("button"));
-        CargarDatos("");
+        CargarDatos("", 0);
         btnEliminar.setVisible(false);
     }
 
-    private void CargarDatos(String busqueda) {
+    private void CargarDatos(String busqueda, int Cond) {
         tblRemoveClient.getItems().clear();
-        tblRemoveClient.setItems(h.Clientes(busqueda));
-         btnEliminar.setVisible(false);
+        tblRemoveClient.setItems(h.Clientes(busqueda, Cond));
+        btnEliminar.setVisible(false);
     }
 
     private void ClientesMenu(String Vista, String Titulo) {
@@ -88,7 +94,7 @@ public class EliminarClienteController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -132,9 +138,9 @@ public class EliminarClienteController implements Initializable {
     @FXML
     private void Eliminar(ActionEvent event) {
         Clientes cliente = tblRemoveClient.getSelectionModel().getSelectedItem();
-        if(cliente != null){
+        if (cliente != null) {
             h.eliminar(cliente.getCedula());
-            CargarDatos("");
+            CargarDatos("", 0);
         }
         btnEliminar.setVisible(false);
     }
@@ -142,15 +148,59 @@ public class EliminarClienteController implements Initializable {
     @FXML
     private void Seleccionar(MouseEvent event) {
         Clientes cliente = tblRemoveClient.getSelectionModel().getSelectedItem();
-        if(cliente != null){
+        if (cliente != null) {
             btnEliminar.setVisible(true);
-        }else{
+        } else {
             btnEliminar.setVisible(false);
         }
     }
 
     @FXML
     private void Buscar(KeyEvent event) {
-        CargarDatos(txtBuscar.getText());
+        CargarDatos(txtBuscar.getText(), 0);
+    }
+
+    @FXML
+    private void BusquedaCodigo(KeyEvent event) {
+        if (BusquedaCCod.getText().equals("")) {
+            txtBuscar.setDisable(false);
+        } else {
+            txtBuscar.setDisable(true);
+        }
+        CargarDatos(BusquedaCCod.getText(), 1);
+        txtBuscar.setText("");
+    }
+
+    @FXML
+    private void BusquedaNombre(KeyEvent event) {
+        if (BusquedaCNombre.getText().equals("")) {
+            txtBuscar.setDisable(false);
+        } else {
+            txtBuscar.setDisable(true);
+        }
+        CargarDatos(BusquedaCNombre.getText(), 1);
+        txtBuscar.setText("");
+    }
+
+    @FXML
+    private void BusquedaApellido(KeyEvent event) {
+        if (BusquedaCAp.getText().equals("")) {
+            txtBuscar.setDisable(false);
+        } else {
+            txtBuscar.setDisable(true);
+        }
+        CargarDatos(BusquedaCAp.getText(), 1);
+        txtBuscar.setText("");
+    }
+
+    @FXML
+    private void BusquedaTelefono(KeyEvent event) {
+        if (BusquedaCTel.getText().equals("")) {
+            txtBuscar.setDisable(false);
+        } else {
+            txtBuscar.setDisable(true);
+        }
+        CargarDatos(BusquedaCTel.getText(), 1);
+        txtBuscar.setText("");
     }
 }

@@ -23,12 +23,78 @@
       </Label>
       <TableView fx:id="tblEditClient" layoutX="46.0" layoutY="174.0" onMouseClicked="#CargarCliente" prefHeight="313.0" prefWidth="749.0">
         <columns>
-          <TableColumn fx:id="columCode" prefWidth="66.0" text="Code" />
-          <TableColumn fx:id="columName" prefWidth="73.0" text="Name" />
-            <TableColumn fx:id="columLastName" prefWidth="86.0" text="Last Name" />
-            <TableColumn fx:id="columId" prefWidth="126.0" text="ID Number" />
-            <TableColumn fx:id="columPhoneNumber" prefWidth="126.0" text="Phone Number" />
-            <TableColumn fx:id="columEmail" prefWidth="271.0" text="Email" />
+          <TableColumn fx:id="columCode" prefWidth="66.0" text="Code">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaCCod" onKeyReleased="#BusquedaCodigo" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+          <TableColumn fx:id="columName" prefWidth="73.0" text="Name">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaCNombre" onKeyReleased="#BusquedaNombre" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="columLastName" prefWidth="86.0" text="Last Name">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaCAp" onKeyReleased="#BusquedaApellido" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="columId" prefWidth="126.0" text="ID Number">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaCCedula" onKeyReleased="#BusquedaCedula" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="columPhoneNumber" prefWidth="126.0" text="Phone Number">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaCTel" onKeyReleased="#BusquedaTelefono" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="columEmail" prefWidth="271.0" text="Email">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaCCorreo" onKeyReleased="#BusquedaCorreo" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
         </columns>
       </TableView>
       <Button layoutX="855.0" layoutY="318.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />

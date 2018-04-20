@@ -33,7 +33,7 @@ import javafx.stage.StageStyle;
 public class VerTiquetesController implements Initializable {
 
     TiquetesDAOImplements h = new TiquetesDAOImplements();
-   
+
     @FXML
     private TableView<Tiquetes> tblRemoveTiq;
     @FXML
@@ -56,6 +56,14 @@ public class VerTiquetesController implements Initializable {
     private TableColumn<Tiquetes, String> colunmState;
     @FXML
     private Button BarAssignTickets;
+    @FXML
+    private TextField BusquedaTSerie;
+    @FXML
+    private TextField BusquedaTPrio;
+    @FXML
+    private TextField BusquedaTDesc;
+    @FXML
+    private TextField BusquedaTEstado;
 
     /**
      * Initializes the controller class.
@@ -66,24 +74,22 @@ public class VerTiquetesController implements Initializable {
         colunmDescription.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         colunmState.setCellValueFactory(new PropertyValueFactory<>("estado"));
         colunmPriority.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
-    
-        CargarDatos("");
-    }    
-    
-     private void CargarDatos(String busqueda) {
-        tblRemoveTiq.getItems().clear();
-        tblRemoveTiq.setItems(h.Tiquetes(busqueda));
+
+        CargarDatos("", 0);
     }
 
-    
-    
+    private void CargarDatos(String busqueda, int Cond) {
+        tblRemoveTiq.getItems().clear();
+        tblRemoveTiq.setItems(h.Tiquetes(busqueda, Cond));
+    }
+
     private void TiquetesMenu(String Vista, String Titulo) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -97,8 +103,6 @@ public class VerTiquetesController implements Initializable {
     private void c_back(MouseEvent event) {
         TiquetesMenu("Menu", "Menu");
     }
-
- 
 
     @FXML
     private void Tik_BarEdit(ActionEvent event) {
@@ -122,14 +126,57 @@ public class VerTiquetesController implements Initializable {
 
     @FXML
     private void busqueda(KeyEvent event) {
-        CargarDatos(txt_search.getText());
+        CargarDatos(txt_search.getText(), 0);
     }
 
     @FXML
     private void AsignarTickets(ActionEvent event) {
-             TiquetesMenu("AsignarTiquetes", "Ticket");
-   
+        TiquetesMenu("AsignarTiquetes", "Ticket");
+
     }
 
-    
+    @FXML
+    private void BusquedaSerie(KeyEvent event) {
+        if (BusquedaTSerie.getText().equals("")) {
+            txt_search.setDisable(false);
+        } else {
+            txt_search.setDisable(true);
+        }
+        CargarDatos(BusquedaTSerie.getText(), 1);
+        txt_search.setText("");
+    }
+
+    @FXML
+    private void BusquedaPrioridad(KeyEvent event) {
+        if (BusquedaTPrio.getText().equals("")) {
+            txt_search.setDisable(false);
+        } else {
+            txt_search.setDisable(true);
+        }
+        CargarDatos(BusquedaTPrio.getText(), 2);
+        txt_search.setText("");
+    }
+
+    @FXML
+    private void BusquedaDescripcion(KeyEvent event) {
+        if (BusquedaTDesc.getText().equals("")) {
+            txt_search.setDisable(false);
+        } else {
+            txt_search.setDisable(true);
+        }
+        CargarDatos(BusquedaTDesc.getText(), 3);
+        txt_search.setText("");
+    }
+
+    @FXML
+    private void BusquedaEstado(KeyEvent event) {
+        if (BusquedaTEstado.getText().equals("")) {
+            txt_search.setDisable(false);
+        } else {
+            txt_search.setDisable(true);
+        }
+        CargarDatos(BusquedaTEstado.getText(), 4);
+        txt_search.setText("");
+    }
+
 }

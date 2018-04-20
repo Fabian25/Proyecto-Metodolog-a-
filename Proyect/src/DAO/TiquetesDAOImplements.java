@@ -83,11 +83,11 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
     }
 
     @Override
-    public ObservableList<Tiquetes> Tiquetes(String busqueda) {
+    public ObservableList<Tiquetes> Tiquetes(String busqueda, int Cond) {
         ObservableList<Tiquetes> Tiquetes = FXCollections.observableArrayList();
         try {
             Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(SQLTiquetes(busqueda));
+            ResultSet rs = st.executeQuery(SQLTiquetes(busqueda, Cond));
             while (rs.next()) {
 
                 Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 0, 0, 0));
@@ -131,8 +131,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
     }
     
     private String SQLTiquetesCliente(String busqueda,Clientes info) {
-        if (busqueda.equals("")) {
-//            
+        if (busqueda.equals("")) {          
             return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Clientes_Cedula = "+info.getCedula()+" And Activo = 1;";
         }
         return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And Clientes_Cedula = "+info.getCedula()+" And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
@@ -140,9 +139,8 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
 
     }
     
-    private String SQLTiquetes(String busqueda) {
-        if (busqueda.equals("")) {
-//            
+    private String SQLTiquetes(String busqueda, int Cond) {
+        if (busqueda.equals("")) {            
             return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1;";
         }
         return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
@@ -151,8 +149,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
     }
     
       private String SQLTiquetesEmpleado(String busqueda,Empleados info) {
-        if (busqueda.equals("")) {
-//          
+        if (busqueda.equals("")) {        
         return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = "+info.getCedula()+";";
         }
         return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = "+info.getCedula()+ "And Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"

@@ -63,7 +63,6 @@ public class ModificarClienteController implements Initializable {
     private TableColumn<Clientes, String> columPhoneNumber;
     @FXML
     private TableColumn<Clientes, String> columEmail;
-    @FXML
     private TableColumn<Clientes, String> columEdit;
     @FXML
     private TableView<Clientes> tblEditClient;
@@ -71,6 +70,18 @@ public class ModificarClienteController implements Initializable {
     private TextField txtCName;
     @FXML
     private TextField txtBuscar;
+    @FXML
+    private TextField BusquedaCCod;
+    @FXML
+    private TextField BusquedaCNombre;
+    @FXML
+    private TextField BusquedaCAp;
+    @FXML
+    private TextField BusquedaCCedula;
+    @FXML
+    private TextField BusquedaCTel;
+    @FXML
+    private TextField BusquedaCCorreo;
 
     /**
      * Initializes the controller class.
@@ -101,12 +112,12 @@ public class ModificarClienteController implements Initializable {
         columPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         columEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
         columEdit.setCellValueFactory(new PropertyValueFactory<>("button"));
-        CargarDatos("");
+        CargarDatos("", 0);
     }
 
-    private void CargarDatos(String busqueda) {
+    private void CargarDatos(String busqueda, int Cond) {
         tblEditClient.getItems().clear();
-        tblEditClient.setItems(h.Clientes(busqueda));
+        tblEditClient.setItems(h.Clientes(busqueda, Cond));
         txtCName.setText("");
         txt_Phone.setText("");
     }
@@ -184,7 +195,7 @@ public class ModificarClienteController implements Initializable {
         if (cliente != null) {
             if (validaTelefono() && validaNombre()) {
                 h.actualizar(txt_Phone.getText(), txtCName.getText(), cliente.getCedula());
-                CargarDatos("");
+                CargarDatos("", 0);
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Error");
@@ -198,6 +209,72 @@ public class ModificarClienteController implements Initializable {
 
     @FXML
     private void Busqueda(KeyEvent event) {
-        CargarDatos(txtBuscar.getText());
+        CargarDatos(txtBuscar.getText(), 0);
+    }
+
+    @FXML
+    private void BusquedaCodigo(KeyEvent event) {
+        if (BusquedaCCod.getText().equals("")) {
+            txtBuscar.setDisable(false);
+        } else {
+            txtBuscar.setDisable(true);
+        }
+        CargarDatos(BusquedaCCod.getText(), 1);
+        txtBuscar.setText("");
+    }
+
+    @FXML
+    private void BusquedaNombre(KeyEvent event) {
+        if (BusquedaCNombre.getText().equals("")) {
+            txtBuscar.setDisable(false);
+        } else {
+            txtBuscar.setDisable(true);
+        }
+        CargarDatos(BusquedaCNombre.getText(), 1);
+        txtBuscar.setText("");
+    }
+
+    @FXML
+    private void BusquedaApellido(KeyEvent event) {
+        if (BusquedaCAp.getText().equals("")) {
+            txtBuscar.setDisable(false);
+        } else {
+            txtBuscar.setDisable(true);
+        }
+        CargarDatos(BusquedaCAp.getText(), 1);
+        txtBuscar.setText("");
+    }
+
+    @FXML
+    private void BusquedaCedula(KeyEvent event) {
+        if (BusquedaCCedula.getText().equals("")) {
+            txtBuscar.setDisable(false);
+        } else {
+            txtBuscar.setDisable(true);
+        }
+        CargarDatos(BusquedaCCedula.getText(), 1);
+        txtBuscar.setText("");
+    }
+
+    @FXML
+    private void BusquedaTelefono(KeyEvent event) {
+        if (BusquedaCTel.getText().equals("")) {
+            txtBuscar.setDisable(false);
+        } else {
+            txtBuscar.setDisable(true);
+        }
+        CargarDatos(BusquedaCTel.getText(), 1);
+        txtBuscar.setText("");
+    }
+
+    @FXML
+    private void BusquedaCorreo(KeyEvent event) {
+        if (BusquedaCCorreo.getText().equals("")) {
+            txtBuscar.setDisable(false);
+        } else {
+            txtBuscar.setDisable(true);
+        }
+        CargarDatos(BusquedaCCorreo.getText(), 1);
+        txtBuscar.setText("");
     }
 }

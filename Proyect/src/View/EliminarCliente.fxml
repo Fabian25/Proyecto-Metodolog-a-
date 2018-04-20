@@ -18,10 +18,54 @@
       </ImageView>
       <TableView fx:id="tblRemoveClient" layoutX="16.0" layoutY="261.0" onMouseClicked="#Seleccionar" prefHeight="334.0" prefWidth="1232.0">
          <columns>
-            <TableColumn fx:id="columName" prefWidth="231.0" text="Code" />
-            <TableColumn fx:id="columLastName" prefWidth="282.0" text="Name" />
-            <TableColumn fx:id="columId" prefWidth="340.0" text="Last Name" />
-            <TableColumn fx:id="columPhoneNumber" prefWidth="378.0" text="Phone" />
+            <TableColumn fx:id="columName" prefWidth="231.0" text="Code">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaCCod" onKeyReleased="#BusquedaCodigo" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="columLastName" prefWidth="282.0" text="Name">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaCNombre" onKeyReleased="#BusquedaNombre" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="columId" prefWidth="340.0" text="Last Name">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaCAp" onKeyReleased="#BusquedaApellido" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="columPhoneNumber" prefWidth="378.0" text="Phone">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaCTel" onKeyReleased="#BusquedaTelefono" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
          </columns>
       </TableView>
       <Label layoutX="514.0" layoutY="52.0" text="Remove" textFill="WHITE">

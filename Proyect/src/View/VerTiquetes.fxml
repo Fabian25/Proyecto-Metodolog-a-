@@ -18,10 +18,54 @@
       </ImageView>
       <TableView fx:id="tblRemoveTiq" layoutX="201.0" layoutY="205.0" prefHeight="334.0" prefWidth="862.0">
          <columns>
-            <TableColumn fx:id="colunmSerie" prefWidth="103.0" text="Serie" />
-            <TableColumn fx:id="colunmPriority" prefWidth="115.0" text="Priority" />
-            <TableColumn fx:id="colunmDescription" prefWidth="525.0" text="Description" />
-            <TableColumn fx:id="colunmState" prefWidth="118.0" text="State" />
+            <TableColumn fx:id="colunmSerie" prefWidth="103.0" text="Serie">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaTSerie" onKeyReleased="#BusquedaSerie" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="colunmPriority" prefWidth="115.0" text="Priority">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaTPrio" onKeyReleased="#BusquedaPrioridad" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="colunmDescription" prefWidth="525.0" text="Description">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaTDesc" onKeyReleased="#BusquedaDescripcion" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
+            <TableColumn fx:id="colunmState" prefWidth="118.0" text="State">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <TextField fx:id="BusquedaTEstado" onKeyReleased="#BusquedaEstado" />
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableColumn>
          </columns>
       </TableView>
       <Label layoutX="594.0" layoutY="50.0" text="View" textFill="WHITE">

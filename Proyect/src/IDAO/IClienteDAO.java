@@ -31,7 +31,7 @@ public interface IClienteDAO {
 
     public void ActualizarInfClient(String txtCName, String txtCLastNmae, String txtCPhoneNum, String txtCEmail, int Cedula);
 
-    public ObservableList<Clientes> Clientes(String busqueda);
+    public ObservableList<Clientes> Clientes(String busqueda, int Cond);
     
     public ObservableList<String> AsigEmpresas();
 

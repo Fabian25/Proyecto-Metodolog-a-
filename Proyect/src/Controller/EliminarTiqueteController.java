@@ -31,10 +31,11 @@ import javafx.stage.StageStyle;
  * @author erick
  */
 public class EliminarTiqueteController implements Initializable {
- TiquetesDAOImplements h = new TiquetesDAOImplements();
+
+    TiquetesDAOImplements h = new TiquetesDAOImplements();
     @FXML
     private TableView<Tiquetes> tblRemoveTiq;
-  
+
     @FXML
     private Button BarEditTickets;
     @FXML
@@ -58,6 +59,14 @@ public class EliminarTiqueteController implements Initializable {
     private Button btnEliminar;
     @FXML
     private Button BarAssignTickets;
+    @FXML
+    private TextField BusquedaTSerie;
+    @FXML
+    private TextField BusquedaTPrio;
+    @FXML
+    private TextField BusquedaTDesc;
+    @FXML
+    private TextField BusquedaTEstado;
 
     /**
      * Initializes the controller class.
@@ -68,23 +77,23 @@ public class EliminarTiqueteController implements Initializable {
         columnDescription.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         columnState.setCellValueFactory(new PropertyValueFactory<>("estado"));
         columnPriority.setCellValueFactory(new PropertyValueFactory<>("prioridad"));
-    
-        CargarDatos("");
+        CargarDatos("", 0);
         btnEliminar.setVisible(false);
     }
-      private void CargarDatos(String busqueda) {
-          tblRemoveTiq.getItems().clear();
-        tblRemoveTiq.setItems(h.Tiquetes(busqueda));
+
+    private void CargarDatos(String busqueda, int Cond) {
+        tblRemoveTiq.getItems().clear();
+        tblRemoveTiq.setItems(h.Tiquetes(busqueda, Cond));
         btnEliminar.setVisible(false);
     }
-    
+
     private void TiquetesMenu(String Vista, String Titulo) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -95,11 +104,9 @@ public class EliminarTiqueteController implements Initializable {
         }
     }
 
-
     private void c_back(MouseEvent event) {
         TiquetesMenu("Menu", "Menu");
     }
-
 
     @FXML
     private void Tik_BarEdit(ActionEvent event) {
@@ -123,33 +130,49 @@ public class EliminarTiqueteController implements Initializable {
 
     @FXML
     private void busqueda(KeyEvent event) {
-          CargarDatos(txt_Search.getText());
+        CargarDatos(txt_Search.getText(), 0);
     }
 
     @FXML
     private void Seleccionar(MouseEvent event) {
         Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
-        if(cliente != null){
+        if (cliente != null) {
             btnEliminar.setVisible(true);
-        }else{
+        } else {
             btnEliminar.setVisible(false);
         }
     }
 
     @FXML
     private void Eliminar(ActionEvent event) {
-         Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
-        if(cliente != null){
+        Tiquetes cliente = tblRemoveTiq.getSelectionModel().getSelectedItem();
+        if (cliente != null) {
             h.eliminar(cliente.getID_Tiquete());
-           CargarDatos("");
-       }
-       btnEliminar.setVisible(false);
+            CargarDatos("", 0);
+        }
+        btnEliminar.setVisible(false);
     }
 
     @FXML
     private void AsignarTickets(ActionEvent event) {
-             TiquetesMenu("AsignarTiquetes", "Ticket");
- 
+        TiquetesMenu("AsignarTiquetes", "Ticket");
+
+    }
+
+    @FXML
+    private void BusquedaSerie(KeyEvent event) {
+    }
+
+    @FXML
+    private void BusquedaPrioridad(KeyEvent event) {
+    }
+
+    @FXML
+    private void BusquedaDescripcion(KeyEvent event) {
+    }
+
+    @FXML
+    private void BusquedaEstado(KeyEvent event) {
     }
 
 }
