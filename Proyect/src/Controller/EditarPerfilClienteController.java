@@ -113,7 +113,7 @@ public class EditarPerfilClienteController implements Initializable {
 
 
     private boolean validaTelefono() {
-        Pattern p = Pattern.compile("(0|91)?[7-9][0-9]{7}");
+        Pattern p = Pattern.compile("(0|91)?[2-9][0-9]{7}");
         Matcher m = p.matcher(txtCPhoneNum.getText());
         if (m.find() && m.group().equals(txtCPhoneNum.getText())) {
             return true;

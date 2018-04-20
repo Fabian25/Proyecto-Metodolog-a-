@@ -9,6 +9,8 @@ import static Controller.LoginController.infEmpleado;
 import DAO.EmpleadoDAOImplements;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -73,6 +75,55 @@ public class EditarPerfilEmpleadoController implements Initializable {
             System.out.println("Error");
         }
     }
+    
+    private boolean validaNombre() {
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(txt_Name.getText());
+        if (m.find() && m.group().equals(txt_Name.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar Nombre");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digite un nombre valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+    
+      private boolean validaApellido() {
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(txt_LastName.getText());
+        if (m.find() && m.group().equals(txt_LastName.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar Nombre");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digite un apellido valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
+
+    private boolean validaTelefono() {
+        Pattern p = Pattern.compile("(0|91)?[2-9][0-9]{7}");
+        Matcher m = p.matcher(txt_Phone.getText());
+        if (m.find() && m.group().equals(txt_Phone.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Mobile Number");
+            alert.setHeaderText(null);
+            alert.setContentText("Please Enter Valid Mobile Number");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
 
     @FXML
     private void C_BarMyProfile(ActionEvent event) {
@@ -91,6 +142,7 @@ public class EditarPerfilEmpleadoController implements Initializable {
 
     @FXML
     private void Save(ActionEvent event) {
+        if(validaNombre() && validaApellido() && validaTelefono()){
         h1.ActualizarInfEmp(txt_Name.getText(), txt_LastName.getText(), Integer.parseInt(txt_Phone.getText()), infEmpleado.getCedula());
         infEmpleado.setNombre(txt_Name.getText());
         infEmpleado.setApellido(txt_LastName.getText());
@@ -101,6 +153,14 @@ public class EditarPerfilEmpleadoController implements Initializable {
                             alert.setHeaderText(null);
                             alert.setContentText("The data has been updated");
                             alert.showAndWait();
+         }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Confirmation");
+                            alert.setHeaderText(null);
+                            alert.setContentText("The data is unvalid");
+                            alert.showAndWait();
+        }
+    
       
     }
 
