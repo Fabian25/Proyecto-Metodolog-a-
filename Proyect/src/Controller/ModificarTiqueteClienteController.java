@@ -150,10 +150,11 @@ public class ModificarTiqueteClienteController implements Initializable {
 
     @FXML
     private void btnActualizar(ActionEvent event) {
-        Tiquetes cliente = tbl_tiquetes.getSelectionModel().getSelectedItem();
+        Tiquetes cliente = tbl_tiquetes.getSelectionModel().getSelectedItem(); 
+        int priority = 0;
         if (txt_DescripcionEditT.getText().trim().length() > 0 && cbx_Priority.getSelectionModel().getSelectedItem() != null) {
             if (cliente != null) {
-                int priority = 0;
+               
                 switch (cbx_Priority.getSelectionModel().getSelectedItem()) {
                     case "Mild":
                         priority = 1;
@@ -168,21 +169,15 @@ public class ModificarTiqueteClienteController implements Initializable {
                 h.actualizar(txt_Serie.getText(), priority, txt_DescripcionEditT.getText(), cliente);
                 CargarDatos("", 0);
             }
-<<<<<<< HEAD
-            h.actualizar(txt_Serie.getText(), priority, txt_DescripcionEditT.getText(), cliente);
-            CargarDatos("", 0);
-               
+
+          
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Confirmation");
                             alert.setHeaderText(null);
                             alert.setContentText("The data has been updated");
                             alert.showAndWait();
-=======
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information");
-            alert.setHeaderText(null);
-            alert.setContentText("Completed!");
-            alert.showAndWait();
+
+            
         } else {
             txt_DescripcionEditT.setText(" ");
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -190,7 +185,6 @@ public class ModificarTiqueteClienteController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Ups some data is incorrect");
             alert.showAndWait();
->>>>>>> 5216f5fbc9acdd0a25e0828cbf65dfb617d64d42
         }
 
     }

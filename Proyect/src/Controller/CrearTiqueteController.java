@@ -128,6 +128,7 @@ public class CrearTiqueteController implements Initializable {
             alert.setTitle("Information");
             alert.setHeaderText(null);
             alert.setContentText("Completed!");
+            alert.showAndWait();
         } else {
             txt_description.setText(" ");
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -136,17 +137,6 @@ public class CrearTiqueteController implements Initializable {
             alert.setContentText("Ups some data is incorrect");
             alert.showAndWait();
         }
-<<<<<<< HEAD
-        txt_series.setText(h.registrarTiquetes(priority, txt_description.getText()));
-               txt_description.setText(" ");
-                  
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Confirmation");
-                            alert.setHeaderText(null);
-                            alert.setContentText("The tickets has been created");
-                            alert.showAndWait();
-=======
-
->>>>>>> 5216f5fbc9acdd0a25e0828cbf65dfb617d64d42
-    }
+       
+   }
 }
