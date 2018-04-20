@@ -267,6 +267,10 @@ public class RegistroEmpleadoController implements Initializable {
     private void Busqueda(KeyEvent event) {
     }
 
+    @FXML
+    private void c_add(MouseEvent event) {
+    }
+
 
     
     
