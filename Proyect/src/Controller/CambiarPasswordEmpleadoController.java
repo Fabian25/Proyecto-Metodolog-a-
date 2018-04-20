@@ -23,12 +23,12 @@ import javafx.stage.StageStyle;
  *
  * @author Fabian
  */
-public class CambiarContraController implements Initializable {
+public class CambiarPasswordEmpleadoController implements Initializable {
 
     @FXML
-    private TextField txt_NewPassword;
-    @FXML
     private TextField txt_ConfirmPassword;
+    @FXML
+    private TextField txt_NewPassword;
     @FXML
     private Button btn_Ingresar;
     @FXML
@@ -70,22 +70,22 @@ public class CambiarContraController implements Initializable {
 
     @FXML
     private void C_BarMyProfile(ActionEvent event) {
-        CargarVistas("VerPerfilCliente", "Profile");
+        CargarVistas("VerPerfilEmpleado", "Profile");
     }
 
     @FXML
     private void C_BarEditProfile(ActionEvent event) {
-        CargarVistas("EditarPerfilCliente", "Profile");
+        CargarVistas("EditarPerfilEmpleado", "Profile");
     }
 
     @FXML
     private void C_Home(ActionEvent event) {
-        CargarVistas("MenuCliente", "Profile");
+        CargarVistas("MenuEmpleado", "Home");
     }
 
     @FXML
     private void C_BarEditPassword(ActionEvent event) {
-        CargarVistas("CambiarContra", "Profile");
+        CargarVistas("CambiarPasswordEmpleado", "Home");
     }
 
 }

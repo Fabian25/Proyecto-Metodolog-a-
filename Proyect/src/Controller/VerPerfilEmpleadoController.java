@@ -41,6 +41,8 @@ public class VerPerfilEmpleadoController implements Initializable {
     private TextField txtCLastNmae;
     @FXML
     private TextField txtCName;
+    @FXML
+    private Button BarEditPassword;
 
     /**
      * Initializes the controller class.
@@ -83,6 +85,11 @@ public class VerPerfilEmpleadoController implements Initializable {
     @FXML
     private void C_Home(ActionEvent event) {
         CargarVistas("MenuEmpleado", "Home");
+    }
+
+    @FXML
+    private void C_BarEditPassword(ActionEvent event) {
+        CargarVistas("CambiarPasswordEmpleado", "Home");
     }
     
 }

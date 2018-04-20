@@ -47,6 +47,8 @@ public class EditarPerfilEmpleadoController implements Initializable {
     private TextField txt_Name;
     @FXML
     private TextField txt_LastName;
+    @FXML
+    private Button BarEditPassword;
 
     /**
      * Initializes the controller class.
@@ -162,6 +164,11 @@ public class EditarPerfilEmpleadoController implements Initializable {
         }
     
       
+    }
+
+    @FXML
+    private void C_BarEditPassword(ActionEvent event) {
+        CargarVistas("CambiarPasswordEmpleado", "Home");
     }
 
 }

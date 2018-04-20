@@ -52,6 +52,8 @@ public class VerPerfilClienteController implements Initializable {
     private Button BarEditProfile;
     @FXML
     private Button BarHomeC;
+    @FXML
+    private Button BarEditPassword;
 
     /**
      * Initializes the controller class.
@@ -128,6 +130,11 @@ public class VerPerfilClienteController implements Initializable {
     @FXML
     private void C_Home(ActionEvent event) {
         CargarVistas("MenuCliente", "Profile");
+    }
+
+    @FXML
+    private void C_BarEditPassword(ActionEvent event) {
+        CargarVistas("CambiarContra", "Profile");
     }
 
 }

@@ -47,9 +47,9 @@ public class EditarPerfilClienteController implements Initializable {
     @FXML
     private TextField txtCPhoneNum;
     @FXML
-    private TextField txtCEmail;
-    @FXML
     private Button btnADD;
+    @FXML
+    private Button BarEditPassword;
 
     /**
      * Initializes the controller class.
@@ -165,6 +165,11 @@ public class EditarPerfilClienteController implements Initializable {
        
             
         
+    }
+
+    @FXML
+    private void C_BarEditPassword(ActionEvent event) {
+        CargarVistas("CambiarContra", "Profile");
     }
 
 }

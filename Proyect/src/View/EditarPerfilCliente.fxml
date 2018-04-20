@@ -36,6 +36,11 @@
             </Menu>
             <Menu mnemonicParsing="false">
                <graphic>
+                  <Button fx:id="BarEditPassword" mnemonicParsing="false" onAction="#C_BarEditPassword" text="Edit Passowrd" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
                   <Button fx:id="BarHomeC" mnemonicParsing="false" onAction="#C_Home" text="Home" />
                </graphic>
             </Menu>
