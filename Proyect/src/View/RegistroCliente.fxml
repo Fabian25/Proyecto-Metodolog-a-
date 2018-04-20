@@ -16,7 +16,6 @@
             <Image url="@../Imagen/fondoPro.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="txtBuscar" layoutX="614.0" layoutY="165.0" onKeyReleased="#Buscar" />
       <MenuBar layoutY="-2.0" prefHeight="33.0" prefWidth="1264.0">
          <menus>
             <Menu mnemonicParsing="false">
