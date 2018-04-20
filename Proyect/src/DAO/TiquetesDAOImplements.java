@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import BaseDatos.Conexion;
 import static Controller.LoginController.infClient;
 import static Controller.LoginController.infEmpleado;
 import IDAO.*;
@@ -19,13 +18,11 @@ import Model.Clientes;
 import Model.Empleados;
 import Model.Tiquetes;
 import java.sql.CallableStatement;
-import java.sql.PreparedStatement;
 import java.util.Random;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 
 /**
@@ -68,13 +65,14 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
         while (ExisteCodigoTiquete(Cod)) {
             Cod = GenerarCodigoTiquete();
         }
-        String query = "{CALL RegistrarTiquete(?,?,?,?)}";
+        String query = "{CALL RegistrarTiquete(?,?,?,?,?)}";
         try {
             CallableStatement stmt = connection.prepareCall(query);
             stmt.setString(1, Cod);
             stmt.setInt(2, 1);
             stmt.setString(3, txt_description);
             stmt.setInt(4, cbx_Priority);
+            stmt.setInt(5, infClient.getCedula());
 
             stmt.executeQuery();
             return Cod;
@@ -92,7 +90,6 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             ResultSet rs = st.executeQuery(SQLTiquetes(busqueda));
             while (rs.next()) {
 
-//                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
                 Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 0, 0, 0));
             }
         } catch (SQLException ex) {
@@ -109,8 +106,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(SQLTiquetesCliente(busqueda,infClient));
             while (rs.next()) {
-
-//                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
+               
                 Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 0, 0, 0));
             }
         } catch (SQLException ex) {
@@ -136,17 +132,17 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
     
     private String SQLTiquetesCliente(String busqueda,Clientes info) {
         if (busqueda.equals("")) {
-//            return "Select * where Activo = 1";
+//            
             return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Clientes_Cedula = "+info.getCedula()+" And Activo = 1;";
         }
-        return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
-                + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%' Or Solucion Like '%" + busqueda + "%') And Clientes_Cedula = "+info.getCedula()+";";
+        return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And Clientes_Cedula = "+info.getCedula()+" And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
+                + busqueda + "%' Or Descripcion Like '%" + busqueda + "%' Or Estado Like '%" + busqueda + "%' Or Solucion Like '%" + busqueda + "%');";
 
     }
     
     private String SQLTiquetes(String busqueda) {
         if (busqueda.equals("")) {
-//            return "Select * where Activo = 1";
+//            
             return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1;";
         }
         return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
@@ -156,8 +152,7 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
     
       private String SQLTiquetesEmpleado(String busqueda,Empleados info) {
         if (busqueda.equals("")) {
-//            return "Select * where Activo = 1";
-//            return "Select idTiquetes, Prioridad_idPrioridad, Descripcion, Estado, Solucion from Tiquetes where Activo = 1;";
+//          
         return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = "+info.getCedula()+";";
         }
         return "Select a.idTiquetes, a.Prioridad_idPrioridad, a.Descripcion, a.Estado, a.Solucion from Empleado_Tiquetes AS c INNER JOIN Tiquetes AS a ON c.idTiquetes = a.idTiquetes where c.idEmpleado = "+info.getCedula()+ "And Activo = 1 And (idTiquetes Like '%" + busqueda + "%' Or Prioridad_idPrioridad Like '%"
