@@ -58,13 +58,6 @@ public class CrearTiqueteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        // ObservableList<String> items = FXCollections.observableArrayList();
-        //items.addAll("item-1", "item-2", "item-3", "item-4", "item-5");
-//        //cbx_Status = new ComboBox<>(items);
-//        cbx_Priority.getItems().add(0, "Mild");
-//        cbx_Priority.getItems().add(1, "Severe");
-//        cbx_Priority.getItems().add(2, "Critic");
 
         Priority.add("Mild");
         Priority.add("Severe");
@@ -115,20 +108,35 @@ public class CrearTiqueteController implements Initializable {
 
     @FXML
     private void AddTiquete(ActionEvent event) {
- 
-        
-        int priority = 0;
-        switch (cbx_Priority.getSelectionModel().getSelectedItem()) {
-            case "Mild":
-                priority = 1;
-                break;
-            case "Severe":
-                priority = 2;
-                break;
-            default:
-                priority = 3;
-                break;
+
+        if (txt_description.getText().trim().length() > 0&&cbx_Priority.getSelectionModel().getSelectedItem()!=null) {
+            int priority = 0;
+            switch (cbx_Priority.getSelectionModel().getSelectedItem()) {
+                case "Mild":
+                    priority = 1;
+                    break;
+                case "Severe":
+                    priority = 2;
+                    break;
+                default:
+                    priority = 3;
+                    break;
+            }
+            txt_series.setText(h.registrarTiquetes(priority, txt_description.getText()));
+            txt_description.setText(" ");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Completed!");
+        } else {
+            txt_description.setText(" ");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Ups some data is incorrect");
+            alert.showAndWait();
         }
+<<<<<<< HEAD
         txt_series.setText(h.registrarTiquetes(priority, txt_description.getText()));
                txt_description.setText(" ");
                   
@@ -137,5 +145,8 @@ public class CrearTiqueteController implements Initializable {
                             alert.setHeaderText(null);
                             alert.setContentText("The tickets has been created");
                             alert.showAndWait();
+=======
+
+>>>>>>> 5216f5fbc9acdd0a25e0828cbf65dfb617d64d42
     }
 }

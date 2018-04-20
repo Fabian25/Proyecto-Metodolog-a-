@@ -256,6 +256,11 @@ public class RegistroClienteController implements Initializable {
             txtCPhoneNum.setText("");
             txtCEmail.setText("");
             SelectEmp.getSelectionModel().select(null);
+                      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Completed!");
+            alert.showAndWait();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Error");
