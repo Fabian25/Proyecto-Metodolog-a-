@@ -126,7 +126,6 @@ public class TiquetesDAOImplements implements ITiqueteDAO {
             ResultSet rs = st.executeQuery(SQLTiquetesEmpleado(busqueda,infEmpleado));
             while (rs.next()) {
 
-//                Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
                 Tiquetes.add(new Tiquetes(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 0, 0, 0));
             }
         } catch (SQLException ex) {

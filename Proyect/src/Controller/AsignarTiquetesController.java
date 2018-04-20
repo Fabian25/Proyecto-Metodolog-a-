@@ -20,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -115,7 +116,8 @@ public class AsignarTiquetesController implements Initializable {
 
     @FXML
     private void c_add(ActionEvent event) {
-            String query = "{CALL TiquetesAsignar(?, ?, ?)}";
+        if (txt_EmployeeCode.getText().trim().length()>0&&txt_SeriesTicket.getText().trim().length()>0) {
+                   String query = "{CALL TiquetesAsignar(?, ?, ?)}";
         try {
             CallableStatement stmt = connection.prepareCall(query);
             stmt.setInt(1, Integer.parseInt(txt_EmployeeCode.getText()));
@@ -125,6 +127,14 @@ public class AsignarTiquetesController implements Initializable {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        }else{
+                          Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Ups some data is incorrect,changes were not save");
+            alert.showAndWait();
+        }
+     
     }
 
     @FXML

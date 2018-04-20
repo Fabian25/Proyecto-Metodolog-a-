@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
@@ -109,7 +110,8 @@ public class ProcesarTiquetesController implements Initializable {
          TiquetesMenu("procesarTiquetes", "Tickets");
     }
 
-    @FXML
+
+        @FXML
     private void SaveAll(ActionEvent event) {
         int priority = 0;
             switch (cb_status.getSelectionModel().getSelectedItem()) {
@@ -126,12 +128,20 @@ public class ProcesarTiquetesController implements Initializable {
                     priority = 1;
                     break;
             }
-        h.procesarTiquete(priority, txt_Solution.getText(), tiquete);
+            if (txt_Solution.getText().trim().length()>0) {
+                 h.procesarTiquete(priority, txt_Solution.getText(), tiquete);
         tiquete.setEstado(Integer.toString(priority));
         tiquete.setSolucion(txt_Solution.getText());
-        Hilo();
+        Hilo(); 
+            }else{
+                  Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Ups some data is incorrect,changes were not save");
+            alert.showAndWait();
+            }
+      
     }
-    
     private void Hilo(){
           new Thread(new Runnable() {
             double progress = 0.0;
