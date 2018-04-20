@@ -118,7 +118,7 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-<<<<<<< HEAD
+
     private void Ingresar(ActionEvent event) throws Exception {
     String s=txt_Contra.getText();
         if (validaEmail() && validaPassword()) {

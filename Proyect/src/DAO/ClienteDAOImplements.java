@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 import IDAO.*;
 import Model.Clientes;
+import Model.Empleados;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -350,16 +351,21 @@ public class ClienteDAOImplements implements IClienteDAO {
     @Override
     public Clientes VerInfCliente(String txt_Usuario, String txt_Contrasena) {
         Clientes Cliente = null;
-        try {
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery("Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, "
-                    + "Telefono, Correo from Clientes where Correo = '" + txt_Usuario + "' And Contraseña = '"
-                    + txt_Contrasena + "'");
-            while (rs.next()) {
-                Cliente = new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), "", new Button("X"));
+            PreparedStatement preparedStatement;
+               String sql = "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, "
+                    + "Telefono, Correo from Clientes where "
+                + "Correo = ? And Contraseña = ?";
+         try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, txt_Usuario);
+            preparedStatement.setString(2, txt_Contrasena.trim());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Cliente = new Clientes(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4), resultSet.getString(5), resultSet.getInt(6), resultSet.getString(7), "", new Button("X"));
+                System.out.println("EXISTE PA");
             }
         } catch (SQLException ex) {
-
+            System.out.println(ex.getMessage());
         }
         return Cliente;
     }

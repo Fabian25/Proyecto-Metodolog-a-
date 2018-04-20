@@ -19,6 +19,8 @@ import Model.Tiquetes;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
@@ -351,15 +353,23 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
     @Override
     public Empleados VerInfEmpleado(String txt_Usuario, String txt_Contrasena) {
         Empleados Empleado = null;
+        PreparedStatement preparedStatement;
+        String sql = "select Cedula, Nombre, Apellido, Correo, Codigo, Telefono, Contraseña, Activo, TipoEmpleado_idTipoEmpleado from Employees where "
+                + "Correo = ? And Contraseña = ?";
+        
+        
+        
         try {
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery("select Cedula, Nombre, Apellido, Correo, Codigo, Telefono, Contraseña, Activo, TipoEmpleado_idTipoEmpleado from Employees where "
-                    + "Correo = '" + txt_Usuario + "' And Contraseña = '" + txt_Contrasena + "'");
-            while (rs.next()) {
-                Empleado = new Empleados(rs.getString(5), rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(6), rs.getString(4), rs.getString(7), new Button("X"));
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, txt_Usuario);
+            preparedStatement.setString(2, txt_Contrasena.trim());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Empleado = new Empleados(resultSet.getString(5), resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getInt(6), resultSet.getString(4), resultSet.getString(7), new Button("X"));
+                System.out.println("EXISTE PA");
             }
         } catch (SQLException ex) {
-
+            System.out.println(ex.getMessage());
         }
         return Empleado;
     }
