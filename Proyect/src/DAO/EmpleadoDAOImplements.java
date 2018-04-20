@@ -125,7 +125,7 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
             if (ExisteCedula(txt_ID, Cod) == false) {
 
                 String sql = "Insert into Persona values(" + txt_ID + "," + txt_Name + ","
-                        + txt_Phone + "," + txt_Email + "," + "Nuevo123*" + "," + Cod + "," + txt_LastName + ");";
+                        + txt_Phone + "," + txt_Email + "," + "e5759cf1f053647a18c87a211b3e4750" + "," + Cod + "," + txt_LastName + ");";
                 String[] datos = new String[10];
                 try {
                     Statement stmt = connection.createStatement();

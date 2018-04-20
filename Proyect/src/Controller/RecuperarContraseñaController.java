@@ -58,20 +58,20 @@ public class RecuperarContraseñaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lblCaptcha.setText(randomString(6));
-//        cbxPregunta.getItems().add(1, "How old are you?");
-//        cbxPregunta.getItems().add(2,"What is your favorite band?");
-//        cbxPregunta.getItems().add(3, "Who is the best player in the world?");
-//          switch(Integer.parseInt(pregunta.getPregunta())){
-//            case 1:
-//              cbxPregunta.setValue("How old are you?");
-//                break;
-//            case 2:
-//                cbxPregunta.setValue("What is your favorite band?");
-//                break;
-//          default:
-//                  cbxPregunta.setValue("Who is the best player in the world?");
-//                break;
-//        }
+        cbxPregunta.getItems().add(1, "How old are you?");
+        cbxPregunta.getItems().add(2, "What is your favorite band?");
+        cbxPregunta.getItems().add(3, "Who is the best player in the world?");
+        switch (Integer.parseInt(pregunta.getPregunta())) {
+            case 1:
+                cbxPregunta.setValue("How old are you?");
+                break;
+            case 2:
+                cbxPregunta.setValue("What is your favorite band?");
+                break;
+            default:
+                cbxPregunta.setValue("Who is the best player in the world?");
+                break;
+        }
     }
 
     private String randomString(int len) {

@@ -10,8 +10,13 @@ import DAO.EmpleadoDAOImplements;
 import DAO.GeneralDAOImplements;
 import Model.Clientes;
 import Model.Empleados;
-
+import java.security.Key;
+import javax.crypto.KeyGenerator;
+import javax.crypto.spec.SecretKeySpec;
+import javax.crypto.Cipher;
 import java.net.URL;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,6 +41,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.swing.JOptionPane;
 
 /**
@@ -110,14 +118,24 @@ public class LoginController implements Initializable {
     }
 
     @FXML
+<<<<<<< HEAD
     private void Ingresar(ActionEvent event) {
    
         if (validaEmail() ) {
             infClient = h.VerInfCliente(txt_Usuario.getText(), txt_Contra.getText());
+=======
+<<<<<<< HEAD
+    private void Ingresar(ActionEvent event) throws Exception {
+    String s=txt_Contra.getText();
+        if (validaEmail() && validaPassword()) {
+            infClient = h.VerInfCliente(txt_Usuario.getText(), Encriptar(s));
+
+>>>>>>> e986c5828d5314942f22dd822f38c89ff99739c5
             if (infClient != null) {
                 IngresarMenu("MenuCliente", "Menu Cliente");
             } else {
-                infEmpleado = h1.VerInfEmpleado(txt_Usuario.getText(), txt_Contra.getText());
+              
+                infEmpleado = h1.VerInfEmpleado(txt_Usuario.getText(), Encriptar(s));
                 if (infEmpleado != null) {
                     PreparedStatement preparedStatement;
                     String sql = "SELECT TipoEmpleado_idTipoEmpleado FROM Employees WHERE Cedula =" + infEmpleado.getCedula()+ ";";
@@ -201,94 +219,25 @@ public class LoginController implements Initializable {
         }
     }
 
-    public String Encriptar(String pass) {
-        String Encripted = " ";
-        for (int i = 0; i < pass.length(); i++) {
-            char p = pass.charAt(i);
-            if (p == 'a' || p == 'A') {
-                Encripted += ":v";
-            }
-            if (p == 'b' || p == 'B') {
-                Encripted += ".0";
-            }
-            if (p == 'c' || p == 'C') {
-                Encripted += "/*";
-            }
-            if (p == 'd' || p == 'D') {
-                Encripted += "!^";
-            }
-            if (p == 'e' || p == 'E') {
-                Encripted += "%$";
-            }
-            if (p == 'f' || p == 'F') {
-                Encripted += "2s";
-            }
-            if (p == 'g' || p == 'G') {
-                Encripted += "76";
-            }
-            if (p == 'h' || p == 'H') {
-                Encripted += "6w";
-            }
-            if (p == 'i' || p == 'I') {
-                Encripted += "2e";
-            }
-            if (p == 'j' || p == 'J') {
-                Encripted += "1d";
-            }
-            if (p == 'k' || p == 'K') {
-                Encripted += "+*";
-            }
-            if (p == 'l' || p == 'L') {
-                Encripted += "d3";
-            }
-            if (p == 'm' || p == 'M') {
-                Encripted += "g7";
-            }
-            if (p == 'n' || p == 'N') {
-                Encripted += "q5";
-            }
-            if (p == 'ñ' || p == 'Ñ') {
-                Encripted += ";g";
-            }
-            if (p == 'o' || p == 'O') {
-                Encripted += "6W";
-            }
-            if (p == 'p' || p == 'P') {
-                Encripted += "{f";
-            }
-            if (p == 'q' || p == 'Q') {
-                Encripted += "2g";
-            }
-            if (p == 'r' || p == 'R') {
-                Encripted += "fQ";
-            }
-            if (p == 's' || p == 'S') {
-                Encripted += "*";
-            }
-            if (p == 't' || p == 'T') {
-                Encripted += "/";
-            }
-            if (p == 'u' || p == 'U') {
-                Encripted += "1";
-            }
-            if (p == 'v' || p == 'V') {
-                Encripted += "$";
-            }
-            if (p == 'w' || p == 'W') {
-                Encripted += "5";
-            }
-            if (p == 'x' || p == 'X') {
-                Encripted += "w1";
-            }
-            if (p == 'y' || p == 'Y') {
-                Encripted += "g1";
-            }
-            if (p == 'z' || p == 'Z') {
-                Encripted += "1*";
-            }
-            Encripted += "@";
-        }
-        return Encripted;
+    public String Encriptar(String pass)throws Exception{
+      KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+      keyGenerator.init(128);
+      Key key = keyGenerator.generateKey();
+
+      key = new SecretKeySpec("una clave de 16 bytes".getBytes(),  0, 16, "AES");
+
+      String texto = pass;
+
+      Cipher aes = Cipher.getInstance("AES/ECB/PKCS5Padding");
+
+      aes.init(Cipher.ENCRYPT_MODE, key);
+      byte[] encriptado = aes.doFinal(texto.getBytes());
+String w =" ";
+      for (byte b : encriptado) {
+          w+=Integer.toHexString(0xFF & b);
+ 
+      }
+        return w;
     }
 
     @FXML
