@@ -125,6 +125,37 @@ public class ModificarEmpresaController implements Initializable {
         }
 
     }
+    
+     private boolean validaNombre() {
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(txt_Name.getText());
+        if (m.find() && m.group().equals(txt_Name.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar Nombre");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digite un nombre valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+ private boolean validaTelefono() {
+        Pattern p = Pattern.compile("(0|91)?[7-9][0-9]{7}");
+        Matcher m = p.matcher(txt_Phone.getText());
+        if (m.find() && m.group().equals(txt_Phone.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Mobile Number");
+            alert.setHeaderText(null);
+            alert.setContentText("Please Enter Valid Mobile Number");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
 
     @FXML
     private void Ent_BarRegist(ActionEvent event) {
@@ -176,28 +207,14 @@ public class ModificarEmpresaController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validar Nombre");
             alert.setHeaderText(null);
-            alert.setContentText("Por favor digite un nombre valido");
+            alert.setContentText("Por favor digite las siglas valido");
             alert.showAndWait();
 
             return false;
         }
     }
 
-    private boolean validaTelefono() {
-        Pattern p = Pattern.compile("(0|91)?[7-9][0-9]{7}");
-        Matcher m = p.matcher(txt_Phone.getText());
-        if (m.find() && m.group().equals(txt_Phone.getText())) {
-            return true;
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Validate Mobile Number");
-            alert.setHeaderText(null);
-            alert.setContentText("Please Enter Valid Mobile Number");
-            alert.showAndWait();
-
-            return false;
-        }
-    }
+   
 
     @FXML
     private void CargarEmpresa(MouseEvent event) {
@@ -213,8 +230,17 @@ public class ModificarEmpresaController implements Initializable {
     private void btnActualizar(ActionEvent event) {
         Empresa empresa = tblEditEnterprices.getSelectionModel().getSelectedItem();
         if (empresa != null) {
+            if(validaNombreEmpresa()&&validaTelefono()&&validarSiglas()){
             h.Modificar(txt_Name.getText(), txt_Acronym.getText(), txt_Phone.getText(), empresa.getIdEmpresa());
             CargarDatos("", 0);
+            } else{
+                       Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Ups some data is incorrect");
+            alert.showAndWait(); 
+            }
+           
         }
     }
 

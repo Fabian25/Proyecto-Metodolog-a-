@@ -10,6 +10,8 @@ import DAO.ClienteDAOImplements;
 import Model.Clientes;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -76,6 +78,55 @@ public class EditarPerfilClienteController implements Initializable {
             System.out.println("Error");
         }
     }
+    
+    private boolean validaNombre() {
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(txtCName.getText());
+        if (m.find() && m.group().equals(txtCName.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar Nombre");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digite un nombre valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+    
+      private boolean validaApellido() {
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(txtCLastNmae.getText());
+        if (m.find() && m.group().equals(txtCLastNmae.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar Nombre");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digite un apellido valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
+
+    private boolean validaTelefono() {
+        Pattern p = Pattern.compile("(0|91)?[7-9][0-9]{7}");
+        Matcher m = p.matcher(txtCPhoneNum.getText());
+        if (m.find() && m.group().equals(txtCPhoneNum.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Mobile Number");
+            alert.setHeaderText(null);
+            alert.setContentText("Please Enter Valid Mobile Number");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
 
     @FXML
     private void C_BarMyProfile(ActionEvent event) {
@@ -94,17 +145,26 @@ public class EditarPerfilClienteController implements Initializable {
 
     @FXML
     private void Editar(ActionEvent event) {
-         h.ActualizarInfClient(txtCName.getText(), txtCLastNmae.getText(), txtCPhoneNum.getText(), infClient.getCorreo(), infClient.getCedula());
+        if(validaNombre() && validaApellido() && validaTelefono()){
+              h.ActualizarInfClient(txtCName.getText(), txtCLastNmae.getText(), txtCPhoneNum.getText(), infClient.getCorreo(), infClient.getCedula());
          infClient.setNombre(txtCName.getText());
          infClient.setApellido(txtCLastNmae.getText());
          infClient.setTelefono(Integer.parseInt(txtCPhoneNum.getText()));
-        
-            
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Confirmation");
                             alert.setHeaderText(null);
                             alert.setContentText("The data has been updated");
                             alert.showAndWait();
+        }else{
+               Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Confirmation");
+                            alert.setHeaderText(null);
+                            alert.setContentText("The data is unvalid");
+                            alert.showAndWait();
+        }
+       
+            
+        
     }
 
 }
