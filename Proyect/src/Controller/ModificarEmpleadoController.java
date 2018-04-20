@@ -226,8 +226,19 @@ public class ModificarEmpleadoController implements Initializable {
     private void btnActualizar(ActionEvent event) {
         Empleados emp = tblEmpleado.getSelectionModel().getSelectedItem();
         if (emp != null) {
-            h.actualizar(txt_Name.getText(), txt_Lastname.getText(), Integer.parseInt(txt_Phone.getText()), emp.getCedula());
-            CargarDatos("", 0);
+            if (validaApellido()&&validaNombre()&&validaTelefono()) {
+                  h.actualizar(txt_Name.getText(), txt_Lastname.getText(), Integer.parseInt(txt_Phone.getText()), emp.getCedula());
+            CargarDatos("", 0); 
+            }
+            else{
+                       Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Ups some data is incorrect");
+            alert.showAndWait(); 
+            }
+            
+         
         }
     }
 

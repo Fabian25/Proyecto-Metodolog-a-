@@ -119,7 +119,7 @@ public class RegristroEmpresaController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -179,7 +179,8 @@ public class RegristroEmpresaController implements Initializable {
     private boolean validarSiglas() {
         Pattern p = Pattern.compile("[A-Z]+");
         Matcher m = p.matcher(txt_Acronym.getText());
-        if (m.find() && m.group().equals(txt_Acronym.getText())) {
+        if (txt_Acronym.getText().length()<=3&&txt_Acronym.getText().length()>0) {
+               if (m.find() && m.group().equals(txt_Acronym.getText())) {
             return true;
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -189,7 +190,11 @@ public class RegristroEmpresaController implements Initializable {
             alert.showAndWait();
 
             return false;
+        } 
+        }else{
+        return false;
         }
+    
     }
 
     private boolean validaTelefono() {
@@ -203,23 +208,25 @@ public class RegristroEmpresaController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Please Enter Valid Mobile Number");
             alert.showAndWait();
-
             return false;
         }
     }
 
     @FXML
     private void E_Enterprice(ActionEvent event) {
-
-        h.registrarStorage(txt_EntrepriceName.getText(), txt_Acronym.getText(), txt_Phone.getText());
-        //agrega a nivel de base de datos pero no a tabla
-////////////////////////////////////////                //txt_EntrepriceName.setText("");
-////////////////////////////////////////                //txt_Acronym.setText("");
-////////////////////////////////////////                //txt_Phone.setText("");
-
-        CargarDatos();
-        //  ClientesMenu("Menu", "Menu");
-
+        if (validaTelefono() == true && validaNombreEmpresa() == true && validarSiglas() == true) {
+            h.registrarStorage(txt_EntrepriceName.getText(), txt_Acronym.getText(), txt_Phone.getText());
+            CargarDatos();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Ups some data is incorrect");
+            alert.showAndWait();
+        }
+        txt_EntrepriceName.setText("");
+        txt_Acronym.setText("");
+        txt_Phone.setText("");
     }
 
     @FXML

@@ -115,41 +115,6 @@ public class RegistroEmpleadoController implements Initializable {
         EmpleadosMenu("Menu", "Menu");        
     }
 
-    private void c_add(ActionEvent event) {
-        boolean flag = true;
-        if (!validaNombre()) {
-            flag = false;
-        }
-        if (!validaApellido()) {
-            flag = false;
-        }
-        if (!validaID()) {
-            flag = false;
-        }
-        if (!validaTelefono()) {
-            flag = false;
-        }
-        if (!validateEmaill()) {
-            flag = false;
-        }
-        if (flag) {
-            h.registrar(txt_Name.getText(), txt_LastName.getText(), txt_ID.getText(), txt_Phone.getText(), txt_Email.getText());
-            //agrega a nivel de base de datos pero no a tabla
-            txt_Name.setText("");
-            txt_LastName.setText("");
-            txt_ID.setText("");
-            txt_Phone.setText("");
-            txt_Email.setText("");
-          //  ClientesMenu("Menu", "Menu");
-        }
-
-    }
-    
-    @FXML
-    private void c_add(MouseEvent event) {
-       //agrega a nivel de base de datos no en el tabla
-    }
-
     @FXML
     private void E_BarRegist(ActionEvent event) {
         EmpleadosMenu("RegistroEmpleado", "Employee");
@@ -258,6 +223,23 @@ public class RegistroEmpleadoController implements Initializable {
 
     @FXML
     private void agregar(ActionEvent event) {
+               boolean flag = true;
+        if (!validaNombre()) {
+            flag = false;
+        }
+        if (!validaApellido()) {
+            flag = false;
+        }
+        if (!validaID()) {
+            flag = false;
+        }
+        if (!validaTelefono()) {
+            flag = false;
+        }
+        if (!validateEmaill()) {
+            flag = false;
+        }
+        if (flag) {
         h.registrarStorage(txt_Name.getText(), txt_LastName.getText(), txt_ID.getText(), txt_Phone.getText(), txt_Email.getText());
         CargarDatos();
         //agrega a nivel de base de datos pero no a tabla
@@ -266,6 +248,19 @@ public class RegistroEmpleadoController implements Initializable {
         txt_ID.setText("");
         txt_Phone.setText("");
         txt_Email.setText("");
+
+          } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Ups some data is incorrect");
+            alert.showAndWait();
+            txt_Name.setText("");
+            txt_LastName.setText("");
+            txt_ID.setText("");
+            txt_Phone.setText("");
+            txt_Email.setText("");
+        }
     }
 
     @FXML

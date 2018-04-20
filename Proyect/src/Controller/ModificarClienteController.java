@@ -81,7 +81,7 @@ public class ModificarClienteController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-             stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle(Titulo);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -137,21 +137,22 @@ public class ModificarClienteController implements Initializable {
         ClientesMenu("Menu", "Menu");
     }
 
-//    private boolean validateEmaill() {
-//        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
-//        Matcher m = p.matcher(txt_Email.getText());
-//        if (m.find() && m.group().equals(txt_Email.getText())) {
-//            return true;
-//        } else {
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Validate Email");
-//            alert.setHeaderText(null);
-//            alert.setContentText("Por favor digire un email valido");
-//            alert.showAndWait();
-//
-//            return false;
-//        }
-//    }
+    private boolean validaNombre() {
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(txtCName.getText());
+        if (m.find() && m.group().equals(txtCName.getText())) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validar Nombre");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digite un nombre valido");
+            alert.showAndWait();
+
+            return false;
+        }
+    }
+
     private boolean validaTelefono() {
         Pattern p = Pattern.compile("(0|91)?[7-9][0-9]{7}");
         Matcher m = p.matcher(txt_Phone.getText());
@@ -181,8 +182,17 @@ public class ModificarClienteController implements Initializable {
     private void btnActualizar(ActionEvent event) {
         Clientes cliente = tblEditClient.getSelectionModel().getSelectedItem();
         if (cliente != null) {
-            h.actualizar(txt_Phone.getText(), txtCName.getText(), cliente.getCedula());
-            CargarDatos("");
+            if (validaTelefono() && validaNombre()) {
+                h.actualizar(txt_Phone.getText(), txtCName.getText(), cliente.getCedula());
+                CargarDatos("");
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Ups some data is incorrect");
+                alert.showAndWait();
+            }
+
         }
     }
 

@@ -19,10 +19,9 @@
       <TableView fx:id="tblRemoveClient" layoutX="16.0" layoutY="261.0" onMouseClicked="#Seleccionar" prefHeight="334.0" prefWidth="1232.0">
          <columns>
             <TableColumn fx:id="columName" prefWidth="231.0" text="Code" />
-            <TableColumn fx:id="columLastName" prefWidth="214.0" text="Name" />
-            <TableColumn fx:id="columId" prefWidth="242.0" text="Last Name" />
-            <TableColumn fx:id="columPhoneNumber" prefWidth="279.0" text="Phone" />
-            <TableColumn fx:id="columRemove" prefWidth="265.0" text="Remove" />
+            <TableColumn fx:id="columLastName" prefWidth="282.0" text="Name" />
+            <TableColumn fx:id="columId" prefWidth="340.0" text="Last Name" />
+            <TableColumn fx:id="columPhoneNumber" prefWidth="378.0" text="Phone" />
          </columns>
       </TableView>
       <Label layoutX="514.0" layoutY="52.0" text="Remove" textFill="WHITE">

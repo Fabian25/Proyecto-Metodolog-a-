@@ -88,7 +88,7 @@
                     </items>
                   </ContextMenu>
                </contextMenu></TableColumn>
-                <TableColumn fx:id="ColunmPhoneNumber" prefWidth="94.0" text="Phone Number">
+                <TableColumn fx:id="ColunmPhoneNumber" prefWidth="121.0" text="Phone Number">
                <contextMenu>
                   <ContextMenu>
                     <items>
@@ -100,7 +100,7 @@
                     </items>
                   </ContextMenu>
                </contextMenu></TableColumn>
-                <TableColumn fx:id="ColunmEmail" prefWidth="262.0" text="Email">
+                <TableColumn fx:id="ColunmEmail" prefWidth="235.0" text="Email">
                <contextMenu>
                   <ContextMenu>
                     <items>

@@ -96,11 +96,10 @@ public class RegistroClienteController implements Initializable {
 
     private void CargarDatos() {
 
-//        tbClientes.getItems().clear();
-//        tbClientes.setItems(h.Clientes());     
         Clientes.add(new Clientes(0, SelectEmp.getSelectionModel().getSelectedItem(), Integer.parseInt(txtCIDnum.getText()), txtCName.getText(), txtCLastNmae.getText(),
                 Integer.parseInt(txtCPhoneNum.getText()), txtCEmail.getText(), "", btnADD));
         tbClientes.setItems(Clientes);
+
     }
 
     private void CargarDatosCombo() {
@@ -150,46 +149,6 @@ public class RegistroClienteController implements Initializable {
         ClientesMenu("Menu", "Menu");
     }
 
-////    private void C_add(ActionEvent event) {
-//////        boolean flag = true;
-//////        if (!validaNombre()) {
-//////            flag = false;
-//////        }
-//////        if (!validaApellido()) {
-//////            flag = false;
-//////        }
-//////        if (!validaID()) {
-//////            flag = false;
-//////        }
-//////        if (!validaTelefono()) {
-//////            flag = false;
-//////        }
-//////        if (!validateEmaill()) {
-//////            flag = false;
-//////        }
-//////
-//////        if (flag) {
-////
-//
-//////        ClientesMenu("Menu", "Menu");
-//////        }
-////    }
-//
-////        if (flag) {
-//        h.registrar(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText());
-//        //agrega a nivel de base de datos pero no a tabla
-//        txtCName.setText("");
-//        txtCLastNmae.setText("");
-//        txtCIDnum.setText("");
-//        txtCPhoneNum.setText("");
-//        txtCEmail.setText("");
-//        CargarDatos();
-////        ClientesMenu("Menu", "Menu");
-////        }
-//    }
-////        ClientesMenu("Menu", "Menu");
-////        }
-//    }
     private boolean validaNombre() {
         Pattern p = Pattern.compile("[a-zA-Z]+");
         Matcher m = p.matcher(txtCName.getText());
@@ -273,34 +232,34 @@ public class RegistroClienteController implements Initializable {
 
     @FXML
     private void C_addCl(ActionEvent event) {
+        boolean todoBien = false;
+        if (validaNombre() == true && validaApellido() == true && validateEmaill() == true && validaTelefono() == true) {
+            todoBien = true;
+        }
+        if (todoBien) {
+            h.registrarStorage(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText(), SelectEmp.getSelectionModel().getSelectedItem());
+            CargarDatos();
+            txtCName.setText("");
+            txtCLastNmae.setText("");
+            txtCIDnum.setText("");
+            txtCPhoneNum.setText("");
+            txtCEmail.setText("");
+            SelectEmp.getSelectionModel().select(null);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Ups some data is incorrect");
+            alert.showAndWait();
 
-//         boolean flag = true;
-//        if (!validaNombre()) {
-//            flag = false;
-//        }
-//        if (!validaApellido()) {
-//            flag = false;
-//        }
-//        if (!validaID()) {
-//            flag = false;
-//        }
-//        if (!validaTelefono()) {
-//            flag = false;
-//        }
-//        if (!validateEmaill()) {
-//            flag = false;
-//        }
-//        if (flag) {
-//        }
-        h.registrarStorage(txtCName.getText(), txtCLastNmae.getText(), txtCIDnum.getText(), txtCPhoneNum.getText(), txtCEmail.getText(), SelectEmp.getSelectionModel().getSelectedItem());
-        CargarDatos();
-        //agrega a nivel de base de datos pero no a tabla
-        txtCName.setText("");
-        txtCLastNmae.setText("");
-        txtCIDnum.setText("");
-        txtCPhoneNum.setText("");
-        txtCEmail.setText("");
-        SelectEmp.getSelectionModel().select(null);
+            txtCName.setText("");
+            txtCLastNmae.setText("");
+            txtCIDnum.setText("");
+            txtCPhoneNum.setText("");
+            txtCEmail.setText("");
+            SelectEmp.getSelectionModel().select(null);
+        }
+
     }
 
 }

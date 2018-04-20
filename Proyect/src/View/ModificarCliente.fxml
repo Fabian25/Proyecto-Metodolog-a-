@@ -26,10 +26,9 @@
           <TableColumn fx:id="columCode" prefWidth="66.0" text="Code" />
           <TableColumn fx:id="columName" prefWidth="73.0" text="Name" />
             <TableColumn fx:id="columLastName" prefWidth="86.0" text="Last Name" />
-            <TableColumn fx:id="columId" prefWidth="87.0" text="ID Number" />
-            <TableColumn fx:id="columPhoneNumber" prefWidth="94.0" text="Phone Number" />
-            <TableColumn fx:id="columEmail" prefWidth="262.0" text="Email" />
-            <TableColumn fx:id="columEdit" prefWidth="79.0" text="Edit" />
+            <TableColumn fx:id="columId" prefWidth="126.0" text="ID Number" />
+            <TableColumn fx:id="columPhoneNumber" prefWidth="126.0" text="Phone Number" />
+            <TableColumn fx:id="columEmail" prefWidth="271.0" text="Email" />
         </columns>
       </TableView>
       <Button layoutX="855.0" layoutY="318.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Phone Number" />
