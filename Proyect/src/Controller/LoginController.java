@@ -123,12 +123,7 @@ public class LoginController implements Initializable {
     String s=txt_Contra.getText();
         if (validaEmail() && validaPassword()) {
             infClient = h.VerInfCliente(txt_Usuario.getText(), Encriptar(s));
-=======
-    private void Ingresar(ActionEvent event) {
-   
-        if (validaEmail()) {
-            infClient = h.VerInfCliente(txt_Usuario.getText(), txt_Contra.getText());
->>>>>>> 7bfefe5ba21d47f7775e8980c57a1df21c2e4b75
+
             if (infClient != null) {
                 IngresarMenu("MenuCliente", "Menu Cliente");
             } else {
