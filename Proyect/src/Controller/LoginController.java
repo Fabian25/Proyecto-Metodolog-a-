@@ -112,7 +112,7 @@ public class LoginController implements Initializable {
     @FXML
     private void Ingresar(ActionEvent event) {
    
-        if (validaEmail()) {
+        if (validaEmail() ) {
             infClient = h.VerInfCliente(txt_Usuario.getText(), txt_Contra.getText());
             if (infClient != null) {
                 IngresarMenu("MenuCliente", "Menu Cliente");
