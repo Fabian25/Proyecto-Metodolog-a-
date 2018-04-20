@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -54,6 +55,10 @@ public class EditarPerfilClienteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        txtCName.setText(LoginController.infClient.getNombre());
+        txtCLastNmae.setText(LoginController.infClient.getApellido());
+        txtCPhoneNum.setText(Integer.toString(LoginController.infClient.getTelefono()));
+     
     }
 
     private void CargarVistas(String Vista, String Titulo) {
@@ -89,12 +94,17 @@ public class EditarPerfilClienteController implements Initializable {
 
     @FXML
     private void Editar(ActionEvent event) {
-         h.ActualizarInfClient(txtCName.getText(), txtCLastNmae.getText(), txtCPhoneNum.getText(), txtCEmail.getText(), infClient.getCedula());
+         h.ActualizarInfClient(txtCName.getText(), txtCLastNmae.getText(), txtCPhoneNum.getText(), infClient.getCorreo(), infClient.getCedula());
          infClient.setNombre(txtCName.getText());
          infClient.setApellido(txtCLastNmae.getText());
          infClient.setTelefono(Integer.parseInt(txtCPhoneNum.getText()));
-         infClient.setCorreo(txtCEmail.getText());
-
+        
+            
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Confirmation");
+                            alert.setHeaderText(null);
+                            alert.setContentText("The data has been updated");
+                            alert.showAndWait();
     }
 
 }

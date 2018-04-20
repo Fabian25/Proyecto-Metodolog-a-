@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -166,6 +167,12 @@ public class ModificarTiqueteClienteController implements Initializable {
             }
             h.actualizar(txt_Serie.getText(), priority, txt_DescripcionEditT.getText(), cliente);
             CargarDatos("", 0);
+               
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Confirmation");
+                            alert.setHeaderText(null);
+                            alert.setContentText("The data has been updated");
+                            alert.showAndWait();
         }
     }
 

@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -130,5 +131,11 @@ public class CrearTiqueteController implements Initializable {
         }
         txt_series.setText(h.registrarTiquetes(priority, txt_description.getText()));
                txt_description.setText(" ");
+                  
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Confirmation");
+                            alert.setHeaderText(null);
+                            alert.setContentText("The tickets has been created");
+                            alert.showAndWait();
     }
 }
