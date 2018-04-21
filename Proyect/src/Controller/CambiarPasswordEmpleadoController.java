@@ -66,6 +66,15 @@ public class CambiarPasswordEmpleadoController implements Initializable {
 
     @FXML
     private void Ingresar(ActionEvent event) {
+        if (txt_ConfirmPassword.getText().equals(txt_NewPassword.getText())&&!txt_ConfirmPassword.getText().isEmpty() &&!txt_NewPassword.getText().isEmpty()) {
+            
+            
+            
+            
+            
+            
+            
+        }
     }
 
     @FXML

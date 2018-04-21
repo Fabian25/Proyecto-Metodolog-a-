@@ -351,11 +351,11 @@ public class ClienteDAOImplements implements IClienteDAO {
     @Override
     public Clientes VerInfCliente(String txt_Usuario, String txt_Contrasena) {
         Clientes Cliente = null;
-            PreparedStatement preparedStatement;
-               String sql = "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, "
-                    + "Telefono, Correo from Clientes where "
+        PreparedStatement preparedStatement;
+        String sql = "Select Codigo, Empresa_idEmpresa, Cedula, Nombre, Apellido, "
+                + "Telefono, Correo from Clientes where "
                 + "Correo = ? And Contraseña = ?";
-         try {
+        try {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, txt_Usuario);
             preparedStatement.setString(2, txt_Contrasena.trim());
@@ -399,5 +399,19 @@ public class ClienteDAOImplements implements IClienteDAO {
             JOptionPane.showMessageDialog(null, ex);
         }
         return Empresa;
+    }
+
+    @Override
+    public void ActualizarContraClientes(int email, String password) {
+        String query = "{CALL ActualizarContraClientes(?, ?, ?, ?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setInt(1, email);
+            stmt.setString(2, password);
+            stmt.setInt(3, 0);
+            stmt.setInt(4, 0);
+
+        } catch (Exception e) {
+        }
     }
 }

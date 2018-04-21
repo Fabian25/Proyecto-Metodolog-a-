@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import DAO.ClienteDAOImplements;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -66,6 +67,16 @@ public class CambiarContraController implements Initializable {
 
     @FXML
     private void Ingresar(ActionEvent event) {
+            if (txt_ConfirmPassword.getText().equals(txt_NewPassword.getText())&&!txt_ConfirmPassword.getText().isEmpty() &&!txt_NewPassword.getText().isEmpty()) {
+            
+                ClienteDAOImplements h= new ClienteDAOImplements();
+                h.ActualizarContraClientes(LoginController.infClient.getCedula(), txt_ConfirmPassword.getText());
+            
+            
+            
+            
+            
+        }
     }
 
     @FXML

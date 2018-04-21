@@ -36,5 +36,7 @@ public interface IClienteDAO {
     public ObservableList<String> AsigEmpresas();
 
     public void registrarStorage(String txtCName, String txtCLastNmae, String txtCIDnum, String txtCPhoneNum, String txtCEmail, String EmpresaAsociar);
+    
+    public void ActualizarContraClientes(int email, String password);
 
 }
