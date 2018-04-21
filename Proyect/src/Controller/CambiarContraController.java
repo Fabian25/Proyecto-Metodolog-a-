@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -72,11 +73,19 @@ public class CambiarContraController implements Initializable {
                 ClienteDAOImplements h= new ClienteDAOImplements();
                 h.ActualizarContraClientes(LoginController.infClient.getCedula(), txt_ConfirmPassword.getText());
             
-            
-            
-            
-            
-        }
+              Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Confirmation");
+                            alert.setHeaderText(null);
+                            alert.setContentText("The password has been updated");
+                            alert.showAndWait();
+        
+        }else{
+               Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Contraseña incorrecta");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor digite la contraseña correctamente en los campos solicitados");
+            alert.showAndWait(); 
+            }
     }
 
     @FXML

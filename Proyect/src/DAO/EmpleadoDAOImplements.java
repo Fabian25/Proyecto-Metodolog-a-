@@ -356,9 +356,7 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
         PreparedStatement preparedStatement;
         String sql = "select Cedula, Nombre, Apellido, Correo, Codigo, Telefono, Contraseña, Activo, TipoEmpleado_idTipoEmpleado from Employees where "
                 + "Correo = ? And Contraseña = ?";
-        
-        
-        
+
         try {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, txt_Usuario);
@@ -386,6 +384,20 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
             stmt.executeQuery();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void ActualizarContraEmpleado(int id, String password) {
+        String query = "{CALL ActualizarContraEmpleado(?, ?, ?, ?)}";
+        try {
+            CallableStatement stmt = connection.prepareCall(query);
+            stmt.setInt(1, id);
+            stmt.setString(2, password);
+            stmt.setInt(3, 0);
+            stmt.setInt(4, 0);
+
+        } catch (Exception e) {
         }
     }
 }

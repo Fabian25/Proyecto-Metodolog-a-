@@ -33,4 +33,5 @@ public interface IEmpleadoDAO {
     
     public void eliminar(TextField txt_ID);
     public ObservableList<Tiquetes> Tiquetes(String busqueda);
+    public void ActualizarContraEmpleado(int id,String password);
 }
