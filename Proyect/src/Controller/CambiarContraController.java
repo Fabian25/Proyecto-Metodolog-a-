@@ -7,6 +7,7 @@ package Controller;
 
 import DAO.ClienteDAOImplements;
 import java.net.URL;
+import java.security.Key;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +20,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
  * FXML Controller class
@@ -65,13 +69,33 @@ public class CambiarContraController implements Initializable {
             System.out.println("Error");
         }
     }
+      public String Encriptar(String pass)throws Exception{
+      KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+      keyGenerator.init(128);
+      Key key = keyGenerator.generateKey();
+
+      key = new SecretKeySpec("una clave de 16 bytes".getBytes(),  0, 16, "AES");
+
+      String texto = pass;
+
+      Cipher aes = Cipher.getInstance("AES/ECB/PKCS5Padding");
+
+      aes.init(Cipher.ENCRYPT_MODE, key);
+      byte[] encriptado = aes.doFinal(texto.getBytes());
+String w =" ";
+      for (byte b : encriptado) {
+          w+=Integer.toHexString(0xFF & b);
+ 
+      }
+        return w;
+    }
 
     @FXML
-    private void Ingresar(ActionEvent event) {
+    private void Ingresar(ActionEvent event) throws Exception {
         if (!"".equals(txt_NewPassword.getText()) && !"".equals(txt_ConfirmPassword.getText()) && txt_ConfirmPassword.getText().equals(txt_NewPassword.getText()) && !txt_ConfirmPassword.getText().isEmpty() && !txt_NewPassword.getText().isEmpty()) {
 
             ClienteDAOImplements h = new ClienteDAOImplements();
-            h.ActualizarContraClientes(LoginController.infClient.getCedula(), txt_ConfirmPassword.getText());
+            h.ActualizarContraClientes(LoginController.infClient.getCedula(),Encriptar(txt_ConfirmPassword.getText()));
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Confirmation");
