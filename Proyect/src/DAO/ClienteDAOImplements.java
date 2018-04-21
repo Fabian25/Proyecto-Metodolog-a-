@@ -410,8 +410,9 @@ public class ClienteDAOImplements implements IClienteDAO {
             stmt.setString(2, password);
             stmt.setInt(3, 0);
             stmt.setInt(4, 0);
-
-        } catch (Exception e) {
+ stmt.executeQuery();
+        } catch (SQLException e) {
+             System.out.println(e.getMessage());
         }
     }
 }

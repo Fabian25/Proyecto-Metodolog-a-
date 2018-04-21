@@ -68,24 +68,27 @@ public class CambiarContraController implements Initializable {
 
     @FXML
     private void Ingresar(ActionEvent event) {
-            if (txt_ConfirmPassword.getText().equals(txt_NewPassword.getText())&&!txt_ConfirmPassword.getText().isEmpty() &&!txt_NewPassword.getText().isEmpty()) {
-            
-                ClienteDAOImplements h= new ClienteDAOImplements();
-                h.ActualizarContraClientes(LoginController.infClient.getCedula(), txt_ConfirmPassword.getText());
-            
-              Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Confirmation");
-                            alert.setHeaderText(null);
-                            alert.setContentText("The password has been updated");
-                            alert.showAndWait();
-        
-        }else{
-               Alert alert = new Alert(Alert.AlertType.WARNING);
+        if (!"".equals(txt_NewPassword.getText()) && !"".equals(txt_ConfirmPassword.getText()) && txt_ConfirmPassword.getText().equals(txt_NewPassword.getText()) && !txt_ConfirmPassword.getText().isEmpty() && !txt_NewPassword.getText().isEmpty()) {
+
+            ClienteDAOImplements h = new ClienteDAOImplements();
+            h.ActualizarContraClientes(LoginController.infClient.getCedula(), txt_ConfirmPassword.getText());
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText("The password has been updated");
+            alert.showAndWait();
+
+            txt_ConfirmPassword.setText("");
+            txt_NewPassword.setText("");
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Contraseña incorrecta");
             alert.setHeaderText(null);
             alert.setContentText("Por favor digite la contraseña correctamente en los campos solicitados");
-            alert.showAndWait(); 
-            }
+            alert.showAndWait();
+        }
     }
 
     @FXML

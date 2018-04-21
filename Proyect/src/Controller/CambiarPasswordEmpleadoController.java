@@ -26,7 +26,7 @@ import javafx.stage.StageStyle;
  * @author Fabian
  */
 public class CambiarPasswordEmpleadoController implements Initializable {
-
+    
     @FXML
     private TextField txt_ConfirmPassword;
     @FXML
@@ -49,7 +49,7 @@ public class CambiarPasswordEmpleadoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
+    
     private void CargarVistas(String Vista, String Titulo) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/" + Vista + ".fxml"));
@@ -65,50 +65,50 @@ public class CambiarPasswordEmpleadoController implements Initializable {
             System.out.println("Error");
         }
     }
-
+    
     @FXML
     private void Ingresar(ActionEvent event) {
-        if (txt_ConfirmPassword.getText().equals(txt_NewPassword.getText())&&!txt_ConfirmPassword.getText().isEmpty() &&!txt_NewPassword.getText().isEmpty()) {
+        if (!"".equals(txt_NewPassword.getText()) && !"".equals(txt_ConfirmPassword.getText()) && txt_ConfirmPassword.getText().equals(txt_NewPassword.getText()) && !txt_ConfirmPassword.getText().isEmpty() && !txt_NewPassword.getText().isEmpty()) {
             
-            EmpleadoDAOImplements h=new EmpleadoDAOImplements();
+            EmpleadoDAOImplements h = new EmpleadoDAOImplements();
             
             h.ActualizarContraEmpleado(LoginController.infEmpleado.getCedula(), txt_ConfirmPassword.getText());
             
-             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Confirmation");
-                            alert.setHeaderText(null);
-                            alert.setContentText("The password has been updated");
-                            alert.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText("The password has been updated");
+            alert.showAndWait();
+            txt_ConfirmPassword.setText("");
+            txt_NewPassword.setText("");
             
-            
-            
-        }else{
-                Alert alert = new Alert(Alert.AlertType.WARNING);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Contraseña incorrecta");
             alert.setHeaderText(null);
             alert.setContentText("Por favor digite la contraseña correctamente en los campos solicitados");
             alert.showAndWait();
         }
     }
-
+    
     @FXML
     private void C_BarMyProfile(ActionEvent event) {
         CargarVistas("VerPerfilEmpleado", "Profile");
     }
-
+    
     @FXML
     private void C_BarEditProfile(ActionEvent event) {
         CargarVistas("EditarPerfilEmpleado", "Profile");
     }
-
+    
     @FXML
     private void C_Home(ActionEvent event) {
         CargarVistas("MenuEmpleado", "Home");
     }
-
+    
     @FXML
     private void C_BarEditPassword(ActionEvent event) {
         CargarVistas("CambiarPasswordEmpleado", "Home");
     }
-
+    
 }

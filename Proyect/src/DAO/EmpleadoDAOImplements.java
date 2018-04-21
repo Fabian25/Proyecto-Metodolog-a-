@@ -397,7 +397,9 @@ public class EmpleadoDAOImplements implements IEmpleadoDAO {
             stmt.setInt(3, 0);
             stmt.setInt(4, 0);
 
-        } catch (Exception e) {
+            stmt.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
